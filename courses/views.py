@@ -11,3 +11,9 @@ def courses(request):
 
                }
     return render(request,'courses.html',context)
+def courseDetails(request,course_name):
+    courseDets = course.objects.get(slug__iexact=course_name)
+    context = {'courseDets': courseDets,
+
+               }
+    return render(request, 'course-details.html',context)

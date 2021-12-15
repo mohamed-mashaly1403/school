@@ -162,6 +162,7 @@ h1, h2, h3, h4, h5, h6 {
 */
 .get-started-btn {
   margin-left: 22px;
+   margin-right: 10px;
   background: #5fcf80;
   color: #fff;
   border-radius: 50px;

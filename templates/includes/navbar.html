@@ -1,7 +1,10 @@
+
 {% load static %}
 
 <header id="header" class="fixed-top">
+
     <div class="container d-flex align-items-center">
+
 
        <h1 class="logo me-auto"><a href="{% url 'home'%}">SCHOOL.COM</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
@@ -38,11 +41,23 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
+      {% if user.is_authenticated %}
+      {% if user.user_img %}
+      <img width="40" height="50" class="rounded-circle mb-2" style="margin:20px"  src="{{user.user_img.url}}" alt="user picture">
+      {% else%}
+      <img width="40" height="50" class="rounded-circle mb-2" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="user picture">
+      {% endif %}
+      <div class="text-center">
+      <small class="title text-muted">Welcome {{user.first_name}}</small>
+      </div>
+      <a href="{% url 'logout'%}" class="btn btn-outline-success btn-sm">Logout</a>
+      {% else%}
+      <a style="margin-right:0 important!" href="{% url 'login'%}" class="get-started-btn">Sign in</a>
+      <a style="margin-right:10px;margin-left:10px" href="{%url 'register'%}" class="get-started-btn">Register</a>
+      {% endif %}
 
-      <a href="courses.html" class="get-started-btn">Sign in</a>
-      <a href="courses.html" class="get-started-btn">Register</a>
-
-      <a style="margin-left: 30px; background-color: red;" class="get-started-btn" href="index.html"><strong>العربية</strong></a>
+      <a  class="btn btn-danger btn-sm" href="index.html"><strong>العربية</strong></a>
 
     </div>
+  {% include 'includes/alerts.html'%}
   </header><!-- End Header -->
