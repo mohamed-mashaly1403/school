@@ -18,6 +18,7 @@ class course(models.Model):
     type = models.CharField (max_length=20,blank=False,default='General')
     description = models.TextField(max_length=500,blank=True)
     img = models.ImageField(upload_to='img/courses',blank=True)
+    is_school_subject = models.BooleanField(default=True)
     # notes = models.TextField(max_length=200,blank=True)
     is_active = models.BooleanField(default=True)
     def __str__(self):

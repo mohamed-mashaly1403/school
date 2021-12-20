@@ -1,0 +1,10 @@
+{% autoescape off%}
+Hi {{user.first_name}}
+<h4>Congratulation your order has been set and your teacher will be in touch with you soon.</h4>
+<p> your lessons will start when your teacher </p>
+order no.:{{order_number.order_number}}
+total amount: {{order_number.total}}
+created date : {{order_number.created_at}}
+
+
+{% endautoescape %}

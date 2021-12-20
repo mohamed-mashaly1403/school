@@ -27,6 +27,7 @@ class Order(models.Model):
         ('else','else'),
     )
     user = models.ForeignKey(account, on_delete=models.SET_NULL, null=True)
+    order_course = models.ForeignKey(course, on_delete=models.CASCADE,blank=True, null=True)
     payment = models.ForeignKey(Payment, on_delete=models.SET_NULL, blank=True, null=True)
     order_number = models.CharField(max_length=20)
     first_name = models.CharField(max_length=20, default='')
@@ -35,10 +36,13 @@ class Order(models.Model):
     country = models.CharField(max_length=10, choices=country, default='else')
     city = models.CharField(max_length=50,blank=True)
     grade = models.IntegerField( blank=True,default=1)
+    quantity  = models.IntegerField( blank=True,default=1)
     Curriculum_type = models.CharField(max_length=20, blank=True,default='general')
     term = models.CharField(max_length=20, blank=True,default='first')
-    total = models.FloatField()
+    total = models.FloatField(blank=True)
     tax = models.FloatField()
+    gtotal = models.FloatField(default=0.00)
+    total_classes = models.IntegerField(default=1, blank=True)
     status = models.CharField(max_length=10, choices=status, default='new')
     ip = models.CharField(max_length=20, blank=True)
     is_ordered = models.BooleanField(default=False)
@@ -53,13 +57,14 @@ class orderPoduct(models.Model):
     payment = models.ForeignKey(Payment,on_delete=models.SET_NULL,blank=True,null=True)
     user = models.ForeignKey(account, on_delete=models.CASCADE)
     order_course = models.ForeignKey(course,on_delete=models.CASCADE)
-    classes = models.IntegerField()
     quantity = models.IntegerField()
     product_price = models.FloatField()
     # teacher = models.ForeignKey(teachers,on_delete=models.SET_NULL,blank=True,null=True) to add after teacher moduel
     ordered = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    class_url = models.URLField(max_length=200, blank=True)
+    class_material_url =models.URLField(max_length=200, blank=True)
     def __unicode__(self):
         return self.order_course
 
