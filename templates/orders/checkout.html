@@ -24,16 +24,20 @@
 <div class="col form-group">
      <label>Country<span style="color:red">  *</span></label>
 
-    <select name="country"  class="form-control" required>
-
-
-    <option   value="0" class="form-control" selected disabled  >Choose Your country </option>
-    <option   value="UAE" class="form-control"  >UAE</option>
+    <select name="country"  class="form-control" required id="cou" onchange="yesnoCheckk(this);">
+     <option   value="UAE" class="form-control"  >UAE</option>
     <option   value="KSA" class="form-control"  >KSA</option>
     <option   value="Qatar" class="form-control"  >Qatar</option>
     <option   value="Kuwait" class="form-control"  >Kuwait</option>
-    <option   value="else" class="form-control"  >International</option>
+    <option   value="other" class="form-control"  >other</option>
     </select>
+     <div id="ifYess" style="display: none;">
+                    <br />
+   <label for="carr">Enter Your Country </label>
+    <input type="text" id="carr" class="form-control" name=""  />
+
+</div>
+    <small>Choose Your country</small>
 </div>
     <div class="col form-group">
      <label>City</label>
@@ -43,12 +47,13 @@
 
 </div>
         <div class="form-row">
+            {%if needed_course.is_school_subject %}
 <div class="col form-group">
      <label>Grade <span style="color:red">*</span></label>
     <select name="grade" required class="form-control">
 
 
-    <option   value="0" class="form-control" selected disabled  >Choose Your Grade</option>
+
     <option   value="1" class="form-control"  >1</option>
     <option   value="2" class="form-control"  >2</option>
     <option   value="3" class="form-control"  >3</option>
@@ -65,14 +70,16 @@
 
 
         </select>
+    <small>Choose Your Grade</small>
 </div>
-    <div class="col form-group">
-     <label>Phone Number <span style="color:red">*</span></label>
-    <input type="tel" name="phone" class="form-control" pattern="[0-9]{12}" required>
+             {%endif%}
+<!--    <div class="col form-group">-->
+<!--     <label>Phone Number <span style="color:red">*</span></label>-->
+<!--    <input type="tel" name="phone" class="form-control" pattern="[0-9]{12}" required>-->
 
-        <small>Format: 971xxxxxxxxx</small>
+<!--        <small>Format: 971xxxxxxxxx</small>-->
 
-</div>
+<!--</div>-->
 
 </div>
 <!--        <div class="form-row">-->
@@ -86,33 +93,59 @@
 <!--</div>-->
 
 <!--</div>-->
+    {%if needed_course.is_school_subject %}
         <div class="form-row">
             <div class="col form-group">
             <label>Curriculum Type <span style="color:red">*</span></label>
-            <select name="Curriculum_type" required class="form-control">
+    <select name="Curriculum_type" required class="form-control" id="ses" onchange="yesnoCheck(this);" >
 
-
-    <option   value="0" class="form-control" selected disabled  >Curriculum Type</option>
     <option   value="General" class="form-control"  >General</option>
     <option   value="Advanced" class="form-control"  >Advanced</option>
     <option   value="Elite" class="form-control"  >Elite</option>
-    <option   value="else" class="form-control"  >else</option>
+    <option   value="other" class="form-control"  >other</option>
 
             </select>
+                <div id="ifYes" style="display: none;">
+                    <br />
+   <label for="car">Enter Curriculum Type </label>
+    <input type="text" id="car" class="form-control" name="" />
+</div>
+               <small>Curriculum Type</small>
             </div>
    <div class="col form-group">
       <label>Semester <span style="color:red">*</span></label>
             <select name="term" required class="form-control">
 
 
-    <option   value="0" class="form-control" selected disabled  >Semester</option>
+
     <option   value="1" class="form-control"  >first</option>
     <option   value="2" class="form-control"  >second</option>
     <option   value="3" class="form-control"  >Third</option>
             </select>
+       <small>Semester</small>
              </div>
 
+            {%if needed_course.course_name  in lang %}
+            <select name="order_course_language" required class="form-control" hidden>
+                <option  selected value="{{needed_course.course_name}}" class="form-control"  ></option>
+                 </select>
+            {%else%}
+
+            <div class="col form-group">
+      <label>Course Language <span style="color:red">*</span></label>
+            <select name="order_course_language" required class="form-control">
+    <option   value="Arabic" class="form-control"  >Arabic</option>
+    <option   value="English" class="form-control"  >English</option>
+    <option   value="French" class="form-control"  >French</option>
+    <option   value="Chinese" class="form-control"  >Chinese</option>
+            </select>
+       <small>Choose Course Language</small>
+             </div>
+             {%endif%}
+
+
 </div>
+    {%endif%}
          <div class="form-row">
 
                <div class="col form-group">
@@ -131,7 +164,7 @@
 
 		<div class="card">
 		<div class="card-body">
-            <section id="pricing" class="pricing">
+            <section id="pricing" class="pricing" style="padding:20px">
       <div class="container " data-aos="fade-up">
 
         <div class="row">
@@ -148,69 +181,39 @@
                     <li> <strong style="color:red">Total lessons:<output name="total_classes" for="quantity">{{lessons}}</output> class{{ lessons|pluralize:"es" }}</strong></li>
 
                 </ul>
-
+                {%if price != 0 %}
                   <div class="form-row ">
                 <div class="col form-group ">
                 <label> quantity  <span style="color:red">*</span></label>
                 <input type="number"  name="quantity" class="form-control" min="1" step="1" value="1" required pattern="[1-9]" id="quantity" style="width:95% ;">
                 </div>
                   </div>
+                {%else%}
+                <div class="form-row  " hidden>
+                <div class="col form-group ">
+                <label> quantity  <span style="color:red">*</span></label>
+                <input type="number"  name="quantity" class="form-control" min="1" step="1" value="1" required pattern="[1-9]" id="quantity" style="width:95% ;" >
+                </div>
+                  </div>
 
+
+                {%endif%}
+                <br>
+
+<button class="btn btn-danger btn-block" type="submit" name="submit">{%if price != 0 %} Buy Now {%else%} Try Now {%endif%}</button>
+			<a href="{%url 'courses'%}" class="btn btn-outline-primary btn-block">Continue Shopping</a>
             </div>
           </div>
         </div>
             </section>
 
-<!--<table class="table table-borderless table-shopping-cart">-->
-<!--<thead class="text-muted">-->
-<!--<tr class="small text-uppercase">-->
-<!--  <th scope="col">course</th>-->
-<!--  <th scope="col" width="120">Quantity</th>-->
-<!--  <th scope="col" width="120">Price</th>-->
-<!--&lt;!&ndash;  <th scope="col" class="text-right" width="200"> </th>&ndash;&gt;-->
-<!--</tr>-->
-<!--</thead>-->
-
-<!--<tbody>-->
-
-<!--<tr>-->
-<!--	<td>-->
-<!--		<figure class="itemside align-items-center">-->
-<!--			<div class="aside"><img src="{{needed_course.img.url}}" class="img-sm"></div>-->
-<!--			<figcaption class="info">-->
-<!--				<a href="" class="title text-dark">{{ needed_course }}</a>-->
-<!--				<p class="text-muted small">-->
-
-<!--					<br>-->
 
 
-<!--				</p>-->
-<!--			</figcaption>-->
-<!--		</figure>-->
-<!--	</td>-->
-<!--	<td>-->
-<!--		<h5>{{cart_item.quantity}} </h5>-->
 
-<!--	</td>-->
-<!--	<td>-->
-<!--		<div class="price-wrap">-->
-<!--			<var class="price">${{cart_item.sub_total}}</var>-->
-<!--			<small class="text-muted"> ${{cart_item.product_busket_item.product_price}} each </small>-->
-<!--		</div> &lt;!&ndash; price-wrap .// &ndash;&gt;-->
-<!--	</td>-->
-
-<!--</tr>-->
-
-<!--</tbody>-->
-
-<!--</table>-->
-
-            <button class="btn btn-danger btn-block" type="submit" name="submit"> Buy Now</button>
-			<a href="{%url 'courses'%}" class="btn btn-light btn-block">Continue Shopping</a>
 		</div> <!-- card-body.// -->
-               </form>
-		</div> <!-- card.// -->
 
+		</div> <!-- card.// -->
+ </form>
 </aside> <!-- col.// -->
 
 
@@ -229,7 +232,32 @@ total_classes = document.getElementById('lesson').getAttribute('set'),outputt = 
 var ress = Math.floor(total_classes * cur );
 output.innerHTML = res +(res* 0.05);
 outputt.innerHTML = ress;
+};
+function yesnoCheck(that) {
+    if (that.value == "other") {
+
+        document.getElementById("ifYes").style.display = "block";
+        document.getElementById("ses").name = '';
+        document.getElementById("car").name = 'Curriculum_type';
+        document.getElementById("car").required = true;
+    } else {
+        document.getElementById("ifYes").style.display = "none";
+    }
 }
+
+function yesnoCheckk(that) {
+    if (that.value == "other") {
+
+        document.getElementById("ifYess").style.display = "block";
+        document.getElementById("cou").name = '';
+         document.getElementById("carr").name = 'country';
+         document.getElementById("carr").required = true;
+
+    } else {
+        document.getElementById("ifYess").style.display = "none";
+    }
+}
+
 
 
 

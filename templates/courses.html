@@ -27,14 +27,18 @@
               <a href="{% url 'courseDetails' course.slug %}"><img src="{{course.img.url}}" class="img-fluid" style="width:385px; height:238.51px;" alt="..."></a>
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <a href="{% url 'courseDetails' course.slug %}"><h4>{{course.course_name}}</h4></a>
+                    {%if  course.language1 == course.language2%}
+                  <a href="{% url 'courseDetails' course.slug %}"><h4>Language:{{course.language1}}</h4></a>
+                    {%else %}
+                    <a href="{% url 'courseDetails' course.slug %}"><h4>Language:{{course.language1}} and {{course.language2}}</h4></a>
+                    {% endif %}
                   <p class="price">100 Aed</p>
                 </div>
-                {%if  course.language1 == course.language2%}
-                <h3><a href="{% url 'courseDetails' course.slug %}">avail. in: {{course.language1}}</a></h3>
-                  {%else %}
-                  <h3><a href="course-details.html">Avail. {{course.language1}} and {{course.language2}}</a></h3>
-                  {% endif %}
+
+                <h3><a href="{% url 'courseDetails' course.slug %}"> {{ course.course_name}}</a></h3>
+
+
+
                 <p>{{course.description}}</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
 <!--                  <div class="trainer-profile d-flex align-items-center">-->

@@ -74,7 +74,7 @@
               </ul>
               <div class="btn-wrap">
                {% if user.is_authenticated%}
-                <a href="#" class="btn-buy">Buy Now</a>
+                <a href="{% url 'checkout' courseDets.slug 1 0 %}" class="btn-buy">Buy Now</a>
                 {% else %}
                 <a href="{%url 'login'%}" class="btn-buy">Buy Now</a>
                 {%endif %}
@@ -96,7 +96,7 @@
               </ul>
               <div class="btn-wrap">
                 {% if user.is_authenticated%}
-                <a href="#" class="btn-buy">Buy Now</a>
+                <a href="{% url 'checkout' courseDets.slug 1 100 %}" class="btn-buy">Buy Now</a>
                 {% else %}
                 <a href="{%url 'login'%}" class="btn-buy">Buy Now</a>
                 {%endif %}              </div>
@@ -138,7 +138,7 @@
               </ul>
               <div class="btn-wrap">
                 {% if user.is_authenticated%}
-                <a href="#" class="btn-buy">Buy Now</a>
+                <a href="{% url 'checkout' courseDets.slug 6 500 %}" class="btn-buy">Buy Now</a>
                 {% else %}
                 <a href="{%url 'login'%}" class="btn-buy">Buy Now</a>
                 {%endif %}

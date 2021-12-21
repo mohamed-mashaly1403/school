@@ -19,13 +19,7 @@ class Order(models.Model):
         ('completed','completed'),
         ('canceled','canceled')
     )
-    country = (
-        ('UAE', 'UAE'),
-        ('KSA', 'KSA'),
-        ('Qatar', 'Qatar'),
-        ('Kuwait', 'Kuwait'),
-        ('else','else'),
-    )
+
     user = models.ForeignKey(account, on_delete=models.SET_NULL, null=True)
     order_course = models.ForeignKey(course, on_delete=models.CASCADE,blank=True, null=True)
     payment = models.ForeignKey(Payment, on_delete=models.SET_NULL, blank=True, null=True)
@@ -33,17 +27,18 @@ class Order(models.Model):
     first_name = models.CharField(max_length=20, default='')
     last_name = models.CharField(max_length=20, default='')
     phone = models.CharField(max_length=15,blank=True)
-    country = models.CharField(max_length=10, choices=country, default='else')
+    country = models.CharField(max_length=10, default='else')
     city = models.CharField(max_length=50,blank=True)
     grade = models.IntegerField( blank=True,default=1)
     quantity  = models.IntegerField( blank=True,default=1)
-    Curriculum_type = models.CharField(max_length=20, blank=True,default='general')
+    Curriculum_type = models.CharField(max_length=20, blank=True, default='general')
     term = models.CharField(max_length=20, blank=True,default='first')
     total = models.FloatField(blank=True)
     tax = models.FloatField()
     gtotal = models.FloatField(default=0.00)
     total_classes = models.IntegerField(default=1, blank=True)
     status = models.CharField(max_length=10, choices=status, default='new')
+    order_course_language=models.CharField(max_length=20,blank=True,default='Arabic')
     ip = models.CharField(max_length=20, blank=True)
     is_ordered = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)

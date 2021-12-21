@@ -41,16 +41,22 @@ def place_order(request,needed_course_id,price,lessons):
             data.user = current_user
             data.grade = form.cleaned_data['grade']
             data.Curriculum_type = form.cleaned_data['Curriculum_type']
+            print(data.Curriculum_type)
             data.order_course = ncourse
+            try:
+                data.total_classes = data.quantity * lessons
+            except(TypeError):
+                data.total_classes=1
 
-            data.total_classes = data.quantity * lessons
-            print(f'total_classes:{data.total_classes}')
             data.term = form.cleaned_data['term']
-
+            data.order_course_language = form.cleaned_data['order_course_language']
             data.total = price
-            print(f'data.total{data.total}')
-            data.tax = (data.total*data.quantity) * 0.05
-            data.gtotal = (data.total*data.quantity) + data.tax
+            if data.total == 0:
+                data.tax = 0
+                data.gtotal = 0
+            else:
+                data.tax = (data.total * data.quantity) * 0.05
+                data.gtotal = (data.total * data.quantity) + data.tax
             data.save()
             yr = int(datetime.date.today().strftime('%Y'))
             dt = int(datetime.date.today().strftime('%d'))
@@ -59,6 +65,7 @@ def place_order(request,needed_course_id,price,lessons):
             current_date = d.strftime('%Y%d%m')
             order_number = current_date + str(data.id)
             data.order_number = order_number
+            data.ip = request.META.get('REMOTE_ADDR')
             data.save()
             order = Order.objects.get(user=current_user, is_ordered=False, order_number=order_number)
             context = {
@@ -85,18 +92,16 @@ def place_order(request,needed_course_id,price,lessons):
 @login_required(login_url='login')
 def checkout (request,slug='',lessons=0, price=0):
     needed_course = course.objects.filter(slug=slug).first()
-    print(slug)
-
-
-
-
-
+    lang = ['Arabic','English','Quran','French','Chinese']
 
     context = {
         'price': price,
         'needed_course': needed_course,
         'needed_course_id':needed_course.id,
-        'lessons': lessons,}
+        'lessons': lessons,
+        'lang':lang
+
+    }
     return render(request, 'orders/checkout.html', context)
 
 
