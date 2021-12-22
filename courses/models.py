@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 lang =  [
@@ -21,6 +22,9 @@ class course(models.Model):
     is_school_subject = models.BooleanField(default=True)
     # notes = models.TextField(max_length=200,blank=True)
     is_active = models.BooleanField(default=True)
+
+    def get_url(self):
+        return reverse('courseDetails', args=[self.course_name])
     def __str__(self):
         return self.course_name
 

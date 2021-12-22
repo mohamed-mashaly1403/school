@@ -8,7 +8,7 @@
     <h2 class="text-center">Payment Successful</h2>
 	<br>
 	<div class="text-center">
-		<a href="{% url 'store' %}" class="btn btn-success">Shop more</a>
+		<a href="{% url 'courses' %}" class="btn btn-success">Shop more</a>
 	</div>
 </div>
 
@@ -23,18 +23,18 @@
                         <!-- Start .row -->
                         <div class="col-lg-6">
                             <!-- col-lg-6 start here -->
-                            <div class="invoice-logo"><img src="{%static './images/logo.png'%}" alt="Invoice logo" style="max-height: 40px;"></div>
+                            <div class="invoice-logo"><img src="{%static 'img/favicon.png'%}" alt="Invoice logo" style="max-height: 40px;"></div>
                         </div>
                         <!-- col-lg-6 end here -->
                         <div class="col-lg-6">
                             <!-- col-lg-6 start here -->
                             <div class="invoice-from">
                                 <ul class="list-unstyled text-right">
-                                    <li><strong>{{order.address_line_1}}{{order.address_line_2}}</strong></li>
+
                                     <li>{{order.first_name}} {{order.last_name}}</li>
-                                    <li>{{order.state}}</li>
-                                    <li>{{order.state}}, {{order.city}}</li>
-                                    <li>{{order.country}}</li>
+
+                                    <li>{{order.country}}, {{order.city}}</li>
+
                                 </ul>
                             </div>
                         </div>
@@ -63,35 +63,34 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        {% for item in order_Poduct %}
+
                                             <tr>
-                                                <td><b>{{item.product.product_name}}</b>
-                                                    <br>{% if item.variations.all %}
-                                                        {% for itemm in item.variations.all  %}
-                                                        {{itemm.variation_category | capfirst}} : {{itemm.variation_value | capfirst}}
+                                                <td><b>{{order.order_course}}</b>
+                                                    <br>
+
                                                         <br>
-                                                        {% endfor %}
-                                                        {% endif %}<br>{{item.product.product_desc}}</td>
-                                                <td class="text-center">{{item.quantity}}</td>
-                                                <td class="text-center">{{item.product.product_price}} AED</td>
+
+                                                       <br>{{order.order_course__description}}</td>
+                                                <td class="text-center">{{order.quantity}}</td>
+                                                <td class="text-center">{{order.total}} AED</td>
                                             </tr>
 
-                                        {% endfor %}
+
 
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th colspan="2" class="text-right">Sub Total:</th>
-                                                <th class="text-center">${{Sub_Total}} USD</th>
+                                                <th class="text-center"> {{order.total}}AED</th>
                                             </tr>
                                             <tr>
                                                 <th colspan="2" class="text-right">Tax:</th>
-                                                <th class="text-center">${{order.tax}} USD</th>
+                                                <th class="text-center">{{order.tax}} USD</th>
                                             </tr>
 
                                             <tr>
                                                 <th colspan="2" class="text-right">Grand Total:</th>
-                                                <th class="text-center">${{order.total}} USD</th>
+                                                <th class="text-center"> {{Sub_Total}} AED</th>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -100,7 +99,7 @@
                             <div class="invoice-footer mt25">
                                 <p class="text-center">Thank you for
                                     shopping with us!</p>
-                                <div class="text-center"> <a  href="{% url 'home'%}">Continue Shopping</a></div>
+                                <div class="text-center"> <a  href="{% url 'home'%}">Home Page</a></div>
                             </div>
                         </div>
                         <!-- col-lg-12 end here -->

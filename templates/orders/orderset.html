@@ -1,10 +1,11 @@
 {% autoescape off%}
 Hi {{user.first_name}}
-<h4>Congratulation your order has been set and your teacher will be in touch with you soon.</h4>
-<p> your lessons will start when your teacher </p>
+Congratulation your order has been set and your teacher will be in touch with you soon.
+your lessons will start when your teacher send url on your dashboard
 order no.:{{order_number.order_number}}
-total amount: {{order_number.total}}
+total amount: {{order_number.gtotal}}
 created date : {{order_number.created_at}}
+total classes :{{tlessons}}
 
 
 {% endautoescape %}

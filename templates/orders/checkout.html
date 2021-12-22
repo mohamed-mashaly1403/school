@@ -24,7 +24,7 @@
 <div class="col form-group">
      <label>Country<span style="color:red">  *</span></label>
 
-    <select name="country"  class="form-control" required id="cou" onchange="yesnoCheckk(this);">
+    <select name="country"  class="form-control"  id="cou" onchange="yesnoCheckk(this);">
      <option   value="UAE" class="form-control"  >UAE</option>
     <option   value="KSA" class="form-control"  >KSA</option>
     <option   value="Qatar" class="form-control"  >Qatar</option>
@@ -40,8 +40,8 @@
     <small>Choose Your country</small>
 </div>
     <div class="col form-group">
-     <label>City</label>
-    <input type="text" name="city" class="form-control" >
+     <label>City <span style="color:red">*</span></label>
+    <input type="text" name="city" class="form-control" required >
     <input type="text" name="ncourse" class="form-control" hidden value="{{needed_course}}" >
 </div>
 
@@ -184,15 +184,18 @@
                 {%if price != 0 %}
                   <div class="form-row ">
                 <div class="col form-group ">
-                <label> quantity  <span style="color:red">*</span></label>
-                <input type="number"  name="quantity" class="form-control" min="1" step="1" value="1" required pattern="[1-9]" id="quantity" style="width:95% ;">
+                <label> Quantity  <span style="color:red">*</span></label>
+                    <br>
+                    <br>
+                <input type="number"  name="quantity" class="form-control " min="1" step="1" value="1" required pattern="[1-9]" id="quantity" style="width:80% ; margin-left:28px; ">
+
                 </div>
                   </div>
                 {%else%}
                 <div class="form-row  " hidden>
                 <div class="col form-group ">
                 <label> quantity  <span style="color:red">*</span></label>
-                <input type="number"  name="quantity" class="form-control" min="1" step="1" value="1" required pattern="[1-9]" id="quantity" style="width:95% ;" >
+                <input type="number"  name="quantity" class="form-control" min="1" step="1" value="1" required pattern="[1-9]" id="quantity" " >
                 </div>
                   </div>
 

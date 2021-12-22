@@ -29,7 +29,7 @@ class Order(models.Model):
     phone = models.CharField(max_length=15,blank=True)
     country = models.CharField(max_length=10, default='else')
     city = models.CharField(max_length=50,blank=True)
-    grade = models.IntegerField( blank=True,default=1)
+    grade = models.IntegerField( blank=True,default=1,null=True)
     quantity  = models.IntegerField( blank=True,default=1)
     Curriculum_type = models.CharField(max_length=20, blank=True, default='general')
     term = models.CharField(max_length=20, blank=True,default='first')

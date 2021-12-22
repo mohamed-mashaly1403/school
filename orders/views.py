@@ -41,7 +41,6 @@ def place_order(request,needed_course_id,price,lessons):
             data.user = current_user
             data.grade = form.cleaned_data['grade']
             data.Curriculum_type = form.cleaned_data['Curriculum_type']
-            print(data.Curriculum_type)
             data.order_course = ncourse
             try:
                 data.total_classes = data.quantity * lessons
@@ -71,7 +70,7 @@ def place_order(request,needed_course_id,price,lessons):
             context = {
                 'order': order,
                 'needed_course': data.order_course,
-                'total': data.total,
+                'ctotal': data.total_classes,
                 'tax': data.tax,
                 'Gtotal': data.gtotal,
                 'lessons': data.total_classes,
@@ -103,6 +102,71 @@ def checkout (request,slug='',lessons=0, price=0):
 
     }
     return render(request, 'orders/checkout.html', context)
+@login_required(login_url='login')
+def payments(request):
+    current_user = request.user
+    body = json.loads(request.body)
+    print(body)
+    order = Order.objects.get(user=current_user, is_ordered=False, order_number=body['orderID'])
+    payment = Payment(
+        user=current_user,
+        payment_id=body['transID'],
+        payment_method=body['payment_method'],
+        status=body['status'],
+        amount_paid=order.gtotal,
+
+    )
+    payment.save()
+    order.payment = payment
+    order.is_ordered = True
+    order.save()
+    orderPoductt = orderPoduct()
+    orderPoductt.order_id = order.id
+    orderPoductt.payment = payment
+    orderPoductt.user_id = current_user.id
+    orderPoductt.order_course = order.order_course
+    orderPoductt.quantity = order.quantity
+    orderPoductt.product_price = order.gtotal
+    orderPoductt.ordered = True
+    orderPoductt.save()
+    Order.objects.filter(user=current_user,is_ordered=False).delete()
+    # send mail to customer
+    mail_subject = 'Congratulation your order has set successfully'
+    mail_body = render_to_string('orders/orderset.html', {
+        'user': current_user,
+        'order_number': order,
+        'tlessons':order.total_classes
+
+    })
+    to_email = current_user.email
+    send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
+    send_mail.send()
+    data = {
+        'order_number': order.order_number,
+        'transID': payment.payment_id,
+    }
+    return JsonResponse(data)
+@login_required(login_url='login')
+def order_complete(request):
+    order_number = request.GET.get('order_number')
+    payment_id = request.GET.get('payment_id')
+    try:
+        order = Order.objects.get(order_number=order_number, is_ordered=True)
+        order_Poduct = orderPoduct.objects.filter(order_id=order.id)
+        payment = Payment.objects.get(payment_id=payment_id)
+
+
+
+        context={
+            'order':order,
+            'order_Poduct':order_Poduct,
+            'order_number':order_number,
+            'payment_id':payment,
+            'Sub_Total':order.gtotal
+        }
+        return render(request, 'orders/order_complete.html', context)
+    except(Order.DoesNotExist,Payment.DoesNotExist):
+        return redirect('home')
 
 
 
