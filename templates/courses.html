@@ -1,25 +1,65 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load readmore %}
 
 
   <!-- ======= Header ======= -->
 
 {% block content %}
-  <main id="main" data-aos="fade-in">
+
+  <main id="main" data-aos="fade-in" >
 
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
-      <div class="container">
-        <h2>Courses</h2>
+
+    <div class="breadcrumbs " >
+      <div class="container ">
+          {% if 'search' in request.path%}
+
+		<h2 class="title-page">Courses Search Results </h2>
+                 <div class="form-inline">
+			<span class="mr-md-auto"><strong>{{courses_count}}</strong> Item{{ courses_count|pluralize:"s" }} found </span>
+
+		</div>
+          {% else%}
+          <h2>Courses</h2>
         <p>All courses prepared by most qualified and experienced teachers in your country, simply pick your course and excel</p>
+          {% endif %}
+
+
       </div>
+
+	 <!-- col.// -->
     </div><!-- End Breadcrumbs -->
 
     <!-- ======= Courses Section ======= -->
     <section id="courses" class="courses">
+
       <div class="container" data-aos="fade-up">
+           <div class="row justify-content-md-center">
+               <div class="col col-lg-6 col-md-9">
+
+		<form action="{% url 'search' %}"   method="get" >
+			<div class="input-group d-flex  ">
+			    <input   value="{{keyword}}" onfocus="this.value=''" type="text" class="form-control" style="width:60%;" placeholder="Search" name="keyword">
+
+			    <div class="input-group-append ">
+			      <button class="btn btn-success" type="submit">
+			        <i class="fa fa-search"></i>
+			      </button>
+			    </div>
+		    </div>
+		</form> <!-- search-wrap .end// -->
+                   </div>
+                </div>
+           <br>
+            <br>
+
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
+
+	 <!-- col.// -->
+
+
           {% for course in courses%}
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
@@ -39,12 +79,9 @@
 
 
 
-                <p>{{course.description}}</p>
+                <p>{{ course.description |readmore:30 }}</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
-<!--                  <div class="trainer-profile d-flex align-items-center">-->
-<!--                    <img src="{%static 'img/trainers/trainer-1.jpg'%}" class="img-fluid" alt="">-->
-<!--                    <span>Antonio</span>-->
-<!--                  </div>-->
+
                   <div class="trainer-rank d-flex align-items-center">
                     <i class="bx bx-user"></i>&nbsp;50
                     &nbsp;&nbsp;
@@ -57,59 +94,37 @@
             {% endfor%}
 
 
-<!--          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">-->
-<!--            <div class="course-item">-->
-<!--              <img src="assets/img/course-2.jpg" class="img-fluid" alt="...">-->
-<!--              <div class="course-content">-->
-<!--                <div class="d-flex justify-content-between align-items-center mb-3">-->
-<!--                  <h4>Marketing</h4>-->
-<!--                  <p class="price">$250</p>-->
-<!--                </div>-->
 
-<!--                <h3><a href="course-details.html">Search Engine Optimization</a></h3>-->
-<!--                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>-->
-<!--                <div class="trainer d-flex justify-content-between align-items-center">-->
-<!--                  <div class="trainer-profile d-flex align-items-center">-->
-<!--                    <img src="assets/img/trainers/trainer-2.jpg" class="img-fluid" alt="">-->
-<!--                    <span>Lana</span>-->
-<!--                  </div>-->
-<!--                  <div class="trainer-rank d-flex align-items-center">-->
-<!--                    <i class="bx bx-user"></i>&nbsp;35-->
-<!--                    &nbsp;&nbsp;-->
-<!--                    <i class="bx bx-heart"></i>&nbsp;42-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div> &lt;!&ndash; End Course Item&ndash;&gt;-->
-
-<!--          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">-->
-<!--            <div class="course-item">-->
-<!--              <img src="assets/img/course-3.jpg" class="img-fluid" alt="...">-->
-<!--              <div class="course-content">-->
-<!--                <div class="d-flex justify-content-between align-items-center mb-3">-->
-<!--                  <h4>Content</h4>-->
-<!--                  <p class="price">$180</p>-->
-<!--                </div>-->
-
-<!--                <h3><a href="course-details.html">Copywriting</a></h3>-->
-<!--                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>-->
-<!--                <div class="trainer d-flex justify-content-between align-items-center">-->
-<!--                  <div class="trainer-profile d-flex align-items-center">-->
-<!--                    <img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="">-->
-<!--                    <span>Brandon</span>-->
-<!--                  </div>-->
-<!--                  <div class="trainer-rank d-flex align-items-center">-->
-<!--                    <i class="bx bx-user"></i>&nbsp;20-->
-<!--                    &nbsp;&nbsp;-->
-<!--                    <i class="bx bx-heart"></i>&nbsp;85-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div> &lt;!&ndash; End Course Item&ndash;&gt;-->
 
         </div>
+           <div class="row" >
+               <div class="d-flex justify-content-center">
+
+          <nav class="mt-4" aria-label="Page navigation sample">
+	{% if courses.has_other_pages %}
+	  <ul class="pagination">
+		  {% if courses.has_previous %}
+		  <li class="page-item "><a class="page-link" href="?page=1">&laquo; first</a></li>
+
+		<li class="page-item "><a class="page-link" href="?page={{ courses.previous_page_number }}">Previous</a></li>
+		  {% endif %}
+
+		  {% for i in x %}
+		  	{%if i == courses.number  %}
+				<li class="page-item active" ><a class="page-link" style="background-color:#5fcf80;" href="#">{{i}}</a></li>
+		  	{% else %}
+				<li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+		  	{% endif %}
+		  {% endfor %}
+		  {% if courses.has_next %}
+				<li class="page-item"><a class="page-link" href="?page={{courses.next_page_number}}">Next</a></li>
+		  <li class="page-item"><a class="page-link " href="?page={{ courses.paginator.num_pages }}">last &raquo;</a></li>
+ 		 {% endif %}
+	  </ul>
+	{% endif %}
+</nav>
+                   </div>
+           </div>
 
       </div>
     </section><!-- End Courses Section -->

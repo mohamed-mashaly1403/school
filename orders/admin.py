@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Payment,Order,orderPoduct
+from .models import Payment,Order,orderPoduct,orderPoductClasses
 class orderPoductInline(admin.TabularInline):
     model = orderPoduct
     extra = 0
@@ -17,3 +17,4 @@ class OrderAdmin(admin.ModelAdmin):
 admin.site.register(Payment)
 admin.site.register(Order,OrderAdmin)
 admin.site.register(orderPoduct)
+admin.site.register(orderPoductClasses)

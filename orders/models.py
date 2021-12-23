@@ -46,7 +46,7 @@ class Order(models.Model):
     order_note = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
-        return self.country
+        return self.order_number
 class orderPoduct(models.Model):
     order = models.ForeignKey(Order,on_delete=models.CASCADE)
     payment = models.ForeignKey(Payment,on_delete=models.SET_NULL,blank=True,null=True)
@@ -58,9 +58,14 @@ class orderPoduct(models.Model):
     ordered = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    class_url = models.URLField(max_length=200, blank=True)
+    is_deliverd = models.BooleanField(default=False)
     class_material_url =models.URLField(max_length=200, blank=True)
-    def __unicode__(self):
-        return self.order_course
+    def __str__(self):
+        return self.order.order_course.course_name
+class orderPoductClasses(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    class_url = models.URLField(max_length=200, blank=True)
+    def __str__(self):
+        return self.order.order_number
 
 
