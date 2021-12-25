@@ -20,7 +20,7 @@ class account_admin(UserAdmin):
     fieldsets = ()
 class userProfileAdmin(admin.ModelAdmin):
 
-    list_display = ['user', 'city', 'state', 'country']
+    list_display = ['user', 'city',  'country']
 
 admin.site.register(account,account_admin)
 admin.site.register(UserProfile,userProfileAdmin)

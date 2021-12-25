@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 import json
 
 from django.http import JsonResponse
@@ -7,6 +7,7 @@ from django.shortcuts import render, redirect
 from django.template.backends import django
 import django.core.mail
 
+from . import form
 from .form import OrderForm
 from courses.models import course
 from .models import Order, Payment, orderPoduct
@@ -84,8 +85,22 @@ def place_order(request,needed_course_id,price,lessons):
             print('not vaild')
             print(form.errors)
             return redirect('courses')
+@login_required(login_url='login')
+def Editplaceorder(request,order_number):
+    order = Order.objects.get(order_number=order_number)
+    print(order)
+    context = {
+        'order': order,
+        'needed_course': order.order_course,
+        'ctotal': order.total_classes,
+        'tax': order.tax,
+        'Gtotal': order.gtotal,
+        'lessons': order.total_classes,
+        'price': order.total,
 
+    }
 
+    return render(request, 'orders/payments.html', context)
 
 
 @login_required(login_url='login')
@@ -102,6 +117,8 @@ def checkout (request,slug='',lessons=0, price=0):
 
     }
     return render(request, 'orders/checkout.html', context)
+
+
 @login_required(login_url='login')
 def payments(request):
     current_user = request.user

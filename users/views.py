@@ -1,5 +1,5 @@
 from django.contrib.sites.shortcuts import get_current_site
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 import django.core.mail
 # Create your views here.
 from django.template.loader import render_to_string
@@ -12,9 +12,9 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 import requests
 
-
-from .forms import regForm
-from .models import account
+from orders.models import Order, orderPoduct
+from .forms import regForm, UserForm, UserProfileForm
+from .models import account,UserProfile
 
 
 def register(request):
@@ -70,7 +70,7 @@ def login(request):
             messages.success(request, ' successfully login ')
 
         except(AttributeError):
-            messages.error(request, 'please activate your account by clicking on activation url in your email')
+            messages.error(request, 'Wrong email or password ')
             return redirect('login')
         try:
             url = request.META.get('HTTP_REFERER')
@@ -82,8 +82,8 @@ def login(request):
                 nextPage = params['next']
                 return redirect(nextPage)
         except :
-            # return redirect('dashboard')
-            return redirect('home')
+
+            return redirect('dashboard')
     return render(request,'accounts/login.html')
 @login_required(login_url='login')
 def logout(request):
@@ -100,11 +100,17 @@ def activate(request,uidb64,token):
      if user is not None and default_token_generator.check_token(user,token):
          user.is_active = True
          user.save()
+         user_profile=UserProfile(
+             user=user
+         )
+         user_profile.save()
+
          messages.success(request,'successfully activated ')
-         return redirect('login')
+         return redirect('edit_profile')
      else:
          messages.error(request,'invaild link')
-         return redirect(request,'register')
+         return redirect('register')
+
 def forgotpassword(request):
     if request.method == 'POST':
         email = request.POST['email']
@@ -181,3 +187,63 @@ def change_password(request):
             return redirect('change_password')
 
     return render(request,'accounts/change_password.html')
+@login_required(login_url='login')
+def dashboard(request):
+    orders = Order.objects.order_by('-created_at').filter(user_id=request.user.id,is_ordered=True)
+    active_orders = orderPoduct.objects.filter(user_id=request.user.id,is_deliverd=False)
+    orders_count = orders.count()
+    active_orders_count =active_orders.count()
+    UnPaidOrders = Order.objects.order_by('-created_at').filter(user_id=request.user.id, is_ordered=False)[:3:-1]
+    UnPaidOrder = len(UnPaidOrders)
+    context = {
+        'orders_count':orders_count,
+        'orders':orders,
+        'active_orders_count':active_orders_count,
+        ' active_orders': active_orders,
+        'UnPaidOrders':UnPaidOrder
+    }
+
+    return render(request,'accounts/dashboard.html',context)
+@login_required(login_url='login')
+def myOrders(request):
+    active_orders = orderPoduct.objects.filter(user_id=request.user.id).order_by('is_deliverd')
+    context = {
+          'active_orders':active_orders,
+    }
+
+    return render(request,'accounts/myOrders.html',context)
+@login_required(login_url='login')
+def myActiveOrders(request):
+    active_orders = orderPoduct.objects.filter(user_id=request.user.id,is_deliverd=False)
+    context = {
+        'active_orders': active_orders,
+    }
+    return render(request, 'accounts/myOrders.html', context)\
+@login_required(login_url='login')
+def UnPaidOrders(request):
+    orders = Order.objects.order_by('-created_at').filter(user_id=request.user.id,is_ordered=False)[:3:-1]
+
+    context = {
+        'UnPaidOrders': orders,
+    }
+    return render(request, 'accounts/UnPaidOrders.html', context)
+@login_required(login_url='login')
+def edit_profile(request):
+    userProfile = get_object_or_404(UserProfile,user= request.user)
+    if request.method == 'POST':
+        user_form = UserForm(request.POST,request.FILES,instance=request.user)
+        Profile_form = UserProfileForm(request.POST,instance=userProfile)
+        if user_form.is_valid() and  Profile_form.is_valid():
+            user_form.save()
+            Profile_form.save()
+            messages.success(request,'profile updated')
+            return redirect('edit_profile')
+    else:
+        user_form = UserForm(instance=request.user)
+        Profile_form = UserProfileForm(instance=userProfile)
+
+    context = {
+        'user_form':user_form,
+        'Profile_form':Profile_form
+    }
+    return render(request,'accounts/edit_profile.html',context)

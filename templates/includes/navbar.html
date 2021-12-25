@@ -13,7 +13,7 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="{% if nbar == 'home' %}active {% endif %}" href="{%url 'home'%}">Home</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a class="{% if '/dashboard/' in request.path or '/users/' == request.path %}active {% endif %}" href="{% url 'dashboard'%}">My Dash Board</a></li>
           <li><a class="{% if '/courses/' == request.path %}active {% endif %}" href="{% url 'courses' %}">Courses</a></li>
           <!-- <li><a href="trainers.html">Trainers</a></li> -->
           <li><a href="events.html">Be a teacher</a></li>
@@ -43,9 +43,9 @@
       </nav><!-- .navbar -->
       {% if user.is_authenticated %}
       {% if user.user_img %}
-      <img width="40" height="50" class="rounded-circle mb-2" style="margin:20px"  src="{{user.user_img.url}}" alt="user picture">
+     <a href="{%url 'edit_profile'%}"><img width="40" height="50" class="rounded-circle mb-2" style="margin:20px"  src="{{user.user_img.url}}" alt="user picture"></a>
       {% else%}
-      <img width="40" height="50" class="rounded-circle mb-2" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="user picture">
+      <a href="{%url 'edit_profile'%}"><img width="40" height="50" class="rounded-circle mb-2" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="user picture"></a>
       {% endif %}
       <div class="text-center">
       <small class="title text-muted">Welcome {{user.first_name}}</small>
