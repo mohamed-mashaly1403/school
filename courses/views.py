@@ -1,13 +1,17 @@
+from itertools import count
+
 from django.core.paginator import EmptyPage,Paginator,PageNotAnInteger
 from django.db.models import Q
 from django.shortcuts import render
+from django.db.models import Avg, Count
 
 # Create your views here.
-from .models import course
+from courses.models import RatingReview, course
 
 
 def courses(request):
-    courses = course.objects.all().filter( is_active=True).order_by('id')
+    courses = course.objects.filter( is_active=True).order_by('id')
+
     Paginatorr = Paginator(courses, 6)
     page = request.GET.get('page')
     paged_courses = Paginatorr.get_page(page)
@@ -23,8 +27,29 @@ def courses(request):
     return render(request,'courses.html',context)
 def courseDetails(request,course_name):
     courseDets = course.objects.get(slug__iexact=course_name)
-    context = {'courseDets': courseDets,
+    reviews = RatingReview.objects.filter(course__slug=course_name, status=True).order_by('updated_date')
+    rates=[]
+    for i in reviews:
+        rates.append(i.rating)
+    try:
+        avg=sum(rates)/len(rates)
+        count = len(rates)
+    except:
+        avg=0
+        count=0
 
+    Paginatorr = Paginator(reviews, 6)
+    page = request.GET.get('page')
+    paged_review = Paginatorr.get_page(page)
+    x = range(1, Paginatorr.num_pages)
+    reviews_count = reviews.count()
+    context = {'courseDets': courseDets,
+               'reviews':reviews,
+               'reviews_count': reviews_count,
+               'paged_review': paged_review,
+               'x': x,
+               'avg':avg,
+               'count':count
                }
     return render(request, 'course-details.html',context)
 def search(request):

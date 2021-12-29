@@ -92,6 +92,7 @@
                         </table>
                     </div>
                 </div>
+                <a href="{% url 'courses' %}" class="btn btn-success"> &laquo; Back to Courses</a>
 
             </aside> <!-- col.// -->
             <aside class="col-lg-4">
@@ -151,8 +152,8 @@ function getCookie(name) {
     return cookieValue;
 }
             var amount = "{{Gtotal}}"
-            var url ="{% url 'payments'%}"
-            var redirct_url ="{% url 'order_complete'%}"
+            var url ="{% url 'payments' %}"
+            var redirect_url ="{% url 'order_complete'%}"
             var csrftoken = getCookie('csrftoken')
             var detail ="{{order.order_number}}"
             var payment_method = 'PayPal'
@@ -205,7 +206,7 @@ function getCookie(name) {
                       })
                       .then((response) => response.json())
                         .then((data) => {
-                        window.location.href= redirct_url +'?order_number='+data.order_number +'&payment_id='+data.transID
+                        window.location.href= redirect_url +'?order_number='+data.order_number +'&payment_id='+data.transID
                         });
 
                      }

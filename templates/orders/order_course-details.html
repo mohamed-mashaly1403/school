@@ -1,0 +1,337 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+      <div class="container">
+        <h2>{{order.order_course}} Course</h2>
+        <h4>Status:{% if order_detail.is_deliverd %} Finish {%else %} Active {%endif%} </h4>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Cource Details Section ======= -->
+    <section id="course-details" class="course-details">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-8">
+            <img src="{{order.order_course.img.url}}" style="max-width:70%;max-height:50%; border-radius:10px;" class="img-fluid img-thumbnail" alt="Course Image">
+            <h3>Course Languge:{{order.order_course_language}}</h3>
+            <p>
+             <strong>Course Description:</strong> {{order.order_course.description}}  </p>
+          </div>
+          <div class="col-lg-4">
+
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>Trainer</h5>
+              <p><a href="#">Walter White</a></p>
+            </div>
+
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>Course Fee</h5>
+              <p>AED {{order.gtotal}}</p>
+            </div>
+
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>Number of Lessons</h5>
+              <p>{{order.total_classes}}</p>
+            </div>
+
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>Purchase Date</h5>
+              <p>{{order.payment.created_at}}</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Cource Details Section -->
+
+    <!-- ======= Cource Details Tabs Section ======= -->
+    <section id="cource-details-tabs" class="cource-details-tabs">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-3">
+            <ul class="nav nav-tabs flex-column">
+              <li class="nav-item">
+                <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Meetings url and Timing </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Course Material url</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-3">Course Details</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-4">Rate the Course</a>
+              </li>
+                {% if order_detail.is_deliverd == False  %}
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-5">Ask to change the teacher</a>
+              </li>
+                {%endif%}
+
+            </ul>
+          </div>
+          <div class="col-lg-9 mt-4 mt-lg-0">
+            <div class="tab-content">
+              <div class="tab-pane active " id="tab-1">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Teacher will add the Urls for you to Join soon</h3>
+
+                    {%for i in urls %}
+
+                        <div class="form-row  ">
+                        <div class="form-group ">
+                          {%if i.class_url_is_deliverd %}
+                          <strong style="color:red;">lesson url (lesson done)</strong> :<label class="fst-italic form-control" >  {{i.class_url}} </label>
+                          {%else%}
+                          {%if i.class_url%}
+                           <strong>lesson url</strong> :<a class="fst-italic form-control" target="_blank" href="{{i.class_url}}">  {{i.class_url}} </a>
+                          <b class="title text-muted">Class Time: {{i.classTime}}</b>
+
+                          {%else%}
+                          <strong>lesson url</strong> : <label class="fst-italic form-control"   > Teacher will add soon! </label>
+                          {%endif%}
+                          {%endif%}
+
+                        </div>
+                        </div>
+
+                  {%endfor%}
+
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="{% static 'img/course-details-tab-1.png'%}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane " id="tab-2">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Course Material URl</h3>
+                    <div class="form-row  ">
+                        <div class="form-group ">
+                          {%if order_detail.class_material_url%}
+
+                          <strong>Course Material URl</strong> : <a class="fst-italic form-control" target="_blank" href="{{order_detail.class_material_url}}">  {{order_detail.class_material_url}} </a>
+                          {%else%}
+                          <strong>Course Material URl</strong> : <label class="fst-italic form-control"   > Teacher will add soon! </label>
+
+                        {%endif%}
+                        </div>
+                        </div>
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="{% static 'img/course-details-tab-2.png'%}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-3">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Course Details</h3>
+                     <div class="form-row  ">
+                        <div class="form-group ">
+                    Course : <label class="fst-italic"> {{order.order_course}} </label>
+                        </div>
+                     </div>
+                    {% if order.order_course.is_school_subject  %}
+                     <div class="form-row  ">
+                        <div class="form-group ">
+                    Curriculum type : <label class="fst-italic"> {{order.Curriculum_type}} </label>
+                        </div>
+                     </div>
+                     <div class="form-row  ">
+                        <div class="form-group ">
+                    Grade : <label class="fst-italic"> {{order.grade}} </label>
+                        </div>
+                     </div>
+                     <div class="form-row  ">
+                        <div class="form-group ">
+                    Term : <label class="fst-italic"> {{order.term}} </label>
+                        </div>
+                     </div>
+                    {%endif%}
+                    <div class="form-row  ">
+                        <div class="form-group ">
+
+                    Language : <label class="fst-italic"> {{order.order_course_language}} </label>
+                        </div>
+                     </div>
+                    <div class="form-row  ">
+                        <div class="form-group ">
+                    Country : <label class="fst-italic"> {{order.country}} </label>
+                        </div>
+                     </div>
+                     {%if order.order_note%}
+                    <div class="form-row  ">
+                        <div class="form-group ">
+                    Notes : <label class="fst-italic"> {{order.order_note}} </label>
+                        </div>
+                     </div>
+                    {%endif%}
+
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="{% static 'img/course-details-tab-3.png'%}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-4">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Rate the Course</h3>
+                    <header class="section-heading">
+
+
+	</header>
+                     {% for review in reviews%}
+
+	<article class="box mb-3">
+		<div class="icontext w-100">
+            {% if user.user_img %}
+     <a href="{%url 'edit_profile'%}"><img  height="50" class="rounded-circle mb-2" style="margin:20px"  src="{{user.user_img.url}}" alt="user picture"></a>
+      {% else%}
+      <a href="{%url 'edit_profile'%}"><img  height="50" class="rounded-circle mb-2" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="user picture"></a>
+      {% endif %}
+
+
+			<div class="text">
+
+				<span class="date text-muted float-md-right">created at: {{review.created_date}} </span> <br>
+								<span class="date text-muted float-md-right">last update: {{review.updated_date}} </span> <br>
+								<h6 class="mb-1">{{review.user.first_name}} {{review.user.last_name}}</h6>
+				<div class="rating-star">
+					<span>
+						<i class="fa fa-star{% if review.rating == 0.5%}-half-o{% elif review.rating < 1 %}-o{%endif%}" aria-hidden="true"></i>
+						<i class="fa fa-star{% if review.rating == 1.5%}-half-o{% elif review.rating < 2 %}-o{%endif%}" aria-hidden="true"></i>
+						<i class="fa fa-star{% if review.rating == 2.5%}-half-o{% elif review.rating < 3 %}-o{%endif%}" aria-hidden="true"></i>
+						<i class="fa fa-star{% if review.rating == 3.5%}-half-o{% elif review.rating < 4 %}-o{%endif%}" aria-hidden="true"></i>
+						<i class="fa fa-star{% if review.rating == 4.5%}-half-o{% elif review.rating < 5 %}-o{%endif%}" aria-hidden="true"></i>
+
+					</span>
+				</div>
+
+
+			</div>
+		</div> <!-- icontext.// -->
+		<div class="mt-3">
+			<h6>{{review.subject}}</h6>
+			<p>
+				{{review.review}}
+          <br>
+                    <hr>
+		</div>
+
+
+	</article>
+
+{%endfor%}
+				{%if user.is_authenticated  %}
+				{% if order.is_ordered  %}
+
+				<form  action="{% url 'submit_review' order.order_course.id order.id %}" method="POST">
+					{% csrf_token %}
+                  {%if reviews %}
+                  <div class="text-center ">
+                  <STRONG style="color:green;" >Update your review </STRONG>
+                    </div>
+                  {%else%}
+                   <div class="text-center">
+					<STRONG style="color:green;">Write your review </STRONG>
+                     </div>
+                  {%endif%}
+					<div>
+						<label>Rating<span style="color:red">*</span></label>
+						<br>
+
+						<div class="rate mb-0">
+
+							<input name="rating" type="radio" id="rating10" value="5" required><label for="rating10" title="5"></label>
+							<input name="rating" type="radio" id="rating9" value="4.5" required><label for="rating9" title="4.5" class="half"></label>
+							<input name="rating" type="radio" id="rating8" value="4" required><label for="rating8" title="4"></label>
+							<input name="rating" type="radio" id="rating7" value="3.5" required><label for="rating7" title="3.5" class="half"></label>
+							<input name="rating" type="radio" id="rating6" value="3" required><label for="rating6" title="3"></label>
+							<input name="rating" type="radio" id="rating5" value="2.5" required><label for="rating5" title="2.5" class="half"></label>
+							<input name="rating" type="radio" id="rating4" value="2" required><label for="rating4" title="2"></label>
+							<input name="rating" type="radio" id="rating3" value="1.5" required><label for="rating3" title="1.5" class="half"></label>
+							<input name="rating" type="radio" id="rating2" value="1" required><label for="rating2" title="1"></label>
+							<input name="rating" type="radio" id="rating1" value="0.5" required><label for="rating1" title="0.5" class="half"></label>
+
+						</div>
+                        <div class="mt-0">
+                            <label class="text-muted ">hover on the stars(Required)</label>
+                        </div>
+
+						<br>
+<!--						rating stars-->
+						<label>Review Title:</label>
+						<input type="text" name="subject" class="form-control" >
+						<br>
+						<label>Review: </label>
+						<textarea name="review" rows="4" class="form-control"> </textarea>
+							<br>
+						<input type="submit" value="submit" class="btn btn-success">
+
+					</div>
+				</form>
+				{%endif %}
+				{%endif %}
+
+
+                  </div>
+
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-5">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+
+                      {%if user.is_authenticated  %}
+				{% if order.is_ordered  %}
+				{% if order_detail.is_deliverd == False  %}
+                      <h3>Ask to change the teacher</h3>
+
+
+				<form  action="{% url 'ChangeTeacherRequest'  order.id %}" method="POST">
+					{% csrf_token %}
+
+						<label>Reason:<span style="color:red">*</span> </label>
+                    <label class="text-muted ">(Required)</label>
+
+						<textarea required name="Reason" rows="4" class="form-control"></textarea>
+							<br>
+						<input type="submit" value="submit" class="btn btn-success">
+
+
+				</form>
+                      {%else%}
+                      <h3 style="color:red">Course Finished</h3>
+
+				{%endif %}
+				{%endif %}
+				{%endif %}
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="{% static 'img/course-details-tab-5.png'%}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Cource Details Tabs Section -->
+
+  </main><!-- End #main -->
+{% endblock %}
+

@@ -1,8 +1,13 @@
 from django.db import models
-from users.models import account
+
 from courses.models import course
 
+
+
 # Create your models here.
+from users.models import account
+
+
 class Payment(models.Model):
     user = models.ForeignKey(account,on_delete=models.CASCADE)
     payment_id = models.CharField(max_length=100)
@@ -23,7 +28,7 @@ class Order(models.Model):
     user = models.ForeignKey(account, on_delete=models.SET_NULL, null=True)
     order_course = models.ForeignKey(course, on_delete=models.CASCADE,blank=True, null=True)
     payment = models.ForeignKey(Payment, on_delete=models.SET_NULL, blank=True, null=True)
-    order_number = models.CharField(max_length=20)
+    order_number = models.CharField(max_length=20,unique=True)
     first_name = models.CharField(max_length=20, default='')
     last_name = models.CharField(max_length=20, default='')
     phone = models.CharField(max_length=15,blank=True)
@@ -45,6 +50,8 @@ class Order(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     order_note = models.CharField(max_length=100, blank=True)
 
+
+
     def __str__(self):
         return self.order_number
 class orderPoduct(models.Model):
@@ -60,12 +67,41 @@ class orderPoduct(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     is_deliverd = models.BooleanField(default=False)
     class_material_url =models.URLField(max_length=200, blank=True)
+
+
     def __str__(self):
         return self.order.order_course.course_name
 class orderPoductClasses(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     class_url = models.URLField(max_length=200, blank=True)
+    class_url_is_deliverd = models.BooleanField(default=False)
+    classTime = models.DateTimeField(blank=True,null=True)
+    created_at = models.DateTimeField(auto_now_add=True,blank=True,null=True)
+    updated_at = models.DateTimeField(auto_now=True,blank=True,null=True)
     def __str__(self):
         return self.order.order_number
+class ChangeTeacherRequestt(models.Model):
+    user = models.ForeignKey(account, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    # teacher
+    Reason = models.TextField(max_length=500,blank=True)
+    ip = models.CharField(max_length=20, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
+    def __str__(self):
+        return self.order.order_number
+class Complains(models.Model):
+    user = models.ForeignKey(account, on_delete=models.CASCADE)
+    Regards = models.CharField(max_length=100, blank=True)
+    Action_taken = models.CharField(max_length=100, blank=True,null=True)
+    Reason = models.TextField(max_length=500,blank=True)
+    ip = models.CharField(max_length=20, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return self.Regards
+    
+
+
 
 

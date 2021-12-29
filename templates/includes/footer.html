@@ -24,7 +24,7 @@
               <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'complains'%}">Complains</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
             </ul>
           </div>
@@ -80,10 +80,11 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="{% static 'vendor/purecounter/purecounter.js'%}"></script>
   <script src="{% static 'vendor/aos/aos.js'%}"></script>
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+  integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="{% static 'vendor/swiper/swiper-bundle.min.js'%}"></script>
   <script src="{% static 'vendor/php-email-form/validate.js'%}"></script>
   <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>

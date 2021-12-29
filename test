@@ -1,0 +1,26 @@
+ {%for i in urls %}
+
+                        <div class="form-row  ">
+                        <div class="form-group ">
+                          {%if i.class_url_is_deliverd %}
+                          lesson url- <strong>(lesson done) <strong> :<label  class="fst-italic form-control" >  {{i.class_url}} </label>
+                          {%else%}
+                          lesson url :<a class="fst-italic form-control" target="_blank" href="{{i.class_url}}">  {{i.class_url}} </a>
+                          {%endif%}
+
+                        </div>
+                        </div>
+
+                  {%endfor%}
+                   <h3>Course Material URl</h3>
+                    <div class="form-row  ">
+                        <div class="form-group ">
+                          {%if order_detail.class_material_url%}
+
+                         Course Material URl : <a class="fst-italic form-control" target="_blank" href="{{order_detail.class_material_url}}">  {{order_detail.class_material_url}} </a>
+                          {%else%}
+                         Course Material URl : <a class="fst-italic form-control"  > </a>
+
+                        {%endif%}
+                        </div>
+                        </div>

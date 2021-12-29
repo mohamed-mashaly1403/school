@@ -1,9 +1,16 @@
+import os
+from django.db import models
+from django import forms
 from django.db import models
 
 # Create your models here.
 #overwrite django user model
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser ,BaseUserManager
+
+from vschool import settings
+
+
 class account_manger(BaseUserManager):
     def create_user(self,first_name,last_name,email,username,password=None):
         if not email:
@@ -40,7 +47,7 @@ class account(AbstractBaseUser):
     email = models.EmailField(max_length=100,unique=True)
     username = models.CharField(max_length=50)
     phone = models.CharField(max_length=20)
-    user_img = models.ImageField(upload_to="img/users", blank=True)
+    user_img = models.ImageField(upload_to="img/users", blank=True, default='default_avatar.png')
     #required
     joined_date = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(auto_now_add=True)
@@ -61,11 +68,30 @@ class account(AbstractBaseUser):
 
     @property
     def image_url(self):
+        DEFAULT = 'default_avatar.png'
+
         if self.user_img and hasattr(self.user_img, 'url'):
             return self.user_img.url
+        else:
+            self.user_img = DEFAULT
+            return self.user_img
+
+
+    def delete(self, *args, **kwargs):
+        DEFAULT = 'default_avatar.png'
+        os.remove(os.path.join(settings.MEDIA_ROOT, self.user_img.name))
+        self.user_img = DEFAULT
+        super(account, self).delete(*args, **kwargs)
+
+
+
+
+
+
 class UserProfile(models.Model):
     user = models.OneToOneField(account,on_delete=models.CASCADE)
     city = models.CharField(max_length=20,blank=True)
     country = models.CharField(max_length=20,blank=True)
     def __str__(self):
         return self.user.first_name
+

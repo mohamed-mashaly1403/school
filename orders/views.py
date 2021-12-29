@@ -1,16 +1,16 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 import json
-
+from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.template.backends import django
 import django.core.mail
 
 from . import form
-from .form import OrderForm
-from courses.models import course
-from .models import Order, Payment, orderPoduct
+from .form import OrderForm, RatingReviewForm, ChangeTeacherRequestForm, complainsForm
+from courses.models import course, RatingReview
+from .models import Order, Payment, orderPoduct, orderPoductClasses, ChangeTeacherRequestt, Complains
 import datetime
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
@@ -184,6 +184,118 @@ def order_complete(request):
         return render(request, 'orders/order_complete.html', context)
     except(Order.DoesNotExist,Payment.DoesNotExist):
         return redirect('home')
+@login_required(login_url='login')
+def order_details(request,order_id):
+
+    order_detail = orderPoduct.objects.get(order__order_number=order_id)
+    order = Order.objects.get(order_number=order_id)
+    urls = orderPoductClasses.objects.filter(order__order_number=order_id).order_by('updated_at')
+    reviews = RatingReview.objects.all().filter(order__order_number=order_id,status=True)
+    print(reviews)
+    context={
+        'order_detail':order_detail,
+        'order': order,
+        'urls':urls,
+        'reviews':reviews
+    }
+    return render(request,'orders/order_course-details.html',context)
+@login_required(login_url='login')
+def submit_review(request,course_id,order_id):
+    url = request.META.get('HTTP_REFERER')
+
+
+    if request.method == 'POST':
+        try:
+            reviews = RatingReview.objects.get(user__id=request.user.id,course__id=course_id,order__id=order_id)
+            form = RatingReviewForm(request.POST,instance=reviews)
+            form.save()
+            messages.success(request,'review has updated')
+            return redirect(url)
+
+        except RatingReview.DoesNotExist:
+            form = RatingReviewForm(request.POST)
+            if form.is_valid() :
+                data = RatingReview()
+
+
+                data.subject = form.cleaned_data['subject']
+                data.review = form.cleaned_data['review']
+                data.rating = form.cleaned_data['rating']
+                data.ip = request.META.get('REMOTE_ADDR')
+                data.course_id = course_id
+                data.user_id = request.user.id
+                data.order_id = order_id
+                data.save()
+                messages.success(request, 'review has submited')
+            else:
+                print('not vaild')
+
+            return redirect(url)
+@login_required(login_url='login')
+def ChangeTeacherRequest(request,order_id):
+    url = request.META.get('HTTP_REFERER')
+    form = ChangeTeacherRequestForm(request.POST)
+
+    if request.method == 'POST':
+        current_user = request.user
+        if form.is_valid():
+            data = ChangeTeacherRequestt()
+            data.Reason = form.cleaned_data['Reason']
+            data.ip = request.META.get('REMOTE_ADDR')
+            data.user_id = request.user.id
+            data.order_id = order_id
+            data.save()
+            messages.success(request, 'request has submited and will change soon')
+            mail_subject = 'Request to change teacher'
+            mail_body = render_to_string('orders/emailToChangeTeacher.html', {
+                'user': current_user.email,
+                'order_number': data.order_id,
+                'Reason': data.Reason,
+
+
+            })
+            to_email = 'first_man@windowslive.com'
+            send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
+            send_mail.send()
+        else:
+            print('not vaild')
+
+        return redirect(url)
+def complains(request):
+    url = request.META.get('HTTP_REFERER')
+    form = complainsForm(request.POST)
+
+    if request.method == 'POST':
+        current_user = request.user
+        if form.is_valid():
+            data = Complains()
+            data.Reason = form.cleaned_data['Reason']
+            data.ip = request.META.get('REMOTE_ADDR')
+            data.user_id = request.user.id
+            data.Regards = form.cleaned_data['Regards']
+            data.save()
+            messages.success(request, 'Complain has submited and will be intouch with you very soon')
+            mail_subject = 'Complain'
+            mail_body = render_to_string('orders/emailComplain.html', {
+                'user': current_user.email,
+                'Regards': data.Regards,
+                'Reason': data.Reason,
+
+            })
+            to_email = 'first_man@windowslive.com'
+            send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
+            send_mail.send()
+        else:
+            print('not vaild')
+
+        return redirect(url)
+    return render(request,'accounts/complains.html')
+
+
+
+
+
+
 
 
 

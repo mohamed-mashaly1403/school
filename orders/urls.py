@@ -6,5 +6,9 @@ urlpatterns = [
     path('Editplaceorder/<int:order_number>/', views.Editplaceorder, name='Editplaceorder'),
     path('payments/', views.payments, name='payments'),
     path('order_complete/', views.order_complete, name='order_complete'),
+    path('order_details/<int:order_id>', views.order_details, name='order_details'),
+    path('submit_review/<int:course_id>/<int:order_id>/', views.submit_review, name='submit_review'),
+    path('ChangeTeacherRequest/<int:order_id>/', views.ChangeTeacherRequest, name='ChangeTeacherRequest'),
+    path('complains/', views.complains, name='complains'),
 
-    ]
+]
