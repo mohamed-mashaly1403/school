@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+
+<!-- ============================ COMPONENT REGISTER   ================================= -->
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="card mx-auto" style="max-width:800px; margin-top:40px;">
+      <article class="card-body">
+		<header class="mb-4"><h4 class="card-title text-center">Teacher Registration Form</h4></header>
+		<form action="{%url 'teacherProfile'%}" method="POST" enctype= multipart/form-data>
+			{%csrf_token%}
+
+							<div class="form-row">
+					<div class="col form-group ">
+<!--						<label>First name</label>-->
+						{{form.country}}
+						<small class="text-muted">country you teach in.(Required)<span style="color:red">*</span></small>
+					</div> <!-- form-group end.// -->
+					<div class="col form-group ">
+<!--						<label>Last name</label>-->
+					  	{{form.city}}
+					</div> <!-- form-group end.// -->
+				</div> <!-- form-row end.// -->
+<!--				<div class="form-group">-->
+<!--					<label>Email</label>-->
+<!--						{{form.email}}-->
+<!--					<small class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+<!--				</div> &lt;!&ndash; form-group end.// &ndash;&gt;-->
+
+				<div class="form-row">
+
+					<div class="form-group ">
+<!--					  <label>phone No.</label>-->
+							{{form.qualifications1}}
+						<small class="text-muted">eg. BSC in Education Arabic dep.(Required)<span style="color:red">*</span></small>
+					</div> <!-- form-group end.// -->
+
+					<div class="form-group ">
+<!--					  <label>phone No.</label>-->
+							{{form.qualifications2}}
+					</div> <!-- form-group end.// -->
+					<div class="form-group ">
+<!--					  <label>phone No.</label>-->
+							{{form.qualifications3}}
+					</div> <!-- form-group end.// -->
+					<div class="form-group ">
+<!--					  <label>phone No.</label>-->
+							{{form.qualifications4}}
+					</div> <!-- form-group end.// -->
+
+
+				</div> <!-- form-row.// -->
+			<div class="form-row">
+					<div class="form-group ">
+<!--						<label>Email</label>-->
+						{{form.specialzed_courses1}}
+						<small class="text-muted">subject you teach.(Required)<span style="color:red">*</span></small>
+					</div> <!-- form-group end.// -->
+					<div class="form-group ">
+<!--					  <label>phone No.</label>-->
+							{{form.specialzed_courses2}}
+					</div> <!-- form-group end.// -->
+					<div class="form-group ">
+<!--					  <label>phone No.</label>-->
+							{{form.specialzed_courses3}}
+					</div> <!-- form-group end.// -->
+				<div class="form-group ">
+<!--						<label>Email</label>-->
+						{{form.grades}}
+						<small class="text-muted">grades you teach.</small>
+					</div> <!-- form-group end.// -->
+					<div class="form-group ">
+
+						</div> <!-- form-row.// -->
+				<div class="form-row">
+					<div class="form-group ">
+<!--						<label>Create password</label>-->
+						{{form.IBAN}}
+<small class="text-muted">to transfer your money.(you can fill later)</small>
+					</div> <!-- form-group end.// -->
+					<div class="form-group ">
+<!--						<label>Repeat password</label>-->
+					 {{form.BankName}}
+						<small class="text-muted">to transfer your money.(you can fill later)</small>
+					</div>
+					<div class="form-group ">
+<!--						<label>Repeat password</label>-->
+					 {{form.BankCountry}}
+						<small class="text-muted">to transfer your money.(you can fill later)</small>
+					</div> <!-- form-group end.// -->
+					<div class="form-group ">
+<!--						<label>Repeat password</label>-->
+					 {{form.docfile}}
+						<small class="text-muted">upload CV.(Required)<span style="color:red">*</span></small>
+					</div> <!-- form-group end.// -->
+						<div class="form-group ">
+<!--						<label>Email</label>-->
+						{{form.Experience}}
+							<small class="text-muted">Recap your Experience.</small>
+					</div> <!-- form-group end.// -->
+					<div class="form-group ">
+<!--					  <label>phone No.</label>-->
+							{{form.Notes}}
+					</div> <!-- form-group end.// -->
+				</div>
+			    <div class="form-group">
+			        <button type="submit" class="btn btn-primary btn-block"> Register  </button>
+			    </div> <!-- form-group// -->
+				{{form.email.errors}}
+
+			{{form.non_field_errors}}
+			</form>
+		</article><!-- card-body.// -->
+    </div> <!-- card .// -->
+
+
+    <br><br>
+<!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+
+
+</section>
+{% endblock %}

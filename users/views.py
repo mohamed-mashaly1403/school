@@ -19,6 +19,12 @@ from .models import account, UserProfile
 
 
 def register(request):
+    url = request.META.get('HTTP_REFERER')
+    try:
+        if request.user.is_authenticated:
+            return redirect(url)
+    except:
+        return redirect('home')
     if request.method == 'POST':
         form = regForm(request.POST)
         print(form.errors)
@@ -65,6 +71,12 @@ def register(request):
 
 
 def login(request):
+    url = request.META.get('HTTP_REFERER')
+    try:
+        if request.user.is_authenticated:
+            return redirect(url)
+    except:
+        return redirect('home')
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']

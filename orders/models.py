@@ -61,7 +61,7 @@ class orderPoduct(models.Model):
     order_course = models.ForeignKey(course,on_delete=models.CASCADE)
     quantity = models.IntegerField()
     product_price = models.FloatField()
-    # teacher = models.ForeignKey(teachers,on_delete=models.SET_NULL,blank=True,null=True) to add after teacher moduel
+
     ordered = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -70,7 +70,7 @@ class orderPoduct(models.Model):
 
 
     def __str__(self):
-        return self.order.order_course.course_name
+        return self.order.order_number
 class orderPoductClasses(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     class_url = models.URLField(max_length=200, blank=True)

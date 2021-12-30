@@ -16,7 +16,7 @@
           <li><a class="{% if '/dashboard/' in request.path or '/users/' == request.path %}active {% endif %}" href="{% url 'dashboard'%}">My Dash Board</a></li>
           <li><a class="{% if '/courses/' == request.path %}active {% endif %}" href="{% url 'courses' %}">Courses</a></li>
           <!-- <li><a href="trainers.html">Trainers</a></li> -->
-          <li><a href="events.html">Be a teacher</a></li>
+          <li><a href="{% url 'teacherProfile'%}">Be a teacher</a></li>
           <li><a href="pricing.html">Pricing</a></li>
 
           <li class="dropdown"><a href="#"><span>Useful Links </span> <i class="bi bi-chevron-down"></i></a>
