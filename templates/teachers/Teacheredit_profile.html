@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-conten padding-y bg">
+<!--{% include 'includes/alerts.html' %}-->
+    <br>
+    <br>
+    <br>
+    <br>
+
+<div class="container">
+	<div class="row">
+{% include 'includes/TeacherdashboardSide.html'%}
+	<main class="col-md-9">
+		<article class="card">
+		<header class="card-header">
+			<strong class="d-inline-block mr-3">Teacher profile </strong>
+
+		</header>
+		<div class="card-body">
+            <div class="text-center">
+                {% if user.user_img %}
+				  <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{{user.user_img.url}}" alt="user picture">
+                <div>
+                    <a role="button"  class="btn btn-outline-danger"  href="{% url 'deltePhoto' %}">Remove Photo</a>
+                    </div>
+
+
+				  {% else%}
+				  <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="user picture">
+				  {% endif %}
+
+            </div>
+			<div class="row">
+
+				<div class="col-md-12">
+				<form action="{% url 'Teacheredit_profile'%}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token%}
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>First Name<span style="color:red">*</span><span style="color:red">*</span></label>
+                           {{user_form.first_name}}
+                        </div>
+                         <div class="form-group col-md-6">
+                            <label>Larst Name<span style="color:red">*</span></label>
+                            {{user_form.last_name}}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>phone<span style="color:red">*</span></label>
+                            {{user_form.phone}}
+                        </div>
+                         <div class="form-group col-md-6">
+                            <label>Picture</label>
+                           {{user_form.user_img}}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Country <span style="color:red">*</span></label>
+                            {{Profile_form.country}}
+                        </div>
+                         <div class="form-group col-md-6  mb-5">
+                            <label>City</label>
+                            {{Profile_form.city}}
+                        </div>
+
+                    </div>
+                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>qualifications1<span style="color:red">*</span></label>
+                            {{Profile_form.qualifications1}}
+                        </div>
+                         <div class="form-group col-md-6  mb-5">
+                            <label>qualifications2</label>
+                            {{Profile_form.qualifications2}}
+                        </div>
+
+                    </div>
+                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>qualifications3</label>
+                            {{Profile_form.qualifications3}}
+                        </div>
+                         <div class="form-group col-md-6  mb-5">
+                            <label>qualifications4</label>
+                            {{Profile_form.qualifications4}}
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>course you teach1<span style="color:red">*</span></label>
+                            {{Profile_form.specialzed_courses1}}
+                        </div>
+                         <div class="form-group col-md-6  mb-5">
+                            <label>course you teach2</label>
+                            {{Profile_form.specialzed_courses2}}
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>course you teach3</label>
+                            {{Profile_form.specialzed_courses3}}
+                        </div>
+                         <div class="form-group col-md-6  mb-5">
+                            <label>grades you teach</label>
+                            {{Profile_form.grades}}
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>CV <span style="color:red">*</span></label>
+                            {{Profile_form.docfile}}
+                        </div>
+                         <div class="form-group col-md-6  mb-5">
+                            <label>Bank IBAN</label>
+                            {{Profile_form.IBAN}}
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Bank Name</label>
+                            {{Profile_form.BankName}}
+                        </div>
+                         <div class="form-group col-md-6  mb-5">
+                            <label>Bank Country</label>
+                            {{Profile_form.BankCountry}}
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Experience Summery</label>
+                            {{Profile_form.Experience}}
+                        </div>
+
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Notes</label>
+                            {{Profile_form.Notes}}
+                        </div>
+
+
+                    </div>
+
+
+
+                     <div class="form-row text-center ">
+
+                           <div class="form-group  ">
+
+                    <input style="width:200px;" type="submit" value="save" class="btn btn-success">
+                           </div>
+
+                     </div>
+                </form>
+				</div>
+
+			</div> <!-- row.// -->
+		</div> <!-- card-body .// -->
+
+		</article> <!-- order-group.// -->
+	</main>
+</div> <!-- row.// -->
+</div>
+
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock %}

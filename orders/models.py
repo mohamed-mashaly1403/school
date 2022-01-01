@@ -1,5 +1,6 @@
 from django.db import models
 
+from Teachers.models import TeacherProfile
 from courses.models import course
 
 
@@ -61,12 +62,17 @@ class orderPoduct(models.Model):
     order_course = models.ForeignKey(course,on_delete=models.CASCADE)
     quantity = models.IntegerField()
     product_price = models.FloatField()
-
+    teacher = models.ForeignKey(TeacherProfile,on_delete=models.SET_NULL, null=True,blank=True,)
     ordered = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_deliverd = models.BooleanField(default=False)
     class_material_url =models.URLField(max_length=200, blank=True)
+
+
+    @property
+    def Teacher_cost(self):
+        return self.product_price * 0.7
 
 
     def __str__(self):
@@ -78,6 +84,7 @@ class orderPoductClasses(models.Model):
     classTime = models.DateTimeField(blank=True,null=True)
     created_at = models.DateTimeField(auto_now_add=True,blank=True,null=True)
     updated_at = models.DateTimeField(auto_now=True,blank=True,null=True)
+    orders = models.ForeignKey(TeacherProfile, on_delete=models.CASCADE, blank=True, null=True)
     def __str__(self):
         return self.order.order_number
 class ChangeTeacherRequestt(models.Model):

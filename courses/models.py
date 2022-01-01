@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.db.models import Count, Avg
 
 # Create your models here.
-
+from Teachers.models import TeacherProfile
 from users.models import account
 
 lang =  [
@@ -16,6 +16,7 @@ lang =  [
 
 class course(models.Model):
     course_name = models.CharField(max_length=50,unique=True)
+    teacher = models.ForeignKey(TeacherProfile, on_delete=models.SET_NULL, null=True)
     slug = models.CharField(max_length=100,unique=True)
     language1 = models.CharField(max_length=15,choices=lang,blank=False,default='')
     language2 = models.CharField(max_length=15, choices=lang, blank=False,default='')

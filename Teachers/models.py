@@ -1,14 +1,11 @@
 from django.db import models
 
 # Create your models here.
-from courses.models import course
-from orders.models import orderPoduct
+
 from users.models import account
 
 
 class TeacherProfile(models.Model):
-    Course = models.ForeignKey(course, on_delete=models.CASCADE,blank=True, null=True)
-    orders = models.ForeignKey(orderPoduct, on_delete=models.CASCADE,blank=True, null=True)
     user = models.OneToOneField(account, on_delete=models.CASCADE)
     city = models.CharField(max_length=20, blank=True)
     country = models.CharField(max_length=20)
@@ -30,5 +27,23 @@ class TeacherProfile(models.Model):
     is_accepted = models.BooleanField(default=False)
     is_Regicted = models.BooleanField(default=False)
 
+    @property
+    def docfile_url(self):
+
+        if self.docfile and hasattr(self.docfile, 'url'):
+            return self.docfile.url
+        else:
+            self.user_img = ''
+            return self.user_img
+
     def __str__(self):
         return self.user.first_name
+class paid(models.Model):
+    Teacher = models.ForeignKey(TeacherProfile, on_delete=models.CASCADE)
+    recived = models.FloatField(default=0.00)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return self.Teacher.user.first_name
+
+

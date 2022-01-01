@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-conten padding-y bg">
+    <br>
+    <br>
+    <br>
+    <br>
+<!--{% include 'includes/alerts.html' %}-->
+
+<div class="container">
+	<div class="row">
+{% include 'includes/TeacherdashboardSide.html'%}
+	<main class="col-md-9">
+		<article class="card">
+		<header class="card-header">
+			<strong class="d-inline-block mr-3">Received Installments : </strong>
+
+		</header>
+		<div class="card-body">
+			<div class="row">
+
+				<div class="col-md-12">
+				<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Transfer #</th>
+
+      <th scope="col">Total</th>
+
+      <th scope="col">Transfer Date</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for order in installments %}
+    <tr>
+      <th scope="row">{{order.id}} </th>
+
+      <td>{{order.recived}} AED</td>
+
+      <td>{{order.created_at}}</td>
+
+
+
+    </tr>
+  {% endfor %}
+  <tr>
+      <th><strong>Total Received:</strong></th>
+      <td><strong>{{total_recived}} AED</strong></td>
+
+  </tr>
+
+  </tbody>
+</table>
+				</div>
+
+			</div> <!-- row.// -->
+		</div> <!-- card-body .// -->
+
+		</article> <!-- order-group.// -->
+	</main>
+</div> <!-- row.// -->
+</div>
+
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock %}

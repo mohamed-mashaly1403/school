@@ -191,6 +191,7 @@ def order_details(request,order_id):
     order = Order.objects.get(order_number=order_id)
     urls = orderPoductClasses.objects.filter(order__order_number=order_id).order_by('updated_at')
     reviews = RatingReview.objects.all().filter(order__order_number=order_id,status=True)
+
     print(reviews)
     context={
         'order_detail':order_detail,

@@ -11,7 +11,7 @@ class orderPoductInline(admin.TabularInline):
     readonly_fields = [field.name for field in orderPoduct._meta.fields]
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['user','total','is_ordered','created_at']
+    list_display = ['order_number','user','gtotal','is_ordered','created_at']
     list_filter = ['status','is_ordered']
     list_editable = ['is_ordered']
     list_per_page = 10

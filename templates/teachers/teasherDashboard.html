@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-conten padding-y bg">
+<!--{% include 'includes/alerts.html' %}-->
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+	<div class="row">
+{% include 'includes/TeacherdashboardSide.html'%}
+	<main class="col-md-9">
+		<article class="card">
+		<header class="card-header">
+			<strong class="d-inline-block mr-3">login as Teacher: </strong>
+			<span>{{user.first_name}} {{user.last_name}}</span>
+		</header>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-6">
+				<div class="card text-center">
+					<div class="card-body">
+						<div class="row">
+				<div class="col-md-6">
+					<div class="card text-center">
+						<h5 class="card-title"> Total Courses </h5>
+						<h4>{{orders_count}}</h4>
+						{%if orders_count%}
+						<a href="{%url 'TeacherOrders'%}">View courses</a>
+
+						{%else%}
+						<label class="text-muted" >NO Courses Yet</label>
+						{%endif%}
+						</div>
+				</div>
+							<div class="col-md-6">
+								<div class="card text-center">
+
+
+
+						<h5 class="card-title"> Active Courses </h5>
+						<h4>{{active_orders_count}}</h4>
+						{%if active_orders_count %}
+						<a href="{%url 'TeacherActiveOrders'%}">View courses</a>
+						{%else%}
+						<label class="text-muted" >NO Courses Yet</label>
+						{%endif%}
+
+							</div>
+				</div>
+				</div>
+						<div class="row  mt-2 ">
+							<div class="col-md-6 ">
+					<div class="card ">
+						<h5 class="card-title"> Total Balance </h5>
+						<h4>{{Balance}} AED</h4>
+						{%if Balance is not 0 %}
+						<a href="{%url 'ReceivedInstallments'%}">Previous installments</a>
+
+						{%else%}
+					<label class="text-muted" >NO Balance Yet</label>
+
+						{%endif%}
+						</div>
+				</div>
+							<div class="col-md-6 ">
+					<div class="card ">
+						<h5 class="card-title"> Withdrawable balance </h5>
+						<h4>{{Balance_to_recieve}} AED</h4>
+						{%if Balance_to_recieve is not 0 %}
+
+						<a  d     href="{% url 'AskForWithdraw'%}">Ask to withdraw</a>
+
+
+						{%else%}
+					<label class="text-muted" >NO Balance Yet</label>
+
+						{%endif%}
+						</div>
+				</div>
+
+
+						</div>
+					</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+				<div class="card text-center">
+					<div class="card-body">
+
+				  {% if user.user_img %}
+				  <a href="{%url 'edit_profile'%}"><img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{{user.user_img.url}}" alt="user picture"></a>
+
+						<div>
+							<p><strong>Teacher</strong></p>
+						<a role="button"  class="btn btn-outline-danger"  href="{% url 'deltePhoto' %}">Remove Photo</a>
+							</div>
+				  {% else%}
+				 <a href="{%url 'edit_profile'%}"> <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="user picture"></a>
+				  {% endif %}
+
+						<p class="mb-0">{{user.email}}</p>
+						<p>{{user.phone}}</p>
+					</div>
+					</div>
+				</div>
+
+			</div> <!-- row.// -->
+		</div> <!-- card-body .// -->
+
+
+		</article> <!-- order-group.// -->
+	</main>
+</div> <!-- row.// -->
+</div>
+
+
+</section>
+
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock %}

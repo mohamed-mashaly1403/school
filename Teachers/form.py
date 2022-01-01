@@ -9,7 +9,7 @@ class TeacherProfileForm(forms.ModelForm):
     class  Meta:
         model = TeacherProfile
         fields = '__all__'
-        exclude = ['Course','orders','Balance','is_accepted','user','is_Regicted']
+        exclude = ['Balance','is_accepted','user','is_Regicted']
 
     # def clean_file(self):
     #     file = self.cleaned_data.get("docfile", False)
