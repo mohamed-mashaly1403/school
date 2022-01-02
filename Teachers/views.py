@@ -7,10 +7,10 @@ import django.core.mail
 # Create your views here.
 from django.template.loader import render_to_string
 
-from Teachers.form import TeacherProfileForm
+from Teachers.form import TeacherProfileForm, orderPoductClassesForm
 from Teachers.models import TeacherProfile, paid
-from orders.form import complainsForm
-from orders.models import orderPoduct, Complains
+from orders.form import complainsForm, ChangeTeacherRequestForm, orderPoductForm
+from orders.models import orderPoduct, Complains, Order, orderPoductClasses, ChangeTeacherRequestt
 from users.forms import UserForm
 
 
@@ -236,5 +236,150 @@ def Teacheredit_profile(request):
         'Profile_form': Profile_form
     }
     return render(request, 'teachers/Teacheredit_profile.html', context)
+@user_passes_test(lambda u: u.is_staff)
+def TeacherCourseDetails(request,order_id):
+    order_detail = orderPoduct.objects.get(order__order_number=order_id)
+    order = Order.objects.get(order_number=order_id)
+    total_urls = orderPoductClasses.objects.filter(order__order_number=order_id).order_by('updated_at')
+    urls_notDeliverd = orderPoductClasses.objects.filter(order__order_number=order_id,class_url_is_deliverd=False)
+    urls_Deliverd = orderPoductClasses.objects.filter(order__order_number=order_id,class_url_is_deliverd=True)
+    form = orderPoductForm(instance=order_detail)
+    urls_count = total_urls.count()
+    left = order.total_classes - urls_Deliverd.count()
+    context = {
+        'order_detail': order_detail,
+        'order': order,
+        'urls': total_urls,
+        'form':form,
+        'urls_count':urls_count,
+        'urlss':urls_Deliverd,
+        'urls_notDeliverd':urls_notDeliverd,
+        'left':left
+    }
+    return render(request, 'teachers/TeacherCourseDetails.html', context)
+@user_passes_test(lambda u: u.is_staff)
+def RejectCourse(request,order_id):
+    url = request.META.get('HTTP_REFERER')
+    form = ChangeTeacherRequestForm(request.POST)
+
+    if request.method == 'POST':
+        current_user = request.user
+        if form.is_valid():
+            data = ChangeTeacherRequestt()
+            data.Reason = form.cleaned_data['Reason']
+            data.ip = request.META.get('REMOTE_ADDR')
+            data.user_id = request.user.id
+            data.order_id = order_id
+            data.save()
+            messages.success(request, 'request has submited and will change soon')
+            mail_subject = 'Reject course from teacher'
+            mail_body = render_to_string('orders/emailToChangeTeacher.html', {
+                'user': current_user.email,
+                'order_number': data.order_id,
+                'Reason': data.Reason,
 
 
+            })
+            to_email = 'first_man@windowslive.com'
+            send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
+            send_mail.send()
+        else:
+            print('not vaild')
+
+        return redirect(url)
+@user_passes_test(lambda u: u.is_staff)
+def submit_courseUrl(request,order_id):
+    url = request.META.get('HTTP_REFERER')
+
+
+    if request.method == 'POST':
+        # try:
+        #     reviews = orderPoductClasses.objects.get(order_id=order_id)
+        #     form = orderPoductClassesForm(request.POST,instance=reviews)
+        #     form.save()
+        #     messages.success(request,'review has updated')
+        #     return redirect(url)
+
+        # except orderPoductClasses.DoesNotExist:
+        form = orderPoductClassesForm(request.POST)
+        print(form.errors)
+        if form.is_valid():
+            data = orderPoductClasses()
+            data.class_url = form.cleaned_data['class_url']
+
+            data.classTime = form.cleaned_data['classTime']
+            data.order_id = order_id
+            data.save()
+            messages.success(request, 'url has submited')
+        else:
+            print('not vaild')
+
+        return redirect(url)
+@user_passes_test(lambda u: u.is_staff)
+def submit_courseMaterial(request,order_id):
+    url = request.META.get('HTTP_REFERER')
+    if request.method == 'POST':
+        try:
+            reviews = orderPoduct.objects.get(order_id=order_id)
+            form = orderPoductForm(request.POST,instance=reviews)
+            form.save()
+            messages.success(request,'Url has updated')
+            return redirect(url)
+
+        except orderPoductClasses.DoesNotExist:
+            form =orderPoductForm(request.POST)
+            print(form.errors)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'url2 has submited')
+            else:
+                print('not vaild')
+
+            return redirect(url)
+@user_passes_test(lambda u: u.is_staff)
+def lessonDone(request,order_id):
+    url = request.META.get('HTTP_REFERER')
+    order = Order.objects.get(id=order_id)
+    order_detail = orderPoduct.objects.get(order__id=order_id)
+    if request.method == 'POST':
+        class_urlL = request.POST['class_urlL']
+        reviews = orderPoductClasses.objects.get(id=class_urlL)
+        form = orderPoductClassesForm(request.POST,instance=reviews)
+        print(form.errors)
+        if form.is_valid():
+
+            reviews.class_url_is_deliverd = form.cleaned_data['class_url_is_deliverd']
+            reviews.save(update_fields=['class_url_is_deliverd'])
+            messages.success(request, 'url has submited')
+            urls = orderPoductClasses.objects.filter(order__id=order_id,class_url_is_deliverd=True)
+            urls_count = urls.count()
+            print(urls_count)
+            print(order.total_classes)
+            if urls_count >= order.total_classes:
+                order_detail.is_deliverd = True
+                order_detail.save(update_fields=['is_deliverd'])
+                order.status = True
+                order.save(update_fields=['status'])
+
+            else:
+                print('test')
+        else:
+            print('not vaild')
+        return redirect(url)
+@user_passes_test(lambda u: u.is_staff)
+def changeDate(request):
+    url = request.META.get('HTTP_REFERER')
+    if request.method == 'POST':
+        class_urlL = request.POST['class_urlL']
+        reviews = orderPoductClasses.objects.get(id=class_urlL)
+        form = orderPoductClassesForm(request.POST,instance=reviews)
+        print(form.errors)
+        if form.is_valid():
+
+            reviews.classTime = form.cleaned_data['classTime']
+            reviews.save(update_fields=['classTime'])
+            messages.success(request, 'New Date has submitted')
+
+        else:
+            print('not vaild')
+        return redirect(url)

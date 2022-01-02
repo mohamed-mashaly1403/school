@@ -9,6 +9,11 @@ path('TeacherActiveOrders/', views.TeacherActiveOrders, name='TeacherActiveOrder
 path('ReceivedInstallments/', views.ReceivedInstallments, name='ReceivedInstallments'),
 path('AskForWithdraw/', views.AskForWithdraw, name='AskForWithdraw'),
 path('Teacheredit_profile/', views.Teacheredit_profile, name='Teacheredit_profile'),
-
+path('TeacherCourseDetails/<int:order_id>', views.TeacherCourseDetails, name='TeacherCourseDetails'),
+path('RejectCourse/<int:order_id>/', views.RejectCourse, name='RejectCourse'),
+path('submit_courseUrl/<int:order_id>/', views.submit_courseUrl, name='submit_courseUrl'),
+path('submit_courseMaterial/<int:order_id>/', views.submit_courseMaterial, name='submit_courseMaterial'),
+path('lessonDone/<int:order_id>/', views.lessonDone, name='lessonDone'),
+path('changeDate/', views.changeDate, name='changeDate'),
 
 ]

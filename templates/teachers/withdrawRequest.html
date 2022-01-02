@@ -25,7 +25,8 @@
 			<div class="row">
 
 				<div class="col-md-12">
-				{%if user.is_authenticated  %}
+					{% if Balance_to_recieve > 200 %}
+				{%if user.is_staff  %}
 
 <form  action="{% url 'AskForWithdraw'  %}" method="POST">
 					{% csrf_token %}
@@ -45,6 +46,12 @@
 				</form>
 
 				{%endif %}
+					{%else%}
+					<center><strong>Your available balance to receive {{Balance_to_recieve}} AED</strong></center>
+					<div class="text-center"><small class="text-muted" >Minimum limit for withdraw 200 AED </small></div>
+
+				{%endif %}
+
 				</div>
 
 			</div> <!-- row.// -->

@@ -36,7 +36,7 @@
   <tbody>
   {% for order in active_orders %}
     <tr>
-      <th scope="row"><a href="{% url 'order_details' order.order.order_number %}">{{order.order.order_number}} </a></th>
+      <th scope="row"><a href="{% url 'TeacherCourseDetails' order.order.order_number %}">{{order.order.order_number}} </a></th>
       <td>{{order.order_course.course_name}}</td>
       <td>{{order.Teacher_cost}} AED</td>
       <td>{{order.order.total_classes}} classes</td>

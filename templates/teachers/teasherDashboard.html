@@ -71,8 +71,13 @@
 						<h5 class="card-title"> Withdrawable balance </h5>
 						<h4>{{Balance_to_recieve}} AED</h4>
 						{%if Balance_to_recieve is not 0 %}
+						{%if Balance_to_recieve > 200 %}
 
-						<a  d     href="{% url 'AskForWithdraw'%}">Ask to withdraw</a>
+						<a       href="{% url 'AskForWithdraw'%}">Ask to withdraw</a>
+							{%else%}
+
+						{%endif%}
+						<small class="text-muted" >Minimum limit for withdraw 200 AED </small>
 
 
 						{%else%}

@@ -1,6 +1,7 @@
 from django import forms
 import magic
 from Teachers.models import TeacherProfile
+from orders.models import orderPoductClasses
 
 
 class TeacherProfileForm(forms.ModelForm):
@@ -20,6 +21,16 @@ class TeacherProfileForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(TeacherProfileForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs['class']='form-control'
+        for field in self.fields.values():
+            field.widget.attrs['placeholder'] = field.label
+class orderPoductClassesForm(forms.ModelForm):
+    class Meta:
+        model = orderPoductClasses
+        fields =['class_url','class_url_is_deliverd','classTime']
+    def __init__(self, *args, **kwargs):
+        super(orderPoductClassesForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control'
         for field in self.fields.values():

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Order, ChangeTeacherRequestt, Complains
+from .models import Order, ChangeTeacherRequestt, Complains, orderPoduct
 from courses.models import RatingReview
 
 
@@ -20,5 +20,15 @@ class complainsForm(forms.ModelForm):
     class Meta:
         model = Complains
         fields =['Regards','Reason']
+class orderPoductForm(forms.ModelForm):
+    class Meta:
+        model = orderPoduct
+        fields =['class_material_url']
+    def __init__(self, *args, **kwargs):
+        super(orderPoductForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'form-control'
+        for field in self.fields.values():
+            field.widget.attrs['placeholder'] = field.label
 
 
