@@ -95,3 +95,18 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.first_name
 
+class Inbox(models.Model):
+    sender = models.ForeignKey(account, on_delete=models.SET_NULL, null=True, blank=True)
+    recipient = models.ForeignKey(account, on_delete=models.SET_NULL, null=True, blank=True, related_name="messages")
+    subject = models.CharField(max_length=200, null=True, blank=True)
+    body = models.TextField()
+    order = models.CharField(max_length=25,blank=True,null=True)
+    is_read = models.BooleanField(default=False, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return self.subject
+
+    class Meta:
+        ordering = ['is_read', '-created']

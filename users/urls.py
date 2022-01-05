@@ -18,6 +18,7 @@ urlpatterns = [
     path('UnPaidOrders/', views.UnPaidOrders, name='UnPaidOrders'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
     path('deltePhoto', views.deltePhoto, name='deltePhoto'),
+    path('inbox/', views.inbox, name="inbox"),
 
 
 

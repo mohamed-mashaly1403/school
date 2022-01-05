@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import account
+from .models import account, Inbox
 
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
@@ -21,6 +21,10 @@ class account_admin(UserAdmin):
 class userProfileAdmin(admin.ModelAdmin):
 
     list_display = ['user', 'city',  'country']
+class InboxAdmin(admin.ModelAdmin):
+
+    list_display = ['sender', 'subject',  'created']
 
 admin.site.register(account,account_admin)
 admin.site.register(UserProfile,userProfileAdmin)
+admin.site.register(Inbox,InboxAdmin)

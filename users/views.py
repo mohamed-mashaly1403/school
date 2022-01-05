@@ -15,7 +15,7 @@ import requests
 
 from orders.models import Order, orderPoduct
 from .forms import regForm, UserForm, UserProfileForm
-from .models import account, UserProfile
+from .models import account, UserProfile, Inbox
 
 
 def register(request):
@@ -53,8 +53,7 @@ def register(request):
             to_email = email
             send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
             send_mail.send()
-            messages.success(request,
-                             'Thank you for being one of us. please activate your account by clicking on activation url in your email')
+            messages.success(request,'HEY THERE,YOUR ACCOUNT HAS BEEN CREATED! ,Please, verify it by clicking the activation link that has been sent to your email.If the email doesn\'t appear shortly, please be sure to check your spam')
 
             return redirect('/users/login/?command=verification&email=' + email)
             # return redirect ('/home.html')
@@ -237,7 +236,7 @@ def dashboard(request):
 
 @login_required(login_url='login')
 def myOrders(request):
-    active_orders = orderPoduct.objects.filter(user_id=request.user.id).order_by('is_deliverd')
+    active_orders = orderPoduct.objects.filter(user_id=request.user.id).order_by('is_deliverd','-created_at')
     context = {
         'active_orders': active_orders,
     }
@@ -247,7 +246,7 @@ def myOrders(request):
 
 @login_required(login_url='login')
 def myActiveOrders(request):
-    active_orders = orderPoduct.objects.filter(user_id=request.user.id, is_deliverd=False)
+    active_orders = orderPoduct.objects.filter(user_id=request.user.id, is_deliverd=False).order_by('-created_at')
     context = {
         'active_orders': active_orders,
     }
@@ -302,7 +301,20 @@ def deltePhoto(request):
     dd.save(update_fields=['user_img'])
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+@login_required(login_url='login')
+def inbox(request):
+    user = request.user
+    messageRequests=user.messages.all()
+    unreadCount = messageRequests.filter(is_read=False).count()
+    sent = Inbox.objects.filter(sender=user)
+    sent_count = sent.filter(sender=user).count()
 
+    context = {'messageRequests': messageRequests,
+               'unreadCount': unreadCount,
+               'sent':sent,
+               'sent_count':sent_count,
+               }
+    return render(request, 'accounts/inbox.html', context)
 
 
 

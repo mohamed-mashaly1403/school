@@ -158,10 +158,24 @@ def payments(request):
     to_email = current_user.email
     send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
     send_mail.send()
+    # ========================== email to super admin
+    mail_subject = 'Congratulation your order has set successfully,someone make payment'
+    mail_body = render_to_string('orders/orderset.html', {
+        'user': current_user,
+        'order_number': order,
+        'tlessons': order.total_classes
+
+    })
+
+    send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=['first_man@windowslive.com'])
+    send_mail.send()
+    #============================================================
     data = {
         'order_number': order.order_number,
         'transID': payment.payment_id,
     }
+
+
     return JsonResponse(data)
 @login_required(login_url='login')
 def order_complete(request):
@@ -191,13 +205,17 @@ def order_details(request,order_id):
     order = Order.objects.get(order_number=order_id)
     urls = orderPoductClasses.objects.filter(order__order_number=order_id).order_by('updated_at')
     reviews = RatingReview.objects.all().filter(order__order_number=order_id,status=True)
+    urls_Deliverd = orderPoductClasses.objects.filter(order__order_number=order_id,class_url_is_deliverd=True)
+    left = order.total_classes - urls_Deliverd.count()
+
 
     print(reviews)
     context={
         'order_detail':order_detail,
         'order': order,
         'urls':urls,
-        'reviews':reviews
+        'reviews':reviews,
+        'left':left
     }
     return render(request,'orders/order_course-details.html',context)
 @login_required(login_url='login')

@@ -27,15 +27,18 @@ def TeacherDashboard(request):
         orders_count = orders.count()
         active_orders_count = active_orders.count()
         total =orderPoduct.objects.filter(teacher__user=request.user.id).aggregate(total_price=Sum('product_price'))
+        total_to_recieve =orderPoduct.objects.filter(teacher__user=request.user.id,is_deliverd=True).aggregate(total_price=Sum('product_price'))
         recivedd = paid.objects.filter(Teacher__user=request.user.id).aggregate(total_Recived=Sum('recived'))
 
         try:
             Balance = float(total['total_price'])* 0.7
+            total_to_recieve = float(total_to_recieve['total_price']* 0.7)
 
         except:
             Balance=0
+            total_to_recieve=0
         try:
-            Balance_to_recieve = float(Balance-recivedd['total_Recived'])
+            Balance_to_recieve = float(total_to_recieve-recivedd['total_Recived'])
 
         except:
             Balance_to_recieve = 0
@@ -61,14 +64,17 @@ def TeacherDashboard(request):
 @user_passes_test(lambda u: u.is_staff)
 def AskForWithdraw(request):
     total = orderPoduct.objects.filter(teacher__user=request.user.id).aggregate(total_price=Sum('product_price'))
+    total_to_recieve = orderPoduct.objects.filter(teacher__user=request.user.id, is_deliverd=True).aggregate(total_price=Sum('product_price'))
     recivedd = paid.objects.filter(Teacher__user=request.user.id).aggregate(total_Recived=Sum('recived'))
     try:
         Balance = float(total['total_price']) * 0.7
+        total_to_recieve = float(total_to_recieve['total_price'] * 0.7)
 
     except:
         Balance = 0
+        total_to_recieve = 0
     try:
-        Balance_to_recieve = float(Balance - recivedd['total_Recived'])
+        Balance_to_recieve = float(total_to_recieve - recivedd['total_Recived'])
 
     except:
         Balance_to_recieve = 0
@@ -377,8 +383,21 @@ def changeDate(request):
         if form.is_valid():
 
             reviews.classTime = form.cleaned_data['classTime']
-            reviews.save(update_fields=['classTime'])
-            messages.success(request, 'New Date has submitted')
+            reviews.class_url = form.cleaned_data['class_url']
+            try:
+                if  reviews.class_url and not reviews.classTime :
+                    reviews.save(update_fields=['class_url'])
+                    messages.success(request, 'new class url has submitted')
+                elif reviews.classTime and not reviews.class_url:
+                    reviews.save(update_fields=['classTime'])
+                    messages.success(request, 'new class timing has submitted')
+                elif reviews.classTime and reviews.class_url:
+                    reviews.save(update_fields=['classTime','class_url'])
+                else:
+                    messages.error(request, 'New Date or url can not be empty ')
+
+            except:
+                messages.success(request, 'New Date or url can not be empty ')
 
         else:
             print('not vaild')
