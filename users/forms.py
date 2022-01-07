@@ -1,5 +1,7 @@
 from django import forms
-from .models import account,UserProfile
+from .models import account, UserProfile, Inbox
+
+
 class regForm(forms.ModelForm):
     password=forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'Enter Password'}))
     confirm_password=forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'Renter Password'}))
@@ -40,4 +42,17 @@ class UserProfileForm(forms.ModelForm):
         super(UserProfileForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control'
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = Inbox
+        fields = [ 'recipient', 'subject', 'body']
+
+    def __init__(self, *args, **kwargs):
+        super(MessageForm, self).__init__(*args, **kwargs)
+
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'form-control'
+
+        for field in self.fields.values():
+            field.widget.attrs['placeholder'] = field.label
 

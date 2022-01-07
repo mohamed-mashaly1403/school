@@ -19,6 +19,10 @@ urlpatterns = [
     path('edit_profile/', views.edit_profile, name='edit_profile'),
     path('deltePhoto', views.deltePhoto, name='deltePhoto'),
     path('inbox/', views.inbox, name="inbox"),
+    path('viewMessage/<str:pk>/', views.viewMessage, name="viewMessage"),
+    path('DeleteMessage/<str:pk>/', views.DeleteMessage, name="DeleteMessage"),
+    path('DeleteMessages/', views.DeleteMessages, name="DeleteMessages"),
+    path('createMessage/', views.createMessage, name="createMessage"),
 
 
 

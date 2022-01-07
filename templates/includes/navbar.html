@@ -39,7 +39,9 @@
 <!--                  <li><a href="#">Deep Drop Down 5</a></li> -->
                 </ul>
               </li>
-              <li><a href="#">make project</a></li>
+                {%if user.is_authenticated %}
+              <li><a href="{%url 'inbox'%}">My Mailbox</a></li>
+                {%endif%}
               <li><a href="#">make assignment</a></li>
               <li><a href="#">one teacher for everything</a></li>
               <li><a href="#">Home work</a></li>

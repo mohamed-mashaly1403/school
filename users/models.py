@@ -96,7 +96,7 @@ class UserProfile(models.Model):
         return self.user.first_name
 
 class Inbox(models.Model):
-    sender = models.ForeignKey(account, on_delete=models.SET_NULL, null=True, blank=True)
+    sender = models.ForeignKey(account, on_delete=models.SET_NULL, null=True, blank=True,related_name="sentMessages")
     recipient = models.ForeignKey(account, on_delete=models.SET_NULL, null=True, blank=True, related_name="messages")
     subject = models.CharField(max_length=200, null=True, blank=True)
     body = models.TextField()

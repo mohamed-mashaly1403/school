@@ -14,7 +14,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 import requests
 
 from orders.models import Order, orderPoduct
-from .forms import regForm, UserForm, UserProfileForm
+from .forms import regForm, UserForm, UserProfileForm, MessageForm
 from .models import account, UserProfile, Inbox
 
 
@@ -305,16 +305,104 @@ def deltePhoto(request):
 def inbox(request):
     user = request.user
     messageRequests=user.messages.all()
+    allmeesagescount = messageRequests.count()
+
     unreadCount = messageRequests.filter(is_read=False).count()
-    sent = Inbox.objects.filter(sender=user)
+    sent = user.sentMessages.all()
     sent_count = sent.filter(sender=user).count()
+    allsentcount = sent.count()
 
     context = {'messageRequests': messageRequests,
                'unreadCount': unreadCount,
                'sent':sent,
                'sent_count':sent_count,
+               'allmeesagescount': allmeesagescount,
+               'allsentcount': allsentcount,
                }
     return render(request, 'accounts/inbox.html', context)
+@login_required(login_url='login')
+def viewMessage(request, pk):
+    user = request.user
+    messageRequests = user.messages.all()
+
+    unreadCount = messageRequests.filter(is_read=False).count()
+    try:
+        message = user.messages.get(id=pk)
+
+    except:
+        message = user.sentMessages.get(id=pk)
+
+
+
+    try:
+        order = Order.objects.get(order_number=message.order)
+        course = order.order_course
+    except:
+        order=''
+        course=''
+
+    if message.is_read == False:
+        message.is_read = True
+        message.save()
+    context = {'message': message,'order':order,'course':course,'unreadCount':unreadCount}
+    return render(request, 'accounts/read_email.html', context)
+@login_required(login_url='login')
+def DeleteMessage(request, pk):
+    user = request.user
+    try:
+        message = user.messages.get(id=pk)
+        message.delete()
+
+    except:
+        message = user.sentMessages.get(id=pk)
+        message.delete()
+    return redirect('inbox')
+@login_required(login_url='login')
+def DeleteMessages(request):
+    user = request.user
+
+    if request.method == 'POST':
+        checked_items = request.POST.getlist("toDelete")
+        for i in checked_items:
+            try:
+                message = user.messages.get(id=i)
+                message.delete()
+
+            except:
+                message = user.sentMessages.get(id=i)
+                message.delete()
+    return redirect('inbox')
+
+@login_required(login_url='login')
+def createMessage(request):
+    user = request.user
+    messageRequests = user.messages.all()
+    unreadCount = messageRequests.filter(is_read=False).count()
+
+    form = MessageForm()
+
+    try:
+        sender = user
+
+    except:
+        sender = None
+
+
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        print(form.errors)
+        if form.is_valid():
+
+            message = form.save(commit=False)
+            message.sender = sender
+
+            message.save()
+
+            messages.success(request, 'Your message was successfully sent!')
+            return redirect('inbox')
+
+    context = { 'form': form,'unreadCount':unreadCount}
+    return render(request, 'accounts/message_form.html', context)
 
 
 
