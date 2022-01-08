@@ -4,10 +4,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 import django.core.mail
 # Create your views here.
 from django.template.loader import render_to_string
+from django.urls import NoReverseMatch
 from django.utils.encoding import force_bytes
 
 from django.contrib import messages, auth
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
@@ -304,11 +305,11 @@ def deltePhoto(request):
 @login_required(login_url='login')
 def inbox(request):
     user = request.user
-    messageRequests=user.messages.all()
+    messageRequests=user.messages.filter(is_receiver_delete=False)
     allmeesagescount = messageRequests.count()
 
     unreadCount = messageRequests.filter(is_read=False).count()
-    sent = user.sentMessages.all()
+    sent = user.sentMessages.filter(is_sender_delete=False)
     sent_count = sent.filter(sender=user).count()
     allsentcount = sent.count()
 
@@ -323,7 +324,7 @@ def inbox(request):
 @login_required(login_url='login')
 def viewMessage(request, pk):
     user = request.user
-    messageRequests = user.messages.all()
+    messageRequests = user.messages.filter(is_receiver_delete=False)
 
     unreadCount = messageRequests.filter(is_read=False).count()
     try:
@@ -351,58 +352,109 @@ def DeleteMessage(request, pk):
     user = request.user
     try:
         message = user.messages.get(id=pk)
-        message.delete()
+        message.is_receiver_delete = True
+        message.save(update_fields=['is_receiver_delete'])
+        if message.is_receiver_delete and message.is_sender_delete:
+            message.delete()
+
+
 
     except:
         message = user.sentMessages.get(id=pk)
-        message.delete()
+        message.is_sender_delete = True
+        message.save(update_fields=['is_sender_delete'])
+        if message.is_receiver_delete and message.is_sender_delete:
+            message.delete()
     return redirect('inbox')
 @login_required(login_url='login')
 def DeleteMessages(request):
     user = request.user
 
     if request.method == 'POST':
-        checked_items = request.POST.getlist("toDelete")
-        for i in checked_items:
-            try:
-                message = user.messages.get(id=i)
-                message.delete()
+        try:
+            checked_items = request.POST.getlist("toDelete")
+            for i in checked_items:
+                try:
+                    message = user.messages.get(id=i)
+                    message.is_receiver_delete = True
+                    message.save(update_fields=['is_receiver_delete'])
 
-            except:
-                message = user.sentMessages.get(id=i)
-                message.delete()
+                except:
+                    message = user.sentMessages.get(id=i)
+                    message.is_sender_delete = True
+                    message.save(update_fields=['is_sender_delete'])
+                if message.is_receiver_delete and  message.is_sender_delete :
+                    message.delete()
+        except:
+            return redirect('inbox')
+
     return redirect('inbox')
 
 @login_required(login_url='login')
-def createMessage(request):
+def createMessage(request,pk):
     user = request.user
-    messageRequests = user.messages.all()
+    messageRequests = user.messages.filter(is_receiver_delete=False)
     unreadCount = messageRequests.filter(is_read=False).count()
-
-    form = MessageForm()
-
+    sender = user
     try:
-        sender = user
+        ordr = Order.objects.get(id=pk)
+        recipient = ordr.user
+        subject = f'Hi,I am {user.first_name} your teacher for {ordr.order_course} course- order no. {ordr.order_number}'
+        form = MessageForm(initial={'recipient': recipient, 'subject': subject})
 
     except:
-        sender = None
-
-
+        form = MessageForm()
     if request.method == 'POST':
         form = MessageForm(request.POST)
         print(form.errors)
+
         if form.is_valid():
-
             message = form.save(commit=False)
-            message.sender = sender
 
-            message.save()
+            if message.recipient == request.user:
+                messages.error(request, 'Your can not sent to your self!')
 
-            messages.success(request, 'Your message was successfully sent!')
-            return redirect('inbox')
+            else:
+                message.sender = sender
+                message.save()
+                messages.success(request, 'Your message was successfully sent!')
+                return redirect('inbox')
+    context = { 'form': form,'unreadCount':unreadCount}
+    return render(request, 'accounts/message_form.html', context)
+@login_required(login_url='login')
+def createMessagefromStudent(request,pk):
+    user = request.user
+    messageRequests = user.messages.filter(is_receiver_delete=False)
+    unreadCount = messageRequests.filter(is_read=False).count()
+
+
+    ordr = orderPoduct.objects.get(id=pk)
+    recipient = ordr.teacher.user
+    subject = f'Hi,I am {user.first_name} Student of {ordr.order_course} course- order no. {ordr.order.order_number}'
+    form = MessageForm(initial={'recipient': recipient, 'subject': subject})
+
 
     context = { 'form': form,'unreadCount':unreadCount}
     return render(request, 'accounts/message_form.html', context)
+
+def reply(request,pk):
+    try:
+        message = get_object_or_404(Inbox, id=pk)
+        sender = message.sender
+        body = f"\n \n\n \n==================================================\n \n{sender}\n \n{message.created.strftime('%d/%m/%Y %H:%M')}\n \n{message.body} "
+        form = MessageForm(instance=message,initial={'recipient': sender,'body':body})
+
+    except:
+        form = MessageForm()
+
+
+    context = {
+        'form': form,
+
+
+    }
+    return render(request, 'accounts/message_form.html', context)
+
 
 
 

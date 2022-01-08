@@ -45,6 +45,12 @@
               <h5>Purchase Date</h5>
               <p>{{order.payment.created_at}}</p>
             </div>
+              {%if order_detail.teacher%}
+                 <a href="{% url 'createMessagefromStudent' order_detail.id %}"> <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>Send mail to your Teacher</h5>
+                {{order_detail.teacher}}
+            </div></a>
+                {%endif%}
 
           </div>
         </div>
