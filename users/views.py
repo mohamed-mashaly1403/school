@@ -6,7 +6,6 @@ import django.core.mail
 from django.template.loader import render_to_string
 from django.urls import NoReverseMatch
 from django.utils.encoding import force_bytes
-
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.tokens import default_token_generator
@@ -14,6 +13,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 import requests
 
+from Notifs.models import Inboxnotif
 from orders.models import Order, orderPoduct
 from .forms import regForm, UserForm, UserProfileForm, MessageForm
 from .models import account, UserProfile, Inbox
@@ -323,6 +323,11 @@ def inbox(request):
     return render(request, 'accounts/inbox.html', context)
 @login_required(login_url='login')
 def viewMessage(request, pk):
+    uu = request.META['HTTP_REFERER']
+    print(uu)
+    if '/users/inbox/' not in uu:
+        Inboxnotif.objects.filter(recipient=request.user, is_read=False,message_id=pk).update(is_read=True)
+
     user = request.user
     messageRequests = user.messages.filter(is_receiver_delete=False)
 
@@ -416,7 +421,10 @@ def createMessage(request,pk):
 
             else:
                 message.sender = sender
+                recipient = message.recipient
                 message.save()
+
+
                 messages.success(request, 'Your message was successfully sent!')
                 return redirect('inbox')
     context = { 'form': form,'unreadCount':unreadCount}

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'users',
     'orders',
     'Teachers',
+    'Notifs',
 
 ]
 
@@ -54,10 +55,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'vschool.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -69,6 +70,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'Notifs.context_process.CountNotifications',
+                'Notifs.context_process.ShowNotifications',
 
 
             ],

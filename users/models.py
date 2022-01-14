@@ -7,7 +7,9 @@ from django.db import models
 #overwrite django user model
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser ,BaseUserManager
+from django.db.models.signals import post_save
 
+from Notifs.models import Inboxnotif
 from vschool import settings
 
 
@@ -106,9 +108,19 @@ class Inbox(models.Model):
     is_sender_delete = models.BooleanField(default=False)
     is_receiver_delete = models.BooleanField(default=False)
 
+    def notify(sender,instance,*args,**kwargs):
+
+        Inbox = instance
+        sender = Inbox.sender
+        recipient = Inbox.recipient
+        Message = f'{sender.first_name} sent you email.'
+        notifs = Inboxnotif(sender=sender,recipient=recipient,Message=Message,message_id=Inbox.id)
+        notifs.save()
+
 
     def __str__(self):
         return self.subject
 
     class Meta:
         ordering = ['is_read', '-created']
+post_save.connect(Inbox.notify,sender=Inbox)

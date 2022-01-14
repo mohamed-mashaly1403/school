@@ -1,5 +1,53 @@
 {% load static %}
+<style>
+        .notification {
 
+            color: #5fcf80;;
+            text-decoration: none;
+
+            margin-right: 10px;
+            margin-left: 10px;
+            position: relative;
+            display: inline-block;
+            border-radius: 2px;
+            font-size: 20px;
+        }
+
+        .notification:hover {
+
+            color: gray;
+        }
+
+        .notification .badge {
+            position: absolute;
+            top: -11px;
+            right: -7px;
+            padding: 4px 6px;
+            border-radius: 50%;
+            background: red;
+            color: white;
+        }
+
+        .notification-section .dropdown-toggle::after {
+            content: none;
+        }
+
+        .dropdown-toggle::after {
+            color: #fff;
+        }
+
+        #notifications-dropdown li {
+            max-width: 500px;
+            word-wrap: break-word;
+            display: inline-block;
+            white-space: normal;
+        }
+
+        #notifications-dropdown.dropdown-menu {
+            width: 30rem;
+        }
+
+    </style>
 <!DOCTYPE html>
 <html lang="en">
 
