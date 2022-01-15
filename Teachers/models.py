@@ -1,7 +1,9 @@
 from django.db import models
 
 # Create your models here.
+from django.db.models.signals import post_save
 
+from Notifs.models import Inboxnotif
 from users.models import account
 
 
@@ -26,6 +28,7 @@ class TeacherProfile(models.Model):
     Notes = models.TextField(max_length=100, blank=True)
     is_accepted = models.BooleanField(default=False)
     is_Regicted = models.BooleanField(default=False)
+    __original_is_accepted = None
 
     @property
     def docfile_url(self):
@@ -35,9 +38,29 @@ class TeacherProfile(models.Model):
         else:
             self.user_img = ''
             return self.user_img
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.__original_is_accepted = self.is_accepted
 
+    def notify(sender,instance,*args,**kwargs):
+        TeacherProfile = instance
+
+        if TeacherProfile.is_accepted:
+            if TeacherProfile.is_accepted != TeacherProfile.__original_is_accepted:
+                Message = 'congrats,your profile accepted.'
+                notifs = Inboxnotif(sender=TeacherProfile.user,recipient=TeacherProfile.user,Message=Message,notif_type=2)
+                notifs.save()
+                usrerStaff =  account.objects.get(id=TeacherProfile.user.id)
+                usrerStaff.is_staff = True
+                usrerStaff.save(update_fields=['is_staff'])
+            elif TeacherProfile.is_Regicted:
+                Message = 'sorry,your profile Rejected.'
+                notifs = Inboxnotif(sender=TeacherProfile.user, recipient=TeacherProfile.user, Message=Message,notif_type=2)
+                notifs.save()
     def __str__(self):
         return self.user.first_name
+post_save.connect(TeacherProfile.notify,sender=TeacherProfile)
+
 class paid(models.Model):
     Teacher = models.ForeignKey(TeacherProfile, on_delete=models.CASCADE)
     recived = models.FloatField(default=0.00)

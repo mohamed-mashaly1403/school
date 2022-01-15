@@ -108,14 +108,15 @@ class Inbox(models.Model):
     is_sender_delete = models.BooleanField(default=False)
     is_receiver_delete = models.BooleanField(default=False)
 
-    def notify(sender,instance,*args,**kwargs):
+    def notify(sender,instance,created,*args,**kwargs):
 
         Inbox = instance
         sender = Inbox.sender
         recipient = Inbox.recipient
         Message = f'{sender.first_name} sent you email.'
-        notifs = Inboxnotif(sender=sender,recipient=recipient,Message=Message,message_id=Inbox.id)
-        notifs.save()
+        if created and Inbox.id is not None:
+            notifs = Inboxnotif(sender=sender,recipient=recipient,Message=Message,message_id=Inbox.id,notif_type=1)
+            notifs.save()
 
 
     def __str__(self):

@@ -1,12 +1,16 @@
+import math
+
 from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
-from django.db.models import Sum
+from django.db.models import Sum, Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 import django.core.mail
+from django.db.models import Q
 
 # Create your views here.
 from django.template.loader import render_to_string
 
+from Notifs.models import Inboxnotif
 from Teachers.form import TeacherProfileForm, orderPoductClassesForm
 from Teachers.models import TeacherProfile, paid
 from orders.form import complainsForm, ChangeTeacherRequestForm, orderPoductForm
@@ -48,8 +52,8 @@ def TeacherDashboard(request):
             'orders': orders,
             'active_orders_count': active_orders_count,
             ' active_orders': active_orders,
-            'Balance':Balance,
-            'Balance_to_recieve':Balance_to_recieve
+            'Balance':math.ceil(Balance),
+            'Balance_to_recieve':math.ceil(Balance_to_recieve)
         }
         return render(request, 'teachers/teasherDashboard.html', context)
     else:
@@ -108,6 +112,7 @@ def AskForWithdraw(request):
 
 @login_required(login_url='login')
 def teacherProfile(request):
+        Inboxnotif.objects.filter(recipient=request.user,notif_type=2).delete()
         have_account = TeacherProfile.objects.filter(user=request.user).exists()
         if have_account:
             accepted = TeacherProfile.objects.filter(is_accepted=True, user=request.user).exists()
@@ -244,6 +249,7 @@ def Teacheredit_profile(request):
     return render(request, 'teachers/Teacheredit_profile.html', context)
 @user_passes_test(lambda u: u.is_staff)
 def TeacherCourseDetails(request,order_id):
+    Inboxnotif.objects.filter(recipient=request.user, notif_type=3).delete()
     order_detail = orderPoduct.objects.get(order__order_number=order_id)
     order = Order.objects.get(order_number=order_id)
     total_urls = orderPoductClasses.objects.filter(order__order_number=order_id).order_by('updated_at')

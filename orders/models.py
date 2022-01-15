@@ -1,5 +1,7 @@
 from django.db import models
+from django.db.models.signals import post_save
 
+from Notifs.models import Inboxnotif
 from Teachers.models import TeacherProfile
 from courses.models import course
 
@@ -68,15 +70,30 @@ class orderPoduct(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     is_deliverd = models.BooleanField(default=False)
     class_material_url =models.URLField(max_length=200, blank=True)
-
+    __original_teacher = None
 
     @property
     def Teacher_cost(self):
         return self.product_price * 0.7
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.__original_teacher = self.teacher
 
+    def notify(sender, instance, *args, **kwargs):
+        orderPoduct = instance
+
+        if orderPoduct.teacher:
+            if orderPoduct.teacher != orderPoduct.__original_teacher:
+                Message = 'New student waiting'
+                notifs = Inboxnotif(sender=orderPoduct.user, recipient=orderPoduct.teacher.user, Message=Message,message_id=orderPoduct.order.order_number,notif_type=3)
+                notifs.save()
+                stu_message =f'Teacher ready for{orderPoduct.order_course}'
+                notifss = Inboxnotif(sender=orderPoduct.teacher.user, recipient=orderPoduct.user, Message=stu_message,message_id=orderPoduct.order.order_number,notif_type=4)
+                notifss.save()
     def __str__(self):
         return self.order.order_number
+post_save.connect(orderPoduct.notify,sender=orderPoduct)
 class orderPoductClasses(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     class_url = models.URLField(max_length=200, blank=True)

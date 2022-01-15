@@ -74,7 +74,7 @@
                           <img  height="30" class="rounded-circle mb-2" style="margin-left:5px"  src="{% static 'img/default_avatar.png'%}" alt="user picture">
                           {% endif %}
                         {% endif %}
-                            <a href="{%url 'viewMessage' i.message_id%}" > {{i.Message}} </a>
+                            <a href="{%if i.notif_type == 1 %}{%url 'viewMessage' i.message_id%}{%elif i.notif_type == 2%}{%url 'teacherProfile'%}{%elif i.notif_type == 3%}{%url 'TeacherCourseDetails' i.message_id%}{%elif i.notif_type == 4 %}{%url 'order_details' i.message_id%}{%endif%}" > {{i.Message}} </a>
                             <div>
 
                             <a  href="{% url 'delete-notification' i.id %}" ><i  class="bi bi-trash  "></i></a>

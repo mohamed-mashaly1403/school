@@ -12,8 +12,10 @@ from Notifs.models import Inboxnotif
 
 def DeleteNotification(request, noti_id):
     url = request.META.get('HTTP_REFERER')
-
-    Inboxnotif.objects.filter(id=noti_id).delete()
+    try:
+        Inboxnotif.objects.filter(id=noti_id).delete()
+    except:
+        pass
     return redirect(url)
 
 

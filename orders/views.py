@@ -7,6 +7,7 @@ from django.shortcuts import render, redirect
 from django.template.backends import django
 import django.core.mail
 
+from Notifs.models import Inboxnotif
 from . import form
 from .form import OrderForm, RatingReviewForm, ChangeTeacherRequestForm, complainsForm
 from courses.models import course, RatingReview
@@ -200,7 +201,7 @@ def order_complete(request):
         return redirect('home')
 @login_required(login_url='login')
 def order_details(request,order_id):
-
+    Inboxnotif.objects.filter(recipient=request.user, notif_type=4).delete()
     order_detail = orderPoduct.objects.get(order__order_number=order_id)
     order = Order.objects.get(order_number=order_id)
     urls = orderPoductClasses.objects.filter(order__order_number=order_id).order_by('updated_at')

@@ -324,22 +324,20 @@ def inbox(request):
 @login_required(login_url='login')
 def viewMessage(request, pk):
     uu = request.META['HTTP_REFERER']
-    print(uu)
+
     if '/users/inbox/' not in uu:
-        Inboxnotif.objects.filter(recipient=request.user, is_read=False,message_id=pk).update(is_read=True)
+        Inboxnotif.objects.filter(recipient=request.user,message_id=pk).delete()
 
     user = request.user
     messageRequests = user.messages.filter(is_receiver_delete=False)
 
     unreadCount = messageRequests.filter(is_read=False).count()
     try:
+
         message = user.messages.get(id=pk)
 
     except:
         message = user.sentMessages.get(id=pk)
-
-
-
     try:
         order = Order.objects.get(order_number=message.order)
         course = order.order_course
@@ -349,6 +347,7 @@ def viewMessage(request, pk):
 
     if message.is_read == False:
         message.is_read = True
+        Inboxnotif.objects.filter(recipient=request.user, message_id=pk).delete()
         message.save()
     context = {'message': message,'order':order,'course':course,'unreadCount':unreadCount}
     return render(request, 'accounts/read_email.html', context)
