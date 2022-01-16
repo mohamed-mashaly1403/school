@@ -1,6 +1,6 @@
 
 {% load static %}
-
+{% load i18n %}
 <header id="header" class="fixed-top">
 
     <div class="container d-flex align-items-center">
@@ -108,15 +108,31 @@
       <a href="{%url 'edit_profile'%}"><img  height="50" class="rounded-circle mb-2" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="user picture"></a>
       {% endif %}
       <div class="text-center">
-      <small class="title text-muted">Welcome {{user.first_name}}</small>
+      <small class="title text-muted">{%trans 'Welcome'%} {{user.first_name}}</small>
       </div>
       <a href="{% url 'logout'%}" class="btn btn-outline-success btn-sm">Logout</a>
       {% else%}
       <a style="margin-right:0 important!" href="{% url 'login'%}" class="get-started-btn">Sign in</a>
       <a style="margin-right:10px;margin-left:10px" href="{%url 'register'%}" class="get-started-btn">Register</a>
       {% endif %}
+<!--====================================================================== start lang chang-->
+         <div>
+                                        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                                            {% get_current_language as LANGUAGE_CODE %}
+                                            <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}">
+                                            {% if LANGUAGE_CODE == 'ar' %}
+                                                <button type='submit' name='language' value='en' class="btn btn-danger btn-sm">
+                                                    <span class="label"></span>English
+                                                </button>
+                                            {% else %}
+                                                <button type='submit' name='language' value='ar' class="btn btn-danger btn-sm">
+                                                    <span class="label"></span>العربية
+                                                </button>
+                                            {% endif %}
+                                        </form>
+                                    </div>
+<!--====================================================================== start lang chang-->
 
-      <a  class="btn btn-danger btn-sm" href="index.html"><strong>العربية</strong></a>
 
     </div>
   {% include 'includes/alerts.html'%}
