@@ -1,11 +1,12 @@
 {% autoescape off%}
-Hi {{user.first_name}}
-Congratulation your order has been set and your teacher will be in touch with you soon.
-your lessons will start when your teacher send url on your dashboard
-order no.:{{order_number.order_number}}
-total amount: {{order_number.gtotal}}
-created date : {{order_number.created_at}}
-total classes :{{tlessons}}
+{% load i18n %}
+{%trans 'Hi'%} {{user.first_name}}
+{%trans 'Congratulation your order has been set and your teacher will start with you soon.'%}
+
+{%trans 'Order no.:'%}{{order_number.order_number}}
+{%trans 'Total amount:'%} {{order_number.gtotal}}
+{%trans 'Created date:'%} {{order_number.created_at}}
+{%trans 'Total classes:'%}{{tlessons}}
 
 
 {% endautoescape %}

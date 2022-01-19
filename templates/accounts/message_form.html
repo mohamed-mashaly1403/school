@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+{% load i18n %}
 <section class="section-content padding-y bg">
 <br>
 <br>
@@ -10,14 +11,14 @@
 <div class="container ">
 <div class="email-app">
     <nav>
-        <a href="{% url 'createMessage' 0 %}" class="btn btn-danger btn-block">New Email</a>
+        <a href="{% url 'createMessage' 0 %}" class="btn btn-danger btn-block">{%trans 'New Email'%}</a>
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'inbox'%}"><i class="fa fa-inbox"></i> Inbox <span class="badge badge-danger">{{unreadCount}}</span></a>
+                <a class="nav-link" href="{% url 'inbox'%}"><i class="fa fa-inbox"></i> {%trans 'Inbox'%} <span class="badge badge-danger">{{unreadCount}}</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'inbox'%}"><i class="fa fa-rocket"></i> Sent</a>
+                <a class="nav-link" href="{% url 'inbox'%}"><i class="fa fa-rocket"></i> {%trans 'Sent'%}</a>
             </li>
 
 
@@ -25,17 +26,17 @@
         </ul>
     </nav>
     <main>
-        <p class="text-center">New Message</p>
+        <p class="text-center">{%trans 'New Message'%}</p>
         <form method="POST" action="{%url 'createMessage' 0 %}">
             {%csrf_token%}
             <div class="form-row ">
-                <label  class="col-2 col-sm-1 col-form-label">To:</label>
+                <label  class="col-2 col-sm-1 col-form-label">{%trans 'To:'%}</label>
                 <div class="col-10 col-sm-11 mb-3">
                            {{form.recipient}}
                 </div>
             </div>
             <div class="form-row mb-3">
-                <label  class="col-2 col-sm-1 col-form-label">Subject:</label>
+                <label  class="col-2 col-sm-1 col-form-label">{%trans 'Subject:'%}</label>
                 <div class="col-10 col-sm-11">
                    {{form.subject}}
                 </div>
@@ -43,7 +44,7 @@
 
 
         <div class="form-row">
-              <label  class="col-2 col-sm-1 col-form-label">Message:</label>
+              <label  class="col-2 col-sm-1 col-form-label">{%trans 'Message:'%}</label>
             <div class="col-sm-11 ml-auto">
 
                 <div class="form-group mt-4">
@@ -51,9 +52,9 @@
                    {{form.body}}
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success">Send</button>
+                    <button type="submit" class="btn btn-success">{%trans 'Send'%}</button>
                     </form>
-                   <a href="{%url 'inbox'%}" class="btn btn-danger">Discard</a>
+                   <a href="{%url 'inbox'%}" class="btn btn-danger">{%trans 'Discard'%}</a>
                 </div>
 
             </div>

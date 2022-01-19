@@ -104,7 +104,7 @@ def AskForWithdraw(request):
     context = {
 
         'Balance': Balance,
-        'Balance_to_recieve': Balance_to_recieve
+        'Balance_to_recieve': math.ceil(Balance_to_recieve)
     }
 
     return render(request, 'teachers/withdrawRequest.html',context)

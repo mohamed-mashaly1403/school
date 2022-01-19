@@ -1,3 +1,4 @@
+{% load i18n %}
 <style>
 	a.list-group-item.active{
 	background-color: #66d186;
@@ -7,16 +8,16 @@
 <aside class="col-md-3">
 		<!--   SIDEBAR   -->
 		<ul class="list-group">
-			<a class="list-group-item {% if '/Teachers/' == request.path %}active {% endif %}" href="{% url 'TeacherDashboard'%}"> Teacher Dashboard  </a>
-			<a class="list-group-item {% if '/TeacherOrders/' in request.path %}active {% endif %} "  href="{% url 'TeacherOrders'%}"> Teacher Courses </a>
-			<a class="list-group-item {% if '/TeacherActiveOrders/' in request.path %}active {% endif %} "  href="{% url 'TeacherActiveOrders'%}"> Teacher Active Courses </a>
-			<a class="list-group-item {% if '/Teacheredit_profile/' in request.path %}active {% endif %}"  href="{% url 'Teacheredit_profile'%}"> Edit Teacher profile </a>
-			<a class="list-group-item {% if '/Teachercomplains/' in request.path %}active {% endif %}" href="{% url 'Teachercomplains'%}">complains </a>
-			<a class="list-group-item {% if '/ReceivedInstallments/' in request.path %}active {% endif %}" href="{% url 'ReceivedInstallments'%}">Received installments </a>
-			<a class="list-group-item {% if '/AskForWithdraw/' in request.path %}active {% endif %}" href="{% url 'AskForWithdraw'%}">Ask to withdraw </a>
+			<a class="list-group-item {% if '/Teachers/' == request.path %}active {% endif %}" href="{% url 'TeacherDashboard'%}"> {%trans 'Teacher Dashboard'%}  </a>
+			<a class="list-group-item {% if '/TeacherOrders/' in request.path %}active {% endif %} "  href="{% url 'TeacherOrders'%}"> {%trans 'Teacher Courses'%} </a>
+			<a class="list-group-item {% if '/TeacherActiveOrders/' in request.path %}active {% endif %} "  href="{% url 'TeacherActiveOrders'%}"> {%trans 'Teacher Active Courses'%} </a>
+			<a class="list-group-item {% if '/Teacheredit_profile/' in request.path %}active {% endif %}"  href="{% url 'Teacheredit_profile'%}"> {%trans 'Edit Teacher profile'%} </a>
+			<a class="list-group-item {% if '/Teachercomplains/' in request.path %}active {% endif %}" href="{% url 'Teachercomplains'%}">{%trans 'complains'%} </a>
+			<a class="list-group-item {% if '/ReceivedInstallments/' in request.path %}active {% endif %}" href="{% url 'ReceivedInstallments'%}">{%trans 'Received installments'%} </a>
+			<a class="list-group-item {% if '/AskForWithdraw/' in request.path %}active {% endif %}" href="{% url 'AskForWithdraw'%}">{%trans 'Ask to withdraw'%} </a>
 
 		</ul>
 		<br>
-		<a class="btn btn-light btn-block" href="{% url 'logout'%}"> <i class="fa fa-power-off"></i> <span class="text">Log out</span> </a>
+		<a class="btn btn-light btn-block" href="{% url 'logout'%}"> <i class="fa fa-power-off"></i> <span class="text">{%trans 'Log out'%}</span> </a>
 		<!--   SIDEBAR .//END   -->
 	</aside>

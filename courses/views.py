@@ -3,7 +3,7 @@ from itertools import count
 from django.core.paginator import EmptyPage,Paginator,PageNotAnInteger
 from django.db.models import Q
 from django.shortcuts import render
-from django.db.models import Avg, Count
+from django.utils.translation import gettext as _
 
 # Create your views here.
 from courses.models import RatingReview, course

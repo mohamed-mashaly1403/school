@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-
+{% load i18n %}
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-conten padding-y bg  ">
 <!--{% include 'includes/alerts.html' %}-->
@@ -16,7 +16,7 @@
 	<main class="col-md-8">
 		<article class="card">
 		<header class="card-header">
-			<strong class="d-inline-block mr-3"> Money Withdrawn Request </strong>
+			<strong class="d-inline-block mr-3"> {%trans 'Money Withdrawn Request'%} </strong>
 
 		</header>
 		<div class="card-body">
@@ -32,23 +32,23 @@
 					{% csrf_token %}
 
                   <div class="text-center ">
-                  <STRONG style="color:green;" >Withdraw Request </STRONG>
+                  <STRONG style="color:green;" >{%trans 'Withdraw Request'%} </STRONG>
                     </div>
 
 					<div>
-						<label>how much money to withdraw?</label>
+						<label>{%trans 'how much money to withdraw?'%}</label>
 						<input type="number" name="amount" min="0" max="{{Balance_to_recieve}}" value="{{Balance_to_recieve}}" class="form-control" >
 						<br>
 
-						<input type="submit" value="submit" class="btn btn-success">
+						<input type="submit" value="{%trans 'submit'%}" class="btn btn-success">
 
 					</div>
 				</form>
 
 				{%endif %}
 					{%else%}
-					<center><strong>Your available balance to receive {{Balance_to_recieve}} AED</strong></center>
-					<div class="text-center"><small class="text-muted" >Minimum limit for withdraw 200 AED </small></div>
+					<center><strong>{%trans 'Your available balance to receive'%} {{Balance_to_recieve}} AED</strong></center>
+					<div class="text-center"><small class="text-muted" >{%trans 'Minimum limit for withdraw 200 AED'%} </small></div>
 
 				{%endif %}
 

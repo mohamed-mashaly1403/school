@@ -1,15 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block content %}
-
+{% load i18n %}
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
         <h2>{{order.order_course}} Course</h2>
-        <h4>Status:{% if order_detail.is_deliverd %} Finish {%else %} Active {%endif%} </h4>
+        <h4>{%trans 'Status:'%}{% if order_detail.is_deliverd %} {%trans 'Finish'%} {%else %} {%trans 'Active'%} {%endif%} </h4>
       </div>
     </div><!-- End Breadcrumbs -->
 
@@ -19,35 +18,35 @@
 
         <div class="row">
           <div class="col-lg-8">
-            <img src="{{order.order_course.img.url}}" style="max-width:70%;max-height:50%; border-radius:10px;" class="img-fluid img-thumbnail" alt="Course Image">
-            <h3>Course Languge:{{order.order_course_language}}</h3>
+            <img src="{{order.order_course.img.url}}" style="max-width:70%;max-height:50%; border-radius:10px;" class="img-fluid img-thumbnail" alt="{%trans 'Course Image'%}">
+            <h3>{%trans 'Course Languge:'%}{{order.order_course_language}}</h3>
             <p>
-             <strong>Course Description:</strong> {{order.order_course.description}}  </p>
+             <strong>{%trans 'Course Description:'%}</strong> {{order.order_course.description}}  </p>
           </div>
           <div class="col-lg-4">
 
             <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Trainer/Teacher</h5>
-              <p><a href="{{ order_detail.teacher.docfile.url }}">{%if order_detail.teacher%}{{order_detail.teacher}} {{order_detail.teacher.user.last_name}}{%else%} will assigned soon {%endif%}</a></p>
+              <h5>{%trans 'Trainer/Teacher'%}</h5>
+              <p><a href="{{ order_detail.teacher.docfile.url }}">{%if order_detail.teacher%}{{order_detail.teacher}} {{order_detail.teacher.user.last_name}}{%else%} {%trans 'Processing'%} {%endif%}</a></p>
             </div>
 
             <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Course Fee</h5>
+              <h5>{%trans 'Course Fee'%}</h5>
               <p>AED {{order.gtotal}}</p>
             </div>
 
             <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Number of Lessons</h5>
-              <p>{{order.total_classes}} / {{left}} left</p>
+              <h5>{%trans 'Number of Lessons'%}</h5>
+              <p>{{order.total_classes}} / {{left}} {%trans 'left'%}</p>
             </div>
 
             <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Purchase Date</h5>
+              <h5>{%trans 'Purchase Date'%}</h5>
               <p>{{order.payment.created_at}}</p>
             </div>
               {%if order_detail.teacher%}
                  <a href="{% url 'createMessagefromStudent' order_detail.id %}"> <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Send mail to your Teacher</h5>
+              <h5>{%trans 'Send mail to your Teacher'%}</h5>
                 {{order_detail.teacher}}
             </div></a>
                 {%endif%}
@@ -66,20 +65,20 @@
           <div class="col-lg-3">
             <ul class="nav nav-tabs flex-column">
               <li class="nav-item">
-                <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Meetings url and Timing </a>
+                <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">{%trans 'Meetings url and Timing'%} </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Course Material url</a>
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-2">{%trans 'Course Material url'%}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#tab-3">Course Details</a>
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-3">{%trans 'Course Details'%}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#tab-4">Rate the Course</a>
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-4">{%trans 'Rate the Course'%}</a>
               </li>
                 {% if order_detail.is_deliverd == False  %}
               <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#tab-5">Ask to change the teacher</a>
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-5">{%trans 'Ask to change the teacher'%}</a>
               </li>
                 {%endif%}
 
@@ -90,7 +89,7 @@
               <div class="tab-pane active " id="tab-1">
                 <div class="row">
                   <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Teacher will add the Urls for you to Join soon</h3>
+                    <h3>{%trans 'Teacher will add the Urls for you to Join soon'%}</h3>
 
                     {%for i in urls %}
 
@@ -104,7 +103,7 @@
                           <b class="title text-muted">Class Time: {{i.classTime}}</b>
 
                           {%else%}
-                          <strong>lesson url</strong> : <label class="fst-italic form-control"   > Teacher will add soon! </label>
+                          <strong>lesson url</strong> : <label class="fst-italic form-control"   > {%trans 'Teacher will add url soon!'%} </label>
                           {%endif%}
                           {%endif%}
 
@@ -122,14 +121,14 @@
               <div class="tab-pane " id="tab-2">
                 <div class="row">
                   <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Course Material URl</h3>
+                    <h3>{%trans 'Course Material URl'%}</h3>
                     <div class="form-row  ">
                         <div class="form-group ">
                           {%if order_detail.class_material_url%}
 
-                          <strong>Course Material URl</strong> : <a class="fst-italic form-control" target="_blank" href="{{order_detail.class_material_url}}">  {{order_detail.class_material_url}} </a>
+                          <strong>{%trans 'Course Material URl'%}</strong> : <a class="fst-italic form-control" target="_blank" href="{{order_detail.class_material_url}}">  {{order_detail.class_material_url}} </a>
                           {%else%}
-                          <strong>Course Material URl</strong> : <label class="fst-italic form-control"   > Teacher will add soon! </label>
+                          <strong>{%trans 'Course Material URl'%}</strong> : <label class="fst-italic form-control"   > {%trans 'Teacher will add url soon!'%} </label>
 
                         {%endif%}
                         </div>
@@ -143,44 +142,44 @@
               <div class="tab-pane" id="tab-3">
                 <div class="row">
                   <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Course Details</h3>
+                    <h3>{%trans 'Course Details'%}</h3>
                      <div class="form-row  ">
                         <div class="form-group ">
-                    Course : <label class="fst-italic"> {{order.order_course}} </label>
+                    {%trans 'Course :'%} <label class="fst-italic"> {{order.order_course}} </label>
                         </div>
                      </div>
                     {% if order.order_course.is_school_subject  %}
                      <div class="form-row  ">
                         <div class="form-group ">
-                    Curriculum type : <label class="fst-italic"> {{order.Curriculum_type}} </label>
+                    {%trans 'Curriculum type:'%} <label class="fst-italic"> {{order.Curriculum_type}} </label>
                         </div>
                      </div>
                      <div class="form-row  ">
                         <div class="form-group ">
-                    Grade : <label class="fst-italic"> {{order.grade}} </label>
+                    {%trans 'Grade:'%} <label class="fst-italic"> {{order.grade}} </label>
                         </div>
                      </div>
                      <div class="form-row  ">
                         <div class="form-group ">
-                    Term : <label class="fst-italic"> {{order.term}} </label>
+                    {%trans 'Term:'%} <label class="fst-italic"> {{order.term}} </label>
                         </div>
                      </div>
                     {%endif%}
                     <div class="form-row  ">
                         <div class="form-group ">
 
-                    Language : <label class="fst-italic"> {{order.order_course_language}} </label>
+                    {%trans 'Language:'%} <label class="fst-italic"> {{order.order_course_language}} </label>
                         </div>
                      </div>
                     <div class="form-row  ">
                         <div class="form-group ">
-                    Country : <label class="fst-italic"> {{order.country}} </label>
+                    {%trans 'Country: '%}<label class="fst-italic"> {{order.country}} </label>
                         </div>
                      </div>
                      {%if order.order_note%}
                     <div class="form-row  ">
                         <div class="form-group ">
-                    Notes : <label class="fst-italic"> {{order.order_note}} </label>
+                    {%trans 'Notes:'%} <label class="fst-italic"> {{order.order_note}} </label>
                         </div>
                      </div>
                     {%endif%}
@@ -194,7 +193,7 @@
               <div class="tab-pane" id="tab-4">
                 <div class="row">
                   <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Rate the Course</h3>
+                    <h3>{%trans 'Rate the Course'%}</h3>
                     <header class="section-heading">
 
 
@@ -204,16 +203,16 @@
 	<article class="box mb-3">
 		<div class="icontext w-100">
             {% if user.user_img %}
-     <a href="{%url 'edit_profile'%}"><img  height="50" class="rounded-circle mb-2" style="margin:20px"  src="{{user.user_img.url}}" alt="user picture"></a>
+     <a href="{%url 'edit_profile'%}"><img  height="50" class="rounded-circle mb-2" style="margin:20px"  src="{{user.user_img.url}}" alt="{%trans 'user picture'%}"></a>
       {% else%}
-      <a href="{%url 'edit_profile'%}"><img  height="50" class="rounded-circle mb-2" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="user picture"></a>
+      <a href="{%url 'edit_profile'%}"><img  height="50" class="rounded-circle mb-2" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="{%trans 'user picture'%}"></a>
       {% endif %}
 
 
 			<div class="text">
 
-				<span class="date text-muted float-md-right">created at: {{review.created_date}} </span> <br>
-								<span class="date text-muted float-md-right">last update: {{review.updated_date}} </span> <br>
+				<span class="date text-muted float-md-right">{%trans 'created at:'%} {{review.created_date}} </span> <br>
+								<span class="date text-muted float-md-right">{%trans 'last update:'%} {{review.updated_date}} </span> <br>
 								<h6 class="mb-1">{{review.user.first_name}} {{review.user.last_name}}</h6>
 				<div class="rating-star">
 					<span>
@@ -248,15 +247,15 @@
 					{% csrf_token %}
                   {%if reviews %}
                   <div class="text-center ">
-                  <STRONG style="color:green;" >Update your review </STRONG>
+                  <STRONG style="color:green;" >{%trans 'Update your review '%}</STRONG>
                     </div>
                   {%else%}
                    <div class="text-center">
-					<STRONG style="color:green;">Write your review </STRONG>
+					<STRONG style="color:green;">{%trans 'Write your review'%} </STRONG>
                      </div>
                   {%endif%}
 					<div>
-						<label>Rating<span style="color:red">*</span></label>
+						<label>{%trans 'Rating'%}<span style="color:red">*</span></label>
 						<br>
 
 						<div class="rate mb-0">
@@ -274,18 +273,18 @@
 
 						</div>
                         <div class="mt-0">
-                            <label class="text-muted ">hover on the stars(Required)</label>
+                            <label class="text-muted ">{%trans 'hover on the stars(Required)'%}</label>
                         </div>
 
 						<br>
 <!--						rating stars-->
-						<label>Review Title:</label>
+						<label>{%trans 'Review Title:'%}</label>
 						<input type="text" name="subject" class="form-control" >
 						<br>
-						<label>Review: </label>
+						<label>{%trans 'Review:'%} </label>
 						<textarea name="review" rows="4" class="form-control"> </textarea>
 							<br>
-						<input type="submit" value="submit" class="btn btn-success">
+						<input type="submit" value="{%trans 'submit'%}" class="btn btn-success">
 
 					</div>
 				</form>
@@ -304,23 +303,23 @@
                       {%if user.is_authenticated  %}
 				{% if order.is_ordered  %}
 				{% if order_detail.is_deliverd == False  %}
-                      <h3>Ask to change the teacher</h3>
+                      <h3>{%trans 'Ask to change the teacher'%}</h3>
 
 
 				<form  action="{% url 'ChangeTeacherRequest'  order.id %}" method="POST">
 					{% csrf_token %}
 
-						<label>Reason:<span style="color:red">*</span> </label>
+						<label>{%trans 'Reason:'%}<span style="color:red">*</span> </label>
                     <label class="text-muted ">(Required)</label>
 
 						<textarea required name="Reason" rows="4" class="form-control"></textarea>
 							<br>
-						<input type="submit" value="submit" class="btn btn-success">
+						<input type="submit" value="{%trans 'submit'%}" class="btn btn-success">
 
 
 				</form>
                       {%else%}
-                      <h3 style="color:red">Course Finished</h3>
+                      <h3 style="color:red">{%trans 'Course Finished'%}</h3>
 
 				{%endif %}
 				{%endif %}

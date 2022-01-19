@@ -1,35 +1,35 @@
 
 {% load static %}
 {% load i18n %}
+
 <header id="header" class="fixed-top">
 
     <div class="container d-flex align-items-center">
 
 
        <h1 class="logo me-auto"><a href="{% url 'home'%}">SCHOOL.COM</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="{% if nbar == 'home' %}active {% endif %}" href="{%url 'home'%}">Home</a></li>
+          <li><a class="{% if nbar == 'home' %}active {% endif %}" href="{%url 'home'%}">{% trans 'Home'%}</a></li>
             {%if user.is_staff%}
-            <li><a class="{% if '/dashboard/' in request.path or '/users/' == request.path %}active {% endif %}" href="{% url 'dashboard'%}">Student DashBoard</a></li>
+            <li><a class="{% if '/dashboard/' in request.path or '/users/' == request.path %}active {% endif %}" href="{% url 'dashboard'%}">{%trans 'Student DashBoard'%}</a></li>
             {%else%}
-          <li><a class="{% if '/dashboard/' in request.path or '/users/' == request.path %}active {% endif %}" href="{% url 'dashboard'%}">My DashBoard</a></li>
+          <li><a class="{% if '/dashboard/' in request.path or '/users/' == request.path %}active {% endif %}" href="{% url 'dashboard'%}">{%trans 'My DashBoard'%}</a></li>
           {%endif%}
-            <li><a class="{% if '/courses/' == request.path %}active {% endif %}" href="{% url 'courses' %}">Courses</a></li>
+            <li><a class="{% if '/courses/' == request.path %}active {% endif %}" href="{% url 'courses' %}">{%trans 'Courses'%}</a></li>
           <!-- <li><a href="trainers.html">Trainers</a></li> -->
             {%if user.is_staff%}
-            <li><a class="{% if '/Teachers/' in request.path or '/Teachers/' == request.path %}active {% endif %}" href="{% url 'TeacherDashboard'%}">Teacher Dashboard</a></li>
+            <li><a class="{% if '/Teachers/' in request.path or '/Teachers/' == request.path %}active {% endif %}" href="{% url 'TeacherDashboard'%}">{%trans 'Teacher Dashboard'%}</a></li>
             {%else%}
-          <li><a class="{% if '/teacherProfile/' in request.path  %}active {% endif %}" href="{% url 'teacherProfile'%}">Be a teacher</a></li>
+          <li><a class="{% if '/teacherProfile/' in request.path  %}active {% endif %}" href="{% url 'teacherProfile'%}">{%trans 'Be a teacher'%}</a></li>
             {%endif%}
           <li><a href="pricing.html">Pricing</a></li>
 
-          <li class="dropdown"><a href="#"><span>Useful Links </span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#"><span>{%trans 'Useful Links'%} </span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-               <li><a href="{% url 'complains'%}">Complains </a></li>
+               <li><a href="{% url 'complains'%}">{%trans 'Complains'%} </a></li>
               <li class="dropdown"><a href="#"><span> face to face courses </span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">for one student</a></li>
@@ -40,7 +40,7 @@
                 </ul>
               </li>
                 {%if user.is_authenticated %}
-              <li><a href="{%url 'inbox'%}">My Mailbox</a></li>
+              <li><a href="{%url 'inbox'%}">{%trans 'My Mailbox'%}</a></li>
                 {%endif%}
               <li><a href="#">make assignment</a></li>
               <li><a href="#">one teacher for everything</a></li>
@@ -110,10 +110,10 @@
       <div class="text-center">
       <small class="title text-muted">{%trans 'Welcome'%} {{user.first_name}}</small>
       </div>
-      <a href="{% url 'logout'%}" class="btn btn-outline-success btn-sm">Logout</a>
+      <a href="{% url 'logout'%}" class="btn btn-outline-success btn-sm">{%trans 'Logout'%}</a>
       {% else%}
-      <a style="margin-right:0 important!" href="{% url 'login'%}" class="get-started-btn">Sign in</a>
-      <a style="margin-right:10px;margin-left:10px" href="{%url 'register'%}" class="get-started-btn">Register</a>
+      <a style="margin-right:0 important!" href="{% url 'login'%}" class="get-started-btn">{%trans 'Sign in'%}</a>
+      <a style="margin-right:10px;margin-left:10px" href="{%url 'register'%}" class="get-started-btn">{%trans 'Register'%}</a>
       {% endif %}
 <!--====================================================================== start lang chang-->
          <div>

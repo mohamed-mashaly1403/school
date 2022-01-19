@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+{% load i18n %}
 
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-conten padding-y bg">
@@ -16,20 +17,20 @@
 	<main class="col-md-9">
 		<article class="card">
 		<header class="card-header">
-			<strong class="d-inline-block mr-3">Teacher profile </strong>
+			<strong class="d-inline-block mr-3">{%trans 'Teacher profile'%} </strong>
 
 		</header>
 		<div class="card-body">
             <div class="text-center">
                 {% if user.user_img %}
-				  <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{{user.user_img.url}}" alt="user picture">
+				  <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{{user.user_img.url}}" alt="{%trans 'user picture'%}">
                 <div>
-                    <a role="button"  class="btn btn-outline-danger"  href="{% url 'deltePhoto' %}">Remove Photo</a>
+                    <a role="button"  class="btn btn-outline-danger"  href="{% url 'deltePhoto' %}">{%trans 'Remove Photo'%}</a>
                     </div>
 
 
 				  {% else%}
-				  <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="user picture">
+				  <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="{%trans 'user picture'%}">
 				  {% endif %}
 
             </div>
@@ -40,105 +41,105 @@
                     {% csrf_token%}
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>First Name<span style="color:red">*</span><span style="color:red">*</span></label>
+                            <label>{%trans 'First Name'%}<span style="color:red">*</span><span style="color:red">*</span></label>
                            {{user_form.first_name}}
                         </div>
                          <div class="form-group col-md-6">
-                            <label>Larst Name<span style="color:red">*</span></label>
+                            <label>{%trans 'Last Name'%}<span style="color:red">*</span></label>
                             {{user_form.last_name}}
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>phone<span style="color:red">*</span></label>
+                            <label>{%trans 'phone'%}<span style="color:red">*</span></label>
                             {{user_form.phone}}
                         </div>
                          <div class="form-group col-md-6">
-                            <label>Picture</label>
+                            <label>{%trans 'Picture'%}</label>
                            {{user_form.user_img}}
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>Country <span style="color:red">*</span></label>
+                            <label>{%trans 'Country'%} <span style="color:red">*</span></label>
                             {{Profile_form.country}}
                         </div>
                          <div class="form-group col-md-6  mb-5">
-                            <label>City</label>
+                            <label>{%trans 'City'%}</label>
                             {{Profile_form.city}}
                         </div>
 
                     </div>
                      <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>qualifications1<span style="color:red">*</span></label>
+                            <label>{%trans 'qualifications'%}<span style="color:red">*</span></label>
                             {{Profile_form.qualifications1}}
                         </div>
                          <div class="form-group col-md-6  mb-5">
-                            <label>qualifications2</label>
+                            <label>{%trans 'qualifications'%}</label>
                             {{Profile_form.qualifications2}}
                         </div>
 
                     </div>
                      <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>qualifications3</label>
+                            <label>{%trans 'qualifications'%}</label>
                             {{Profile_form.qualifications3}}
                         </div>
                          <div class="form-group col-md-6  mb-5">
-                            <label>qualifications4</label>
+                            <label>{%trans 'qualifications'%}</label>
                             {{Profile_form.qualifications4}}
                         </div>
 
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>course you teach1<span style="color:red">*</span></label>
+                            <label>{%trans 'course you teach'%}<span style="color:red">*</span></label>
                             {{Profile_form.specialzed_courses1}}
                         </div>
                          <div class="form-group col-md-6  mb-5">
-                            <label>course you teach2</label>
+                            <label>{%trans 'course you teach'%}</label>
                             {{Profile_form.specialzed_courses2}}
                         </div>
 
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>course you teach3</label>
+                            <label>{%trans 'course you teach'%}</label>
                             {{Profile_form.specialzed_courses3}}
                         </div>
                          <div class="form-group col-md-6  mb-5">
-                            <label>grades you teach</label>
+                            <label>{%trans 'grades you teach'%}</label>
                             {{Profile_form.grades}}
                         </div>
 
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>CV <span style="color:red">*</span></label>
+                            <label>{%trans 'CV'%} <span style="color:red">*</span></label>
                             {{Profile_form.docfile}}
                         </div>
                          <div class="form-group col-md-6  mb-5">
-                            <label>Bank IBAN</label>
+                            <label>{%trans 'Bank IBAN'%}</label>
                             {{Profile_form.IBAN}}
                         </div>
 
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>Bank Name</label>
+                            <label>{%trans 'Bank Name'%}</label>
                             {{Profile_form.BankName}}
                         </div>
                          <div class="form-group col-md-6  mb-5">
-                            <label>Bank Country</label>
+                            <label>{%trans 'Bank Country'%}</label>
                             {{Profile_form.BankCountry}}
                         </div>
 
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>Experience Summery</label>
+                            <label>{%trans 'Experience Summery'%}</label>
                             {{Profile_form.Experience}}
                         </div>
 
@@ -146,7 +147,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>Notes</label>
+                            <label>{%trans 'Notes'%}</label>
                             {{Profile_form.Notes}}
                         </div>
 
@@ -159,7 +160,7 @@
 
                            <div class="form-group  ">
 
-                    <input style="width:200px;" type="submit" value="save" class="btn btn-success">
+                    <input style="width:200px;" type="submit" value="{%trans 'save'%}" class="btn btn-success">
                            </div>
 
                      </div>

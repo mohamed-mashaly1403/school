@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load i18n %}
 
   <!-- ======= Header ======= -->
 
@@ -10,9 +10,9 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex justify-content-center align-items-center">
     <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-      <h1>FUTURE OF LEARNING,<br>BOOK YOUR SESSIONS NOW  </h1>
-      <h2>Study online with private highly qualified teachers </h2>
-      <a href="courses.html" class="btn-get-started">Get Started</a>
+      <h1>{%trans 'FUTURE OF LEARNING,'%}<br>{%trans 'BOOK YOUR SESSIONS NOW'%}</h1>
+      <h2>{%trans 'Study online with private highly qualified teachers'%} </h2>
+      <a href="courses.html" class="btn-get-started">{%trans 'Get Started'%}</a>
     </div>
   </section><!-- End Hero -->
 
@@ -27,17 +27,17 @@
             <img src="{% static 'img/about.jpg' %}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-            <h3>HOW IT WORKS?.</h3>
+            <h3>{%trans 'HOW IT WORKS?.'%}</h3>
             <p class="fst-italic">
-              Simply choose the subject you need then fill the form about the course information and book number of sessions with free refund after first class in case you want to cancel.
+              {%trans 'Simply choose the subject you need then fill the form about the course information and book number of sessions with free refund after first class in case you want to cancel.'%}
             </p>
             <ul>
-              <li><i class="bi bi-check-circle"></i> step1:choose subject.</li>
-              <li><i class="bi bi-check-circle"></i> step2:fill the form.</li>
-              <li><i class="bi bi-check-circle"></i> step3:book number of sessions you need and pay.</li>
+              <li><i class="bi bi-check-circle"></i> {%trans 'step1:choose subject.'%}</li>
+              <li><i class="bi bi-check-circle"></i> {%trans 'step2:fill the form.'%}</li>
+              <li><i class="bi bi-check-circle"></i> {%trans 'step3:book number of sessions you need and pay.'%}</li>
             </ul>
             <p>
-             you wll get confirmation message by email, your teacher will be in touch with you on your dashboard to choose suitable date and time, your meeting links will be available as well.
+             {%trans 'you wll get confirmation message by email, your teacher will be in touch with you on your dashboard to choose suitable date and time, your meeting links will be available as well.'%}
             </p>
 
           </div>
@@ -54,22 +54,22 @@
 
           <div class="col-lg-3 col-6 text-center">
             <span data-purecounter-start="0" data-purecounter-end="1232" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Students</p>
+            <p>{%trans 'Students'%}</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
             <span data-purecounter-start="0" data-purecounter-end="64" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Courses</p>
+            <p>{%trans 'Courses'%}</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
             <span data-purecounter-start="0" data-purecounter-end="42" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Events</p>
+            <p>{%trans 'Events'%}</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
             <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Trainers</p>
+            <p>{%trans 'Trainers'%}</p>
           </div>
 
         </div>
@@ -84,12 +84,12 @@
         <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
-              <h3>Why Choose Scool.com?</h3>
+              <h3>{%trans 'Why Choose E-student?'%}</h3>
               <p>
-                With Scool.com you can coose convient way of learning while you are in your house, no border limites, we have highly qualified teachers from all around the world, on top of that you can refund you money any time you decide to stop or you can extend the number of seesions.
+                {%trans 'With E-student you can experience convent way of learning while you are in your house, no border limits, we have highly qualified teachers from all around the world, on top of that you can refund your money any time you decide to stop.'%}
               </p>
               <div class="text-center">
-                <a href="about.html" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+                <a href="about.html" class="more-btn">{%trans 'Learn More'%} <i class="bx bx-chevron-right"></i></a>
               </div>
             </div>
           </div>
@@ -99,22 +99,22 @@
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i class="bx ri-disc-line"></i>
-                    <h4>Convient way of learning</h4>
-                    <p>Study wile you are in your house in any country with no border limits at all </p>
+                    <h4>{%trans 'Convent way of learning'%}</h4>
+                    <p>{%trans 'Study wile you are in your house in any country with no border limits at all'%} </p>
                   </div>
                 </div>
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i class="bx bx-receipt"></i>
-                    <h4>Easy to Refund and extend</h4>
-                    <p>Refund your mony easly if you don't like it</p>
+                    <h4>{%trans 'Easy to Refund and extend'%}</h4>
+                    <p>{%trans 'Refund your money easily if you don\'t like it'%}</p>
                   </div>
                 </div>
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i class="bx ri-price-tag-2-line"></i>
-                    <h4> Reasonable prices </h4>
-                    <p>Enroll on many subjects and enjoy big discounts</p>
+                    <h4> {%trans 'Reasonable prices'%} </h4>
+                    <p>{%trans 'Enroll on many subjects and enjoy big discounts'%}</p>
                   </div>
                 </div>
               </div>
@@ -136,7 +136,7 @@
 
           <a href="{% url 'courses' %}">    <img src="{% static 'img/uae.jpg'%}" style=" margin-right: 15px;" width="60px"></a>
 
-              <h3 ><a href="{% url 'courses' %}">UAE</a></h3>
+              <h3 ><a href="{% url 'courses' %}">{%trans 'UAE'%}</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4">
@@ -144,7 +144,7 @@
 
 
 <a href="{% url 'courses' %}"><img src="{% static 'img/ksa.jpg'%}"style=" margin-right: 15px;" width="60px"></a>
-              <h3><a href="{% url 'courses' %}">KSA</a></h3>
+              <h3><a href="{% url 'courses' %}">{%trans 'KSA'%}</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4">
@@ -153,7 +153,7 @@
 
 <a href="{% url 'courses' %}"><img src="{% static 'img/kuwait.png'%}"style=" margin-right: 15px;" width="60px"></a>
 
-              <h3><a href="{% url 'courses' %}">Kuwait</a></h3>
+              <h3><a href="{% url 'courses' %}">{%trans 'Kuwait'%}</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4">
@@ -161,7 +161,7 @@
 
 
 <a href="{% url 'courses' %}"><img src="{% static 'img/qatar.png'%}"style=" margin-right: 15px;" width="60px"></a>
-              <h3><a href="{% url 'courses' %}">Qatar</a></h3>
+              <h3><a href="{% url 'courses' %}">{%trans 'Qatar'%}</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4">
@@ -170,13 +170,13 @@
               
               <i class="iconify" data-icon="mdi:abjad-arabic" data-width="34" style="color: #ffbb2c;"></i>
            
-              <h3><a href="{% url 'courseDetails' 'arabic' %}">Arabic</a></h3>
+              <h3><a href="{% url 'courseDetails' 'arabic' %}">{%trans 'Arabic'%}</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
             <div class="icon-box">
               <i class="ri-bar-chart-box-line" style="color: #5578ff;"></i>
-              <h3><a href="{% url 'courseDetails' 'math' %}">Math</a></h3>
+              <h3><a href="{% url 'courseDetails' 'math' %}">{%trans 'Math'%}</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
@@ -188,80 +188,80 @@
           <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
             <div class="icon-box">
               <i class="bi bi-thermometer-sun" style="color: #e361ff;"></i>
-              <h3><a href="{% url 'courseDetails' 'science' %}">Science</a></h3>
+              <h3><a href="{% url 'courseDetails' 'science' %}">{%trans 'Science'%}</a></h3>
 
             </div>
           </div>
           <div class="col-lg-3 col-md-4 mt-4">
             <div class="icon-box">
               <i class="bi bi-medium" style="color: #47aeff;"></i>
-              <h3><a href="{% url 'courseDetails' 'physics' %}">Physics</a></h3>
+              <h3><a href="{% url 'courseDetails' 'physics' %}">{%trans 'Physics'%}</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4 mt-4">
             <div class="icon-box">
               <i  class="iconify" data-icon="carbon:chemistry" data-width="34" style="color: #ffa76e;"></i>
-              <h3><a href="{% url 'courseDetails' 'chemistry' %}">Chemistry</a></h3>
+              <h3><a href="{% url 'courseDetails' 'chemistry' %}">{%trans 'Chemistry'%}</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4 mt-4">
             <div class="icon-box">
               <i class="iconify" data-icon="la:quran" data-width="34" style="color: #11dbcf;"></i>
-              <h3><a href="{% url 'courseDetails' 'quran' %}">Quran</a></h3>
+              <h3><a href="{% url 'courseDetails' 'quran' %}">{%trans 'Quran'%}</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4 mt-4">
             <div class="icon-box">
               <i class="bi bi-explicit" style="color: #4233ff;"></i>
-              <h3><a href="{% url 'courseDetails' 'english' %}">English</a></h3>
+              <h3><a href="{% url 'courseDetails' 'english' %}">{%trans 'English'%}</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4 mt-4">
             <div class="icon-box">
               <i class="bi bi-gender-trans" style="color: #b2904f;"></i>
-              <h3><a href="{% url 'courseDetails' 'biology' %}">Biology</a></h3>
+              <h3><a href="{% url 'courseDetails' 'biology' %}">{%trans 'Biology'%}</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4 mt-4">
             <div class="icon-box">
               <i class="bi bi-currency-dollar" style="color: #b20969;"></i>
-              <h3><a href="{% url 'courseDetails' 'business-administration' %}">Business Administration</a></h3>
+              <h3><a href="{% url 'courseDetails' 'business-administration' %}">{%trans 'Business Administration'%}</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4 mt-4">
             <div class="icon-box">
               <i class="iconify" data-icon="openmoji:flag-france" data-width="34"></i>
-              <h3><a href="{% url 'courseDetails' 'french' %}">French</a></h3>
+              <h3><a href="{% url 'courseDetails' 'french' %}">{%trans 'French'%}</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4 mt-4">
             <div class="icon-box">
               <i class="bi bi-activity" style="color: #29cc61;"></i>
-              <h3><a href="{% url 'courseDetails' 'health-science' %}">Health Science</a></h3>
+              <h3><a href="{% url 'courseDetails' 'health-science' %}">{%trans 'Health Science'%}</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4 mt-4">
             <div class="icon-box">
               <i class="bi bi-music-note-beamed" style="color: #29cc61;"></i>
-              <h3><a href="{% url 'courseDetails' 'music' %}">Music</a></h3>
+              <h3><a href="{% url 'courseDetails' 'music' %}">{%trans 'Music'%}</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4 mt-4">
             <div class="icon-box">
               <i class="bi bi-book" style="color: #29cc61;"></i>
-              <h3><a href="{% url 'courseDetails' 'integration-curriculum' %}">Integrated curriculum</a></h3>
+              <h3><a href="{% url 'courseDetails' 'integration-curriculum' %}">{%trans 'Integrated curriculum'%}</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4 mt-4">
             <div class="icon-box">
               <i class="iconify" data-icon="uil:letter-chinese-a" data-width="34" style="color: #a629cc;"></i>
-              <h3><a href="{% url 'courseDetails' 'chinese' %}">Chinese</a></h3>
+              <h3><a href="{% url 'courseDetails' 'chinese' %}">{%trans 'Chinese'%}</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4 mt-4">
             <div class="icon-box">
               <i class="bi bi-palette" style="color: #b20969;"></i>
-              <h3><a href="{% url 'courseDetails' 'visual-arts' %}">Visual Arts</a></h3>
+              <h3><a href="{% url 'courseDetails' 'visual-arts' %}">{%trans 'Visual Arts'%}</a></h3>
             </div>
           </div>
         </div>
@@ -274,8 +274,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Courses</h2>
-          <p>Popular Courses</p>
+          <h2>{%trans 'Courses'%}</h2>
+          <p>{%trans 'Popular Courses '%}</p>
         </div>
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
@@ -341,7 +341,7 @@
                   <p class="price">$180</p>
                 </div>
 
-                <h3><a href="course-details.html">Copywriting</a></h3>
+                <h3><a href="course-details.html"> Copywriting</a></h3>
                 <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">

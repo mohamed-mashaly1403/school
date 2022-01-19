@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load i18n %}
 
   <!-- ======= Header ======= -->
 
@@ -9,8 +9,8 @@
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
-        <h2>{{courseDets.course_name}} Course</h2>
-        <p>Available in {%if  courseDets.language1 == courseDets.language2%} {{courseDets.language1}}  {%else %} {{courseDets.language1}} and {{courseDets.language2}} {% endif %}, choose course language and grade then start over in convenient remote learning process  </p>
+        <h2>{{courseDets.course_name}} {%trans 'Course'%}</h2>
+        <p>{%trans 'Available in'%} {%if  courseDets.language1 == courseDets.language2%} {{courseDets.language1}}  {%else %} {{courseDets.language1}} {%trans 'and'%} {{courseDets.language2}} {% endif %}, {%trans 'Choose course language and grade then go!'%}  </p>
       </div>
     </div><!-- End Breadcrumbs -->
 
@@ -21,29 +21,29 @@
         <div class="row">
           <div class="col-lg-8">
             <img src="{{courseDets.img.url}}" class="img-fluid" alt="">
-            <h3>{{courseDets.course_name}} Coures</h3>
+            <h3>{{courseDets.course_name}} {%trans 'Course'%}</h3>
             <p>
                {{courseDets.description}}
           </div>
           <div class="col-lg-4">
 
             <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Trainer</h5>
-              <p><a href="#">High qualified teacher </a></p>
+              <h5>{%trans 'Trainer'%}</h5>
+              <p><a href="#">{%trans 'High qualified teacher'%} </a></p>
             </div>
 
             <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Course Fee</h5>
-              <p>from 100 Aed </p>
+              <h5>{%trans 'Course Fees'%}</h5>
+              <p>{%trans 'from 100 AED'%} </p>
             </div>
 
             <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Available Seats</h5>
+              <h5>{%trans 'Available Seats'%}</h5>
               <p>3</p>
             </div>
 
             <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Review</h5>
+              <h5>{%trans 'Review'%}</h5>
               <div class="rating-star">
 
 					<span>reviews	<i class="fa fa-star{% if avg < 0.5%}-o{% elif avg >= 0.5 and avg < 1 %}-half-o{%endif%}" aria-hidden="true"></i>
@@ -53,7 +53,7 @@
 						<i class="fa fa-star{% if avg < 4.5%}-o{% elif avg >= 4.5 and avg < 5 %}-half-o{%endif%}" aria-hidden="true"></i>
 
 					</span>
-	<span>{{avg}} stars / {{count}} review{{count|pluralize:'s'}}</span>
+	<span>{{avg}} {%trans 'stars'%} / {{count}} {%trans 'review'%}{{count|pluralize:'s'}}</span>
 				</div>
             </div>
 
@@ -71,19 +71,19 @@
 
           <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
             <div class="box featured">
-              <h3>One class</h3>
-              <h4><sup>AED</sup>100<span> / class</span></h4>
+              <h3>{%trans 'One class'%}</h3>
+              <h4><sup>AED</sup>100<span> / {%trans 'class'%}</span></h4>
               <ul>
-                 <li>One hour</li>
-                <li>Course material </li>
+                 <li>{%trans 'More than one hour'%}</li>
+                <li>{%trans 'Course material'%} </li>
 
-                <li class="na">MS account</li>
-                   <li class="na">Special follow up</li>
-                  <li class="na">Discount on extend</li>
+
+                   <li class="na">{%trans 'Special follow up'%}</li>
+                  <li class="na">{%trans 'Discount on extend'%}</li>
               </ul>
               <div class="btn-wrap">
 
-                <a href="{% url 'checkout' courseDets.slug 1 100 %}" class="btn-buy">Buy Now</a>
+                <a href="{% url 'checkout' courseDets.slug 1 100 %}" class="btn-buy">{%trans 'Buy Now'%}</a>
 
 
               </div>
@@ -92,18 +92,18 @@
 
           <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
             <div class="box">
-              <h3>Three Classes </h3>
-              <h4><sup>AED</sup>250<span> / 3 classes</span></h4>
+              <h3>{%trans 'Three Classes'%} </h3>
+              <h4><sup>AED</sup>250<span> / 3 {%trans 'classes'%}</span></h4>
               <ul>
-                <li>Three hours</li>
-                <li>Course material</li>
-                <li>MS account</li>
-                <li>Special follow up</li>
-                  <li class="na">Discount on extend</li>
+                <li>{%trans 'More than Three hours'%}</li>
+                <li>{%trans 'Course material'%}</li>
+
+                <li>{%trans 'Special follow up'%}</li>
+                  <li class="na">{%trans 'Discount on extend'%}</li>
               </ul>
               <div class="btn-wrap">
 
-                <a href="{% url 'checkout' courseDets.slug 3 250 %}" class="btn-buy">Buy Now</a>
+                <a href="{% url 'checkout' courseDets.slug 3 250 %}" class="btn-buy">{%trans 'Buy Now'%}</a>
 
               </div>
             </div>
@@ -111,19 +111,19 @@
 
           <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
             <div class="box">
-              <span class="advanced">Advanced</span>
+              <span class="advanced">{%trans 'Advanced'%}</span>
               <h3>Six Classes</h3>
-              <h4><sup>AED</sup>500<span> / 6 Classes</span></h4>
+              <h4><sup>AED</sup>500<span> / 6 {%trans 'Classes'%}</span></h4>
               <ul>
-                <li>More than six hours </li>
-                <li>Course material</li>
-                <li>MS account</li>
-                <li>Special follow up</li>
-                <li>One class free</li>
+                <li>{%trans 'More than six hours'%} </li>
+                <li>{%trans 'Course material'%}</li>
+
+                <li>{%trans 'Special follow up'%}</li>
+                <li>{%trans 'One class free'%}</li>
               </ul>
               <div class="btn-wrap">
 
-                <a href="{% url 'checkout' courseDets.slug 6 500 %}" class="btn-buy">Buy Now</a>
+                <a href="{% url 'checkout' courseDets.slug 6 500 %}" class="btn-buy">{%trans 'Buy Now'%}</a>
 
 
               </div>
@@ -136,7 +136,7 @@
     </section><!-- End Pricing Section -->
 {%if reviews_count is not 0 %}
 <div class="container" data-aos="fade-up">
-<strong>{{reviews_count}} users review{{ reviews_count|pluralize:"s" }}</strong>
+<strong>{{reviews_count}} {%trans 'users review'%}{{ reviews_count|pluralize:"s" }}</strong>
     </div>
 {%endif%}
 
@@ -147,15 +147,15 @@
         <div class="container" data-aos="fade-up">
 		<div class="icontext w-100">
 			{% if review.user.user_img %}
-     <a href="{%url 'edit_profile'%}"><img  height="50" class="rounded-circle mb-2" style="margin:20px"  src="{{review.user.user_img.url}}" alt="user picture"></a>
+     <a href="{%url 'edit_profile'%}"><img  height="50" class="rounded-circle mb-2" style="margin:20px"  src="{{review.user.user_img.url}}" alt="{%trans 'user picture'%}"></a>
       {% else%}
-      <a href="{%url 'edit_profile'%}"><img  height="50" class="rounded-circle mb-2" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="user picture"></a>
+      <a href="{%url 'edit_profile'%}"><img  height="50" class="rounded-circle mb-2" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="{%trans 'user picture'%}"></a>
       {% endif %}
 
 			<div class="text">
 
-				<span class="date text-muted float-md-right">created at: {{review.created_date}} </span> <br>
-								<span class="date text-muted float-md-right">last update: {{review.updated_date}} </span> <br>
+				<span class="date text-muted float-md-right">{%trans 'created at:'%}{{review.created_date}} </span> <br>
+								<span class="date text-muted float-md-right">{%trans 'last update:'%} {{review.updated_date}} </span> <br>
 								<h6 class="mb-1">{{review.user.first_name}} {{review.user.last_name}}</h6>
 				<div class="rating-star">
 					<span>
@@ -191,9 +191,9 @@
 	{% if paged_review.has_other_pages %}
 	  <ul class="pagination">
 		  {% if paged_review.has_previous %}
-		  <li class="page-item "><a class="page-link" href="?page=1">&laquo; first</a></li>
+		  <li class="page-item "><a class="page-link" href="?page=1">&laquo; {%trans 'first'%}</a></li>
 
-		<li class="page-item "><a class="page-link" href="?page={{ paged_review.previous_page_number }}">Previous</a></li>
+		<li class="page-item "><a class="page-link" href="?page={{ paged_review.previous_page_number }}">{%trans 'Previous'%}</a></li>
 		  {% endif %}
 
 		  {% for i in x %}
@@ -204,8 +204,8 @@
 		  	{% endif %}
 		  {% endfor %}
 		  {% if paged_review.has_next %}
-				<li class="page-item"><a class="page-link" href="?page={{paged_review.next_page_number}}">Next</a></li>
-		  <li class="page-item"><a class="page-link " href="?page={{ paged_review.paginator.num_pages }}">last &raquo;</a></li>
+				<li class="page-item"><a class="page-link" href="?page={{paged_review.next_page_number}}">{%trans 'Next'%}</a></li>
+		  <li class="page-item"><a class="page-link " href="?page={{ paged_review.paginator.num_pages }}">{%trans 'last'%} &raquo;</a></li>
  		 {% endif %}
 	  </ul>
 	{% endif %}

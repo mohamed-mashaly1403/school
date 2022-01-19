@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-
+{% load i18n %}
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-conten padding-y bg  ">
 <!--{% include 'includes/alerts.html' %}-->
@@ -16,7 +16,7 @@
 	<main class="col-md-8">
 		<article class="card">
 		<header class="card-header">
-			<strong class="d-inline-block mr-3"> Complains </strong>
+			<strong class="d-inline-block mr-3"> {%trans 'Complains'%} </strong>
 
 		</header>
 		<div class="card-body">
@@ -31,13 +31,13 @@
 				<form  action="{% url 'complains'  %}" method="POST">
 					{% csrf_token %}
 
-						<label>Complain Title(Regards):</label>
+						<label>{%trans 'Complain Title(Regards):'%}</label>
 						<input required type="text" name="Regards" class="form-control" >
 						<br>
-						<label>Complain: </label>
+						<label>{%trans 'Complain:'%} </label>
 						<textarea required name="Reason" rows="4" class="form-control"></textarea>
 							<br>
-						<input type="submit" value="submit" class="btn btn-success">
+						<input type="submit" value="{%trans 'submit'%}" class="btn btn-success">
 
 					</div>
 				</form>

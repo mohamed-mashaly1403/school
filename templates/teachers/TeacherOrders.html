@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-
+{% load i18n %}
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-conten padding-y bg">
     <br>
@@ -15,7 +15,7 @@
 	<main class="col-md-9">
 		<article class="card">
 		<header class="card-header">
-			<strong class="d-inline-block mr-3">My orders: </strong>
+			<strong class="d-inline-block mr-3">{%trans 'My orders:'%} </strong>
 
 		</header>
 		<div class="card-body">
@@ -25,12 +25,12 @@
 				<table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">Order #</th>
-      <th scope="col">Course Name</th>
-      <th scope="col">Order Total</th>
-        <th scope="col">Total classes</th>
-      <th scope="col">order Date</th>
-      <th scope="col">Status</th>
+      <th scope="col">{%trans 'Order #'%}</th>
+      <th scope="col">{%trans 'Course Name'%}</th>
+      <th scope="col">{%trans 'Order Total'%}</th>
+        <th scope="col">{%trans 'Total classes'%}</th>
+      <th scope="col">{%trans 'order Date'%}</th>
+      <th scope="col">{%trans 'Status'%}</th>
     </tr>
   </thead>
   <tbody>
@@ -39,10 +39,10 @@
       <th scope="row"><a href="{% url 'TeacherCourseDetails' order.order.order_number %}">{{order.order.order_number}} </a></th>
       <td>{{order.order_course.course_name}}</td>
       <td>{{order.Teacher_cost}} AED</td>
-      <td>{{order.order.total_classes}} classes</td>
+      <td>{{order.order.total_classes}} {%trans 'classes'%}</td>
       <td>{{order.created_at}}</td>
 
-      <td>{% if order.is_deliverd %} Finish {%else %} Active {%endif%}  </td>
+      <td>{% if order.is_deliverd %} {%trans 'Finish'%} {%else %} {%trans 'Active'%} {%endif%}  </td>
 
     </tr>
   {% endfor %}

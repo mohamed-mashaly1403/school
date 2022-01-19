@@ -1,3 +1,7 @@
+
+ {%trans ''%}
+ {% load i18n %}
+
  {%for i in urls %}
 
                         <div class="form-row  ">

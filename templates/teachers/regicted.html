@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load i18n %}
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-conten padding-y" style="min-height:84vh">
 
@@ -10,8 +11,8 @@
         <div class="card" >
   <div class="card-body">
 
-      <p class="card-text"><strong>Thank you for Registration to be one of us. But Unfortunately your qualifications doesn't meet our criteria <span>&#x1F61E;</span>.</strong></p>
-    <a href="{% url 'complains'%}" class="btn btn-success">Want to complain?</a>
+      <p class="card-text"><strong>{%trans 'Thank you for Registration to be one of us. But Unfortunately your qualifications doesn't meet our criteria'%} <span>&#x1F61E;</span>.</strong></p>
+    <a href="{% url 'complains'%}" class="btn btn-success">{%trans 'Want to complain?'%}</a>
   </div>
 </div>
 

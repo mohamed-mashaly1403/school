@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static%}
+{% load i18n %}
 <style>
     span {cursor:pointer; }
 		.number{
@@ -44,30 +45,30 @@
 <div class="card">
     <form method="POST" action="{% url 'place_order' needed_course_id price lessons   %}"  >
 <div class="card-body">
-    <h4 class="card-title mb-4">Course Details</h4>
+    <h4 class="card-title mb-4">{%trans 'Course Details'%}</h4>
 
          {%csrf_token%}
 <div class="form-row">
 <div class="col form-group">
-     <label>Country<span style="color:red">  *</span></label>
+     <label>{%trans 'Country'%}<span style="color:red">  *</span></label>
 
     <select name="country"  class="form-control"  required  id="cou" onchange="yesnoCheckk(this);">
-     <option   value="UAE" class="form-control"  >UAE</option>
-    <option   value="KSA" class="form-control"  >KSA</option>
-    <option   value="Qatar" class="form-control"  >Qatar</option>
-    <option   value="Kuwait" class="form-control"  >Kuwait</option>
-    <option   value="other" class="form-control"  >other</option>
+     <option   value="UAE" class="form-control"  >{%trans 'UAE'%}</option>
+    <option   value="KSA" class="form-control"  >{%trans 'KSA'%}</option>
+    <option   value="Qatar" class="form-control"  >{%trans 'Qatar'%}</option>
+    <option   value="Kuwait" class="form-control"  >{%trans 'Kuwait'%}</option>
+    <option   value="other" class="form-control"  >{%trans 'other'%}</option>
     </select>
      <div id="ifYess" style="display: none;">
                     <br />
-   <label for="carr">Enter Your Country <span style="color:red">*</span> </label>
+   <label for="carr">{%trans 'Enter Your Country'%} <span style="color:red">*</span> </label>
     <input type="text" id="carr" class="form-control"   />
 
 </div>
-    <small>Choose Your country</small>
+    <small>{%trans 'Choose Your country'%}</small>
 </div>
     <div class="col form-group">
-     <label>City <span style="color:red">*</span></label>
+     <label>{%trans 'City'%} <span style="color:red">*</span></label>
     <input type="text" name="city" class="form-control" required >
     <input type="text" name="ncourse" class="form-control" hidden value="{{needed_course}}" >
 </div>
@@ -76,7 +77,7 @@
         <div class="form-row">
             {%if needed_course.is_school_subject %}
 <div class="col form-group">
-     <label>Grade <span style="color:red">*</span></label>
+     <label>{%trans 'Grade'%} <span style="color:red">*</span></label>
     <select name="grade" required class="form-control">
 
 
@@ -97,59 +98,43 @@
 
 
         </select>
-    <small>Choose Your Grade</small>
+    <small>{%trans 'Choose Your Grade'%}</small>
 </div>
              {%endif%}
-<!--    <div class="col form-group">-->
-<!--     <label>Phone Number <span style="color:red">*</span></label>-->
-<!--    <input type="tel" name="phone" class="form-control" pattern="[0-9]{12}" required>-->
 
-<!--        <small>Format: 971xxxxxxxxx</small>-->
-
-<!--</div>-->
 
 </div>
-<!--        <div class="form-row">-->
-<!--<div class="col form-group">-->
-<!--     <label>Adress 1</label>-->
-<!--    <input type="text" name="address_line_1" class="form-control" required >-->
-<!--</div>-->
-<!--    <div class="col form-group">-->
-<!--     <label>Adress 2</label>-->
-<!--    <input type="text" name="address_line_2" class="form-control" >-->
-<!--</div>-->
 
-<!--</div>-->
     {%if needed_course.is_school_subject %}
         <div class="form-row">
             <div class="col form-group">
-            <label>Curriculum Type <span style="color:red">*</span></label>
+            <label>{%trans 'Curriculum Type'%} <span style="color:red">*</span></label>
     <select name="Curriculum_type" required class="form-control" id="ses" onchange="yesnoCheck(this);" >
 
-    <option   value="General" class="form-control"  >General</option>
-    <option   value="Advanced" class="form-control"  >Advanced</option>
-    <option   value="Elite" class="form-control"  >Elite</option>
-    <option   value="other" class="form-control"  >other</option>
+    <option   value="General" class="form-control"  >{%trans 'General'%}</option>
+    <option   value="Advanced" class="form-control"  >{% trans 'Advanced' %}</option>
+    <option   value="Elite" class="form-control"  >{%trans 'Elite'%}</option>
+    <option   value="other" class="form-control"  >{%trans 'other'%}</option>
 
             </select>
                 <div id="ifYes" style="display: none;">
                     <br />
-   <label for="car">Enter Curriculum Type <span style="color:red">*</span> </label>
+   <label for="car">{%trans 'Enter Curriculum Type'%} <span style="color:red">*</span> </label>
     <input type="text" id="car" class="form-control" name="" />
 </div>
-               <small>Curriculum Type</small>
+               <small>{%trans 'Curriculum Type'%}</small>
             </div>
    <div class="col form-group">
-      <label>Semester <span style="color:red">*</span></label>
+      <label>{%trans 'Semester'%} <span style="color:red">*</span></label>
             <select name="term" required class="form-control">
 
 
 
-    <option   value="1" class="form-control"  >first</option>
-    <option   value="2" class="form-control"  >second</option>
-    <option   value="3" class="form-control"  >Third</option>
+    <option   value="1" class="form-control"  >{%trans 'first'%}</option>
+    <option   value="2" class="form-control"  >{%trans 'second'%}</option>
+    <option   value="3" class="form-control"  >{%trans 'Third'%}</option>
             </select>
-       <small>Semester</small>
+       <small>{%trans 'Semester'%}</small>
              </div>
 
             {%if needed_course.course_name  in lang %}
@@ -159,14 +144,14 @@
             {%else%}
 
             <div class="col form-group">
-      <label>Course Language <span style="color:red">*</span></label>
+      <label>{%trans 'Course Language'%} <span style="color:red">*</span></label>
             <select name="order_course_language" required class="form-control">
-    <option   value="Arabic" class="form-control"  >Arabic</option>
-    <option   value="English" class="form-control"  >English</option>
-    <option   value="French" class="form-control"  >French</option>
-    <option   value="Chinese" class="form-control"  >Chinese</option>
+    <option   value="Arabic" class="form-control"  >{%trans 'Arabic'%}</option>
+    <option   value="English" class="form-control"  >{%trans 'English'%}</option>
+    <option   value="French" class="form-control"  >{%trans 'French'%}</option>
+    <option   value="Chinese" class="form-control"  >{%trans 'Chinese'%}</option>
             </select>
-       <small>Choose Course Language</small>
+       <small>{%trans 'Choose Course Language'%}</small>
              </div>
              {%endif%}
 
@@ -177,7 +162,7 @@
 
                <div class="col form-group">
 
-             <label> Notes</label>
+             <label> {%trans 'Notes'%}</label>
              <textarea name="order_note" rows="2" class="form-control" ></textarea>
              </div>
               </div>
@@ -204,15 +189,15 @@
                 <label hidden id="price" set="{{price}}"> </label>
                 <label hidden id="lesson" set="{{lessons}}"> </label>
                 <ul>
-                    <li >  <strong style="color:red"> Total price with 5% tax:<output name="total" for="quantity">{{price}} </output> AED</strong></li>
-                    <li> <strong style="color:red">Total lessons:<output name="total_classes" for="quantity">{{lessons}}</output> class{{ lessons|pluralize:"es" }}</strong></li>
+                    <li >  <strong style="color:red"> {%trans 'Total price with tax'%} 5%:<output name="total" for="quantity">{{price}} </output> AED</strong></li>
+                    <li> <strong style="color:red">{%trans 'Total lessons:'%}<output name="total_classes" for="quantity">{{lessons}}</output> class{{ lessons|pluralize:"es" }}</strong></li>
 
                 </ul>
                 {%if price != 0 %}
                   <div class="form-row ">
                 <div class="col form-group ">
 
-<label for="quantity"> Quantity  <span style="color:red">*</span></label>
+<label for="quantity"> {%trans 'Quantity'%}  <span style="color:red">*</span></label>
                     <div class="number">
                         <span class="minus"><strong>-</strong></span>
                 <input type="number"  name="quantity"  min="1" step="1" value="1" required pattern="[1-9]" id="quantity"  >
@@ -224,7 +209,7 @@
                 {%else%}
                 <div class="form-row  " hidden>
                 <div class="col form-group ">
-                    <label> quantity  </label>
+                    <label> {%trans 'quantity'%}  </label>
 
                 <input type="number"  name="quantity" class="form-control" min="1" step="1" value="1" required pattern="[1-9]"   >
 
@@ -235,8 +220,8 @@
                 {%endif%}
                 <br>
 
-<button class="btn btn-danger btn-block" type="submit" name="submit">{%if price != 0 %} Buy Now {%else%} Try Now {%endif%}</button>
-			<a href="{%url 'courses'%}" class="btn btn-outline-primary btn-block">Go To Courses</a>
+<button class="btn btn-danger btn-block" type="submit" name="submit">{%if price != 0 %} {%trans 'Buy Now'%} {%else%} {%trans 'Try Now'%} {%endif%}</button>
+			<a href="{%url 'courses'%}" class="btn btn-outline-primary btn-block">{%trans 'Go To Courses'%}</a>
             </div>
           </div>
         </div>

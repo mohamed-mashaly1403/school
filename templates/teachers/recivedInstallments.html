@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load i18n %}
 
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-conten padding-y bg">
@@ -15,7 +16,7 @@
 	<main class="col-md-9">
 		<article class="card">
 		<header class="card-header">
-			<strong class="d-inline-block mr-3">Received Installments : </strong>
+			<strong class="d-inline-block mr-3">{%trans 'Received Installments:'%} </strong>
 
 		</header>
 		<div class="card-body">
@@ -25,11 +26,11 @@
 				<table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">Transfer #</th>
+      <th scope="col">{%trans 'Transfer#'%}</th>
 
-      <th scope="col">Total</th>
+      <th scope="col">{%trans 'Total'%}</th>
 
-      <th scope="col">Transfer Date</th>
+      <th scope="col">{%trans 'Transfer Date'%}</th>
 
     </tr>
   </thead>
@@ -47,7 +48,7 @@
     </tr>
   {% endfor %}
   <tr>
-      <th><strong>Total Received:</strong></th>
+      <th><strong>{%trans 'Total Received:'%}</strong></th>
       <td><strong>{{total_recived}} AED</strong></td>
 
   </tr>

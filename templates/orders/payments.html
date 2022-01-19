@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static%}
+{% load i18n %}
 
 
 <section class="section-content padding-y bg">
@@ -10,12 +11,12 @@
     <div class="container">
 
         <!-- ============================ COMPONENT 1 ================================= -->
-        <h3 class="mb-10">Review order Details</h3>
+        <h3 class="mb-10">{%trans 'Review order Details'%}</h3>
         <div class="row">
 
             <aside class="col-lg-8">
                 <div class="card">
-                    <h5 class="card-header"><strong>Billing Adress</strong></h5>
+                    <h5 class="card-header"><strong>{%trans 'Billing Address'%}</strong></h5>
                     <div class="card-body">
                         <p class="card-text mb-0">{{order.first_name}} {{order.last_name}}.</p>
 
@@ -23,28 +24,28 @@
 
                         <p class="card-text mb-0">{{order.phone}}</p>
                         {%if order.order_note%}
-                        <b>Order Note:</b> {{ order.order_note}}
+                        <b>{%trans 'Order Note'%}:</b> {{ order.order_note}}
                         {%endif%}
 
                     </div>
                 </div>
                 <div class="card">
-                    <h5 class="card-header"><strong>Payment method</strong></h5>
+                    <h5 class="card-header"><strong>{%trans 'Payment method'%}</strong></h5>
                     <div class="card-body">
-                        <p class="card-text">PayPal</p>
+                        <p class="card-text">{%trans 'PayPal'%}</p>
                     </div>
                 </div>
                 <div class="card">
-                    <h5 class="card-header"><strong>Review Course</strong></h5>
+                    <h5 class="card-header"><strong>{%trans 'Review Course'%}</strong></h5>
                     <div class="card-body">
 
                         <table class="table table-borderless table-shopping-cart">
                             <thead class="text-muted">
                             <tr class="small text-uppercase">
-                                <th scope="col" width="120">Course</th>
-                                <th scope="col" width="120">lessons</th>
+                                <th scope="col" width="120">{%trans 'Course'%}</th>
+                                <th scope="col" width="120">{%trans 'lessons'%}</th>
 
-                                <th scope="col" width="120">Price</th>
+                                <th scope="col" width="120">{%trans 'Price'%}</th>
 
 
 
@@ -60,7 +61,7 @@
                                     <figure class="itemside align-items-center">
                                         <div class="aside">
                                             <figcaption class="info">
-                                                <a class="title" href="{{ needed_course.get_url }}"><strong>{{needed_course.course_name}} Course</strong></a>
+                                                <a class="title" href="{{ needed_course.get_url }}"><strong>{{needed_course.course_name}} {%trans 'Course'%}</strong></a>
 
                                         </figcaption>
                                             <br>
@@ -92,7 +93,7 @@
                         </table>
                     </div>
                 </div>
-                <a href="{% url 'courses' %}" class="btn btn-success"> &laquo; Back to Courses</a>
+                <a href="{% url 'courses' %}" class="btn btn-success"> &laquo; {%trans 'Back to Courses'%}</a>
 
             </aside> <!-- col.// -->
             <aside class="col-lg-4">
@@ -100,19 +101,19 @@
                 <div class="card">
                     <div class="card-body">
                         <dl class="dlist-align">
-                            <dt>  Course price:</dt>
+                            <dt>  {%trans 'Course price:'%}</dt>
                             <dd class="text-right"><strong>AED {{order.total}}</strong></dd>
                         </dl>
                         <dl class="dlist-align">
-                            <dt>Quantity:</dt>
+                            <dt>{%trans 'Quantity:'%}</dt>
                             <dd class="text-right"> <strong>{{order.quantity}}</strong></dd>
                         </dl>
                         <dl class="dlist-align">
-                            <dt>Tax 5%:</dt>
+                            <dt>{%trans 'Tax'%} 5%:</dt>
                             <dd class="text-right"> <strong>AED {{order.tax}}</strong></dd>
                         </dl>
                         <dl class="dlist-align">
-                            <dt>Total:</dt>
+                            <dt>{%trans 'Total'%}:</dt>
                             <dd class="text-right text-dark b"><strong>AED{{order.gtotal}}</strong></dd>
                         </dl>
                         <hr>

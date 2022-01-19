@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+{% load i18n %}
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-conten padding-y bg">
 <!--{% include 'includes/alerts.html' %}-->
@@ -15,7 +16,7 @@
 	<main class="col-md-9">
 		<article class="card">
 		<header class="card-header">
-			<strong class="d-inline-block mr-3">login as Teacher: </strong>
+			<strong class="d-inline-block mr-3">{%trans 'login as Teacher:'%} </strong>
 			<span>{{user.first_name}} {{user.last_name}}</span>
 		</header>
 		<div class="card-body">
@@ -26,13 +27,13 @@
 						<div class="row">
 				<div class="col-md-6">
 					<div class="card text-center">
-						<h5 class="card-title"> Total Courses </h5>
+						<h5 class="card-title"> {%trans 'Total Courses'%} </h5>
 						<h4>{{orders_count}}</h4>
 						{%if orders_count%}
-						<a href="{%url 'TeacherOrders'%}">View courses</a>
+						<a href="{%url 'TeacherOrders'%}">{%trans 'View courses'%}</a>
 
 						{%else%}
-						<label class="text-muted" >NO Courses Yet</label>
+						<label class="text-muted" >{%trans 'NO Courses Yet'%}</label>
 						{%endif%}
 						</div>
 				</div>
@@ -41,12 +42,12 @@
 
 
 
-						<h5 class="card-title"> Active Courses </h5>
+						<h5 class="card-title"> {%trans 'Active Courses'%} </h5>
 						<h4>{{active_orders_count}}</h4>
 						{%if active_orders_count %}
-						<a href="{%url 'TeacherActiveOrders'%}">View courses</a>
+						<a href="{%url 'TeacherActiveOrders'%}">{%trans 'View courses'%}</a>
 						{%else%}
-						<label class="text-muted" >NO Courses Yet</label>
+						<label class="text-muted" >{%trans 'NO Courses Yet'%}</label>
 						{%endif%}
 
 							</div>
@@ -55,33 +56,33 @@
 						<div class="row  mt-2 ">
 							<div class="col-md-6 ">
 					<div class="card ">
-						<h5 class="card-title"> Total Balance </h5>
+						<h5 class="card-title"> {%trans 'Total Balance'%} </h5>
 						<h4>{{Balance}} AED</h4>
 						{%if Balance is not 0 %}
-						<a href="{%url 'ReceivedInstallments'%}">Previous installments</a>
+						<a href="{%url 'ReceivedInstallments'%}">{%trans 'Previous installments'%}</a>
 
 						{%else%}
-					<label class="text-muted" >NO Balance Yet</label>
+					<label class="text-muted" >{%trans 'NO Balance Yet'%}</label>
 
 						{%endif%}
 						</div>
 				</div>
 							<div class="col-md-6 ">
 					<div class="card ">
-						<h5 class="card-title"> Withdrawable balance </h5>
+						<h5 class="card-title"> {%trans 'Withdrawable balance'%} </h5>
 						<h4>{{Balance_to_recieve}} AED</h4>
 						{%if Balance_to_recieve is not 0 %}
 						{%if Balance_to_recieve > 200 %}
 
-						<a       href="{% url 'AskForWithdraw'%}">Ask to withdraw</a>
+						<a href="{% url 'AskForWithdraw'%}">{%trans 'Ask to withdraw'%}</a>
 							{%else%}
 
 						{%endif%}
-						<small class="text-muted" >Minimum limit for withdraw 200 AED </small>
+						<small class="text-muted" >{%trans 'Minimum limit for withdraw 200 AED'%} </small>
 
 
 						{%else%}
-					<label class="text-muted" >NO Balance Yet</label>
+					<label class="text-muted" >{%trans 'NO Balance Yet'%}</label>
 
 						{%endif%}
 						</div>
@@ -97,14 +98,14 @@
 					<div class="card-body">
 
 				  {% if user.user_img %}
-				  <a href="{%url 'edit_profile'%}"><img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{{user.user_img.url}}" alt="user picture"></a>
+				  <a href="{%url 'edit_profile'%}"><img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{{user.user_img.url}}" alt="{%trans 'user picture'%}"></a>
 
 						<div>
-							<p><strong>Teacher</strong></p>
-						<a role="button"  class="btn btn-outline-danger"  href="{% url 'deltePhoto' %}">Remove Photo</a>
+							<p><strong>{%trans 'Teacher'%}</strong></p>
+						<a role="button"  class="btn btn-outline-danger"  href="{% url 'deltePhoto' %}">{%trans 'Remove Photo'%}</a>
 							</div>
 				  {% else%}
-				 <a href="{%url 'edit_profile'%}"> <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="user picture"></a>
+				 <a href="{%url 'edit_profile'%}"> <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="{%trans 'user picture'%}"></a>
 				  {% endif %}
 
 						<p class="mb-0">{{user.email}}</p>
