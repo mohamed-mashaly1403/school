@@ -4,7 +4,7 @@
 {% load i18n %}
 
   <!-- ======= Header ======= -->
-
+{% get_current_language as LANGUAGE_CODE %}
 {% block content %}
 
   <main id="main" data-aos="fade-in" >
@@ -21,7 +21,7 @@
 
 		</div>
           {% else%}
-          <h2>Courses</h2>
+          <h2>{%trans 'Courses'%}</h2>
         <p>{%trans 'All courses prepared by most qualified and experienced teachers , simply pick your course and excel!'%}</p>
           {% endif %}
 
@@ -67,19 +67,21 @@
               <a href="{% url 'courseDetails' course.slug %}"><img src="{{course.img.url}}" class="img-fluid" style="width:385px; height:238.51px;" alt="{%trans 'Course Image'%}"></a>
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    {%if  course.language1 == course.language2%}
-                  <a href="{% url 'courseDetails' course.slug %}"><h4>{%trans 'Language:'%}{{course.language1}}</h4></a>
+
+                    {%if  course.language1 == course.language2 or course.language1_tr == course.language2_tr%}
+                  <a href="{% url 'courseDetails' course.slug %}"><h4>{% if LANGUAGE_CODE == 'ar'%}{{course.language1_tr}}{%else%}{{course.language1}}{%endif%}</h4></a>
                     {%else %}
-                    <a href="{% url 'courseDetails' course.slug %}"><h4>{%trans 'Language:'%}{{course.language1}} {%trans 'and'%} {{course.language2}}</h4></a>
+                    <a href="{% url 'courseDetails' course.slug %}"><h4> {% if LANGUAGE_CODE == 'ar'%}{{course.language1_tr }}  {% trans 'and'%} {{course.language2_tr}} {% else %} {{course.language1}} {% trans 'and'%} {{course.language2}}{% endif %}</h4></a>
                     {% endif %}
                   <p class="price">100 Aed</p>
                 </div>
 
-                <h3><a href="{% url 'courseDetails' course.slug %}"> {{ course.course_name}}</a></h3>
+
+                <h3><a href="{% url 'courseDetails' course.slug %}"> {% if LANGUAGE_CODE == 'ar' and course.course_name_ar != None %}{{ course.course_name_ar}}{%else%}{{ course.course_name}}{%endif%}</a></h3>
 
 
 
-                <p>{{ course.description |readmore:30 }}</p>
+                <p>{% if LANGUAGE_CODE == 'ar' and course.course_name_ar != None %}{{ course.description_ar |readmore:30 }}{%else%}{{ course.description |readmore:30 }}{%endif%}</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
 
                   <div class="trainer-rank d-flex align-items-center">

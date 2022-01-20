@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 import django.core.mail
 # Create your views here.
 from django.template.loader import render_to_string
-from django.urls import NoReverseMatch
+from django.utils.translation import gettext as _
 from django.utils.encoding import force_bytes
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -54,7 +54,7 @@ def register(request):
             to_email = email
             send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
             send_mail.send()
-            messages.success(request,'HEY THERE,YOUR ACCOUNT HAS BEEN CREATED! ,Please, verify it by clicking the activation link that has been sent to your email.If the email doesn\'t appear shortly, please be sure to check your spam')
+            messages.success(request,_('HEY THERE,YOUR ACCOUNT HAS BEEN CREATED! ,Please, verify it by clicking the activation link that has been sent to your email.If the email doesn\'t appear shortly, please be sure to check your spam'))
 
             return redirect('/users/login/?command=verification&email=' + email)
             # return redirect ('/home.html')
@@ -83,10 +83,10 @@ def login(request):
         user = auth.authenticate(email=email, password=password)
         try:
             auth.login(request, user)
-            messages.success(request, ' successfully login ')
+            messages.success(request, _('successfully login'))
 
         except(AttributeError):
-            messages.error(request, 'Wrong email or password ')
+            messages.error(request, _('Wrong email or password'))
             return redirect('login')
         try:
             url = request.META.get('HTTP_REFERER')
@@ -106,7 +106,7 @@ def login(request):
 @login_required(login_url='login')
 def logout(request):
     auth.logout(request)
-    messages.success(request, 'successfully Logout ')
+    messages.success(request, _('successfully Logout'))
     return redirect('login')
 
 
@@ -125,10 +125,10 @@ def activate(request, uidb64, token):
         )
         user_profile.save()
 
-        messages.success(request, 'successfully activated ')
+        messages.success(request, _('successfully activated'))
         return redirect('edit_profile')
     else:
-        messages.error(request, 'invaild link')
+        messages.error(request, _('invaild link'))
         return redirect('register')
 
 
@@ -148,10 +148,10 @@ def forgotpassword(request):
             to_email = email
             send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
             send_mail.send()
-            messages.success(request, 'Click on the link on reset password mail  sent to you')
+            messages.success(request, _('Click on the link on reset password mail  sent to you'))
             return redirect('forgotpassword')
         else:
-            messages.error(request, "account does not exist")
+            messages.error(request, _("account does not exist"))
             return redirect(request, 'login')
     return render(request, 'accounts/forgotpassword.html')
 
@@ -165,10 +165,10 @@ def resetPasswordValidate(request, uidb64, token):
         user = None
     if user is not None and default_token_generator.check_token(user, token):
         request.session['uid'] = uid
-        messages.success(request, 'Reset your Password')
+        messages.success(request, _('Reset your Password'))
         return redirect('resetPassordPage')
     else:
-        messages.error(request, 'Reset password link expired')
+        messages.error(request, _('Reset password link expired'))
         return redirect('login')
 
 
@@ -181,11 +181,11 @@ def resetPassordPage(request):
             user = account.objects.get(pk=uid)
             user.set_password(createPassword)
             user.save()
-            messages.success(request, 'new password has set')
+            messages.success(request, _('new password has set'))
             return redirect('login')
 
         else:
-            messages.error(request, 'confirm Password does not match')
+            messages.error(request, _('confirm Password does not match'))
             return redirect('resetPassordPage')
     else:
 
@@ -204,13 +204,13 @@ def change_password(request):
             if success:
                 user.set_password(new_password)
                 user.save()
-                messages.success(request, 'password changed successfully')
+                messages.success(request, _('password changed successfully'))
                 return redirect('change_password')
             else:
-                messages.error(request, 'invalid current password ')
+                messages.error(request, _('invalid current password'))
                 return redirect('change_password')
         else:
-            messages.error(request, 'new password and confirmed password do not match')
+            messages.error(request, _('new password and confirmed password do not match'))
             return redirect('change_password')
 
     return render(request, 'accounts/change_password.html')
@@ -283,7 +283,7 @@ def edit_profile(request):
         if user_form.is_valid() and Profile_form.is_valid():
             user_form.save()
             Profile_form.save()
-            messages.success(request, 'profile updated')
+            messages.success(request, _('profile updated'))
             return redirect('edit_profile')
     else:
         user_form = UserForm(instance=request.user)
@@ -403,7 +403,7 @@ def createMessage(request,pk):
     try:
         ordr = Order.objects.get(id=pk)
         recipient = ordr.user
-        subject = f'Hi,I am {user.first_name} your teacher for {ordr.order_course} course- order no. {ordr.order_number}'
+        subject = f'(Hi,I am) {user.first_name} your teacher for {ordr.order_course} course- order no. {ordr.order_number}'
         form = MessageForm(initial={'recipient': recipient, 'subject': subject})
 
     except:
@@ -416,7 +416,7 @@ def createMessage(request,pk):
             message = form.save(commit=False)
 
             if message.recipient == request.user:
-                messages.error(request, 'Your can not sent to your self!')
+                messages.error(request, _('Your can not sent to your self!'))
 
             else:
                 message.sender = sender
@@ -424,7 +424,7 @@ def createMessage(request,pk):
                 message.save()
 
 
-                messages.success(request, 'Your message was successfully sent!')
+                messages.success(request, _('Your message was successfully sent!'))
                 return redirect('inbox')
     context = { 'form': form,'unreadCount':unreadCount}
     return render(request, 'accounts/message_form.html', context)

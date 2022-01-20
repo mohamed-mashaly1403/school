@@ -1,4 +1,6 @@
 {% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 <style>
         .notification {
 
@@ -82,9 +84,16 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!--flag css-->
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@500&display=swap" rel="stylesheet">
   <!-- Template Main CSS File -->
+  {% if LANGUAGE_CODE == "ar"%}
+  <link href="{% static 'css/styleAr.css'%}" rel="stylesheet">
+  {%else%}
   <link href="{% static 'css/style.css'%}" rel="stylesheet">
+
+  {%endif%}
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -97,9 +106,15 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
 </head>
 
+
+
+
+
 <body>
+
 {% include 'includes/navbar.html' %}
 {% block content %}
 <!--content-->

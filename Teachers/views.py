@@ -1,11 +1,11 @@
 import math
-
-from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
+from django.utils.translation import gettext as _
+from django.contrib.auth.decorators import login_required,user_passes_test
 from django.db.models import Sum, Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 import django.core.mail
-from django.db.models import Q
+
 
 # Create your views here.
 from django.template.loader import render_to_string
@@ -87,7 +87,7 @@ def AskForWithdraw(request):
         print(amount)
         bank_data = TeacherProfile.objects.get(user=request.user)
         if bank_data.IBAN and bank_data.BankName and bank_data.BankCountry:
-            messages.success(request, 'Money will be added to your Bank account soon')
+            messages.success(request, _('Money will be added to your Bank account soon'))
             mail_subject = 'Teacher withdraw Request'
             mail_body = render_to_string('teachers/teacherwithdrawemail.html', {
                 'user': request.user.email,
@@ -99,7 +99,7 @@ def AskForWithdraw(request):
             send_mail.send()
             return redirect('TeacherDashboard')
         else:
-            messages.error(request, 'Your bank account details missing!')
+            messages.error(request, _('Your bank account details missing!'))
             return redirect('Teacheredit_profile')
     context = {
 
@@ -135,7 +135,7 @@ def teacherProfile(request):
                     animal = form.save(commit=False)
                     animal.user = request.user
                     animal.save()
-                    messages.success(request, 'Your Account will be reviewed and will back to you soon')
+                    messages.success(request, _('Your Account will be reviewed and will back to you soon'))
                     mail_subject = 'Teacher registration'
                     mail_body = render_to_string('teachers/teacherRegistrationMail.html', {
                         'user': request.user.email,
@@ -169,7 +169,7 @@ def Teachercomplains(request):
             data.user_id = request.user.id
             data.Regards = form.cleaned_data['Regards']
             data.save()
-            messages.success(request, 'Complain has submited and will be intouch with you very soon')
+            messages.success(request, _('Complain has submited and will be intouch with you very soon'))
             mail_subject = 'Teacher Complain'
             mail_body = render_to_string('orders/emailComplain.html', {
                 'user': current_user.email,
@@ -236,7 +236,7 @@ def Teacheredit_profile(request):
         if user_form.is_valid() and Profile_form.is_valid():
             user_form.save()
             Profile_form.save()
-            messages.success(request, 'profile updated')
+            messages.success(request, _('profile updated'))
             return redirect('Teacheredit_profile')
     else:
         user_form = UserForm(instance=request.user)
@@ -283,7 +283,7 @@ def RejectCourse(request,order_id):
             data.user_id = request.user.id
             data.order_id = order_id
             data.save()
-            messages.success(request, 'request has submited and will change soon')
+            messages.success(request, _('request has submited and will change soon'))
             mail_subject = 'Reject course from teacher'
             mail_body = render_to_string('orders/emailToChangeTeacher.html', {
                 'user': current_user.email,
@@ -322,7 +322,7 @@ def submit_courseUrl(request,order_id):
             data.classTime = form.cleaned_data['classTime']
             data.order_id = order_id
             data.save()
-            messages.success(request, 'url has submited')
+            messages.success(request, _('url has submited'))
         else:
             print('not vaild')
 
@@ -335,7 +335,7 @@ def submit_courseMaterial(request,order_id):
             reviews = orderPoduct.objects.get(order_id=order_id)
             form = orderPoductForm(request.POST,instance=reviews)
             form.save()
-            messages.success(request,'Url has updated')
+            messages.success(request,_('Url has updated'))
             return redirect(url)
 
         except orderPoductClasses.DoesNotExist:
@@ -343,7 +343,7 @@ def submit_courseMaterial(request,order_id):
             print(form.errors)
             if form.is_valid():
                 form.save()
-                messages.success(request, 'url2 has submited')
+                messages.success(request, _('url2 has submited'))
             else:
                 print('not vaild')
 
@@ -362,7 +362,7 @@ def lessonDone(request,order_id):
 
             reviews.class_url_is_deliverd = form.cleaned_data['class_url_is_deliverd']
             reviews.save(update_fields=['class_url_is_deliverd'])
-            messages.success(request, 'url has submited')
+            messages.success(request, _('url has submited'))
             urls = orderPoductClasses.objects.filter(order__id=order_id,class_url_is_deliverd=True)
             urls_count = urls.count()
             print(urls_count)
@@ -393,17 +393,17 @@ def changeDate(request):
             try:
                 if  reviews.class_url and not reviews.classTime :
                     reviews.save(update_fields=['class_url'])
-                    messages.success(request, 'new class url has submitted')
+                    messages.success(request, _('new class url has submitted'))
                 elif reviews.classTime and not reviews.class_url:
                     reviews.save(update_fields=['classTime'])
-                    messages.success(request, 'new class timing has submitted')
+                    messages.success(request, _('new class timing has submitted'))
                 elif reviews.classTime and reviews.class_url:
                     reviews.save(update_fields=['classTime','class_url'])
                 else:
-                    messages.error(request, 'New Date or url can not be empty ')
+                    messages.error(request, _('New Date or url can not be empty '))
 
             except:
-                messages.success(request, 'New Date or url can not be empty ')
+                messages.success(request, _('New Date or url can not be empty '))
 
         else:
             print('not vaild')

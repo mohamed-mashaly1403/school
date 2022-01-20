@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
+from django.utils.translation import gettext as _
 import json
 from django.contrib import messages
 from django.http import JsonResponse
@@ -8,12 +8,12 @@ from django.template.backends import django
 import django.core.mail
 
 from Notifs.models import Inboxnotif
-from . import form
+
 from .form import OrderForm, RatingReviewForm, ChangeTeacherRequestForm, complainsForm
 from courses.models import course, RatingReview
 from .models import Order, Payment, orderPoduct, orderPoductClasses, ChangeTeacherRequestt, Complains
 import datetime
-from django.core.mail import EmailMessage
+
 from django.template.loader import render_to_string
 
 # Create your views here.
@@ -229,7 +229,7 @@ def submit_review(request,course_id,order_id):
             reviews = RatingReview.objects.get(user__id=request.user.id,course__id=course_id,order__id=order_id)
             form = RatingReviewForm(request.POST,instance=reviews)
             form.save()
-            messages.success(request,'review has updated')
+            messages.success(request,_('review has updated'))
             return redirect(url)
 
         except RatingReview.DoesNotExist:
@@ -246,7 +246,7 @@ def submit_review(request,course_id,order_id):
                 data.user_id = request.user.id
                 data.order_id = order_id
                 data.save()
-                messages.success(request, 'review has submited')
+                messages.success(request, _('review has submited'))
             else:
                 print('not vaild')
 
@@ -265,7 +265,7 @@ def ChangeTeacherRequest(request,order_id):
             data.user_id = request.user.id
             data.order_id = order_id
             data.save()
-            messages.success(request, 'request has submited and will change soon')
+            messages.success(request, _('request has submited and will change soon'))
             mail_subject = 'Request to change teacher'
             mail_body = render_to_string('orders/emailToChangeTeacher.html', {
                 'user': current_user.email,

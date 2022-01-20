@@ -11,17 +11,26 @@ lang =  [
     ('English', 'English'),
     ('French', 'French'),
     ('Chinese', 'Chinese'),
-
+]
+lang_tr =  [
+    ('العربية', 'العربية'),
+    ('الإنجليزية', 'الإنجليزية'),
+    ('الفرنسية', 'الفرنسية'),
+    ('الصينية', 'الصينية'),
 ]
 
 class course(models.Model):
     course_name = models.CharField(max_length=50,unique=True)
-    teacher = models.ForeignKey(TeacherProfile, on_delete=models.SET_NULL, null=True)
+    course_name_ar = models.CharField(max_length=50,unique=True,null=True,blank=True)
+    teacher = models.ForeignKey(TeacherProfile, on_delete=models.SET_NULL, null=True,blank=True)
     slug = models.CharField(max_length=100,unique=True)
     language1 = models.CharField(max_length=15,choices=lang,blank=False,default='')
+    language1_tr = models.CharField(max_length=15,choices=lang_tr,blank=False,default='')
     language2 = models.CharField(max_length=15, choices=lang, blank=False,default='')
+    language2_tr = models.CharField(max_length=15, choices=lang_tr, blank=False,default='')
     type = models.CharField (max_length=20,blank=False,default='General')
     description = models.TextField(max_length=500,blank=True)
+    description_ar = models.TextField(max_length=500,blank=True,null=True)
     img = models.ImageField(upload_to='img/courses',blank=True)
     is_school_subject = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)

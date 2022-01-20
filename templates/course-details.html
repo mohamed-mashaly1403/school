@@ -3,14 +3,14 @@
 {% load i18n %}
 
   <!-- ======= Header ======= -->
-
+{% get_current_language as LANGUAGE_CODE %}
 {% block content %}
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
-        <h2>{{courseDets.course_name}} {%trans 'Course'%}</h2>
-        <p>{%trans 'Available in'%} {%if  courseDets.language1 == courseDets.language2%} {{courseDets.language1}}  {%else %} {{courseDets.language1}} {%trans 'and'%} {{courseDets.language2}} {% endif %}, {%trans 'Choose course language and grade then go!'%}  </p>
+        <h2>{% if LANGUAGE_CODE == 'ar'%} {{courseDets.course_name_ar}}{%else%}{{courseDets.course_name}} {%trans 'course'%}{%endif%} </h2>
+        <p>{%trans 'Available in'%} {% if LANGUAGE_CODE == 'ar'%}{%if  courseDets.language1_tr == courseDets.language2_tr%} {{courseDets.language1_tr}}  {%else %} {{courseDets.language1_tr}} {%trans 'and'%} {{courseDets.language2_tr}} {% endif %}{%else%}{%if  courseDets.language1 == courseDets.language2%} {{courseDets.language1}}  {%else %} {{courseDets.language1}} {%trans 'and'%} {{courseDets.language2}} {% endif %}{% endif %}, {%trans 'Choose course language and grade then go!'%} &#128522;  </p>
       </div>
     </div><!-- End Breadcrumbs -->
 
@@ -21,9 +21,9 @@
         <div class="row">
           <div class="col-lg-8">
             <img src="{{courseDets.img.url}}" class="img-fluid" alt="">
-            <h3>{{courseDets.course_name}} {%trans 'Course'%}</h3>
+            <h3>{% if LANGUAGE_CODE == 'ar'%}{{courseDets.course_name_ar}}{%else%}{{courseDets.course_name}} {%trans 'Course'%}{%endif%}</h3>
             <p>
-               {{courseDets.description}}
+               {% if LANGUAGE_CODE == 'ar'%}{{courseDets.description_ar}}{%else%}{{courseDets.description}}{%endif%}
           </div>
           <div class="col-lg-4">
 
@@ -112,7 +112,7 @@
           <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
             <div class="box">
               <span class="advanced">{%trans 'Advanced'%}</span>
-              <h3>Six Classes</h3>
+              <h3>{%trans 'Six'%} {%trans 'Classes'%}</h3>
               <h4><sup>AED</sup>500<span> / 6 {%trans 'Classes'%}</span></h4>
               <ul>
                 <li>{%trans 'More than six hours'%} </li>

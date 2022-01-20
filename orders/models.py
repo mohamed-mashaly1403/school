@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.signals import post_save
-
+import django.core.mail
+from django.utils.translation import gettext as _
 from Notifs.models import Inboxnotif
 from Teachers.models import TeacherProfile
 from courses.models import course
@@ -85,12 +86,20 @@ class orderPoduct(models.Model):
 
         if orderPoduct.teacher:
             if orderPoduct.teacher != orderPoduct.__original_teacher:
-                Message = 'New student waiting'
+                Message = _('New student waiting')
                 notifs = Inboxnotif(sender=orderPoduct.user, recipient=orderPoduct.teacher.user, Message=Message,message_id=orderPoduct.order.order_number,notif_type=3)
                 notifs.save()
-                stu_message =f'Teacher ready for{orderPoduct.order_course}'
+                stu_message =f'Teacher ready for{orderPoduct.order_course} course'
                 notifss = Inboxnotif(sender=orderPoduct.teacher.user, recipient=orderPoduct.user, Message=stu_message,message_id=orderPoduct.order.order_number,notif_type=4)
                 notifss.save()
+                # ==================== mail to teacher
+                # send mail to customer
+                mail_subject = _('You got new order and your student is waiting')
+                mail_body = _('Kindly go to your dashboard to proceed in the new course')
+                to_email = orderPoduct.teacher.user.email
+                send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
+                send_mail.send()
+                # ==================== mail to teacher
     def __str__(self):
         return self.order.order_number
 post_save.connect(orderPoduct.notify,sender=orderPoduct)

@@ -23,11 +23,18 @@ SECRET_KEY = config('SECRET_KEY')
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
+ALLOWED_HOSTS = []
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG',default=True,cast=bool)
 
-ALLOWED_HOSTS = []
+
+# if DEBUG is False:
+#     ALLOWED_HOSTS = [
+#         '127.0.0.1:8000',
+#         '*',
+#     ]
+#
+# if DEBUG is True:
 
 
 # Application definition
