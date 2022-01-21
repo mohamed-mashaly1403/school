@@ -6,9 +6,11 @@ from . import views
 
 from django.conf.urls.static import static
 from django.conf import settings
+
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
 ]
+
 
 urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
@@ -20,3 +22,5 @@ urlpatterns += i18n_patterns(
     path('Teachers/',include('Teachers.urls')),
 )+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
 
+
+handler404 = 'vschool.views.handler404'

@@ -14,6 +14,8 @@ from pathlib import Path
 
 from decouple import config
 import os
+import mimetypes
+mimetypes.add_type("text/html", ".css", True)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,18 +25,19 @@ SECRET_KEY = config('SECRET_KEY')
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-ALLOWED_HOSTS = []
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG',default=True,cast=bool)
 
+# ALLOWED_HOSTS = []
+if DEBUG is False:
+    ALLOWED_HOSTS = [
+        '127.0.0.1:8000',
+        '*',
+    ]
 
-# if DEBUG is False:
-#     ALLOWED_HOSTS = [
-#         '127.0.0.1:8000',
-#         '*',
-#     ]
-#
-# if DEBUG is True:
+if DEBUG is True:
+    ALLOWED_HOSTS = []
 
 
 # Application definition

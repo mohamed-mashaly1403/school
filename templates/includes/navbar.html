@@ -110,7 +110,7 @@
       <div class="text-center">
       <small class="title text-muted">{%trans 'Welcome'%} {{user.first_name}}</small>
       </div>
-      <a href="{% url 'logout'%}" class="btn btn-outline-success btn-sm">{%trans 'Logout'%}</a>
+      <a id="myModelSave" href="{% url 'logout'%}" class="btn btn-outline-success btn-sm">{%trans 'Logout'%}</a>
       {% else%}
       <a style="margin-right:0 important!" href="{% url 'login'%}" class="get-started-btn">{%trans 'Sign in'%}</a>
       <a style="margin-right:10px;margin-left:10px" href="{%url 'register'%}" class="get-started-btn">{%trans 'Register'%}</a>
@@ -135,5 +135,22 @@
 
 
     </div>
+    <div style="max-width:30%;position: absolute;margin-left: auto;margin-right: auto;left: 0;right: 0;text-align: center;">
   {% include 'includes/alerts.html'%}
+        </div>
+
   </header><!-- End Header -->
+
+
+<script>
+    let saveButton = document.getElementById('myModelSave');
+saveButton.onclick = function() {
+    let accepted = confirm("{% trans 'Are you sure you want to logout?' %}");
+    if (accepted) {
+        document.getElementById('myModelForm').submit();
+    }else{
+        event.preventDefault();
+    }
+
+}
+</script>
