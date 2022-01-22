@@ -281,10 +281,21 @@ def edit_profile(request):
         user_form = UserForm(request.POST, request.FILES, instance=request.user)
         Profile_form = UserProfileForm(request.POST, instance=userProfile)
         if user_form.is_valid() and Profile_form.is_valid():
-            user_form.save()
-            Profile_form.save()
-            messages.success(request, _('profile updated'))
-            return redirect('edit_profile')
+            if user_form.cleaned_data['user_img'] != None:
+                if user_form.cleaned_data['user_img'].size > 1048576:
+                    messages.error(request, _('Your photo bigger than 1 MB'))
+                    user_form.save(commit=False)
+                else:
+                    user_form.save()
+                    Profile_form.save()
+                    messages.success(request, _('profile updated'))
+                    return redirect('edit_profile')
+
+            else:
+                user_form.save()
+                Profile_form.save()
+                messages.success(request, _('profile updated'))
+                return redirect('edit_profile')
     else:
         user_form = UserForm(instance=request.user)
         Profile_form = UserProfileForm(instance=userProfile)

@@ -132,21 +132,28 @@ def teacherProfile(request):
                 form = TeacherProfileForm(request.POST,request.FILES)
                 print(form.errors)
                 if form.is_valid():
-                    animal = form.save(commit=False)
-                    animal.user = request.user
-                    animal.save()
-                    messages.success(request, _('Your Account will be reviewed and will back to you soon'))
-                    mail_subject = 'Teacher registration'
-                    mail_body = render_to_string('teachers/teacherRegistrationMail.html', {
-                        'user': request.user.email,
+                    if form.cleaned_data['docfile'] != None:
+                        print(form.cleaned_data['docfile'].size)
+                        if form.cleaned_data['docfile'].size <= 2097152:
+                            animal = form.save(commit=False)
+                            animal.user = request.user
+                            animal.save()
+                            messages.success(request, _('Your Account will be reviewed and will back to you soon'))
+                            mail_subject = 'Teacher registration'
+                            mail_body = render_to_string('teachers/teacherRegistrationMail.html', {
+                                'user': request.user.email,
 
-                    })
-                    to_email = 'first_man@windowslive.com'
-                    send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
-                    send_mail.send()
-                    return render(request, 'teachers/waitForReview.html')
+                            })
+                            to_email = 'first_man@windowslive.com'
+                            send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
+                            send_mail.send()
+                            return render(request, 'teachers/waitForReview.html')
+                        else:
+                            messages.error(request, _('file bigger than 2 MB'))
+                    else:
+                        messages.error(request, _('cv can not be empty!'))
                 else:
-                    print('not vaild')
+                    messages.error(request, _('Your cv file not pdf'))
             else:
                 print('not post')
                 form = TeacherProfileForm()
@@ -234,10 +241,40 @@ def Teacheredit_profile(request):
         user_form = UserForm(request.POST, request.FILES, instance=request.user)
         Profile_form = TeacherProfileForm(request.POST,request.FILES, instance=teacherProfile)
         if user_form.is_valid() and Profile_form.is_valid():
-            user_form.save()
-            Profile_form.save()
-            messages.success(request, _('profile updated'))
-            return redirect('Teacheredit_profile')
+            if user_form.cleaned_data['user_img'] == None:
+                if Profile_form.cleaned_data['docfile'] == None:
+                    user_form.save()
+                    Profile_form.save()
+                    messages.success(request, _('profile updated'))
+                    return redirect('Teacheredit_profile')
+                else:
+                    if Profile_form.cleaned_data['docfile'].size > 2097152:
+                        messages.error(request, _('Your CV bigger than 2 MB'))
+                    else:
+                        user_form.save()
+                        Profile_form.save()
+                        messages.success(request, _('profile updated'))
+                        return redirect('Teacheredit_profile')
+            else:
+                if user_form.cleaned_data['user_img'].size > 1048576:
+                    messages.error(request, _('Your photo bigger than 1 MB'))
+                    user_form.save(commit=False)
+                elif Profile_form.cleaned_data['docfile'] != None:
+                    if Profile_form.cleaned_data['docfile'].size > 2097152:
+                        messages.error(request, _('Your CV bigger than 2 MB'))
+                    else:
+                        user_form.save()
+                        Profile_form.save()
+                        messages.success(request, _('profile updated'))
+                        return redirect('Teacheredit_profile')
+                else:
+                    user_form.save()
+                    Profile_form.save()
+                    messages.success(request, _('profile updated'))
+                    return redirect('Teacheredit_profile')
+        else:
+            messages.error(request, _('Your cv file is not pdf'))
+
     else:
         user_form = UserForm(instance=request.user)
         Profile_form = TeacherProfileForm(instance=teacherProfile)

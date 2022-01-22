@@ -2,6 +2,7 @@
 {% block content %}
 {% load i18n %}
 <!-- ========================= SECTION CONTENT ========================= -->
+
 <section class="section-content padding-y">
 
 <!-- ============================ COMPONENT REGISTER   ================================= -->
@@ -96,7 +97,7 @@
 					<div class="form-group ">
 <!--						<label>Repeat password</label>-->
 					 {{form.docfile}}
-						<small class="text-muted">{%trans 'upload CV.(Required)'%}<span style="color:red">*</span></small>
+						<small class="text-muted">{%trans 'upload CV.(Required-pdf only less than 2MB)'%}  <span style="color:red">*</span></small>
 					</div> <!-- form-group end.// -->
 						<div class="form-group ">
 <!--						<label>Email</label>-->
@@ -122,6 +123,7 @@
     <br><br>
 <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
 
-
 </section>
+
 {% endblock %}
+

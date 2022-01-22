@@ -1,4 +1,5 @@
 from django.db import models
+from .formatChecker import ContentTypeRestrictedFileField
 
 # Create your models here.
 from django.db.models.signals import post_save
@@ -12,7 +13,7 @@ class TeacherProfile(models.Model):
     city = models.CharField(max_length=20, blank=True)
     country = models.CharField(max_length=20)
     Balance = models.FloatField(default=0.00,blank=True)
-    docfile = models.FileField(upload_to="cvs")
+    docfile = ContentTypeRestrictedFileField(upload_to="cvs",content_types=['application/pdf' ],max_upload_size=2621440,blank=False, null=False)
     Experience = models.TextField(max_length=500, blank=True)
     qualifications1 = models.CharField(max_length=20)
     qualifications2 = models.CharField(max_length=20, blank=True)
