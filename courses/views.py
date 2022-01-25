@@ -1,4 +1,3 @@
-from itertools import count
 
 from django.core.paginator import EmptyPage,Paginator,PageNotAnInteger
 from django.db.models import Q
