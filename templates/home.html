@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-
+{% load readmore %}
   <!-- ======= Header ======= -->
 
 {% block content %}
@@ -269,48 +269,56 @@
       </div>
     </section><!-- End Features Section -->
 
-    <!-- ======= Popular Courses Section ======= -->
+   <!-- ======= Popular Courses Section ======= -->
     <section id="popular-courses" class="courses">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>{%trans 'Courses'%}</h2>
-          <p>{%trans 'Popular Courses '%}</p>
+          <h2>Courses</h2>
+          <p>Popular Courses</p>
         </div>
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
-
+          {% for course in cour %}
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="course-item">
-              <img src="{%static 'img/course-1.jpg'%}" class="img-fluid" alt="...">
+          <a href="{% url 'courseDetails' course.slug %}"><img src="{{course.img.url}}" class="img-fluid" style="width:385px; height:238.51px;" alt="{%trans 'Course Image'%}"></a>
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>Web Development</h4>
-                  <p class="price">$169</p>
+                  {%if  course.language1 == course.language2 or course.language1_tr == course.language2_tr%}
+                  <a href="{% url 'courseDetails' course.slug %}"><h4>{% if LANGUAGE_CODE == 'ar'%}{{course.language1_tr}}{%else%}{{course.language1}}{%endif%}</h4></a>
+                    {%else %}
+                    <a href="{% url 'courseDetails' course.slug %}"><h4> {% if LANGUAGE_CODE == 'ar'%}{{course.language1_tr }}  {% trans 'and'%} {{course.language2_tr}} {% else %} {{course.language1}} {% trans 'and'%} {{course.language2}}{% endif %}</h4></a>
+                    {% endif %}
+                  <p class="price">100 AED</p>
                 </div>
 
-                <h3><a href="course-details.html">Website Design</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                <h3><a href="{% url 'courseDetails' course.slug %}"> {% if LANGUAGE_CODE == 'ar' and course.course_name_ar != None %}{{ course.course_name_ar}}{%else%}{{ course.course_name}}{%endif%}</a></h3>
+                <p>{% if LANGUAGE_CODE == 'ar' and course.course_name_ar != None %}{{ course.description_ar |readmore:30 }}{%else%}{{ course.description |readmore:30 }}{%endif%}</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
+                  {% if course.teacher %}
                   <div class="trainer-profile d-flex align-items-center">
-                    <img src="{% static 'img/trainers/trainer-1.jpg'%}" class="img-fluid" alt="">
-                    <span>Antonio</span>
+                    <img src="{{course.teacher.user.image_url}}" class="img-fluid" alt="teacher image">
+                    <span>{{ course.teacher.user.first_name }}</span>
                   </div>
+                  {% endif %}
                   <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;50
+                    <i class="bx bx-user"></i>&nbsp;{{course.countreview}}
                     &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;65
+                    <i class="bx bx-heart"></i>&nbsp;{{course.averagereview}}
                   </div>
                 </div>
               </div>
             </div>
           </div> <!-- End Course Item-->
 
-
-          <!-- ======= Popular Courses Section ======= -->
-
+          {%endfor%}
 
 
+        </div>
+
+      </div>
+    </section><!-- End Popular Courses Section -->
     <!-- ======= Trainers Section ======= -->
     <section id="trainers" class="trainers">
       <div class="container" data-aos="fade-up">

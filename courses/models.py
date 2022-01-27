@@ -57,6 +57,7 @@ class course(models.Model):
             return count
         else:
             return 0
+    @property
     def orderd(self):
         reviews = orderPoduct.objects.filter(order_course=self, ordered=True).aggregate(count=Count('id'))
         count = 0
