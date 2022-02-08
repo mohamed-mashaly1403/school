@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>school.com class</title>
+  <script src="https://download.agora.io/edu-apaas/release/edu_sdk_1.1.5.10.js"></script>
+</head>
+
+<body>
+
+  <style>
+    #root1 {
+      width: 80%;
+      height: 80%;
+    }
+  </style>
+  <div id="root1"></div>
+  <script type="text/javascript">
+   var a = "{{token}}";
+   var user = "{{user}}";
+   var user_name = "{{user_name}}";
+   var course = "{{course}}";
+   var order = "{{order}}";
+
+    AgoraEduSDK.config({
+      // Here pass in the Agora App ID you have got
+      appId: "4bce2e802a5646a89835b1532ce8af71",
+    })
+    AgoraEduSDK.launch(
+          document.querySelector("#root1"), {
+        // Here pass in the RTM token you have generated
+        rtmToken: a,
+        // The user ID must be the same as the one you used for generating the RTM token
+        userUuid: user,
+        userName: user_name,
+        roomUuid: order,
+        roomName: course,
+        roleType: 2,
+        roomType: 0,
+        pretest: false,
+        language: "en",
+        startTime: new Date().getTime(),
+        duration: 60 * 30,
+        courseWareList: [],
+        listener: (evt) => {
+          if (evt === 1){
+        console.log("evt", evt)
+        }
+        if (evt == 2){
+        console.log("evt", evt)
+//         ======================================
+        window.location.href= redirect_url +'?order='+order;
+
+//         ======================================
+        }
+
+        }
+      }
+    )
+  </script>
+</body>
+
+</html>

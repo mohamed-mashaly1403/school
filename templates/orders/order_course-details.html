@@ -50,6 +50,11 @@
                 {{order_detail.teacher}}
             </div></a>
                 {%endif%}
+                {%if is_exist %}
+                <a href="{% url 'joinLive'  order.order_course order %}"><div class="course-info text-center">
+             <h5>{%trans 'join live class'%}</h5>
+              </div></a>
+              {%endif%}
 
           </div>
         </div>

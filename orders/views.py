@@ -8,6 +8,7 @@ from django.template.backends import django
 import django.core.mail
 
 from Notifs.models import Inboxnotif
+from live.models import CloseLive
 
 from .form import OrderForm, RatingReviewForm, ChangeTeacherRequestForm, complainsForm
 from courses.models import course, RatingReview
@@ -208,6 +209,11 @@ def order_details(request,order_id):
     reviews = RatingReview.objects.all().filter(order__order_number=order_id,status=True)
     urls_Deliverd = orderPoductClasses.objects.filter(order__order_number=order_id,class_url_is_deliverd=True)
     left = order.total_classes - urls_Deliverd.count()
+    try:
+        is_exist = CloseLive.objects.get(order=order)
+    except:
+        is_exist = False
+
 
 
     print(reviews)
@@ -216,7 +222,8 @@ def order_details(request,order_id):
         'order': order,
         'urls':urls,
         'reviews':reviews,
-        'left':left
+        'left':left,
+        'is_exist':is_exist
     }
     return render(request,'orders/order_course-details.html',context)
 @login_required(login_url='login')
