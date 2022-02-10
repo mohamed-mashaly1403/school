@@ -1,11 +1,17 @@
+import json
+
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.utils.translation import gettext as _
 import time
 from django.contrib import messages
 # Create your views here.
+from django.views.decorators.csrf import csrf_exempt
+
 from live.models import CloseLive
 from orders.models import Order
+import random
 
 
 @user_passes_test(lambda u: u.is_staff)
@@ -19,22 +25,25 @@ def startLive(request,course,order):
     currentTimestamp = int(time.time())
     privilegeExpiredTs = currentTimestamp + expirationTimeInSeconds
     token = RtmTokenBuilder.buildToken(appID, appCertificate, user, Role_Rtm_User, privilegeExpiredTs)
-    print("Rtm Token: {}".format(token))
-    orderr = Order.objects.get(order_number=order)
-    CloseLive.objects.filter(order=orderr).delete()
-    llive = CloseLive(
-        order=orderr
-    )
-    llive.save()
+    try:
+        CloseLive.objects.filter(order="serviceWorker.js").delete()
+    except:
+        pass
+    if order =="serviceWorker.js":
+        pass
+    else:
+        live = CloseLive( order=order )
+        # CloseLive.objects.get_or_create(order=order)
+        live.save()
     context = {
-        'token': str(token),
-        'user':user,
-        'user_name':str(user_name),
-        'course':str(course),
-        'order':str(orderr)
-
+        "token": json.dumps(token),
+        "user":json.dumps(str(user)),
+        "user_name":json.dumps(str(user_name)),
+        "course":json.dumps(str(course)),
+        "order":json.dumps(str(order)),
     }
-    print(orderr)
+    print(order)
+
     return render(request,'startLive.html',context)
 
 
@@ -54,7 +63,7 @@ def joinLive(request,course,order):
         currentTimestamp = int(time.time())
         privilegeExpiredTs = currentTimestamp + expirationTimeInSeconds
         token = RtmTokenBuilder.buildToken(appID, appCertificate, user, Role_Rtm_User, privilegeExpiredTs)
-        print("Rtm Token: {}".format(token))
+
         context = {
             'token': token,
             'user':user,
@@ -68,17 +77,25 @@ def joinLive(request,course,order):
         messages.error(request, _('meeting not open '))
         return redirect(url)
 
-
+@csrf_exempt
 def closeLive(request):
+    data = json.loads(request.body)
+    try:
+        member = CloseLive.objects.get(
+            order=data['order'],
+                )
+        member.delete()
+    except:
+        pass
 
-    orderFromJs = request.GET.get('order')
-    orderr = Order.objects.get(order_number=orderFromJs, is_ordered=True)
-    CloseLive.objects.filter(order=orderr).delete()
-
-
-    return redirect('closepage')
+    return JsonResponse('Member deleted', safe=False)
 
 def closepage(request):
+    try:
+        orderr=request.GET.get('order')
+        CloseLive.objects.filter(order=orderr).delete()
+    except:
+        pass
 
     return render(request, 'closepage.html')
 

@@ -23,6 +23,7 @@
    var user_name = "{{user_name}}";
    var course = "{{course}}";
    var order = "{{order}}";
+   var redirect_url ="{% url 'closepage'%}";
 
     AgoraEduSDK.config({
       // Here pass in the Agora App ID you have got
@@ -51,7 +52,7 @@
         if (evt == 2){
         console.log("evt", evt)
 //         ======================================
-        window.location.href= redirect_url +'?order='+order;
+        window.location.href= redirect_url;
 
 //         ======================================
         }

@@ -13,22 +13,31 @@
     }
   </style>
   <div  id="root1"></div>
+  {{ context_as_json }}
   <script type="text/javascript">
+   const a ={{token| safe}};
+   let user ={{user| safe}};
+   let user_name ={{user_name| safe}};
+   let course ={{course| safe}};
+   var order ={{order| safe}};
+   var redirect_url ="{% url 'closeLive'%}";
+   var redirect_urll ="{% url 'closepage'%}";
+   let deleteMember = async () => {
+    let response = await fetch("{% url 'closeLive'%}", {
+        method:'POST',
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify({'order':order})
+    })
+    let member = await response.json()
+}
 
-
-   var a = "{{token}}"
-   var user = "{{user}}"
-   var user_name = "{{user_name}}"
-   var course = "{{course}}"
-   var order = "{{order}}"
-   var redirect_url ="{% url 'closeLive'%}"
     AgoraEduSDK.config({
-
       // Here pass in the Agora App ID you have got
-      appId: "4bce2e802a5646a89835b1532ce8af71",
+      appId:"4bce2e802a5646a89835b1532ce8af71",
     });
     AgoraEduSDK.launch(
-
         document.querySelector("#root1"), {
         // Here pass in the RTM token you have generated
         rtmToken: a,
@@ -51,7 +60,8 @@
         if (evt == 2){
         console.log("evt", evt)
 //         ======================================
-        window.location.href= redirect_url +'?order='+order;
+           window.location.href= redirect_urll +'?order='+order;
+
 
 //         ======================================
         }
@@ -59,6 +69,8 @@
       }
     );
 
+
+window.addEventListener("beforeunload",deleteMember);
 
   </script>
 </body>
