@@ -109,7 +109,7 @@ AUTH_USER_MODEL = 'users.account'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'shool',
+        'NAME': 'school',
         'USER': 'Mesho1',
         'PASSWORD':'14031981@Moh',
         'HOST': 'localhost',
