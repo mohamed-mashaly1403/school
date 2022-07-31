@@ -98,24 +98,24 @@ AUTH_USER_MODEL = 'users.account'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-if DEBUG is True:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+# if DEBUG is True:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': BASE_DIR / 'db.sqlite3',
+#         }
+#     }
+# if DEBUG is False:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'shool',
+        'USER': 'Mesho1',
+        'PASSWORD':'14031981@Moh',
+        'HOST': 'localhost',
+        'PORT': '',
     }
-if DEBUG is False:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'shool',
-            'USER': 'Mesho1',
-            'PASSWORD':'14031981@Moh',
-            'HOST': 'localhost',
-            'PORT': '',
-        }
-    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
