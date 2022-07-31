@@ -1,5 +1,5 @@
 
-from django.core.paginator import EmptyPage,Paginator,PageNotAnInteger
+from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render
 
@@ -8,22 +8,35 @@ from django.shortcuts import render
 from courses.models import RatingReview, course
 
 
+
+
+
+
+
+
+
 def courses(request):
     courses = course.objects.filter( is_active=True).order_by('id')
 
-    Paginatorr = Paginator(courses, 6)
+    Paginatorr = Paginator(courses, 3)
     page = request.GET.get('page')
     paged_courses = Paginatorr.get_page(page)
-    x = range(1, Paginatorr.num_pages)
-    courses_count = courses.count()
+    # # x = range(1, Paginatorr.num_pages)
+    # # courses_count = courses.count()
 
     context = {
                'courses': paged_courses,
-               'courses_count':  courses_count,
-               'x': x
+               # 'courses_count':  courses_count,
+               # 'x': x
 
                }
     return render(request,'courses.html',context)
+# class courseListView(ListView):
+#     model = course
+#     paginate_by = 3
+#     template_name = "courses.html"
+
+
 def courseDetails(request,course_name):
     courseDets = course.objects.get(slug__iexact=course_name)
     reviews = RatingReview.objects.filter(course__slug=course_name, status=True).order_by('updated_date')
@@ -60,9 +73,16 @@ def search(request):
         else:
             courses =''
             courses_count = 0
+    else:
+        courses = course.objects.order_by('-slug').filter(course_name__icontains= 'Emsat')
+        courses_count = courses.count()
+        keyword = 'Emsat'
     context = {
         'courses': courses,
         'courses_count': courses_count,
         'keyword':keyword,
     }
     return render(request,'courses.html',context)
+def pricing (request):
+    return render(request, 'pricing.html', )
+

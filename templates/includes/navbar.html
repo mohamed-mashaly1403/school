@@ -3,52 +3,66 @@
 {% load i18n %}
 
 <header id="header" class="fixed-top">
-
+<div class="container d-flex align-items-center">
+<h1   class="logo me-auto "><a  href="{% url 'home'%}">SCHOOL.COM</a></h1>
+</div>
     <div class="container d-flex align-items-center">
 
 
-       <h1 class="logo me-auto"><a href="{% url 'home'%}">SCHOOL.COM</a></h1>
 
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
+
+      <nav id="navbar" class="navbar  navbar-expand-sm">
+
+
         <ul>
+
           <li><a class="{% if nbar == 'home' %}active {% endif %}" href="{%url 'home'%}">{% trans 'Home'%}</a></li>
             {%if user.is_staff%}
-            <li><a class="{% if '/dashboard/' in request.path or '/users/' == request.path %}active {% endif %}" href="{% url 'dashboard'%}">{%trans 'Student DashBoard'%}</a></li>
-            {%else%}
+<!--             <li><a class="{% if '/dashboard/' in request.path or '/users/' == request.path %}active {% endif %}" href="{% url 'dashboard'%}">{%trans 'Student DashBoard'%}</a></li> -->
+
+            {%elif user.is_authenticated and not user.is_staff %}
           <li><a class="{% if '/dashboard/' in request.path or '/users/' == request.path %}active {% endif %}" href="{% url 'dashboard'%}">{%trans 'My DashBoard'%}</a></li>
           {%endif%}
-            <li><a class="{% if '/courses/' == request.path %}active {% endif %}" href="{% url 'courses' %}">{%trans 'Courses'%}</a></li>
+            <li><a class="{% if '/en/courses/' == request.path or '/ar/courses/' == request.path %}active {% endif %}" href="{% url 'courses' %}">{%trans 'Courses'%}</a></li>
           <!-- <li><a href="trainers.html">Trainers</a></li> -->
             {%if user.is_staff%}
             <li><a class="{% if '/Teachers/' in request.path or '/Teachers/' == request.path %}active {% endif %}" href="{% url 'TeacherDashboard'%}">{%trans 'Teacher Dashboard'%}</a></li>
             {%else%}
           <li><a class="{% if '/teacherProfile/' in request.path  %}active {% endif %}" href="{% url 'teacherProfile'%}">{%trans 'Be a teacher'%}</a></li>
             {%endif%}
-          <li><a href="pricing.html">Pricing</a></li>
+            {%if not user.is_staff%}
+          <li><a class="{% if '/pricing' in request.path  %}active {% endif %}" href="{% url 'pricing'%}"> {%trans 'Pricing'%} </a></li>
+          {%endif%}
 
-          <li class="dropdown"><a href="#"><span>{%trans 'Useful Links'%} </span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-               <li><a href="{% url 'complains'%}">{%trans 'Complains'%} </a></li>
-              <li class="dropdown"><a href="#"><span> face to face courses </span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">for one student</a></li>
-                  <li><a href="#">for group </a></li>
-                  <li><a href="#">for government</a></li>
+<!--           <li class="dropdown"><a href="#"><span>{%trans 'Useful Links'%} </span> <i class="bi bi-chevron-down"></i></a> -->
+<!--             <ul> -->
+<!--                <li><a href="{% url 'complains'%}">{%trans 'Complains'%} </a></li> -->
+<!--               <li class="dropdown"><a href="#"><span> face to face courses </span> <i class="bi bi-chevron-right"></i></a> -->
+<!--                 <ul> -->
+<!--                   <li><a href="#">for one student</a></li> -->
+<!--                   <li><a href="#">for group </a></li> -->
+<!--                   <li><a href="#">for government</a></li> -->
 
 <!--                  <li><a href="#">Deep Drop Down 5</a></li> -->
-                </ul>
-              </li>
+<!--                 </ul> -->
+<!--               </li> -->
                 {%if user.is_authenticated %}
               <li><a href="{%url 'inbox'%}">{%trans 'My Mailbox'%}</a></li>
+              {%if user.is_staff %}
+              <li><a href="{% url 'Teachercomplains'%}">{%trans 'Complains'%} </a></li>
+              {%else%}
+              <li><a href="{% url 'complains'%}">{%trans 'Complains'%} </a></li>
                 {%endif%}
-              <li><a href="#">make assignment</a></li>
-              <li><a href="#">one teacher for everything</a></li>
-              <li><a href="#">Home work</a></li>
-            </ul>
-          </li>
+                {%endif%}
 
-        </ul>
+<!--               <li><a href="#">make assignment</a></li> -->
+<!--               <li><a href="#">one teacher for everything</a></li> -->
+<!--               <li><a href="#">Home work</a></li> -->
+            </ul>
+
+
+
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 <!--        =========================================== start notif-->
@@ -108,7 +122,8 @@
       <a href="{%url 'edit_profile'%}"><img  height="50" class="rounded-circle mb-2" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="user picture"></a>
       {% endif %}
       <div class="text-center">
-      <small class="title text-muted">{%trans 'Welcome'%} {{user.first_name}}</small>
+      <small style="width:100%;" class="title text-muted">{%trans 'Welcome'%} </small>
+      <p class="title text-muted"> {{user.first_name}}</p>
       </div>
       <a id="myModelSave" href="{% url 'logout'%}" class="btn btn-outline-success btn-sm">{%trans 'Logout'%}</a>
       {% else%}

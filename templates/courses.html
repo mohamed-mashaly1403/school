@@ -22,7 +22,7 @@
 		</div>
           {% else%}
           <h2>{%trans 'Courses'%}</h2>
-        <p>{%trans 'All courses prepared by most qualified and experienced teachers , simply pick your course and excel!'%}</p>
+        <p>{%trans 'All courses prepared by Highly qualified and experienced teachers , simply pick your course and excel!'%}</p>
           {% endif %}
 
 
@@ -55,14 +55,14 @@
             <br>
 
 
-        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+        <div class="row infinite-container" data-aos="zoom-in" data-aos-delay="100">
 
 	 <!-- col.// -->
 
 
-          {% for course in courses%}
+          {% for course in courses %}
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch infinite-item">
             <div class="course-item">
               <a href="{% url 'courseDetails' course.slug %}"><img src="{{course.img.url}}" class="img-fluid" style="width:385px; height:238.51px;" alt="{%trans 'Course Image'%}"></a>
               <div class="course-content">
@@ -73,7 +73,7 @@
                     {%else %}
                     <a href="{% url 'courseDetails' course.slug %}"><h4> {% if LANGUAGE_CODE == 'ar'%}{{course.language1_tr }}  {% trans 'and'%} {{course.language2_tr}} {% else %} {{course.language1}} {% trans 'and'%} {{course.language2}}{% endif %}</h4></a>
                     {% endif %}
-                  <p class="price">100 AED</p>
+                  <p class="price">20 USD</p>
                 </div>
 
 
@@ -99,36 +99,47 @@
             </div>
           </div> <!-- End Course Item-->
             {% endfor%}
+{% if courses.has_next %}
+<a class="infinite-more-link" href="?page={{courses.next_page_number}}"></a>
+{% endif %}
 
 
 
 
         </div>
-           <div class="row" >
-               <div class="d-flex justify-content-center">
+<!--            <div class="row " > -->
+<!--                <div class="d-flex justify-content-center"> -->
 
-          <nav class="mt-4" aria-label="Page navigation sample">
-	{% if courses.has_other_pages %}
-	  <ul class="pagination">
+<!--           <nav class="mt-4" aria-label="Page navigation sample"> -->
+<!-- 	{% if courses.has_other_pages %} -->
+<!-- 	  <ul class="pagination"> -->
 
 
-		  {% for i in x %}
-		  	{%if i == courses.number  %}
-				<li class="page-item active" ><a class="page-link" style="background-color:#5fcf80;" href="#">{{i}}</a></li>
-		  	{% else %}
-				<li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
-		  	{% endif %}
-		  {% endfor %}
+<!-- 		  {% for i in x %} -->
+<!-- 		  	{%if i == courses.number  %} -->
+<!-- 				<li class="page-item active" ><a class="page-link" style="background-color:#5fcf80;" href="#">{{i}}</a></li> -->
+<!-- 		  	{% else %} -->
+<!-- 				<li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li> -->
+<!-- 		  	{% endif %} -->
+<!-- 		  {% endfor %} -->
 
-	  </ul>
-	{% endif %}
-</nav>
-                   </div>
-           </div>
+<!-- 	  </ul> -->
+<!-- 	{% endif %} -->
+<!-- </nav> -->
+<!--                    </div> -->
+<!--            </div> -->
 
       </div>
     </section><!-- End Courses Section -->
 
   </main><!-- End #main -->
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/shortcuts/infinite.min.js"></script>
+<script>
+var infinite = new Waypoint.Infinite({
+  element: $('.infinite-container')[0]
+})
+</script>
 
  {% endblock %}

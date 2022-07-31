@@ -52,7 +52,7 @@
 <div class="col form-group">
      <label>{%trans 'Country'%}<span style="color:red">  *</span></label>
 
-    <select name="country"  class="form-control"  required  id="cou" onchange="yesnoCheckk(this);">
+    <select name="country"  class="form-select form-select-lg mb-3"  required  id="cou" onchange="yesnoCheckk(this);">
      <option   value="UAE" class="form-control"  >{%trans 'UAE'%}</option>
     <option   value="KSA" class="form-control"  >{%trans 'KSA'%}</option>
     <option   value="Qatar" class="form-control"  >{%trans 'Qatar'%}</option>
@@ -70,7 +70,7 @@
     <div class="col form-group">
      <label>{%trans 'City'%} <span style="color:red">*</span></label>
     <input type="text" name="city" class="form-control" required >
-    <input type="text" name="ncourse" class="form-control" hidden value="{{needed_course}}" >
+    <input type="text" name="ncourse" class="form-select form-select-lg mb-3" hidden value="{{needed_course}}" >
 </div>
 
 </div>
@@ -78,7 +78,7 @@
             {%if needed_course.is_school_subject %}
 <div class="col form-group">
      <label>{%trans 'Grade'%} <span style="color:red">*</span></label>
-    <select name="grade" required class="form-control">
+    <select name="grade" required class="form-select form-select-lg mb-3">
 
 
 
@@ -109,7 +109,7 @@
         <div class="form-row">
             <div class="col form-group">
             <label>{%trans 'Curriculum Type'%} <span style="color:red">*</span></label>
-    <select name="Curriculum_type" required class="form-control" id="ses" onchange="yesnoCheck(this);" >
+    <select name="Curriculum_type" required class="form-select form-select-lg mb-3" id="ses" onchange="yesnoCheck(this);" >
 
     <option   value="General" class="form-control"  >{%trans 'General'%}</option>
     <option   value="Advanced" class="form-control"  >{% trans 'Advanced' %}</option>
@@ -126,7 +126,7 @@
             </div>
    <div class="col form-group">
       <label>{%trans 'Semester'%} <span style="color:red">*</span></label>
-            <select name="term" required class="form-control">
+            <select name="term" required class="form-select form-select-lg mb-3">
 
 
 
@@ -145,7 +145,7 @@
 
             <div class="col form-group">
       <label>{%trans 'Course Language'%} <span style="color:red">*</span></label>
-            <select name="order_course_language" required class="form-control">
+            <select name="order_course_language" required class="form-select form-select-lg mb-3">
     <option   value="Arabic" class="form-control"  >{%trans 'Arabic'%}</option>
     <option   value="English" class="form-control"  >{%trans 'English'%}</option>
     <option   value="French" class="form-control"  >{%trans 'French'%}</option>
@@ -185,11 +185,11 @@
             <div class="box featured">
               <h3 >{{needed_course}} </h3>
                 <input hidden required name="needed_course_id" value="{{needed_course_id}}">
-                <h4><sup>AED</sup>{{price}}<span> {{lessons}}/ class{{ lessons|pluralize:"es" }}</span></h4>
+                <h4><sup>USD</sup>{{price}}<span> {{lessons}}/ class{{ lessons|pluralize:"es" }}</span></h4>
                 <label hidden id="price" set="{{price}}"> </label>
                 <label hidden id="lesson" set="{{lessons}}"> </label>
                 <ul>
-                    <li >  <strong style="color:red"> {%trans 'Total price with tax'%} 5%:<output name="total" for="quantity">{{price}} </output> AED</strong></li>
+                    <li >  <strong style="color:red"> {%trans 'Total price with tax'%} 5%:<output name="total" for="quantity">{{price}} </output> USD</strong></li>
                     <li> <strong style="color:red">{%trans 'Total lessons:'%}<output name="total_classes" for="quantity">{{lessons}}</output> class{{ lessons|pluralize:"es" }}</strong></li>
 
                 </ul>

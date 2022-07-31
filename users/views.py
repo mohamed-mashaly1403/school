@@ -98,8 +98,10 @@ def login(request):
                 nextPage = params['next']
                 return redirect(nextPage)
         except:
-
-            return redirect('dashboard')
+            if request.user.is_authenticated and not request.user.is_staff:
+                return redirect('dashboard')
+            else:
+                return redirect('TeacherDashboard')
     return render(request, 'accounts/login.html')
 
 
@@ -354,8 +356,7 @@ def viewMessage(request, pk):
         course = order.order_course
     except:
         order=''
-        course=''
-
+        course
     if message.is_read == False:
         message.is_read = True
         Inboxnotif.objects.filter(recipient=request.user, message_id=pk).delete()
@@ -371,9 +372,6 @@ def DeleteMessage(request, pk):
         message.save(update_fields=['is_receiver_delete'])
         if message.is_receiver_delete and message.is_sender_delete:
             message.delete()
-
-
-
     except:
         message = user.sentMessages.get(id=pk)
         message.is_sender_delete = True

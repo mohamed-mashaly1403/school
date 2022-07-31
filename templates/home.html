@@ -10,9 +10,9 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex justify-content-center align-items-center">
     <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-      <h1>{%trans 'FUTURE OF LEARNING,'%}<br>{%trans 'BOOK YOUR SESSIONS NOW'%}</h1>
-      <h2>{%trans 'Study online with private highly qualified teachers'%} </h2>
-      <a href="courses.html" class="btn-get-started">{%trans 'Get Started'%}</a>
+      <h1>{%trans 'FUTURE OF LEARNING,'%}<br>{%trans 'BOOK YOUR CLASSES NOW'%}</h1>
+      <h2>{%trans 'Study online with private highly qualified teacher'%} </h2>
+      <a href="{% url 'courses'%}" class="btn-get-started">{%trans 'Get Started'%}</a>
     </div>
   </section><!-- End Hero -->
 
@@ -29,7 +29,7 @@
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
             <h3>{%trans 'HOW IT WORKS?.'%}</h3>
             <p class="fst-italic">
-              {%trans 'Simply choose the subject you need then fill the form about the course information and book number of sessions with free refund after first class in case you want to cancel.'%}
+              {%trans 'Simply choose the subject then  book number of sessions And Go.'%}
             </p>
             <ul>
               <li><i class="bi bi-check-circle"></i> {%trans 'step1:choose subject.'%}</li>
@@ -84,12 +84,12 @@
         <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
-              <h3>{%trans 'Why Choose E-student?'%}</h3>
+              <h3>{%trans 'Why Choose School.com?'%}</h3>
               <p>
-                {%trans 'With E-student you can experience convent way of learning while you are in your house, no border limits, we have highly qualified teachers from all around the world, on top of that you can refund your money any time you decide to stop.'%}
+                {%trans 'With School.com you can experience convent way of learning while you are in your house, no border limits, we have highly qualified teachers from all around the world, on top of that you can refund your money any time you decide to stop.'%}
               </p>
               <div class="text-center">
-                <a href="about.html" class="more-btn">{%trans 'Learn More'%} <i class="bx bx-chevron-right"></i></a>
+                <a href="{% url 'courses'%}" class="more-btn">{%trans 'Start Now'%} <i class="bx bx-chevron-right"></i></a>
               </div>
             </div>
           </div>
@@ -100,7 +100,7 @@
                   <div class="icon-box mt-4 mt-xl-0">
                     <i class="bx ri-disc-line"></i>
                     <h4>{%trans 'Convent way of learning'%}</h4>
-                    <p>{%trans 'Study wile you are in your house in any country with no border limits at all'%} </p>
+                    <p>{%trans 'Study while you are in your house in any country with no border limits at all'%} </p>
                   </div>
                 </div>
                 <div class="col-xl-4 d-flex align-items-stretch">
@@ -127,7 +127,14 @@
 
     <!-- ======= Features Section ======= -->
     <section id="features" class="features">
+
       <div class="container" data-aos="fade-up">
+      <div  class="section-title">
+          <h2 style="font-size: 12px;">{%trans 'Courses'%}</h2>
+          <p>{%trans 'Main Courses'%}</p>
+
+          </div>
+
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
             <div class="col-lg-3 col-md-4">
@@ -254,8 +261,8 @@
           </div>
           <div class="col-lg-3 col-md-4 mt-4">
             <div class="icon-box">
-              <i class="iconify" data-icon="uil:letter-chinese-a" data-width="34" style="color: #a629cc;"></i>
-              <h3><a href="{% url 'courseDetails' 'chinese' %}">{%trans 'Chinese'%}</a></h3>
+              <i class="iconify" data-icon="healthicons:i-exam-multiple-choice-outline" data-width="34" style="color: #a629cc;"></i>
+              <h3><a href="{% url 'search'  %}">{%trans 'Emsat'%}</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4 mt-4">
@@ -274,8 +281,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Courses</h2>
-          <p>Popular Courses</p>
+          <h2>{%trans 'Courses' %}</h2>
+          <p>{%trans 'Popular Courses' %}</p>
         </div>
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
@@ -290,7 +297,7 @@
                     {%else %}
                     <a href="{% url 'courseDetails' course.slug %}"><h4> {% if LANGUAGE_CODE == 'ar'%}{{course.language1_tr }}  {% trans 'and'%} {{course.language2_tr}} {% else %} {{course.language1}} {% trans 'and'%} {{course.language2}}{% endif %}</h4></a>
                     {% endif %}
-                  <p class="price">100 AED</p>
+                  <p class="price">20 USD</p>
                 </div>
 
                 <h3><a href="{% url 'courseDetails' course.slug %}"> {% if LANGUAGE_CODE == 'ar' and course.course_name_ar != None %}{{ course.course_name_ar}}{%else%}{{ course.course_name}}{%endif%}</a></h3>
@@ -319,72 +326,72 @@
 
       </div>
     </section><!-- End Popular Courses Section -->
-    <!-- ======= Trainers Section ======= -->
-    <section id="trainers" class="trainers">
-      <div class="container" data-aos="fade-up">
+<!--      --><!-- ======= Trainers Section ======= -->
+<!--     <section id="trainers" class="trainers"> -->
+<!--       <div class="container" data-aos="fade-up"> -->
 
-        <div class="row" data-aos="zoom-in" data-aos-delay="100">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="member">
-              <img src="{% static 'img/trainers/trainer-1.jpg'%}" class="img-fluid" alt="">
-              <div class="member-content">
-                <h4>Walter White</h4>
-                <span>Web Development</span>
-                <p>
-                  Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
-                </p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
+<!--         <div class="row" data-aos="zoom-in" data-aos-delay="100"> -->
+<!--           <div class="col-lg-4 col-md-6 d-flex align-items-stretch"> -->
+<!--             <div class="member"> -->
+<!--               <img src="{% static 'img/trainers/trainer-1.jpg'%}" class="img-fluid" alt=""> -->
+<!--               <div class="member-content"> -->
+<!--                 <h4>Walter White</h4> -->
+<!--                 <span>Web Development</span> -->
+<!--                 <p> -->
+<!--                   Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut -->
+<!--                 </p> -->
+<!--                 <div class="social"> -->
+<!--                   <a href=""><i class="bi bi-twitter"></i></a> -->
+<!--                   <a href=""><i class="bi bi-facebook"></i></a> -->
+<!--                   <a href=""><i class="bi bi-instagram"></i></a> -->
+<!--                   <a href=""><i class="bi bi-linkedin"></i></a> -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="member">
-              <img src="{% static 'img/trainers/trainer-2.jpg' %}" class="img-fluid" alt="">
-              <div class="member-content">
-                <h4>Sarah Jhinson</h4>
-                <span>Marketing</span>
-                <p>
-                  Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
-                </p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
+<!--           <div class="col-lg-4 col-md-6 d-flex align-items-stretch"> -->
+<!--             <div class="member"> -->
+<!--               <img src="{% static 'img/trainers/trainer-2.jpg' %}" class="img-fluid" alt=""> -->
+<!--               <div class="member-content"> -->
+<!--                 <h4>Sarah Jhinson</h4> -->
+<!--                 <span>Marketing</span> -->
+<!--                 <p> -->
+<!--                   Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus -->
+<!--                 </p> -->
+<!--                 <div class="social"> -->
+<!--                   <a href=""><i class="bi bi-twitter"></i></a> -->
+<!--                   <a href=""><i class="bi bi-facebook"></i></a> -->
+<!--                   <a href=""><i class="bi bi-instagram"></i></a> -->
+<!--                   <a href=""><i class="bi bi-linkedin"></i></a> -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="member">
-              <img src="{% static 'img/trainers/trainer-3.jpg'%}" class="img-fluid" alt="">
-              <div class="member-content">
-                <h4>William Anderson</h4>
-                <span>Content</span>
-                <p>
-                  Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
-                </p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
+<!--           <div class="col-lg-4 col-md-6 d-flex align-items-stretch"> -->
+<!--             <div class="member"> -->
+<!--               <img src="{% static 'img/trainers/trainer-3.jpg'%}" class="img-fluid" alt=""> -->
+<!--               <div class="member-content"> -->
+<!--                 <h4>William Anderson</h4> -->
+<!--                 <span>Content</span> -->
+<!--                 <p> -->
+<!--                   Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara -->
+<!--                 </p> -->
+<!--                 <div class="social"> -->
+<!--                   <a href=""><i class="bi bi-twitter"></i></a> -->
+<!--                   <a href=""><i class="bi bi-facebook"></i></a> -->
+<!--                   <a href=""><i class="bi bi-instagram"></i></a> -->
+<!--                   <a href=""><i class="bi bi-linkedin"></i></a> -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
 
-        </div>
+<!--         </div> -->
 
-      </div>
-    </section><!-- End Trainers Section -->
+<!--       </div> -->
+<!--     </section> --><!-- End Trainers Section -->
 
   </main><!-- End #main -->
 
