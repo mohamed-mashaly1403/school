@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load i18n %}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+
+<section class="section-conten padding-y" style="min-height:84vh">
+
+<!-- ============================ COMPONENT LOGIN   ================================= -->
+    {% if request.GET.command == 'verification'%}
+    <div class="container mx-auto alert alert-info text-center" role="alert" style="max-width: 1024px; margin-top:100px;">
+        {%trans 'Thank you for Registration. please activate your account by clicking on activation url in your email'%} <a href="mailto:{{mail.gmail.com}}">{{request.GET.email}}</a>
+        <br><br>
+        {%trans 'Already verified?'%} <a href="{% url 'login'%}">{%trans 'login'%}</a>
+        {%else%}
+        </div>
+	<div class="card mx-auto" style="max-width: 550px; margin-top:100px;">
+      <div class="card-body">
+      <h4 class="card-title mb-4">{%trans 'Sign in'%}</h4>
+      <form method="POST" action="{% url 'login'%}">
+          {%csrf_token%}
+          <div class="form-group">
+			 <input type="email" class="form-control" placeholder="{%trans 'Email Address'%}" name="email" >
+          </div> <!-- form-group// -->
+          <div class="form-group">
+			<input type="password" class="form-control" placeholder="{%trans 'Password'%}" name="password">
+          </div> <!-- form-group// -->
+
+          <div class="form-group">
+
+              <a href="{% url 'forgotpassword'%}" class="float-right">{%trans 'Forgot password?'%}</a>
+
+
+          </div> <!-- form-group form-check .// -->
+          <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block"> {%trans 'Login'%}  </button>
+          </div> <!-- form-group// -->
+      </form>
+      </div> <!-- card-body.// -->
+    </div> <!-- card .// -->
+
+     <p class="text-center mt-4">{%trans "Don't have account?"%} <a href="{% url 'register'%}">{%trans 'Sign up'%}</a></p>
+
+     <br><br>
+
+        {%endif%}
+
+
+
+<!-- ============================ COMPONENT LOGIN  END.// ================================= -->
+
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
+
+{% endblock %}
+

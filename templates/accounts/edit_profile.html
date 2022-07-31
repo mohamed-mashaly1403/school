@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load i18n %}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-conten padding-y bg">
+<!--{% include 'includes/alerts.html' %}-->
+    <br>
+    <br>
+    <br>
+    <br>
+
+<div class="container">
+	<div class="row">
+	{% if user.is_staff%}
+	{% include 'includes/TeacherdashboardSide.html'%}
+	{% else%}
+    {% include 'includes/dashboardSide.html'%}
+    {%endif%}
+	<main class="col-md-9">
+		<article class="card">
+		<header class="card-header">
+			<strong class="d-inline-block mr-3"> {%trans 'Student profile'%} </strong>
+
+		</header>
+		<div class="card-body">
+            <div class="text-center">
+                {% if user.user_img %}
+				  <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{{user.user_img.url}}" alt="{%trans 'user picture'%}">
+                <div>
+                    <a role="button"  class="btn btn-outline-danger"  href="{% url 'deltePhoto' %}">{%trans 'Remove Photo'%}</a>
+                    </div>
+
+
+				  {% else%}
+				  <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="{%trans 'user picture'%}">
+				  {% endif %}
+
+            </div>
+			<div class="row">
+
+				<div class="col-md-12">
+				<form action="{% url 'edit_profile'%}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token%}
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>{%trans 'First Name'%}<span style="color:red">*</span></label>
+                           {{user_form.first_name}}
+                        </div>
+                         <div class="form-group col-md-6">
+                            <label>{%trans 'Last Name'%}<span style="color:red">*</span></label>
+                            {{user_form.last_name}}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>{%trans 'phone'%}<span style="color:red">*</span></label>
+                            {{user_form.phone}}
+                        </div>
+                         <div class="form-group col-md-6">
+                            <label>{%trans 'Picture'%}</label>
+                           {{user_form.user_img}}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>{%trans 'Country'%}</label>
+                            {{Profile_form.country}}
+                        </div>
+                         <div class="form-group col-md-6  mb-5">
+                            <label>{%trans 'City'%}</label>
+                            {{Profile_form.city}}
+                        </div>
+
+                    </div>
+
+
+                     <div class="form-row text-center ">
+
+                           <div class="form-group  ">
+
+                    <input style="width:200px;" type="submit" value="{%trans 'save'%}" class="btn btn-success">
+                           </div>
+
+                     </div>
+                </form>
+				</div>
+
+			</div> <!-- row.// -->
+		</div> <!-- card-body .// -->
+
+		</article> <!-- order-group.// -->
+	</main>
+</div> <!-- row.// -->
+</div>
+
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock %}

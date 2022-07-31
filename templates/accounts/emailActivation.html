@@ -1,0 +1,7 @@
+{% autoescape off%}
+{% load i18n %}
+{%trans 'Hi'%} {{user.first_name}}
+{%trans 'please activate your account by the link below'%}
+http://{{current_site}}{% url 'activate' uidb64=uid token=token %}
+{%trans 'if you did not registered in school.com ignore this email'%}
+{% endautoescape %}

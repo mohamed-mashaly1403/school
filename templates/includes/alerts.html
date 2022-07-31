@@ -1,0 +1,39 @@
+{% if messages %}
+
+    {% for message in messages %}
+
+    <div {% if message.tags %} class="text-center alert alert-{{ message.tags }}"{% endif %} role="alert">
+        <button type="button"   class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}! {% endif %}
+        {{ message }}
+    </div>
+
+    {% endfor %}
+
+{% endif %}
+<style>
+    .alert {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0px);
+    transition: visibility 0s, opacity 250ms, transform 250ms;
+}
+.alert.hide {
+    position: relative;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px); // translateX, translateY, translateZ works well
+    transition: visibility 0s 250ms, opacity 250ms, transform 250ms;
+}
+</style>
+<script>
+var m = document.getElementsByClassName("alert");  // Return an array
+
+setTimeout(function(){
+   if (m && m.length) {
+       m[0].classList.add('hide');
+   }
+}, 3000);
+</script>
+

@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+ {% load i18n %}
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y bg">
+<!--{% include 'includes/alerts.html' %}-->
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+	<div class="row">
+{% include 'includes/dashboardSide.html'%}
+	<main class="col-md-9">
+		<article class="card">
+		<header class="card-header">
+			<strong class="d-inline-block mr-3"> {%trans 'login as Student:'%} </strong>
+			<span>{{user.first_name}} {{user.last_name}}</span>
+		</header>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-6">
+				<div class="card text-center">
+					<div class="card-body">
+						<div class="row">
+				<div class="col-md-6">
+					<div class="card text-center">
+						<h5 class="card-title">  {%trans 'Total Courses'%} </h5>
+						<h4>{{orders_count}}</h4>
+						{%if orders_count%}
+						<a href="{%url 'myOrders'%}"> {%trans 'View courses'%}</a>
+
+						{%else%}
+						<a href="{%url 'courses'%}"> {%trans 'Choose Course'%}</a>
+						{%endif%}
+						</div>
+				</div>
+							<div class="col-md-6">
+								<div class="card text-center">
+
+
+
+						<h5 class="card-title">  {%trans 'Active Courses'%} </h5>
+						<h4>{{active_orders_count}}</h4>
+						{%if active_orders_count %}
+						<a href="{%url 'myActiveOrders'%}"> {%trans 'View courses'%}</a>
+						{%else%}
+						<a href="{%url 'courses'%}"> {%trans 'Choose Course'%}</a>
+						{%endif%}
+
+							</div>
+				</div>
+				</div>
+						<div class="row  mt-2 ">
+							<div class="col-md-6 ">
+					<div class="card ">
+						<h5 class="card-title">  {%trans 'Last Unpaid orders'%} </h5>
+						<h4>{{UnPaidOrders}}</h4>
+						{%if UnPaidOrders is not 0 %}
+						<a href="{%url 'UnPaidOrders'%}"> {%trans 'View orders'%}</a>
+
+						{%else%}
+						<a href="{%url 'courses'%}"> {%trans 'Choose Course'%}</a>
+						{%endif%}
+						</div>
+				</div>
+
+
+						</div>
+					</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+				<div class="card text-center">
+					<div class="card-body">
+
+				  {% if user.user_img %}
+				  <a href="{%url 'edit_profile'%}"><img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{{user.user_img.url}}" alt=" {%trans 'user picture'%}"></a>
+						<div>
+						<a role="button"  class="btn btn-outline-danger"  href="{% url 'deltePhoto' %}"> {%trans 'Remove Photo'%}</a>
+							</div>
+				  {% else%}
+				 <a href="{%url 'edit_profile'%}"> <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt=" {%trans 'user picture'%}"></a>
+				  {% endif %}
+
+						<p class="mb-0">{{user.email}}</p>
+						<p>{{user.phone}}</p>
+					</div>
+					</div>
+				</div>
+
+			</div> <!-- row.// -->
+		</div> <!-- card-body .// -->
+
+
+		</article> <!-- order-group.// -->
+	</main>
+</div> <!-- row.// -->
+</div>
+
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock %}

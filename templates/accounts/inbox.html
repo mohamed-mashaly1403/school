@@ -1,0 +1,270 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load i18n %}
+  <!-- Main Section -->
+<section class="section-content padding-y bg">
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body bg-success text-white mailbox-widget pb-0 ">
+                    <h2 class="text-white pb-3">{%trans 'Mailbox'%}</h2>
+                    <ul class="nav nav-tabs custom-tab border-bottom-0 mt-4" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="inbox-tab" data-toggle="tab" aria-controls="inbox" href="#inbox" role="tab" aria-selected="true">
+                                <span class="d-block d-md-none"><i class="ti-email"></i></span>
+                                <span class="d-none d-md-block"> {%trans 'INBOX'%}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="sent-tab" data-toggle="tab" aria-controls="sent" href="#sent" role="tab" aria-selected="false">
+                                <span class="d-block d-md-none"><i class="ti-export"></i></span>
+                                <span class="d-none d-md-block">{%trans 'SENT'%}</span>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade active show in" id="inbox" aria-labelledby="inbox-tab" role="tabpanel">
+                        <div>
+                            <div class="row p-4 no-gutters align-items-center">
+                                <div class="col-sm-12 col-md-6">
+<!--                                    ================================================ number of messages-->
+                                    <h3 class="font-light mb-0"><i class="ti-email mr-2"></i>{{unreadCount}} {%trans 'Unread emails'%}</h3>
+                        <!--                                    ================================================ number of messages-->
+
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <ul class="list-inline dl mb-0 text-right float-md-right">
+                                        <li class="list-inline-item text-info ">
+                                            <a href="{% url 'createMessage' 0 %}
+.
+">
+                                                <button class="btn btn-circle btn-success text-white" href="{% url 'createMessage' 0 %}">
+                                                    <i class="fa fa-plus"></i>
+                        <!--                                    ================================================ compose-->
+
+                                                </button>
+                                                <span class="ml-2 font-normal text-dark">{%trans 'Compose'%}</span>
+                        <!--                                    ================================================ compose-->
+
+                                            </a>
+                                        </li>
+
+                                        <li class="list-inline-item text-danger">
+                                            <a href="#">
+                                                <button class="btn btn-circle btn-danger text-white" {%if allmeesagescount == 0 %} disabled {%endif%} form="myform" type="submit">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                        <!--                                    ================================================ Delete-->
+
+                                                <span class="ml-2 font-normal text-dark">{%trans 'Delete'%}</span>
+                        <!--                                    ================================================ Delete-->
+
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Mail list====================================================================================-->
+                            <div class="table-responsive">
+                                <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
+                                    <tbody>
+                                        <!-- row -->
+                                <!-- Mail row====================================================================================-->
+                                        {%if messageRequests%}
+                                        <tr>
+                                            <td style="border-style:none;" >
+                                        <input type="checkbox"    onClick="toggle(this)" />  <br/>
+                                            </td>
+                                            </tr>
+                                        {%endif%}
+                                         <form method="POST" id="myform" action="{% url 'DeleteMessages' %}">
+                                            {% csrf_token%}
+                                        {% for i in messageRequests %}
+
+                                        <tr>
+                                            <!-- label -->
+                                            <td class="pl-3">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input  type="checkbox" name="toDelete" value="{{i.id}}" class="custom-control-input inbox" id="cst1" />
+                                                    <label class="custom-control-label" for="cst1">&nbsp;</label>
+                                                </div>
+                                            </td>
+                                            <!-- star -->
+
+                                            <td>
+                                               <a href="{% url 'viewMessage' i.id%}"> <span class="mb-0 text-muted{%if i.is_read %} font-light {%endif%}">{{i.sender}}</span></a>
+                                            </td>
+                                            <!-- Message -->
+                                            <td >
+                                                <a class="link" href="{%url 'viewMessage' i.id%}">
+
+                                                    <span class="text-dark{%if i.is_read %} font-light {%endif%}">{{i.subject}}</span>
+                                                </a>
+                                            </td>
+                                            <!-- Attachment -->
+
+                                            <!-- Time -->
+                                            <td class="text-muted{%if i.is_read %} font-light {%endif%} ">{{i.created}}</td>
+                                        </tr>
+
+                                <!-- Mail row====================================================================================-->
+                                        {%endfor%}
+                                    </form>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade in" id="sent" aria-labelledby="sent-tab" role="tabpanel">
+<!--                        ============================================================================== sent-->
+                        <div>
+                            <div class="row p-4 no-gutters align-items-center">
+                                <div class="col-sm-12 col-md-6">
+<!--                                    ================================================ number of messages-->
+                                    <h3 class="font-light mb-0"><i class="ti-email mr-2"></i>{{sent_count}} {%trans 'sent emails'%}</h3>
+                        <!--                                    ================================================ number of messages-->
+
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <ul class="list-inline dl mb-0 text-right float-md-right">
+
+                                        <li class="list-inline-item text-danger ">
+                                            <a href="#">
+                                                <button class="btn btn-circle btn-danger text-white"  {%if allsentcount == 0 %} disabled {%endif%} type="submit" form="mysentform">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                        <!--                                    ================================================ Delete-->
+
+                                                <span class="ml-2 font-normal text-dark">{%trans 'Delete'%}</span>
+                        <!--                                    ================================================ Delete-->
+
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Mail list====================================================================================-->
+                            <div class="table-responsive">
+                                <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
+                                    <tbody>
+                                        <!-- row -->
+                                          {%if sent%}
+                                         <tr>
+                                            <td style="border-style:none;" >
+
+                                        <input type="checkbox"   onClick="toggle1(this)" /> <br/>
+                                            </td>
+                                         </tr>
+                                        {%endif%}
+                                <!-- Mail row====================================================================================-->
+                                           <form method="POST" id="mysentform" action="{% url 'DeleteMessages' %}">
+                                            {% csrf_token%}
+                                        {% for i in sent %}
+                                        <tr>
+                                            <!-- label -->
+                                            <td class="pl-3">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input  type="checkbox" class="custom-control-input sent" id="cst2" name="toDelete" value="{{i.id}}" />
+                                                    <label class="custom-control-label" for="cst2">&nbsp;</label>
+                                                </div>
+                                            </td>
+                                            <!-- star -->
+                                            <td>
+                                               <a href="{% url 'viewMessage' i.id%}"> <span class="mb-0 text-muted  ">{{i.recipient}}</span></a>
+                                            </td>
+                                            <!-- Message -->
+                                            <td >
+                                                <a class="link" href="{% url 'viewMessage' i.id%}">
+
+                                                    <span class="text-dark  ">{{i.subject}}</span>
+                                                </a>
+                                            </td>
+                                            <!-- Attachment -->
+
+                                            <!-- Time -->
+                                            <td class="text-muted  ">{{i.created}}</td>
+                                        </tr>
+
+                                <!-- Mail row====================================================================================-->
+                                        {%endfor%}
+                                           </form>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+<!--                        ============================================================================== sent-->
+
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<style type="text/css">
+body{
+    background: #edf1f5;
+    margin-top:20px;
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid transparent;
+    border-radius: 0;
+}
+.mailbox-widget .custom-tab .nav-item .nav-link {
+    border: 0;
+    color: #fff;
+    border-bottom: 3px solid transparent;
+}
+.mailbox-widget .custom-tab .nav-item .nav-link.active {
+    background: 0 0;
+    color: #fff;
+    border-bottom: 3px solid #2cd07e;
+}
+.no-wrap td, .no-wrap th {
+    white-space: nowrap;
+}
+.table td, .table th {
+    padding: .9375rem .4rem;
+    vertical-align: top;
+    border-top: 1px solid rgba(120,130,140,.13);
+}
+.font-light {
+    font-weight: 300;
+}
+</style>
+
+<script type="text/javascript">
+    function toggle(source) {
+  checkboxes = document.getElementsByClassName('inbox');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
+}
+    function toggle1(source) {
+  checkboxes = document.getElementsByClassName('sent');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
+}
+
+</script>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load i18n %}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-conten padding-y bg">
+    <br>
+    <br>
+    <br>
+    <br>
+<!--{% include 'includes/alerts.html' %}-->
+
+<div class="container">
+	<div class="row">
+{% include 'includes/dashboardSide.html'%}
+	<main class="col-md-9">
+		<article class="card">
+		<header class="card-header">
+			<strong class="d-inline-block mr-3">{%trans 'My orders:'%} </strong>
+
+		</header>
+		<div class="card-body">
+			<div class="row">
+
+				<div class="col-md-12">
+				<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">{%trans 'Order #'%}</th>
+      <th scope="col">{%trans 'Course Name'%}</th>
+      <th scope="col">{%trans 'Order Total'%}</th>
+      <th scope="col">{%trans 'order Date'%}</th>
+      <th scope="col">{%trans 'Status'%}</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for order in active_orders %}
+    <tr>
+      <th scope="row"><a href="{% url 'order_details' order.order.order_number %}">{{order.order.order_number}} </a></th>
+      <td>{{order.order_course.course_name}}</td>
+      <td>${{order.order.gtotal}}</td>
+      <td>{{order.created_at}}</td>
+
+      <td>{% if order.is_deliverd %} {%trans 'Finish'%} {%else %} {%trans 'Active'%} {%endif%}  </td>
+
+    </tr>
+  {% endfor %}
+
+  </tbody>
+</table>
+				</div>
+
+			</div> <!-- row.// -->
+		</div> <!-- card-body .// -->
+
+		</article> <!-- order-group.// -->
+	</main>
+</div> <!-- row.// -->
+</div>
+
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock %}

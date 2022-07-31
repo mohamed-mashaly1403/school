@@ -1,0 +1,465 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load i18n %}
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+      <div class="container">
+        <h2>{{order.order_course}} {%trans 'Course'%}</h2>
+        <h4>Status:{% if order_detail.is_deliverd %} {%trans 'Finish'%} {%else %} {%trans 'Active'%} {%endif%} </h4>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Cource Details Section ======= -->
+    <section id="course-details" class="course-details">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-8">
+            <img src="{{order.order_course.img.url}}" style="max-width:70%;max-height:50%; border-radius:10px;" class="img-fluid img-thumbnail" alt="Course Image">
+            <h3>{%trans 'Course Languge:'%}{{order.order_course_language}}</h3>
+            <p>
+             <strong>{%trans 'Course Description:'%}</strong> {{order.order_course.description}}  </p>
+          </div>
+          <div class="col-lg-4">
+
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>{%trans 'Trainer/Teacher'%}</h5>
+              <p><a href="{{ order_detail.teacher.docfile.url }}">{%if order_detail.teacher%}{{order_detail.teacher}} {{order_detail.teacher.user.last_name}}{%else%} {%trans 'will assigned soon'%} {%endif%}</a></p>
+            </div>
+
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>{%trans 'Course Fee(for teacher)'%}</h5>
+              <p>AED {{order_detail.Teacher_cost}}</p>
+            </div>
+
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>{%trans 'Number of Lessons'%}</h5>
+              <p>{{order.total_classes}}/ {{left}} {%trans 'left'%}</p>
+            </div>
+
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>{%trans 'Purchase Date'%}</h5>
+              <p>{{order.payment.created_at}}</p>
+            </div>
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5><a href="{% url 'createMessage' order.id %}">{%trans 'Send mail to your student'%} </a> </h5>
+              <p> <a href="{% url 'createMessage' order.id %}"> {{order.first_name}}  </p>
+
+              </div>
+              {% if order_detail.is_deliverd %}
+              {%else%}
+               <a  target="_blank" href="{% url 'startLive'  order.order_course order %}"><div class="course-info text-center">
+             <h5>{%trans 'Start live class'%}</h5>
+              </div></a>
+              {%endif%}
+
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Cource Details Section -->
+
+    <!-- ======= Cource Details Tabs Section ======= -->
+    <section id="cource-details-tabs" class="cource-details-tabs">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-3">
+            <ul class="nav nav-tabs flex-column">
+              <li class="nav-item">
+                <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">{%trans 'Meetings url and Timing'%} </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-2">{%trans 'Course Material url'%}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-3">{%trans 'Course Details'%}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link due"  data-bs-toggle="tab" href="#tab-4">{%trans 'Enter Lessons urls or change course state to done'%}</a>
+              </li>
+                <li class="nav-item">
+                <a class="nav-link due"  data-bs-toggle="tab" href="#tab-7">{%trans 'Change class Time or url'%}</a>
+              </li>
+                <li class="nav-item">
+                <a class="nav-link due1"  data-bs-toggle="tab" href="#tab-6">{%trans 'Enter Material url'%}</a>
+              </li>
+                {% if order_detail.is_deliverd == False  %}
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-5">{%trans 'Reject the course'%}</a>
+              </li>
+                {%endif%}
+                <li class="nav-item">
+                <a class="nav-link"  href="{%url 'TeacherDashboard'%}">{%trans 'Go to Dashboard'%}</a>
+              </li>
+
+            </ul>
+          </div>
+          <div class="col-lg-9 mt-4 mt-lg-0">
+            <div class="tab-content">
+              <div class="tab-pane active " id="tab-1">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                      <h3>{%trans 'Lessons Urls From Teacher'%}</h3>
+                        {%if urls %}
+
+                    {%for i in urls %}
+
+                        <div class="form-row  ">
+                        <div class="form-group ">
+                          {%if i.class_url_is_deliverd %}
+                          <strong style="color:red;">{%trans 'lesson url (lesson done)'%}</strong> :<label class="fst-italic form-control" >  {{i.class_url}} </label>
+                            <b class="title text-muted">{%trans 'Class Time:'%} {{i.classTime}}</b>
+                          {%else%}
+                          {%if i.class_url%}
+                           <strong>{%trans 'lesson url'%}</strong> :<a class="fst-italic form-control" target="_blank" href="{{i.class_url}}">  {{i.class_url}} </a>
+                          <b class="title text-muted">{%trans 'Class Time:'%} {{i.classTime}}</b>
+
+                          {%else%}
+                          <strong>{%trans 'lesson url'%}</strong> : <label class="fst-italic form-control"   > {%trans 'please add lesson url on zoom!'%} </label>
+                          {%endif%}
+                          {%endif%}
+
+                        </div>
+                        </div>
+
+                  {%endfor%}
+                         {%else%}
+                       <strong> {%trans 'Enter Course URls'%}</strong> :
+                      <a href="#tab-1" class="uno fst-italic form-control" >{%trans 'Please add course urls on zoom or teams!'%} </a>
+                        {%endif %}
+
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="{% static 'img/course-details-tab-1.png'%}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane " id="tab-2">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>{%trans 'Course Material URl'%}</h3>
+                    <div class="form-row  ">
+                        <div class="form-group ">
+                          {%if order_detail.class_material_url%}
+
+                          <strong>{%trans 'Course Material URl'%}</strong> : <a class="fst-italic form-control" target="_blank" href="{{order_detail.class_material_url}}">  {{order_detail.class_material_url}} </a>
+                          {%else%}
+                            <strong>{%trans 'Enter Course Material URl'%}</strong> : <a href="#tab-1" class="uno1 fst-italic form-control" > {%trans 'please add course material url on drive!'%} </a>
+
+                        {%endif%}
+                        </div>
+                        </div>
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="{% static 'img/course-details-tab-2.png'%}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-3">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>{%trans 'Course Details'%}</h3>
+                     <div class="form-row  ">
+                        <div class="form-group ">
+                    Course : <label class="fst-italic"> {{order.order_course}} </label>
+                        </div>
+                     </div>
+                    {% if order.order_course.is_school_subject  %}
+                     <div class="form-row  ">
+                        <div class="form-group ">
+                    {%trans 'Curriculum type:'%} <label class="fst-italic"> {{order.Curriculum_type}} </label>
+                        </div>
+                     </div>
+                     <div class="form-row  ">
+                        <div class="form-group ">
+                    {%trans 'Grade:'%} <label class="fst-italic"> {{order.grade}} </label>
+                        </div>
+                     </div>
+                     <div class="form-row  ">
+                        <div class="form-group ">
+                    {%trans 'Term:'%} <label class="fst-italic"> {{order.term}} </label>
+                        </div>
+                     </div>
+                    {%endif%}
+                    <div class="form-row  ">
+                        <div class="form-group ">
+
+                    {%trans 'Language:'%} <label class="fst-italic"> {{order.order_course_language}} </label>
+                        </div>
+                     </div>
+                    <div class="form-row  ">
+                        <div class="form-group ">
+                    {%trans 'Country '%}: <label class="fst-italic"> {{order.country}} </label>
+                        </div>
+                     </div>
+                     {%if order.order_note%}
+                    <div class="form-row  ">
+                        <div class="form-group ">
+                    {%trans 'Notes:'%} <label class="fst-italic"> {{order.order_note}} </label>
+                        </div>
+                     </div>
+                    {%endif%}
+
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="{% static 'img/course-details-tab-3.png'%}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-4">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                      {%if urls_count < order.total_classes  %}
+                    <h3>{%trans 'Enter Lessons urls'%}</h3>
+                      {%else%}
+                      <h3>{%trans 'Update Lessons state(finish or not)'%}</h3>
+                      {%endif %}
+
+                    <header class="section-heading">
+
+
+	</header>
+
+				{%if urls_count < order.total_classes  %}
+                      {%if user.is_staff  %}
+				{% if order.is_ordered  %}
+
+				<form  action="{% url 'submit_courseUrl'  order.id %}" method="POST">
+					{% csrf_token %}
+
+                  <div class="text-center ">
+                  <STRONG style="color:green;" >{%trans 'Enter Lessons urls'%}</STRONG>
+                    </div>
+
+					<div>
+						<br>
+
+						<label>{%trans 'course url:'%}</label>
+						<input required type="url" name="class_url" class="form-control" >
+						<br>
+						<label>{%trans 'class time:'%} </label>
+						<input required type="datetime-local" name="classTime"  class="form-control">
+
+
+                        <br>
+                        <div class="form-row">
+						<input type="submit" value="{%trans 'submit'%}" class="btn btn-success">
+                            </div>
+
+					</div>
+                    <hr>
+				</form>
+				{%endif %}
+				{%endif %}
+				{%endif %}
+                      {%if left is not 0%}
+
+                      {%if user.is_staff  %}
+				{% if order.is_ordered  %}
+                      {% if urls  %}
+
+
+				<form  action="{% url 'lessonDone' order.id  %}" method="POST">
+					{% csrf_token %}
+
+                  <div class="text-left ">
+                  <STRONG style="color:green;" >{%trans 'is lesson done?'%}  </STRONG>
+                    </div>
+
+					<div>
+						<br>
+
+						<label>{%trans 'course Date:'%}</label>
+                        <select required type="url" name="class_urlL" class="form-select form-select-lg mb-3" >
+                        {%for i in urls_notDeliverd%}
+                         <option   value="{{i.id}}"   >{%trans 'lesson of'%} {{i.classTime}}</option>
+
+                        {%endfor%}
+                             </select>
+
+
+
+
+						<br>
+
+                        <label>{%trans 'lesson Done? '%}</label>
+                        <input type="checkbox" name="class_url_is_deliverd"  >
+                        <br>
+                        <br>
+                        <div class="form-row">
+						<input type="submit" value="{%trans 'submit'%}" class="btn btn-success">
+                            </div>
+
+					</div>
+				</form>
+                     {%endif %}
+				{%endif %}
+				{%endif %}
+                      {%else%}
+                      <strong style="color:red;">{%trans 'All lessons delivered'%}</strong>
+				{%endif %}
+
+
+                  </div>
+
+                </div>
+              </div>
+                <div class="tab-pane" id="tab-6">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>{%trans 'Enter Course Material url'%}</h3>
+                    <header class="section-heading">
+
+
+	</header>
+
+				{%if user.is_staff  %}
+				{% if order.is_ordered  %}
+
+				<form  action="{% url 'submit_courseMaterial'  order.id %}" method="POST">
+					{% csrf_token %}
+
+                  <div class="text-center ">
+                  <STRONG style="color:green;" >{%trans 'Enter Course Material url'%}  </STRONG>
+                    </div>
+
+					<div>
+						<br>
+
+						<label>{%trans 'Course Material url:'%}</label>
+                        {{form.class_material_url}}
+                        <br>
+                        <br>
+
+
+                        <div class="form-row">
+						<input type="submit" value="{%trans 'submit'%}" class="btn btn-success">
+                            </div>
+
+					</div>
+				</form>
+				{%endif %}
+				{%endif %}
+
+
+                  </div>
+
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-5">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+
+                      {%if user.is_staff  %}
+				{% if order.is_ordered  %}
+				{% if order_detail.is_deliverd == False  %}
+                      <h3>{%trans 'Reject the Course'%}</h3>
+
+
+				<form  action="{% url 'RejectCourse'  order.id %}" method="POST">
+					{% csrf_token %}
+
+						<label>{%trans 'Reason'%}:<span style="color:red">*</span> </label>
+                    <label class="text-muted ">(Required)</label>
+
+						<textarea required name="Reason" rows="4" class="form-control"></textarea>
+							<br>
+						<input type="submit" value="{%trans 'submit'%}" class="btn btn-success">
+
+
+				</form>
+                      {%else%}
+                      <h3 style="color:red">{%trans 'Course Finished'%}</h3>
+
+				{%endif %}
+				{%endif %}
+				{%endif %}
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="{% static 'img/course-details-tab-5.png'%}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+                <div class="tab-pane" id="tab-7">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                      <h3>{%trans 'Change date and time'%}</h3>
+
+
+<!--                     =================================== first of tab7 -->
+                       {%if left is not 0%}
+
+                      {%if user.is_staff  %}
+				{% if order.is_ordered  %}
+                      {% if urls  %}
+
+
+				<form  action="{% url 'changeDate'   %}" method="POST">
+					{% csrf_token %}
+
+                  <div class="text-left ">
+                  <STRONG style="color:green;" >{%trans 'Change class time or url'%}  </STRONG>
+                    </div>
+
+					<div>
+						<br>
+
+						<label>{%trans 'Course:'%}</label>
+                        <select  type="url" name="class_urlL" class="form-select form-select-lg mb-3" >
+                        {%for i in urls_notDeliverd%}
+                         <option   value="{{i.id}}"   >{%trans 'lesson of'%} {{i.classTime}}</option>
+
+                                {%endfor%}
+                             </select>
+
+						  <label >{%trans 'New date(in case you want to change lesson Timing):'%}  </label>
+
+                      <input  type="datetime-local" name="classTime"   class="form-control">
+                        <br>
+                        <label>{%trans 'New url(in case you want to change lesson url):'%}</label>
+						<input  type="url" name="class_url" class="form-control" >
+
+                        <br>
+                        <div class="form-row">
+						<input type="submit" value="{%trans 'submit'%}" class="btn btn-success">
+                            </div>
+
+					</div>
+				</form>
+                     {%endif %}
+				{%endif %}
+				{%endif %}
+                      {%else%}
+                      <strong style="color:red;">{%trans 'All lessons delivered'%}</strong>
+				{%endif %}
+
+<!--                     =================================== end tab7 -->
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="{% static 'img/course-details-tab-5.png'%}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Cource Details Tabs Section -->
+
+  </main><!-- End #main -->
+<script>
+    $(".uno" ).click(function() {
+	$('.due')[0].click();
+});
+ $(".uno1" ).click(function() {
+	$('.due1')[0].click();
+});
+</script>
+{% endblock %}
+
