@@ -1,5 +1,5 @@
 from django import forms
-import magic
+
 from Teachers.models import TeacherProfile
 from orders.models import orderPoductClasses
 
