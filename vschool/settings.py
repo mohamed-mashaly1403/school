@@ -111,9 +111,9 @@ if DEBUG is False:
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'shool',
             'USER': 'Mesho',
-            'PASSWORD': '14031981@Moh',
+            'PASSWORD':'14031981@Moh',
             'HOST': 'localhost',
-            'PORT': '',
+            'PORT': '5432',
         }
     }
 
