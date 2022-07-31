@@ -33,7 +33,7 @@ DEBUG = config('DEBUG',default=True,cast=bool)
 if DEBUG is False:
     ALLOWED_HOSTS = [
         '127.0.0.1:8000',
-        '147.182.232.210'
+        '147.182.232.210',
         '*',
     ]
 
@@ -99,14 +99,24 @@ AUTH_USER_MODEL = 'users.account'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG is True:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
-
+if DEBUG is False:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'shool',
+            'USER': 'Mesho',
+            'PASSWORD': '14031981@windowslive.com',
+            'HOST': 'localhost',
+            'PORT': '',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -149,12 +159,15 @@ LOCALE_PATHS = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'static'
-STATICFILES_DIRS = ['vschool/static',]
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# BASE_DIR / 'static'
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'vschool/static')
+# ['vschool/static',]
 # media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT=BASE_DIR / 'media'
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
+# BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
