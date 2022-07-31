@@ -33,6 +33,7 @@ DEBUG = config('DEBUG',default=True,cast=bool)
 if DEBUG is False:
     ALLOWED_HOSTS = [
         '127.0.0.1:8000',
+        '147.182.232.210'
         '*',
     ]
 
