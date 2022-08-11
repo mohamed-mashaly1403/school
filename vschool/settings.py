@@ -110,8 +110,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'school',
-        'USER': 'ttt',
-        'PASSWORD':'ttt',
+        'USER': 'mesho',
+        'PASSWORD':'mesho',
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -161,7 +161,7 @@ LOCALE_PATHS = [
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # BASE_DIR / 'static'
-STATICFILES_DIRS = (os.path.join(BASE_DIR,'vschool/static'),)
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'vschool/static')]
 # ['vschool/static',]
 # media files
 MEDIA_URL = '/media/'
