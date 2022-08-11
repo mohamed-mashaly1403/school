@@ -32,7 +32,7 @@ DEBUG = False
 if DEBUG is False:
     ALLOWED_HOSTS = [
         '127.0.0.1:8000',
-        '147.182.232.210',
+        '161.35.14.35',
         '*',
     ]
 
