@@ -8,7 +8,7 @@ https://docs.djangoproject.com/en/4.0/howto/deployment/wsgi/
 """
 
 import os , sys
-
+sys.path.append('/home/mesho/blog/vschool')
 sys.path.append('/home/mesho/blog/envl/Lib/python3.6/site-packages')
 
 from django.core.wsgi import get_wsgi_application
