@@ -26,16 +26,16 @@ SECRET_KEY = 'django-insecure-02$)$2q@@@y_!u@o+4!ktm%#-kx0h4fg@p-5=0+=)1y7*w$=)t
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = []
-if DEBUG is False:
+if DEBUG is True:
     ALLOWED_HOSTS = [
         '127.0.0.1:8000',
         '*',
     ]
 
-if DEBUG is True:
+if DEBUG is False:
     ALLOWED_HOSTS = ['159.65.229.213']
 
 
@@ -97,11 +97,22 @@ AUTH_USER_MODEL = 'users.account'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
+if DEBUG:
+    DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': BASE_DIR / 'db.sqlite3',
+            }
+        }
+else:
+    DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'school',
+            'USER': 'meshod',
+            'PASSWORD': 'password',
+            'HOST': 'localhost',
+            'PORT': '',
         }
     }
 
@@ -142,11 +153,11 @@ LOCALE_PATHS = [
 ]
 
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'static'
-STATICFILES_DIRS = ['vschool/static',]
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'vschool/static')]
 MEDIA_URL = '/media/'
-MEDIA_ROOT=BASE_DIR / 'media'
+MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
