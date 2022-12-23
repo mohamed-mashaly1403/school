@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-02$)$2q@@@y_!u@o+4!ktm%#-kx0h4fg@p-5=0+=)1y7*w$=)t
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # ALLOWED_HOSTS = []
 if DEBUG is True:
@@ -166,6 +166,6 @@ MESSAGE_TAGS = {
 #SMTP SET UP
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT =587
-EMAIL_HOST_USER = 'bedaya.td@gmail.com'
-EMAIL_HOST_PASSWORD = 'ybaertjismgakzxm'
+EMAIL_HOST_USER = 'vschool.com@gmail.com'
+EMAIL_HOST_PASSWORD = 'qhnommnvqruisulb'
 EMAIL_USE_TLS = True
