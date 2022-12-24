@@ -8,7 +8,7 @@
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
-      <div class="container">
+      <div class="container mt-5">
         <h2>{% if LANGUAGE_CODE == 'ar'%} {{courseDets.course_name_ar}}{%else%}{{courseDets.course_name}} {%trans 'course'%}{%endif%} </h2>
         <p>{%trans 'Available in'%} {% if LANGUAGE_CODE == 'ar'%}{%if  courseDets.language1_tr == courseDets.language2_tr%} {{courseDets.language1_tr}}  {%else %} {{courseDets.language1_tr}} {%trans 'and'%} {{courseDets.language2_tr}} {% endif %}{%else%}{%if  courseDets.language1 == courseDets.language2%} {{courseDets.language1}}  {%else %} {{courseDets.language1}} {%trans 'and'%} {{courseDets.language2}} {% endif %}{% endif %}, {%trans 'Choose course language and grade then go!'%} &#128522;  </p>
       </div>
