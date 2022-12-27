@@ -59,7 +59,7 @@ class TeacherProfile(models.Model):
                 notifs = Inboxnotif(sender=TeacherProfile.user, recipient=TeacherProfile.user, Message=Message,notif_type=2)
                 notifs.save()
     def __str__(self):
-        return self.user.first_name
+        return '{} {}'.format(self.user.first_name,self.user.last_name)
 post_save.connect(TeacherProfile.notify,sender=TeacherProfile)
 
 class paid(models.Model):

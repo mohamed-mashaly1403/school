@@ -161,7 +161,7 @@ def payments(request):
     send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
     send_mail.send()
     # ========================== email to super admin
-    mail_subject = 'Congratulation your order has set successfully,someone make payment'
+    mail_subject = '!!!!!,someone make payment'
     mail_body = render_to_string('orders/orderset.html', {
         'user': current_user,
         'order_number': order,
@@ -169,7 +169,7 @@ def payments(request):
 
     })
 
-    send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=['first_man@windowslive.com'])
+    send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=['Vschool.com@gmail.com'])
     send_mail.send()
     #============================================================
     data = {

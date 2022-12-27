@@ -356,7 +356,7 @@ def viewMessage(request, pk):
         course = order.order_course
     except:
         order=''
-        course
+        course=''
     if message.is_read == False:
         message.is_read = True
         Inboxnotif.objects.filter(recipient=request.user, message_id=pk).delete()
@@ -412,7 +412,7 @@ def createMessage(request,pk):
     try:
         ordr = Order.objects.get(id=pk)
         recipient = ordr.user
-        subject = f'(Hi,I am) {user.first_name} your teacher for {ordr.order_course} course- order no. {ordr.order_number}'
+        subject = f'Hi,I am {user.first_name} your teacher for {ordr.order_course} course- order no. {ordr.order_number}'
         form = MessageForm(initial={'recipient': recipient, 'subject': subject})
 
     except:
