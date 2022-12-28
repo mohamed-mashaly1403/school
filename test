@@ -1,3 +1,7 @@
+location ~ /.well-known {
+            allow all;
+    }
+
 =============================
                 if form.is_valid():
                     if form.cleaned_data['docfile'] != None:
