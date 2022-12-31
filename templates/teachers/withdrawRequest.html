@@ -27,7 +27,7 @@
 			<div class="row">
 
 				<div class="col-md-12">
-					{% if Balance_to_recieve > 200 %}
+					{% if Balance_to_recieve >= 50 %}
 				{%if user.is_staff  %}
 
 <form  action="{% url 'AskForWithdraw'  %}" method="POST">
@@ -49,8 +49,8 @@
 
 				{%endif %}
 					{%else%}
-					<center><strong>{%trans 'Your available balance to receive'%} {{Balance_to_recieve}} AED</strong></center>
-					<div class="text-center"><small class="text-muted" >{%trans 'Minimum limit for withdraw 200 AED'%} </small></div>
+					<center><strong>{%trans 'Your available balance to receive'%} {{Balance_to_recieve}} $</strong></center>
+					<div class="text-center"><small class="text-muted" >{%trans 'Minimum limit for withdraw 50 $'%} </small></div>
 
 				{%endif %}
 

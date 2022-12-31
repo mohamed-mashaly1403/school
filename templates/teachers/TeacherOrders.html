@@ -40,7 +40,7 @@
     <tr>
       <th scope="row"><a href="{% url 'TeacherCourseDetails' order.order.order_number %}">{{order.order.order_number}} </a></th>
       <td>{{order.order_course.course_name}}</td>
-      <td>{{order.Teacher_cost}} AED</td>
+      <td>{{order.Teacher_cost}} $</td>
       <td>{{order.order.total_classes}} {%trans 'classes'%}</td>
       <td>{{order.created_at}}</td>
 

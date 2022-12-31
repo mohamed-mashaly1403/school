@@ -171,3 +171,8 @@ location ~ /.well-known {
     </html>
     ================================
       <script src="https://www.paypal.com/sdk/js?client-id=Af5MlogypUf7ENCARTq3_rr1sl4Wx6xRCWP_mA9Wp5BnCg86zZtyICZv7Tkw5Yb0yIfGkFofKQmS8x2t&currency=USD"></script>
+class Curriculum(models.Model):
+    Tybe = models.CharField(max_length=30)
+    def __str__(self):
+        return self.Tybe
+            # type1 = models.ManyToManyField(Curriculum)

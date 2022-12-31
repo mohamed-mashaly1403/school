@@ -154,7 +154,7 @@ def forgotpassword(request):
             return redirect('forgotpassword')
         else:
             messages.error(request, _("account does not exist"))
-            return redirect(request, 'login')
+            # return redirect(request, 'login')
     return render(request, 'accounts/forgotpassword.html')
 
 

@@ -69,8 +69,8 @@
     <small>{%trans 'Choose Your country'%}</small>
 </div>
     <div class="col form-group">
-     <label>{%trans 'City'%} <span style="color:red">*</span></label>
-    <input type="text" name="city" class="form-control" required >
+     <label>{%trans 'City'%} </label>
+    <input type="text" name="city" class="form-control"  >
     <input type="text" name="ncourse" class="form-select form-select-lg mb-3" hidden value="{{needed_course}}" >
 </div>
 
@@ -111,18 +111,18 @@
             <div class="col form-group">
             <label>{%trans 'Curriculum Type'%} <span style="color:red">*</span></label>
     <select name="Curriculum_type" required class="form-select form-select-lg mb-3" id="ses" onchange="yesnoCheck(this);" >
-
-    <option   value="General" class="form-control"  >{%trans 'General'%}</option>
-    <option   value="Advanced" class="form-control"  >{% trans 'Advanced' %}</option>
-    <option   value="Elite" class="form-control"  >{%trans 'Elite'%}</option>
-    <option   value="other" class="form-control"  >{%trans 'other'%}</option>
-
+{% for i in needed_course_type_all %}
+    <option   value={{i}} class="form-control">{{i}}</option>
+<!--     <option   value="Advanced" class="form-control"  >{% trans 'Advanced' %}</option> -->
+<!--     <option   value="Elite" class="form-control"  >{%trans 'Elite'%}</option> -->
+<!--     <option   value="other" class="form-control"  >{%trans 'other'%}</option> -->
+{% endfor %}
             </select>
-                <div id="ifYes" style="display: none;">
-                    <br />
-   <label for="car">{%trans 'Enter Curriculum Type'%} <span style="color:red">*</span> </label>
-    <input type="text" id="car" class="form-control" name="" />
-</div>
+<!--                 <div id="ifYes" style="display: none;"> -->
+<!--                     <br /> -->
+<!--    <label for="car">{%trans 'Enter Curriculum Type'%} <span style="color:red">*</span> </label> -->
+<!--     <input type="text" id="car" class="form-control" name="" /> -->
+<!-- </div> -->
                <small>{%trans 'Curriculum Type'%}</small>
             </div>
    <div class="col form-group">

@@ -59,7 +59,7 @@
 							<div class="col-md-6 ">
 					<div class="card ">
 						<h5 class="card-title"> {%trans 'Total Balance'%} </h5>
-						<h4>{{Balance}} AED</h4>
+						<h4>{{Balance}} $</h4>
 						{%if Balance is not 0 %}
 						<a href="{%url 'ReceivedInstallments'%}">{%trans 'Previous installments'%}</a>
 
@@ -72,15 +72,15 @@
 							<div class="col-md-6 ">
 					<div class="card ">
 						<h5 class="card-title"> {%trans 'Withdrawable balance'%} </h5>
-						<h4>{{Balance_to_recieve}} AED</h4>
+						<h4>{{Balance_to_recieve}} $</h4>
 						{%if Balance_to_recieve is not 0 %}
-						{%if Balance_to_recieve > 200 %}
+						{%if Balance_to_recieve > 50 %}
 
 						<a href="{% url 'AskForWithdraw'%}">{%trans 'Ask to withdraw'%}</a>
 							{%else%}
 
 						{%endif%}
-						<small class="text-muted" >{%trans 'Minimum limit for withdraw 200 AED'%} </small>
+						<small class="text-muted" >{%trans 'Minimum limit for withdraw 50 $'%} </small>
 
 
 						{%else%}

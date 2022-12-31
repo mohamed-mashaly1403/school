@@ -1744,7 +1744,7 @@ msgstr "اسحب الرصيد"
 #: .\templates\teachers\teasherDashboard.html:81
 #: .\templates\teachers\withdrawRequest.html:51
 msgid "Minimum limit for withdraw 200 AED"
-msgstr "اقل مبلغ للسحب 200 درهم "
+msgstr "اقل مبلغ للسحب  اقل مبلغ للسحب $50 "
 
 #: .\templates\teachers\teasherDashboard.html:104
 msgid "Teacher"

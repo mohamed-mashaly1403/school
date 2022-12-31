@@ -31,18 +31,30 @@ def TeacherDashboard(request):
         orders_count = orders.count()
         active_orders_count = active_orders.count()
         total =orderPoduct.objects.filter(teacher__user=request.user.id).aggregate(total_price=Sum('product_price'))
+        print(total)
         total_to_recieve =orderPoduct.objects.filter(teacher__user=request.user.id,is_deliverd=True).aggregate(total_price=Sum('product_price'))
+        print(total_to_recieve)
         recivedd = paid.objects.filter(Teacher__user=request.user.id).aggregate(total_Recived=Sum('recived'))
+        print(recivedd)
+        if recivedd['total_Recived'] == None:
+            recived_total = 0
+            print(recived_total)
+        else:
+            recived_total = recivedd['total_Recived']
 
         try:
             Balance = float(total['total_price'])* 0.7
+            print(Balance)
             total_to_recieve = float(total_to_recieve['total_price']* 0.7)
+            print(f'total_to_recieve{total_to_recieve}')
+
 
         except:
             Balance=0
             total_to_recieve=0
         try:
-            Balance_to_recieve = float(total_to_recieve-recivedd['total_Recived'])
+            Balance_to_recieve = float(total_to_recieve-recived_total)
+
 
         except:
             Balance_to_recieve = 0
@@ -52,8 +64,8 @@ def TeacherDashboard(request):
             'orders': orders,
             'active_orders_count': active_orders_count,
             ' active_orders': active_orders,
-            'Balance':math.ceil(Balance),
-            'Balance_to_recieve':math.ceil(Balance_to_recieve)
+            'Balance':math.floor(Balance),
+            'Balance_to_recieve':math.floor(Balance_to_recieve)
         }
         return render(request, 'teachers/teasherDashboard.html', context)
     else:
@@ -77,8 +89,14 @@ def AskForWithdraw(request):
     except:
         Balance = 0
         total_to_recieve = 0
+
     try:
-        Balance_to_recieve = float(total_to_recieve - recivedd['total_Recived'])
+        print(recivedd['total_Recived'])
+        if recivedd['total_Recived'] == None:
+            recived_total = 0
+        else:
+            recived_total = recivedd['total_Recived']
+        Balance_to_recieve = float(total_to_recieve - recived_total)
 
     except:
         Balance_to_recieve = 0
@@ -94,7 +112,7 @@ def AskForWithdraw(request):
                 'Amount': amount,
 
             })
-            to_email = 'first_man@windowslive.com'
+            to_email = 'Vschool.com@gmail.com'
             send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
             send_mail.send()
             return redirect('TeacherDashboard')
@@ -104,7 +122,7 @@ def AskForWithdraw(request):
     context = {
 
         'Balance': Balance,
-        'Balance_to_recieve': math.ceil(Balance_to_recieve)
+        'Balance_to_recieve': math.floor(Balance_to_recieve)
     }
 
     return render(request, 'teachers/withdrawRequest.html',context)
