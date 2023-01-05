@@ -105,18 +105,22 @@
 
 
 </div>
-
+{% get_current_language as LANGUAGE_CODE %}
     {%if needed_course.is_school_subject %}
         <div class="form-row">
             <div class="col form-group">
             <label>{%trans 'Curriculum Type'%} <span style="color:red">*</span></label>
-    <select name="Curriculum_type" required class="form-select form-select-lg mb-3" id="ses" onchange="yesnoCheck(this);" >
-{% for i in needed_course_type_all %}
+    <select name="Curriculum_type" required class="form-select form-select-lg mb-3" >
+<!--     id="ses" onchange="yesnoCheck(this);"  -->
+{%if LANGUAGE_CODE == 'ar'%}
+{% for i in  needed_course_type_all_ar   %}
     <option   value={{i}} class="form-control">{{i}}</option>
-<!--     <option   value="Advanced" class="form-control"  >{% trans 'Advanced' %}</option> -->
-<!--     <option   value="Elite" class="form-control"  >{%trans 'Elite'%}</option> -->
-<!--     <option   value="other" class="form-control"  >{%trans 'other'%}</option> -->
 {% endfor %}
+{% else %}
+{% for i in  needed_course_type_all_En  %}
+    <option   value={{i}} class="form-control">{{i}}</option>
+    {% endfor %}
+{% endif %}
             </select>
 <!--                 <div id="ifYes" style="display: none;"> -->
 <!--                     <br /> -->

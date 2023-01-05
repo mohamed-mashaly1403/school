@@ -108,10 +108,14 @@ def Editplaceorder(request,order_number):
 @login_required(login_url='login')
 def checkout (request,slug='',lessons=0, price=0):
     needed_course = course.objects.filter(slug=slug).first()
+    print(needed_course)
     needed_course_type = course.objects.get(slug=slug)
-    needed_course_type_all=needed_course_type.type.all()
+    print(needed_course_type)
+    needed_course_type_all_en=needed_course_type.typeEN.all()
+    needed_course_type_all_ar=needed_course_type.typeAR.all()
 
-    print(needed_course_type_all)
+    print(needed_course_type_all_en)
+    print(needed_course_type_all_ar)
 
 
 
@@ -122,7 +126,8 @@ def checkout (request,slug='',lessons=0, price=0):
         'price': price,
         'needed_course': needed_course,
         'needed_course_id':needed_course.id,
-        'needed_course_type_all':needed_course_type_all,
+        'needed_course_type_all_En':needed_course_type_all_en,
+        'needed_course_type_all_ar':needed_course_type_all_ar,
         'lessons': lessons,
         'lang':lang
 

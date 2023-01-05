@@ -18,10 +18,16 @@ lang_tr =  [
     ('الفرنسية', 'الفرنسية'),
     ('الصينية', 'الصينية'),
 ]
-class Type(models.Model):
-    tybe_Type = models.CharField(max_length=30)
+class TypeEN(models.Model):
+    tybe_Type_en = models.CharField(max_length=30)
+
     def __str__(self):
-        return self.tybe_Type
+        return self.tybe_Type_en
+class TypeAR(models.Model):
+
+    tybe_Type_ar = models.CharField(max_length=30)
+    def __str__(self):
+        return self.tybe_Type_ar
 class course(models.Model):
     course_name = models.CharField(max_length=50,unique=True)
     course_name_ar = models.CharField(max_length=50,unique=True,null=True,blank=True)
@@ -31,7 +37,8 @@ class course(models.Model):
     language1_tr = models.CharField(max_length=15,choices=lang_tr,blank=False,default='')
     language2 = models.CharField(max_length=15, choices=lang, blank=False,default='')
     language2_tr = models.CharField(max_length=15, choices=lang_tr, blank=False,default='')
-    type = models.ManyToManyField(Type, blank=True)
+    typeEN = models.ManyToManyField(TypeEN, blank=True)
+    typeAR= models.ManyToManyField(TypeAR, blank=True)
     description = models.TextField(max_length=500,blank=True)
     description_ar = models.TextField(max_length=500,blank=True,null=True)
     img = models.ImageField(upload_to='img/courses',blank=True)
