@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'Teachers',
     'Notifs',
     'live',
+    'social_django',
 
 ]
 
@@ -66,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 
 ]
 
@@ -84,6 +86,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'Notifs.context_process.CountNotifications',
                 'Notifs.context_process.ShowNotifications',
+                'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
 
 
             ],
@@ -169,3 +173,13 @@ EMAIL_PORT =587
 EMAIL_HOST_USER = 'vschool.com@gmail.com'
 EMAIL_HOST_PASSWORD = 'qhnommnvqruisulb'
 EMAIL_USE_TLS = True
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+LOGIN_URL = '/users/login'
+LOGIN_REDIRECT_URL = '/users/homeg'
+LOGOUT_URL = '/users/logout'
+LOGOUT_REDIRECT_URL = '/users/login'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '62868235210-0odlbtagk09m2asgas9m4sdk4png19ve.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'

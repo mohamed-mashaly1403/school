@@ -58,7 +58,7 @@ class account(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name','username','last_name']
+    REQUIRED_FIELDS = ['username']
     objects = account_manger()
     def __str__(self):
         return self.email

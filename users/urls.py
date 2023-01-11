@@ -1,10 +1,12 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
 
     path('register/', views.register, name='register'),
+    path("homeg/", views.homeg, name='homeg'),
     path('login/', views.login, name='login'),
+    # path('glogin/', views.glogin, name='glogin'),
     path('logout/', views.logout, name='logout'),
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
     path('forgotpassword/', views.forgotpassword, name='forgotpassword'),
@@ -25,6 +27,9 @@ urlpatterns = [
     path('DeleteMessages/', views.DeleteMessages, name="DeleteMessages"),
     path('createMessage/<str:pk>/', views.createMessage, name="createMessage"),
     path('createMessagefromStudent/<str:pk>/', views.createMessagefromStudent, name="createMessagefromStudent"),
+    path('social-auth/', include('social_django.urls', namespace='social')),
+
+
 
 
 

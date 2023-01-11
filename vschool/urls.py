@@ -21,6 +21,8 @@ urlpatterns += i18n_patterns(
     path('orders/',include('orders.urls')),
     path('Teachers/',include('Teachers.urls')),
     path('live/',include('live.urls')),
+
+
 )+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
 
 

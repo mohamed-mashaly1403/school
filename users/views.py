@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.contrib.sites.shortcuts import get_current_site
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
@@ -44,7 +46,7 @@ def register(request):
             user.save()
             # send mail to customer
             current_site = get_current_site(request)
-            mail_subject = 'school.com please activate your account'
+            mail_subject = 'myschool.site- please activate your account'
             mail_body = render_to_string('accounts/emailActivation.html', {
                 'user': user,
                 'current_site': current_site,
@@ -69,7 +71,11 @@ def register(request):
     }
     return render(request, 'accounts/register.html', context)
 
-
+# def glogin(request):
+#     user = account._default_manager.filter(is_active=False ).order_by('-joined_date')[0]
+#     user.is_active = True
+#     user.save()
+#     return redirect('login')
 def login(request):
     url = request.META.get('HTTP_REFERER')
     try:
@@ -86,7 +92,7 @@ def login(request):
             messages.success(request, _('successfully login'))
 
         except(AttributeError):
-            messages.error(request, _('Wrong email or password'))
+            messages.error(request, _('Wrong email or password or account not activated '))
             return redirect('login')
         try:
             url = request.META.get('HTTP_REFERER')
@@ -102,8 +108,26 @@ def login(request):
                 return redirect('dashboard')
             else:
                 return redirect('TeacherDashboard')
+    else:
+        try:
+
+            user = account._default_manager.filter(is_active=False).order_by('-joined_date')[0]
+            print("error123")
+            user.is_active = True
+            user.save()
+            auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+
+            return redirect('homeg')
+        except: print("error")
+
+
+
+
     return render(request, 'accounts/login.html')
 
+@login_required
+def homeg(request):
+    return render(request, 'home.html')
 
 @login_required(login_url='login')
 def logout(request):
