@@ -36,7 +36,7 @@ if DEBUG is True:
     ]
 
 if DEBUG is False:
-    ALLOWED_HOSTS = config('ALLOWED_HOSTS')
+    ALLOWED_HOSTS = ['159.65.229.213','myschools.site','www.myschools.site']
 
 
 # Application definition
@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'live',
     'social_django',
     'admin_honeypot',
+    'storages',
 
 ]
 
