@@ -38,7 +38,7 @@ if DEBUG is True:
 if DEBUG is False:
     ALLOWED_HOSTS = ['159.65.229.213','myschools.site','www.myschools.site']
 
-
+print("hi")
 # Application definition
 
 INSTALLED_APPS = [
