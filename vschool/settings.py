@@ -14,7 +14,7 @@ from pathlib import Path
 
 import os
 
-
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -119,7 +119,7 @@ else:
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'myschool',
             'USER': 'mesho',
-            'PASSWORD': '14031981@Moh',
+            'PASSWORD': config('PASSWORD'),
             'HOST': 'localhost',
             'PORT': '',
         }
@@ -176,7 +176,7 @@ MESSAGE_TAGS = {
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT =587
 EMAIL_HOST_USER = 'vschool.com@gmail.com'
-EMAIL_HOST_PASSWORD = 'qhnommnvqruisulb'
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.google.GoogleOAuth2',
