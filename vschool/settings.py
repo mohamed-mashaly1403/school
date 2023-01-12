@@ -173,7 +173,7 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 #SMTP SET UP
-EMAIL_HOST =  config('EMAIL_HOST')
+EMAIL_HOST =  'smtp.gmail.com'
 EMAIL_PORT =587
 EMAIL_HOST_USER = 'vschool.com@gmail.com'
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
