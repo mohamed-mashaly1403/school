@@ -62,6 +62,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django_session_timeout.middleware.SessionTimeoutMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -71,7 +72,9 @@ MIDDLEWARE = [
     'social_django.middleware.SocialAuthExceptionMiddleware',
 
 ]
-
+SESSION_EXPIRE_SECONDS =1000
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
+SESSION_TIMEOUT_REDIRECT = '/users/login'
 ROOT_URLCONF = 'vschool.urls'
 TEMPLATES = [
     {
