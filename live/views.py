@@ -13,7 +13,6 @@ from live.models import CloseLive
 from orders.models import Order
 import random
 
-print("ho")
 @user_passes_test(lambda u: u.is_staff)
 def startLive(request,course,order):
     appID = "4bce2e802a5646a89835b1532ce8af71"
