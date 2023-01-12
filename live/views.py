@@ -12,11 +12,11 @@ from django.views.decorators.csrf import csrf_exempt
 from live.models import CloseLive
 from orders.models import Order
 import random
-
+from decouple import config
 @user_passes_test(lambda u: u.is_staff)
 def startLive(request,course,order):
-    appID = "4bce2e802a5646a89835b1532ce8af71"
-    appCertificate = "8dd20bc3d33c4c7d9646522038cb661f"
+    appID = config('appID')
+    appCertificate = config('appCertificate')
     user = str(request.user.id)
     user_name = request.user.first_name
     from live.RtmTokenBuilder import RtmTokenBuilder, Role_Rtm_User
@@ -40,6 +40,8 @@ def startLive(request,course,order):
         "user_name":json.dumps(str(user_name)),
         "course":json.dumps(str(course)),
         "order":json.dumps(str(order)),
+        'appID': appID,
+        'appCertificate': appCertificate,
     }
     print(order)
 
@@ -52,8 +54,8 @@ def joinLive(request,course,order):
     url = request.META.get('HTTP_REFERER')
     try:
         CloseLive.objects.filter(order=order).exists()
-        appID = "4bce2e802a5646a89835b1532ce8af71"
-        appCertificate = "8dd20bc3d33c4c7d9646522038cb661f"
+        appID = config('appID')
+        appCertificate = config('appCertificate')
         user = str(request.user.id)
         user_name = str(request.user.first_name)
 
@@ -68,7 +70,9 @@ def joinLive(request,course,order):
             'user':user,
             'user_name':user_name,
             'course':course,
-            'order':order
+            'order':order,
+            'appID':appID,
+            'appCertificate':appCertificate,
 
         }
         return render(request, 'joinLive.html', context)
