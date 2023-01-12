@@ -124,7 +124,7 @@ def login(request):
 
 
     return render(request, 'accounts/login.html')
-
+# for google login======================
 @login_required
 def homeg(request):
     return render(request, 'home.html')

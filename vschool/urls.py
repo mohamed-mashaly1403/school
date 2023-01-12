@@ -13,7 +13,7 @@ urlpatterns = [
 
 
 urlpatterns += i18n_patterns(
-    path('admin/', admin.site.urls),
+    path('mesho/', admin.site.urls),
     path('',views.home, name='home'),
     path('courses/',include('courses.urls')),
     path('users/',include('users.urls')),
@@ -21,6 +21,7 @@ urlpatterns += i18n_patterns(
     path('orders/',include('orders.urls')),
     path('Teachers/',include('Teachers.urls')),
     path('live/',include('live.urls')),
+    path('admin/',include('admin_honeypot.urls', namespace='admin_honeypot')),
 
 
 )+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
