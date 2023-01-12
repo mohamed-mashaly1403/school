@@ -24,11 +24,11 @@ def place_order(request,needed_course_id,price,lessons):
         current_user = request.user
 
 
-        print(price)
+
         form = OrderForm(request.POST)
 
         ncourse = course.objects.get(id=needed_course_id)
-        print(ncourse)
+
 
         if form.is_valid():
             print(form.errors)
@@ -90,7 +90,7 @@ def place_order(request,needed_course_id,price,lessons):
 @login_required(login_url='login')
 def Editplaceorder(request,order_number):
     order = Order.objects.get(order_number=order_number)
-    print(order)
+
     context = {
         'order': order,
         'needed_course': order.order_course,
@@ -108,14 +108,14 @@ def Editplaceorder(request,order_number):
 @login_required(login_url='login')
 def checkout (request,slug='',lessons=0, price=0):
     needed_course = course.objects.filter(slug=slug).first()
-    print(needed_course)
+
     needed_course_type = course.objects.get(slug=slug)
-    print(needed_course_type)
+
     needed_course_type_all_en=needed_course_type.typeEN.all()
     needed_course_type_all_ar=needed_course_type.typeAR.all()
 
-    print(needed_course_type_all_en)
-    print(needed_course_type_all_ar)
+
+
 
 
 
@@ -139,7 +139,7 @@ def checkout (request,slug='',lessons=0, price=0):
 def payments(request):
     current_user = request.user
     body = json.loads(request.body)
-    print(body)
+
     order = Order.objects.get(user=current_user, is_ordered=False, order_number=body['orderID'])
     payment = Payment(
         user=current_user,
@@ -230,7 +230,7 @@ def order_details(request,order_id):
 
 
 
-    print(reviews)
+
     context={
         'order_detail':order_detail,
         'order': order,

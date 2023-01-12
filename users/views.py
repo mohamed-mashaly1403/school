@@ -64,7 +64,7 @@ def register(request):
         else:
             print('not vaild')
     else:
-        print('not post')
+
         form = regForm()
     context = {
         'form': form
@@ -112,13 +112,13 @@ def login(request):
         try:
 
             user = account._default_manager.filter(is_active=False).order_by('-joined_date')[0]
-            print("error123")
+
             user.is_active = True
             user.save()
             auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
 
             return redirect('homeg')
-        except: print("error")
+        except: pass
 
 
 

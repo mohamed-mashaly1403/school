@@ -13,12 +13,12 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 
 import os
-
+from decouple import config
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = 'django-insecure-02$)$2q@@@y_!u@o+4!ktm%#-kx0h4fg@p-5=0+=)1y7*w$=)t'
+SECRET_KEY = config('SECRET_KEY')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-02$)$2q@@@y_!u@o+4!ktm%#-kx0h4fg@p-5=0+=)1y7*w$=)t
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 # ALLOWED_HOSTS = []
 if DEBUG is True:
@@ -36,7 +36,7 @@ if DEBUG is True:
     ]
 
 if DEBUG is False:
-    ALLOWED_HOSTS = ['159.65.229.213','myschools.site','www.myschools.site']
+    ALLOWED_HOSTS = config('ALLOWED_HOSTS')
 
 
 # Application definition
@@ -72,7 +72,7 @@ MIDDLEWARE = [
     'social_django.middleware.SocialAuthExceptionMiddleware',
 
 ]
-SESSION_EXPIRE_SECONDS =10
+SESSION_EXPIRE_SECONDS =1000
 SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
 SESSION_TIMEOUT_REDIRECT = '/users/login'
 ROOT_URLCONF = 'vschool.urls'
@@ -116,9 +116,9 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'myschool',
-            'USER': 'mesho',
-            'PASSWORD': '14031981@Moh',
+            'NAME': config('NAME'),
+            'USER': config('USER'),
+            'PASSWORD': config('PASSWORD'),
             'HOST': 'localhost',
             'PORT': '',
         }
@@ -172,11 +172,11 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 #SMTP SET UP
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT =587
-EMAIL_HOST_USER = 'vschool.com@gmail.com'
-EMAIL_HOST_PASSWORD = 'qhnommnvqruisulb'
-EMAIL_USE_TLS = True
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT =config('EMAIL_PORT', cast=int)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
@@ -185,5 +185,5 @@ LOGIN_URL = '/users/login'
 LOGIN_REDIRECT_URL = '/users/homeg'
 LOGOUT_URL = '/users/logout'
 LOGOUT_REDIRECT_URL = '/users/login'
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '62868235210-0odlbtagk09m2asgas9m4sdk4png19ve.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
