@@ -41,6 +41,7 @@ def courseDetails(request,course_name):
     courseDets = course.objects.get(slug__iexact=course_name)
     reviews = RatingReview.objects.filter(course__slug=course_name, status=True).order_by('updated_date')
     rates=[]
+    courseTeacher = courseDets.teacher
     for i in reviews:
         rates.append(i.rating)
     try:
@@ -61,28 +62,49 @@ def courseDetails(request,course_name):
                'paged_review': paged_review,
                'x': x,
                'avg':avg,
-               'count':count
+               'count':count,
+               'courseTeacher':courseTeacher
                }
     return render(request, 'course-details.html',context)
 def search(request):
+    courses=""
+    courses_count=0
+    keyword=""
     if 'keyword' in request.GET:
         keyword = request.GET['keyword']
         if keyword != '':
-            courses = course.objects.order_by('-slug').filter(Q(description__icontains= keyword) | Q(course_name__icontains= keyword))
+            courses = course.objects.order_by('-slug').filter(Q(description__icontains= keyword) | Q(description_ar__icontains= keyword) | Q(course_name__icontains= keyword)| Q(course_name_ar__icontains= keyword))
             courses_count = courses.count()
         else:
             courses =''
             courses_count = 0
-    else:
-        courses = course.objects.order_by('-slug').filter(course_name__icontains= 'Emsat')
-        courses_count = courses.count()
-        keyword = 'Emsat'
+    # else:
+    #     courses = course.objects.order_by('-slug').filter(course_name__icontains= 'Emsat')
+    #     courses_count = courses.count()
+    #     keyword = 'Emsat'
     context = {
         'courses': courses,
         'courses_count': courses_count,
-        'keyword':keyword,
+        'keyword':keyword
+
     }
     return render(request,'courses.html',context)
+def searchHome(request,keyword):
+    if keyword != '':
+        courses = course.objects.order_by('-slug').filter(
+            Q(description__icontains=keyword) | Q(description_ar__icontains=keyword) | Q(course_name__icontains=keyword) | Q(course_name_ar__icontains=keyword))
+        courses_count = courses.count()
+    else:
+        courses = ''
+        courses_count = 0
+    context = {
+        'courses': courses,
+        'courses_count': courses_count,
+        'keyword': keyword
+
+    }
+
+    return render(request, 'courses.html', context)
 def pricing (request):
     return render(request, 'pricing.html', )
 
