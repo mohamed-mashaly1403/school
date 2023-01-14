@@ -74,7 +74,7 @@
                     {%else %}
                     <a href="{% url 'courseDetails' course.slug %}"><h4> {% if LANGUAGE_CODE == 'ar'%}{{course.language1_tr }}  {% trans 'and'%} {{course.language2_tr}} {% else %} {{course.language1}} {% trans 'and'%} {{course.language2}}{% endif %}</h4></a>
                     {% endif %}
-                  <p class="price">20 USD</p>
+                  <p class="price"> from 25 USD</p>
                 </div>
 
 
@@ -87,7 +87,7 @@
                     {% if course.teacher %}
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="{{course.teacher.user.image_url}}" class="img-fluid" alt="teacher image">
-                    <span>{{ course.teacher.user.first_name }}</span>
+                   <a href="{{course.teacher.docfile.url }}"> <span>{{ course.teacher.user.first_name }}</span> </a>
                   </div>
                   {% endif %}
                   <div class="trainer-rank d-flex align-items-center">
