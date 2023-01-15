@@ -42,7 +42,7 @@ def courseDetails(request,course_name):
     reviews = RatingReview.objects.filter(course__slug=course_name, status=True).order_by('updated_date')
     rates=[]
     courseTeacher = courseDets.teacher
-    print(courseTeacher)
+
     for i in reviews:
         rates.append(i.rating)
     try:
