@@ -29,8 +29,13 @@
           <div class="col-lg-4">
 
             <div class="course-info d-flex justify-content-between align-items-center">
+            {% if courseTeacher == None %}
+              <h5>{%trans 'Teacher '%}</h5>
+               <p> Highly qualified Teacher </p>
+               {% else %}
               <h5>{%trans 'Teacher C.V.'%}</h5>
-              <p><a href="{{courseTeacher.docfile.url }}">{{courseTeacher}} </a></p>
+              <p><a href="{{courseTeacher.docfile.url }}"  target="_blank"> {{courseTeacher}}</a></p>
+              {% endif %}
             </div>
 
             <div class="course-info d-flex justify-content-between align-items-center">
