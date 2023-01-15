@@ -74,7 +74,7 @@ def search(request):
     if 'keyword' in request.GET:
         keyword = request.GET['keyword']
         if keyword != '':
-            courses = course.objects.order_by('-slug').filter(Q(description__icontains= keyword) | Q(description_ar__icontains= keyword) | Q(course_name__icontains= keyword)| Q(course_name_ar__icontains= keyword))
+            courses = course.objects.order_by('-slug').filter(Q(is_active=True) , Q(description__icontains= keyword) | Q(description_ar__icontains= keyword) | Q(course_name__icontains= keyword)| Q(course_name_ar__icontains= keyword))
             courses_count = courses.count()
         else:
             courses =''
@@ -92,7 +92,7 @@ def search(request):
     return render(request,'courses.html',context)
 def searchHome(request,keyword):
     if keyword != '':
-        courses = course.objects.order_by('-slug').filter(
+        courses = course.objects.order_by('-slug').filter(Q(is_active=True) ,
             Q(description__icontains=keyword) | Q(description_ar__icontains=keyword) | Q(course_name__icontains=keyword) | Q(course_name_ar__icontains=keyword))
         courses_count = courses.count()
     else:
