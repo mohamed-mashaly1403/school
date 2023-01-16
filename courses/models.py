@@ -99,6 +99,22 @@ class RatingReview(models.Model):
     def __str__(self):
         return self.course.course_name
 
+class CoursePrevEN(models.Model):
+    privEn = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.privEn
+class CoursePrevAR(models.Model):
 
+    privAr = models.CharField(max_length=30)
+    def __str__(self):
+        return self.privAr
 
+class Price (models.Model):
+    coursePrice = models.IntegerField(default=1)
+    courseClasses = models.IntegerField(default=1)
+    privEN = models.ManyToManyField(CoursePrevEN, blank=True)
+    privAR = models.ManyToManyField(CoursePrevAR, blank=True)
+
+    def __int__(self):
+        return self.coursePrice
