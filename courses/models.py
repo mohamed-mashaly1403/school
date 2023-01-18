@@ -101,22 +101,31 @@ class RatingReview(models.Model):
 
 class CoursePrevEN(models.Model):
     privEn = models.CharField(max_length=30)
-
     def __str__(self):
         return self.privEn
+class CoursePrevENNa(models.Model):
+    privEnNa = models.CharField(max_length=30)
+    def __str__(self):
+        return self.privEnNa
+    # ======================
 class CoursePrevAR(models.Model):
-
     privAr = models.CharField(max_length=30)
     def __str__(self):
         return self.privAr
+class CoursePrevARNaa(models.Model):
+    privArNa = models.CharField(max_length=30)
+    def __str__(self):
+        return self.privArNa
 
 class Price (models.Model):
     coursePrice = models.IntegerField(default=1)
     courseClasses = models.IntegerField(default=1)
     courseClasses_En = models.CharField(max_length=30,default='one')
     courseClasses_Ar = models.CharField(max_length=30,default='واحد')
-    privEN = models.ManyToManyField(CoursePrevEN, blank=True)
-    privAR = models.ManyToManyField(CoursePrevAR, blank=True)
+    CprivEN = models.ManyToManyField(CoursePrevEN, blank=True)
+    CprivENNa = models.ManyToManyField(CoursePrevENNa, blank=True)
+    CprivAR = models.ManyToManyField(CoursePrevAR, blank=True)
+    CprivARNa = models.ManyToManyField(CoursePrevARNaa, blank=True)
 
     def __int__(self):
         return self.coursePrice

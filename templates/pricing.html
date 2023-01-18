@@ -10,7 +10,7 @@
     <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
         <h2>{%trans 'Pricing'%}</h2>
-        <p>{%trans 'pick the bundle and start!'%}. </p>
+        <p>{%trans 'pick the bundle and start'%} ! </p>
       </div>
     </div><!-- End Breadcrumbs -->
 
@@ -30,16 +30,27 @@
             {%else%}
             <div class="box">
             {%endif%}
-              <h3>{{i.courseClasses_En}} </h3>
+              <h3>{%if LANGUAGE_CODE == 'en' %}{{i.courseClasses_En}}{%else%}{{i.courseClasses_Ar}}{%endif%} </h3>
               <h4><sup>USD</sup>{{i.coursePrice}}<span> {{i.courseClasses}} / {{i.courseClasses|pluralize:" Class,Classes"}}</span></h4>
               <ul>
-                 <li>{%trans 'More than one hour'%}</li>
-                <li>{%trans 'Course material'%} </li>
+             {%if LANGUAGE_CODE == 'en' %}
+              {%for l in i.CprivEN.all %}
+                 <li>{{l}}</li>
+                 {%endfor%}
+                 {%for n in i.CprivENNa.all %}
+                 <li class="na">{{n}}</li>
+                 {%endfor%}
+                 {%else%}
+<!--                  ==========================AR -->
+                  {%for l in i.CprivAR.all %}
+                 <li>{{l}}</li>
+                 {%endfor%}
+                 {%for n in i.CprivARNa.all %}
+                 <li class="na">{{n}}</li>
+                 {%endfor%}
 
+                 {%endif%}
 
-                   <li class="na">{%trans 'Special follow up'%}</li>
-                  <li class="na">{%trans 'Discount on extend'%}</li>
-              </ul>
               <div class="btn-wrap">
 
                 <a href="{% url 'courses'  %}" class="btn-buy">{%trans 'Buy Now'%}</a>
