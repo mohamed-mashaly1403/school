@@ -10,7 +10,7 @@
     <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
         <h2>{%trans 'Pricing'%}</h2>
-        <p>{%trans 'pick the bundle and start Now!'%}. </p>
+        <p>{%trans 'pick the bundle and start!'%}. </p>
       </div>
     </div><!-- End Breadcrumbs -->
 
@@ -20,11 +20,18 @@
 
         <div class="row">
 
-
+{%for i in price %}
           <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
+          {%if forloop.first  %}
             <div class="box featured">
-              <h3>{%trans 'One class'%}</h3>
-              <h4><sup>USD</sup>25<span> / {%trans 'class'%}</span></h4>
+            {%elif  forloop.last %}
+            <div class="box">
+              <span class="advanced">{%trans 'Advanced'%}</span>
+            {%else%}
+            <div class="box">
+            {%endif%}
+              <h3>{{i.courseClasses_En}} </h3>
+              <h4><sup>USD</sup>{{i.coursePrice}}<span> {{i.courseClasses}} / {{i.courseClasses|pluralize:" Class,Classes"}}</span></h4>
               <ul>
                  <li>{%trans 'More than one hour'%}</li>
                 <li>{%trans 'Course material'%} </li>
@@ -41,46 +48,48 @@
               </div>
             </div>
           </div>
+          {%endfor%}
+   <!-- ======= Pricing Section ======= -->
 
-          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
-            <div class="box">
-              <h3>{%trans 'Three Classes'%} </h3>
-              <h4><sup>USD</sup>70<span> / 3 {%trans 'classes'%}</span></h4>
-              <ul>
-                <li>{%trans 'More than Three hours'%}</li>
-                <li>{%trans 'Course material'%}</li>
+<!--           <div class="col-lg-4 col-md-6 mt-4 mt-lg-0"> -->
+<!--             <div class="box"> -->
+<!--               <h3>{%trans 'Three Classes'%} </h3> -->
+<!--               <h4><sup>USD</sup>70<span> / 3 {%trans 'classes'%}</span></h4> -->
+<!--               <ul> -->
+<!--                 <li>{%trans 'More than Three hours'%}</li> -->
+<!--                 <li>{%trans 'Course material'%}</li> -->
 
-                <li>{%trans 'Special follow up'%}</li>
-                  <li class="na">{%trans 'Discount on extend'%}</li>
-              </ul>
-              <div class="btn-wrap">
+<!--                 <li>{%trans 'Special follow up'%}</li> -->
+<!--                   <li class="na">{%trans 'Discount on extend'%}</li> -->
+<!--               </ul> -->
+<!--               <div class="btn-wrap"> -->
 
-               <a href="{% url 'courses'  %}" class="btn-buy">{%trans 'Buy Now'%}</a>
+<!--                <a href="{% url 'courses'  %}" class="btn-buy">{%trans 'Buy Now'%}</a> -->
 
-              </div>
-            </div>
-          </div>
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
 
-          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
-            <div class="box">
-              <span class="advanced">{%trans 'Advanced'%}</span>
-              <h3>{%trans 'Six'%} {%trans 'Classes'%}</h3>
-              <h4><sup>USD</sup>140<span> / 6 {%trans 'Classes'%}</span></h4>
-              <ul>
-                <li>{%trans 'More than six hours'%} </li>
-                <li>{%trans 'Course material'%}</li>
+<!--           <div class="col-lg-4 col-md-6 mt-4 mt-lg-0"> -->
+<!--             <div class="box"> -->
+<!--               <span class="advanced">{%trans 'Advanced'%}</span> -->
+<!--               <h3>{%trans 'Six'%} {%trans 'Classes'%}</h3> -->
+<!--               <h4><sup>USD</sup>140<span> / 6 {%trans 'Classes'%}</span></h4> -->
+<!--               <ul> -->
+<!--                 <li>{%trans 'More than six hours'%} </li> -->
+<!--                 <li>{%trans 'Course material'%}</li> -->
 
-                <li>{%trans 'Special follow up'%}</li>
-                <li>{%trans 'Discount on extend'%}</li>
-              </ul>
-              <div class="btn-wrap">
-              <a href="{% url 'courses'  %}" class="btn-buy">{%trans 'Buy Now'%}</a>
+<!--                 <li>{%trans 'Special follow up'%}</li> -->
+<!--                 <li>{%trans 'Discount on extend'%}</li> -->
+<!--               </ul> -->
+<!--               <div class="btn-wrap"> -->
+<!--               <a href="{% url 'courses'  %}" class="btn-buy">{%trans 'Buy Now'%}</a> -->
 
 
 
-              </div>
-            </div>
-          </div>
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
 
         </div>
 

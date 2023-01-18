@@ -113,6 +113,8 @@ class CoursePrevAR(models.Model):
 class Price (models.Model):
     coursePrice = models.IntegerField(default=1)
     courseClasses = models.IntegerField(default=1)
+    courseClasses_En = models.CharField(max_length=30,default='one')
+    courseClasses_Ar = models.CharField(max_length=30,default='واحد')
     privEN = models.ManyToManyField(CoursePrevEN, blank=True)
     privAR = models.ManyToManyField(CoursePrevAR, blank=True)
 

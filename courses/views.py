@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 
 # Create your views here.
-from courses.models import RatingReview, course
+from courses.models import RatingReview, course,Price
 
 
 
@@ -107,5 +107,14 @@ def searchHome(request,keyword):
 
     return render(request, 'courses.html', context)
 def pricing (request):
-    return render(request, 'pricing.html', )
+    price = Price.objects.all()
+    # print(price[0].courseClasses)
+    # print(price[0].coursePrice)
+    # print(price[0].privEN.all())
+    context = {
+        'price': price,
+
+
+    }
+    return render(request, 'pricing.html',context )
 
