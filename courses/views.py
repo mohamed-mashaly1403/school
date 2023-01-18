@@ -39,6 +39,7 @@ def courses(request):
 
 def courseDetails(request,course_name):
     courseDets = course.objects.get(slug__iexact=course_name)
+    price = Price.objects.all()
     reviews = RatingReview.objects.filter(course__slug=course_name, status=True).order_by('updated_date')
     rates=[]
     courseTeacher = courseDets.teacher
@@ -64,7 +65,8 @@ def courseDetails(request,course_name):
                'x': x,
                'avg':avg,
                'count':count,
-               'courseTeacher':courseTeacher
+               'courseTeacher':courseTeacher,
+               'price': price
                }
     return render(request, 'course-details.html',context)
 def search(request):

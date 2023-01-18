@@ -188,7 +188,7 @@
 
               <div class="col-lg-12 col-md-6 mt-4 mt-md-0">
             <div class="box featured">
-              <h3 >{{needed_course}} </h3>
+              <h3 >{%if LANGUAGE_CODE == 'en' %}{{needed_course}}{%else%} {{needed_courseAr}} {%endif%}</h3>
                 <input hidden required name="needed_course_id" value="{{needed_course_id}}">
                 <h4><sup>USD</sup>{{price}}<span> {{lessons}}/ class{{ lessons|pluralize:"es" }}</span></h4>
                 <label hidden id="price" set="{{price}}"> </label>

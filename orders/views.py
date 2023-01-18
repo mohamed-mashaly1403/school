@@ -109,6 +109,7 @@ def Editplaceorder(request,order_number):
 def checkout (request,slug='',lessons=0, price=0):
     needed_course = course.objects.filter(slug=slug).first()
 
+
     needed_course_type = course.objects.get(slug=slug)
 
     needed_course_type_all_en=needed_course_type.typeEN.all()
@@ -125,6 +126,7 @@ def checkout (request,slug='',lessons=0, price=0):
     context = {
         'price': price,
         'needed_course': needed_course,
+        'needed_courseAr':needed_course.course_name_ar,
         'needed_course_id':needed_course.id,
         'needed_course_type_all_En':needed_course_type_all_en,
         'needed_course_type_all_ar':needed_course_type_all_ar,

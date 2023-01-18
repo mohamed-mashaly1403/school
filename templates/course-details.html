@@ -74,67 +74,109 @@
 
         <div class="row">
 
-
+<!-- =============================== pricing -->
+{%for i in price %}
           <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
+          {%if forloop.first  %}
             <div class="box featured">
-              <h3>{%trans 'One class'%}</h3>
-              <h4><sup>USD</sup>25<span> / {%trans 'class'%}</span></h4>
-              <ul>
-                 <li>{%trans 'More than one hour'%}</li>
-                <li>{%trans 'Course material'%} </li>
-
-
-                   <li class="na">{%trans 'Special follow up'%}</li>
-                  <li class="na">{%trans 'Discount on extend'%}</li>
-              </ul>
-              <div class="btn-wrap">
-
-                <a href="{% url 'checkout' courseDets.slug 1 25 %}" class="btn-buy">{%trans 'Buy Now'%}</a>
-
-
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
-            <div class="box">
-              <h3>{%trans 'Three Classes'%} </h3>
-              <h4><sup>USD</sup>70<span> / 3 {%trans 'classes'%}</span></h4>
-              <ul>
-                <li>{%trans 'More than Three hours'%}</li>
-                <li>{%trans 'Course material'%}</li>
-
-                <li>{%trans 'Special follow up'%}</li>
-                  <li class="na">{%trans 'Discount on extend'%}</li>
-              </ul>
-              <div class="btn-wrap">
-
-                <a href="{% url 'checkout' courseDets.slug 3 70 %}" class="btn-buy">{%trans 'Buy Now'%}</a>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
+            {%elif  forloop.last %}
             <div class="box">
               <span class="advanced">{%trans 'Advanced'%}</span>
-              <h3>{%trans 'Six'%} {%trans 'Classes'%}</h3>
-              <h4><sup>USD</sup>140<span> / 6 {%trans 'Classes'%}</span></h4>
+            {%else%}
+            <div class="box">
+            {%endif%}
+              <h3>{%if LANGUAGE_CODE == 'en' %}{{i.courseClasses_En}}{%else%}{{i.courseClasses_Ar}}{%endif%} </h3>
+              <h4><sup>USD</sup>{{i.coursePrice}}<span> {{i.courseClasses}} / {{i.courseClasses|pluralize:" Class,Classes"}}</span></h4>
               <ul>
-                <li>{%trans 'More than six hours'%} </li>
-                <li>{%trans 'Course material'%}</li>
+             {%if LANGUAGE_CODE == 'en' %}
+              {%for l in i.CprivEN.all %}
+                 <li>{{l}}</li>
+                 {%endfor%}
+                 {%for n in i.CprivENNa.all %}
+                 <li class="na">{{n}}</li>
+                 {%endfor%}
+                 {%else%}
+<!--                  ==========================AR -->
+                  {%for l in i.CprivAR.all %}
+                 <li>{{l}}</li>
+                 {%endfor%}
+                 {%for n in i.CprivARNa.all %}
+                 <li class="na">{{n}}</li>
+                 {%endfor%}
 
-                <li>{%trans 'Special follow up'%}</li>
-                <li>{%trans 'One class free'%}</li>
-              </ul>
+                 {%endif%}
+
               <div class="btn-wrap">
 
-                <a href="{% url 'checkout' courseDets.slug 6 100 %}" class="btn-buy">{%trans 'Buy Now'%}</a>
+                <a href="{% url 'checkout' courseDets.slug i.courseClasses i.coursePrice %}" class="btn-buy">{%trans 'Buy Now'%}</a>
 
 
               </div>
             </div>
           </div>
+          {%endfor%}
+   <!-- ======= Pricing Section ======= -->
+<!-- ===============================end pricing -->
+<!--           <div class="col-lg-4 col-md-6 mt-4 mt-md-0"> -->
+<!--             <div class="box featured"> -->
+<!--               <h3>{%trans 'One class'%}</h3> -->
+<!--               <h4><sup>USD</sup>25<span> / {%trans 'class'%}</span></h4> -->
+<!--               <ul> -->
+<!--                  <li>{%trans 'More than one hour'%}</li> -->
+<!--                 <li>{%trans 'Course material'%} </li> -->
+
+
+<!--                    <li class="na">{%trans 'Special follow up'%}</li> -->
+<!--                   <li class="na">{%trans 'Discount on extend'%}</li> -->
+<!--               </ul> -->
+<!--               <div class="btn-wrap"> -->
+
+<!--                 <a href="{% url 'checkout' courseDets.slug 1 25 %}" class="btn-buy">{%trans 'Buy Now'%}</a> -->
+
+
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
+
+<!--           <div class="col-lg-4 col-md-6 mt-4 mt-lg-0"> -->
+<!--             <div class="box"> -->
+<!--               <h3>{%trans 'Three Classes'%} </h3> -->
+<!--               <h4><sup>USD</sup>70<span> / 3 {%trans 'classes'%}</span></h4> -->
+<!--               <ul> -->
+<!--                 <li>{%trans 'More than Three hours'%}</li> -->
+<!--                 <li>{%trans 'Course material'%}</li> -->
+
+<!--                 <li>{%trans 'Special follow up'%}</li> -->
+<!--                   <li class="na">{%trans 'Discount on extend'%}</li> -->
+<!--               </ul> -->
+<!--               <div class="btn-wrap"> -->
+
+<!--                 <a href="{% url 'checkout' courseDets.slug 3 70 %}" class="btn-buy">{%trans 'Buy Now'%}</a> -->
+
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
+
+<!--           <div class="col-lg-4 col-md-6 mt-4 mt-lg-0"> -->
+<!--             <div class="box"> -->
+<!--               <span class="advanced">{%trans 'Advanced'%}</span> -->
+<!--               <h3>{%trans 'Six'%} {%trans 'Classes'%}</h3> -->
+<!--               <h4><sup>USD</sup>140<span> / 6 {%trans 'Classes'%}</span></h4> -->
+<!--               <ul> -->
+<!--                 <li>{%trans 'More than six hours'%} </li> -->
+<!--                 <li>{%trans 'Course material'%}</li> -->
+
+<!--                 <li>{%trans 'Special follow up'%}</li> -->
+<!--                 <li>{%trans 'One class free'%}</li> -->
+<!--               </ul> -->
+<!--               <div class="btn-wrap"> -->
+
+<!--                 <a href="{% url 'checkout' courseDets.slug 6 100 %}" class="btn-buy">{%trans 'Buy Now'%}</a> -->
+
+
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
 
         </div>
 
