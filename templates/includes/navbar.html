@@ -55,7 +55,7 @@
                 {%if user.is_authenticated %}
               <li><a href="{%url 'inbox'%}">{%trans 'My Mailbox'%}</a></li>
               {%if user.is_staff %}
-              <li><a href="{% url 'Teachercomplains'%}">{%trans 'Complains'%} </a></li>
+              <li><a href="{% url 'Teachercomplains'%}">{%trans 'Contact us'%} </a></li>
               {%else%}
               <li><a href="{% url 'complains'%}">{%trans 'Complains'%} </a></li>
                 {%endif%}
