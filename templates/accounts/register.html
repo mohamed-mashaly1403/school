@@ -41,8 +41,46 @@
   content: "✖";
 
 }
+@import url(https://fonts.googleapis.com/css?family=Roboto:500);
+.google-btn {
+  width: 184px;
+  height: 42px;
+  background-color: #4285f4;
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.google-btn .google-icon-wrapper {
+  position: absolute;
+  margin-top: 1px;
+  margin-left: 1px;
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  background-color: #fff;
+}
+.google-btn .google-icon {
+  position: absolute;
+  margin-top: 11px;
+  margin-left: 11px;
+  width: 18px;
+  height: 18px;
+}
+.google-btn .btn-text {
+  float: right;
+  margin: 11px 11px 0 0;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  font-family: "Roboto";
+}
+.google-btn:hover {
+  box-shadow: 0 0 6px #4285f4;
+}
+.google-btn:active {
+  background: #1669f2;
+}
 </style>
-<section class="section-content padding-y">
+<section class="section-content pb-0">
 
 <!-- ============================ COMPONENT REGISTER   ================================= -->
 	<br>
@@ -116,11 +154,23 @@
 	<p class="text-center mt-4">{%trans 'Have an account?'%} <a href="{%url 'login'%}">{%trans 'Log In'%}</a></p>
 	<p class="text-center mt-4">{%trans 'Are you Teacher?'%} <a href="{%url 'teacherProfile'%}">{%trans 'Register as a teacher'%}</a></p>
 
-    <br><br>
+
 <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
 
 
 </section>
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<div class="container d-flex justify-content-center mb-4">
+<a href="{% url 'social:begin' 'google-oauth2' %}">
+<div class="google-btn">
+  <div class="google-icon-wrapper">
+    <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+
+  </div>
+  <p class="btn-text"><b>Sign in with google</b></p>
+</div>
+  </a>
+</div>
 <script>
 var CustomerAcctNumber = document.getElementById("id_password");
 CustomerAcctNumber.setAttribute("pattern","(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}");
