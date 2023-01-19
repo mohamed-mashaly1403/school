@@ -183,7 +183,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 LOGIN_URL = '/users/login'
-LOGIN_REDIRECT_URL = '/users/homeg'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_URL = '/users/logout'
 LOGOUT_REDIRECT_URL = '/users/login'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')

@@ -786,7 +786,7 @@ msgstr "كورسات"
 #: .\templates\courses.html:25
 msgid ""
 "All courses prepared by Highly qualified and experienced teachers , simply "
-"pick your course and excel!"
+"Pick your course and excel!"
 msgstr "تم إعداد الكورسات من اعلى المعلمين خبرة ومهارة. كل ما عليك اختار الكورس وانطلق"
 
 #: .\templates\courses.html:43

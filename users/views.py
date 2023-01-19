@@ -56,10 +56,10 @@ def register(request):
             to_email = email
             send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
             send_mail.send()
-            messages.success(request,_('HEY THERE,YOUR ACCOUNT HAS BEEN CREATED! ,Please, verify it by clicking the activation link that has been sent to your email.If the email doesn\'t appear shortly, please be sure to check your spam'))
+            messages.success(request,_('Thank you for registration with us,YOUR ACCOUNT HAS BEEN CREATED! ,Please, verify it by clicking the activation link that has been sent to your email.If the email doesn\'t appear shortly, please be sure to check your spam'))
 
             return redirect('/users/login/?command=verification&email=' + email)
-            # return redirect ('/home.html')
+            # return redirect('home')
 
         else:
             print('not vaild')
@@ -82,13 +82,13 @@ def login(request):
         if request.user.is_authenticated:
             return redirect(url)
     except:
-        return redirect('home')
+        return redirect('login')
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
         user = auth.authenticate(email=email, password=password)
         try:
-            auth.login(request, user)
+            auth.login(request, user,backend='django.contrib.auth.backends.ModelBackend')
             messages.success(request, _('successfully login'))
 
         except(AttributeError):
@@ -110,30 +110,31 @@ def login(request):
                 return redirect('TeacherDashboard')
     else:
         try:
+            user = account._default_manager.filter(is_active=False,is_admin=False,is_staff=False).order_by('-joined_date')[0]
+            if user.has_usable_password():
+                return render(request, 'accounts/login.html')
+            else:
+                auth.login(request, user, backend='social_core.backends.google.GoogleOAuth2')
+                user.is_active = True
+                user.save()
 
-            user = account._default_manager.filter(is_active=False).order_by('-joined_date')[0]
-
-            user.is_active = True
-            user.save()
-            auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-
-            return redirect('homeg')
-        except: pass
-
-
-
+                return redirect('home')
+        except: return render(request, 'accounts/login.html')
 
     return render(request, 'accounts/login.html')
 # for google login======================
-@login_required
-def homeg(request):
-    return render(request, 'home.html')
+# @login_required
+# def homeg(request):
+#     if request.user.is_authenticated:
+#         return render(request, 'home.html')
+#     else:
+#         pass
 
 @login_required(login_url='login')
 def logout(request):
     auth.logout(request)
     messages.success(request, _('successfully Logout'))
-    return redirect('login')
+    return redirect('home')
 
 
 def activate(request, uidb64, token):
