@@ -29,8 +29,8 @@
             {%if user.is_staff%}
             <li class="dropdown"><a href="#"><span>{%trans 'DashBoards'%} </span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-            <li><a class="{% if '/Teachers/' in request.path or '/Teachers/' == request.path %}active {% endif %}" href="{% url 'TeacherDashboard'%}">{%trans 'Teacher '%}</a></li>
-            <li><a class="{% if '/dashboard/' in request.path or '/users/' == request.path %}active {% endif %}" href="{% url 'dashboard'%}">{%trans 'Student '%}</a></li>
+            <li><a class="{% if '/Teachers/' in request.path or '/Teachers/' == request.path %}active {% endif %}" href="{% url 'TeacherDashboard'%}">{%trans 'Teacher'%}</a></li>
+            <li><a class="{% if '/dashboard/' in request.path or '/users/' == request.path %}active {% endif %}" href="{% url 'dashboard'%}">{%trans 'Student'%}</a></li>
             </ul>
             </li>
             {%else%}

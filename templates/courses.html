@@ -23,7 +23,7 @@
 		</div>
           {% else%}
           <h2>{%trans 'Courses'%}</h2>
-        <p>{%trans 'All courses prepared by Highly qualified and experienced teachers , simply pick your course and excel!'%}</p>
+        <p>{%trans 'All courses prepared by Highly qualified and experienced teachers,'%} {%trans 'simply pick your course and excel'%}!!</p>
           {% endif %}
 
 
@@ -74,7 +74,7 @@
                     {%else %}
                     <a href="{% url 'courseDetails' course.slug %}"><h4> {% if LANGUAGE_CODE == 'ar'%}{{course.language1_tr }}  {% trans 'and'%} {{course.language2_tr}} {% else %} {{course.language1}} {% trans 'and'%} {{course.language2}}{% endif %}</h4></a>
                     {% endif %}
-                  <p class="price"> from 25 USD</p>
+                  <p class="price"> {% trans 'from'%} {{price}} USD</p>
                 </div>
 
 

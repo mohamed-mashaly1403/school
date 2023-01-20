@@ -2,13 +2,18 @@
 {% load static %}
 {% block content %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 {% block title %}Order course details{% endblock %}
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
-        <h2>{{order.order_course}} Course</h2>
+      {%if LANGUAGE_CODE == 'en' %}
+        <h2>{{order.order_course}}</h2>
+        {%else%}
+        <h2>{{order.order_course.course_name_ar}}</h2>
+        {%endif%}
         <h4>{%trans 'Status:'%}{% if order_detail.is_deliverd %} {%trans 'Finish'%} {%else %} {%trans 'Active'%} {%endif%} </h4>
       </div>
     </div><!-- End Breadcrumbs -->
@@ -20,15 +25,21 @@
         <div class="row">
           <div class="col-lg-8">
             <img src="{{order.order_course.img.url}}" style="max-width:70%;max-height:50%; border-radius:10px;" class="img-fluid img-thumbnail" alt="{%trans 'Course Image'%}">
-            <h3>{%trans 'Course Languge:'%}{{order.order_course_language}}</h3>
+            <h3>{%trans 'Course Languge:'%} {{order.order_course_language}}</h3>
             <p>
              <strong>{%trans 'Course Description:'%}</strong> {{order.order_course.description}}  </p>
           </div>
           <div class="col-lg-4">
 
             <div class="course-info d-flex justify-content-between align-items-center">
+
+              {%if order_detail.teacher%}
               <h5>{%trans 'Teacher C.V.'%}</h5>
-              <p><a href="{{ order_detail.teacher.docfile.url }}">{%if order_detail.teacher%}{{order_detail.teacher}} {{order_detail.teacher.user.last_name}}{%else%} {%trans 'Processing'%} {%endif%}</a></p>
+              <p><a href="{{ order_detail.teacher.docfile.url }}">{{order_detail.teacher}} {{order_detail.teacher.user.last_name}}</a></p>
+              {%else%}
+              <h5>{%trans 'Teacher'%}</h5>
+               <p>{%trans 'Processing'%} </p>
+                {%endif%}
             </div>
 
             <div class="course-info d-flex justify-content-between align-items-center">
@@ -151,7 +162,12 @@
                     <h3>{%trans 'Course Details'%}</h3>
                      <div class="form-row  ">
                         <div class="form-group ">
-                    {%trans 'Course :'%} <label class="fst-italic"> {{order.order_course}} </label>
+                         {%if LANGUAGE_CODE == 'en' %}
+                        {%trans 'Course :'%} <label class="fst-italic"> {{order.order_course}} </label>
+                        {%else%}
+                        {%trans 'Course :'%} <label class="fst-italic"> {{order.order_course.course_name_ar}} </label>
+                        {%endif%}
+
                         </div>
                      </div>
                     {% if order.order_course.is_school_subject  %}

@@ -17,6 +17,8 @@ from courses.models import RatingReview, course,Price
 
 def courses(request):
     courses = course.objects.filter( is_active=True).order_by('id')
+    price = Price.objects.all()[0].coursePrice
+
 
     Paginatorr = Paginator(courses, 3)
     page = request.GET.get('page')
@@ -26,6 +28,7 @@ def courses(request):
 
     context = {
                'courses': paged_courses,
+                'price': price,
                # 'courses_count':  courses_count,
                # 'x': x
 
@@ -40,6 +43,7 @@ def courses(request):
 def courseDetails(request,course_name):
     courseDets = course.objects.get(slug__iexact=course_name)
     price = Price.objects.all()
+    price1st = Price.objects.all()[0].coursePrice
     reviews = RatingReview.objects.filter(course__slug=course_name, status=True).order_by('updated_date')
     rates=[]
     courseTeacher = courseDets.teacher
@@ -66,7 +70,8 @@ def courseDetails(request,course_name):
                'avg':avg,
                'count':count,
                'courseTeacher':courseTeacher,
-               'price': price
+               'price': price,
+               'price1st':price1st
                }
     return render(request, 'course-details.html',context)
 def search(request):

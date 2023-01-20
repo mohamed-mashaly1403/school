@@ -84,9 +84,11 @@
         <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
-              <h3>{%trans 'Why Choose School.com?'%}</h3>
+              <h3>{%trans 'Why Choose MySchools?'%}</h3>
               <p>
-                {%trans 'With MYSchools you will experience convent way of learning while you are in your house, no border limits, we have highly qualified teachers from all around the world, on top of that you can refund your money any time you decide to stop.'%}
+                {% trans 'With MYSchools you will experience convent way of learning while you are in your house,'%}
+                 {% trans ' no border limits, we have highly qualified teachers from all around the world,'%}
+                  {% trans 'on top of that you can refund your money any time you decide to stop.' %}!!
               </p>
               <div class="text-center">
                 <a href="{% url 'courses'%}" class="more-btn">{%trans 'Start Now'%} <i class="bx bx-chevron-right"></i></a>
@@ -141,7 +143,7 @@
             <div class="icon-box">
 
 
-          <a href="{% url 'courses' %}">    <img src="{% static 'img/uae.jpg'%}" style=" margin-right: 15px;" width="60px"></a>
+          <a href="{% url 'courses' %}">    <img src="{% static 'img/uae.jpg'%}" style=" margin: 15px;" width="60px"></a>
 
               <h3 ><a href="{% url 'courses' %}">{%trans 'UAE'%}</a></h3>
             </div>
@@ -150,7 +152,7 @@
             <div class="icon-box">
 
 
-<a href="{% url 'courses' %}"><img src="{% static 'img/ksa.jpg'%}"style=" margin-right: 15px;" width="60px"></a>
+<a href="{% url 'courses' %}"><img src="{% static 'img/ksa.jpg'%}"style=" margin: 15px;" width="60px"></a>
               <h3><a href="{% url 'courses' %}">{%trans 'KSA'%}</a></h3>
             </div>
           </div>
@@ -158,7 +160,7 @@
             <div class="icon-box">
 
 
-<a href="{% url 'courses' %}"><img src="{% static 'img/kuwait.png'%}"style=" margin-right: 15px;" width="60px"></a>
+<a href="{% url 'courses' %}"><img src="{% static 'img/kuwait.png'%}"style=" margin: 15px;" width="60px"></a>
 
               <h3><a href="{% url 'courses' %}">{%trans 'Kuwait'%}</a></h3>
             </div>
@@ -167,7 +169,7 @@
             <div class="icon-box">
 
 
-<a href="{% url 'courses' %}"><img src="{% static 'img/qatar.png'%}"style=" margin-right: 15px;" width="60px"></a>
+<a href="{% url 'courses' %}"><img src="{% static 'img/qatar.png'%}"style=" margin: 15px;" width="60px"></a>
               <h3><a href="{% url 'courses' %}">{%trans 'Qatar'%}</a></h3>
             </div>
           </div>
@@ -297,7 +299,7 @@
                     {%else %}
                     <a href="{% url 'courseDetails' course.slug %}"><h4> {% if LANGUAGE_CODE == 'ar'%}{{course.language1_tr }}  {% trans 'and'%} {{course.language2_tr}} {% else %} {{course.language1}} {% trans 'and'%} {{course.language2}}{% endif %}</h4></a>
                     {% endif %}
-                  <p class="price">20 USD</p>
+                  <p class="price">{% trans 'from'%} {{price}} USD</p>
                 </div>
 
                 <h3><a href="{% url 'courseDetails' course.slug %}"> {% if LANGUAGE_CODE == 'ar' and course.course_name_ar != None %}{{ course.course_name_ar}}{%else%}{{ course.course_name}}{%endif%}</a></h3>

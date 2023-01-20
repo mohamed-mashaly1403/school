@@ -30,8 +30,8 @@
 
             <div class="course-info d-flex justify-content-between align-items-center">
             {% if courseTeacher == None %}
-              <h5>{%trans 'Teacher '%}</h5>
-               <p> Highly qualified Teacher </p>
+              <h5>{%trans 'Teacher'%}</h5>
+               <p> {%trans 'Highly qualified Teacher'%} </p>
                {% else %}
               <h5>{%trans 'Teacher C.V.'%}</h5>
               <p><a href="{{courseTeacher.docfile.url }}"  target="_blank"> {{courseTeacher}}</a></p>
@@ -40,7 +40,7 @@
 
             <div class="course-info d-flex justify-content-between align-items-center">
               <h5>{%trans 'Course Fees'%}</h5>
-              <p>{%trans 'from 25 USD'%} </p>
+              <p>{%trans 'from' %} {{price1st}} USD </p>
             </div>
 
             <div class="course-info d-flex justify-content-between align-items-center">
@@ -52,14 +52,14 @@
               <h5>{%trans 'Review'%}</h5>
               <div class="rating-star">
 
-					<span>reviews	<i class="fa fa-star{% if avg < 0.5%}-o{% elif avg >= 0.5 and avg < 1 %}-half-o{%endif%}" aria-hidden="true"></i>
+					<span><i class="fa fa-star{% if avg < 0.5%}-o{% elif avg >= 0.5 and avg < 1 %}-half-o{%endif%}" aria-hidden="true"></i>
 						<i class="fa fa-star{% if avg < 1.5%}-o{% elif avg >= 1.5 and avg < 2 %}-half-o{%endif%}" aria-hidden="true"></i>
 						<i class="fa fa-star{% if avg < 2.5%}-o{% elif avg >= 2.5 and avg < 3 %}-half-o{%endif%}" aria-hidden="true"></i>
 						<i class="fa fa-star{% if avg < 3.5%}-o{% elif avg >= 3.5 and avg < 4 %}-half-o{%endif%}" aria-hidden="true"></i>
 						<i class="fa fa-star{% if avg < 4.5%}-o{% elif avg >= 4.5 and avg < 5 %}-half-o{%endif%}" aria-hidden="true"></i>
 
 					</span>
-	<span>{{avg}} {%trans 'stars'%} / {{count}} {%trans 'review'%}{{count|pluralize:'s'}}</span>
+	<span>{{avg}} {%trans 'stars'%} / {{count}} {%trans 'review'%}{% if LANGUAGE_CODE == 'en'%}{{count|pluralize:'s'}} {%else%} {%endif%}</span>
 				</div>
             </div>
 
