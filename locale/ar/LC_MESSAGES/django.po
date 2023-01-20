@@ -428,8 +428,7 @@ msgid "Don't have account?"
 msgstr "ليس عندي حساب؟"
 
 #: .\templates\accounts\login.html:97
-msgid "Sign in with google "
-msgstr "سجل دخول بإستخدام جوجل"
+
 
 #: .\templates\accounts\message_form.html:14
 msgid "New Email"
@@ -1888,8 +1887,7 @@ msgstr "تم ارسال رسالتك بنجاح"
 #~ msgid "Student "
 #~ msgstr "الطلاب"
 
-#~ msgid "Sign in with google"
-#~ msgstr "سجل دخول بإستخدام جوجل"
+
 
 #, fuzzy
 #~| msgid "from 20 USD"
