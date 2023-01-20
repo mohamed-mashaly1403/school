@@ -26,8 +26,7 @@ SECRET_KEY = 'django-insecure-02$)$2q@@@y_!u@o+4!ktm%#-kx0h4fg@p-5=0+=)1y7*w$=)t
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = config('DEBUG', default=True, cast=bool)
-DEBUG = True
+DEBUG = config('DEBUG', default=True, cast=bool)
 
 # ALLOWED_HOSTS = []
 if DEBUG is True:
@@ -107,7 +106,7 @@ AUTH_USER_MODEL = 'users.account'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-if DEBUG == False:
+if DEBUG:
     DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.sqlite3',
@@ -137,8 +136,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.pa'
-                'ssword_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
