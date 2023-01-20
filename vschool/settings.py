@@ -106,7 +106,7 @@ AUTH_USER_MODEL = 'users.account'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-if DEBUG:
+if DEBUG == False:
     DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.sqlite3',
@@ -136,7 +136,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.pa'
+                'ssword_validation.CommonPasswordValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
