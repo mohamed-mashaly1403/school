@@ -2,6 +2,7 @@ from django import forms
 
 from Teachers.models import TeacherProfile
 from orders.models import orderPoductClasses
+from courses.models import course
 
 
 class TeacherProfileForm(forms.ModelForm):
@@ -35,3 +36,13 @@ class orderPoductClassesForm(forms.ModelForm):
             self.fields[field].widget.attrs['class']='form-control'
         for field in self.fields.values():
             field.widget.attrs['placeholder'] = field.label
+class MakeMyCourseForm(forms.ModelForm):
+    img = forms.ImageField(required=True,error_messages = {'invalid':("Image files only")},widget=forms.FileInput)
+    class Meta:
+        model = course
+        fields = ['course_name', 'course_name_ar', 'language1', 'language1_tr','language2','language2_tr','typeEN','typeAR','description','description_ar','img','is_school_subject','is_active']
+
+    def __init__(self, *args, **kwargs):
+        super(MakeMyCourseForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'form-control'

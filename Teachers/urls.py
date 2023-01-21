@@ -15,5 +15,6 @@ path('submit_courseUrl/<int:order_id>/', views.submit_courseUrl, name='submit_co
 path('submit_courseMaterial/<int:order_id>/', views.submit_courseMaterial, name='submit_courseMaterial'),
 path('lessonDone/<int:order_id>/', views.lessonDone, name='lessonDone'),
 path('changeDate/', views.changeDate, name='changeDate'),
+path('MakeMyCourse/', views.MakeMyCourse, name='MakeMyCourse'),
 
 ]

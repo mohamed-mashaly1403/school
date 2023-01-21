@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load i18n %}
+{% block title %}Create course{% endblock %}
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-conten padding-y bg">
+<!--{% include 'includes/alerts.html' %}-->
+    <br>
+    <br>
+    <br>
+    <br>
+
+<div class="container">
+	<div class="row">
+	{% if user.is_staff%}
+	{% include 'includes/TeacherdashboardSide.html'%}
+	{% else%}
+    {% include 'includes/dashboardSide.html'%}
+    {%endif%}
+	<main class="col-md-9">
+		<article class="card">
+		<header class="card-header">
+			<strong class="d-inline-block mr-3"> {%trans 'Create course'%} </strong>
+
+		</header>
+<!-- 		<div class="card-body"> -->
+<!--             <div class="text-center"> -->
+<!--                 {% if user.user_img %} -->
+<!-- 				  <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{{user.user_img.url}}" alt="{%trans 'user picture'%}"> -->
+<!--                 <div> -->
+<!--                     <a role="button"  class="btn btn-outline-danger"  href="{% url 'deltePhoto' %}">{%trans 'Remove Photo'%}</a> -->
+<!--                     </div> -->
+
+
+<!-- 				  {% else%} -->
+<!-- 				  <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="{%trans 'user picture'%}"> -->
+<!-- 				  {% endif %} -->
+
+<!--             </div> -->
+			<div class="row">
+
+				<div class="col-md-12">
+				<form action="{% url 'MakeMyCourse'%}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token%}
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>{%trans 'Course Name'%}<span style="color:red">*</span></label>
+                           {{TeacherMakeMyCourseForm.course_name}}
+                        </div>
+                         <div class="form-group col-md-6">
+                            <label>{%trans 'Arabic Course Name'%}<span style="color:red">*</span></label>
+                            {{TeacherMakeMyCourseForm.course_name_ar}}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>{%trans 'course first language'%}<span style="color:red">*</span></label>
+                            {{TeacherMakeMyCourseForm.language1}}
+                        </div>
+                        <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>{%trans 'course first language in Arabic'%}<span style="color:red">*</span></label>
+                            {{TeacherMakeMyCourseForm.language1_tr}}
+                        </div>
+                        <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>{%trans 'course second language'%}</label>
+                            {{TeacherMakeMyCourseForm.language2}}
+                        </div>
+                        <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>{%trans 'course second language in Arabic'%}</label>
+                            {{TeacherMakeMyCourseForm.language2_tr}}
+                        </div>
+                         <div class="form-group col-md-6">
+                            <label>{%trans 'course image'%}</label>
+                           {{TeacherMakeMyCourseForm.img}}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>{%trans 'Curriculum type'%}</label>
+                            {{TeacherMakeMyCourseForm.typeEN}}
+                        </div>
+                         <div class="form-group col-md-6  mb-5">
+                            <label>{%trans 'Curriculum type in Arabic'%}</label>
+                            {{TeacherMakeMyCourseForm.typeAR}}
+                        </div>
+
+                    </div>
+                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>{%trans 'Course description'%}</label>
+                            {{TeacherMakeMyCourseForm.description}}
+                        </div>
+                         <div class="form-group col-md-6  mb-5">
+                            <label>{%trans 'Course description in Arabic'%}</label>
+                            {{TeacherMakeMyCourseForm.description_ar}}
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>{%trans 'is the Course school subject?'%}</label>
+                            {{TeacherMakeMyCourseForm.is_school_subject}}
+                        </div>
+
+
+                    </div>
+
+
+                     <div class="form-row text-center ">
+
+                           <div class="form-group  ">
+
+                    <input style="width:200px;" type="submit" value="{%trans 'save'%}" class="btn btn-success">
+                           </div>
+
+                     </div>
+                </form>
+				</div>
+
+			</div> <!-- row.// -->
+		</div> <!-- card-body .// -->
+
+		</article> <!-- order-group.// -->
+	</main>
+</div> <!-- row.// -->
+</div>
+
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock %}

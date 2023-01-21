@@ -11,11 +11,13 @@ import django.core.mail
 from django.template.loader import render_to_string
 
 from Notifs.models import Inboxnotif
-from Teachers.form import TeacherProfileForm, orderPoductClassesForm
+from Teachers.form import TeacherProfileForm, orderPoductClassesForm, MakeMyCourseForm
 from Teachers.models import TeacherProfile, paid
+from courses.models import course
 from orders.form import complainsForm, ChangeTeacherRequestForm, orderPoductForm
 from orders.models import orderPoduct, Complains, Order, orderPoductClasses, ChangeTeacherRequestt
 from users.forms import UserForm
+from .form import MakeMyCourseForm
 
 
 def TeacherDashboard(request):
@@ -463,3 +465,56 @@ def changeDate(request):
         else:
             print('not vaild')
         return redirect(url)
+@user_passes_test(lambda u: u.is_staff)
+def MakeMyCourse(request):
+
+
+    # TeacherMakeMyCourseForm = MakeMyCourseForm(instance=request.user)
+    # context = {
+    #     'TeacherMakeMyCourseForm': TeacherMakeMyCourseForm,
+    #
+    # }
+    # return render(request, 'teachers/makeMyCourse.html', context)
+    try:
+        teacher = TeacherProfile.objects.get(user=request.user.id)
+    except:
+        messages.error(request, _('No teacher profile for the user'))
+        return redirect('courses')
+
+    TeacherMakeMyCourseForm = MakeMyCourseForm(request.POST, request.FILES)
+
+    if request.method == 'POST':
+        if TeacherMakeMyCourseForm.is_valid():
+
+            if TeacherMakeMyCourseForm.cleaned_data['img'] != None:
+                if TeacherMakeMyCourseForm.cleaned_data['img'].size > 1048576:
+                    messages.error(request, _('Your photo bigger than 1 MB'))
+                    TeacherMakeMyCourseForm.save(commit=False)
+                else:
+                    TeacherMakeMyCourseForm.save(commit=True)
+                    course_name = TeacherMakeMyCourseForm.cleaned_data['course_name']
+                    print(course_name)
+                    name= course.objects.get(course_name=course_name)
+
+                    name.teacher = teacher
+                    name.save(update_fields=['teacher'])
+
+
+                    messages.success(request, _('course created and will show up in courses after review'))
+                    return redirect('courses')
+
+            else:
+                TeacherMakeMyCourseForm.save(commit=False)
+                messages.error(request, _('course image required'))
+                return redirect('MakeMyCourse')
+        else:
+            print(TeacherMakeMyCourseForm.errors)
+    else:
+        TeacherMakeMyCourseForm = MakeMyCourseForm()
+
+
+    context = {
+        'TeacherMakeMyCourseForm': TeacherMakeMyCourseForm,
+
+    }
+    return render(request, 'teachers/makeMyCourse.html', context)
