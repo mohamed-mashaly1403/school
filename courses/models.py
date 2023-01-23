@@ -77,6 +77,9 @@ class course(models.Model):
         else:
             return 0
 
+
+
+
     def __str__(self):
         return self.course_name
 from orders.models import Order, orderPoduct

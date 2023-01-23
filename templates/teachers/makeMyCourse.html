@@ -21,7 +21,7 @@
 	<main class="col-md-9">
 		<article class="card">
 		<header class="card-header">
-			<strong class="d-inline-block mr-3"> {%trans 'Create course'%} </strong>
+			<strong class="d-inline-block mr-3"> {%trans 'Create my course'%} </strong>
 
 		</header>
 <!-- 		<div class="card-body"> -->
@@ -38,61 +38,94 @@
 <!-- 				  {% endif %} -->
 
 <!--             </div> -->
+<!-- {% if TeacherMakeMyCourseForm.errors %} -->
+<!--       {% for field in TeacherMakeMyCourseForm %} -->
+<!--       {% for error in field.errors %} -->
+<!--       <div class="alert alert-danger"> -->
+<!--         <strong>{{ error }}</strong> -->
+<!--     </div> -->
+<!--      {% endfor %} -->
+<!--      {% endfor %} -->
+<!-- {% endif %} -->
+
 			<div class="row">
 
 				<div class="col-md-12">
-				<form action="{% url 'MakeMyCourse'%}" method="POST" enctype="multipart/form-data">
+				<form action="{%if '/MakeMyCourse/' in request.path %}{% url 'MakeMyCourse'%}{%endif%} {%if '/edit_profile/' in request.path %}{% url 'editCourse' id %}{%endif%}" method="POST" enctype="multipart/form-data">
                     {% csrf_token%}
+                     <div class="form-row text-center">
+                        <div class="form-group col-md-12 alert-success">
+                            <label>{%trans 'is the Course school subject?'%}</label>
+                            {{TeacherMakeMyCourseForm.is_school_subject}}
+                        </div>
+
+
+                    </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>{%trans 'Course Name'%}<span style="color:red">*</span></label>
+                            <label>{%trans 'English Course Name'%}<span style="color:red">*</span></label>
                            {{TeacherMakeMyCourseForm.course_name}}
+                            <small class="form-text text-muted">{%trans 'pick a unique course Name'%}</small>
+                       <div style="color: red;"> {{TeacherMakeMyCourseForm.course_name.errors|escape}} </div>
+
                         </div>
                          <div class="form-group col-md-6">
                             <label>{%trans 'Arabic Course Name'%}<span style="color:red">*</span></label>
                             {{TeacherMakeMyCourseForm.course_name_ar}}
+                            <small class="form-text text-muted">{%trans 'pick a unique course Name'%}</small>
+                           <div style="color: red;"> {{TeacherMakeMyCourseForm.course_name_ar.errors|escape}} </div>
                         </div>
+
                     </div>
+                            <div class="form-row">
+                         <div class="form-group col-md-12">
+                          </div>
+                         </div>
+
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>{%trans 'course first language'%}<span style="color:red">*</span></label>
+                            <label>{%trans 'Course first language'%}<span style="color:red">*</span></label>
                             {{TeacherMakeMyCourseForm.language1}}
                         </div>
                         <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>{%trans 'course first language in Arabic'%}<span style="color:red">*</span></label>
+                            <label>{%trans 'Course first language in Arabic'%}<span style="color:red">*</span></label>
                             {{TeacherMakeMyCourseForm.language1_tr}}
                         </div>
+
                         <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>{%trans 'course second language'%}</label>
+                            <label>{%trans 'Course second language'%}</label>
                             {{TeacherMakeMyCourseForm.language2}}
                         </div>
                         <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>{%trans 'course second language in Arabic'%}</label>
+                            <label>{%trans 'Course second language in Arabic'%}</label>
                             {{TeacherMakeMyCourseForm.language2_tr}}
                         </div>
-                         <div class="form-group col-md-6">
-                            <label>{%trans 'course image'%}</label>
+                         <div class="form-group col-md-12">
+                            <label>{%trans 'Course image'%}<span style="color:red">*</span></label>
                            {{TeacherMakeMyCourseForm.img}}
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>{%trans 'Curriculum type'%}</label>
+                            <label>{%trans 'Curriculum type in English'%}</label>
                             {{TeacherMakeMyCourseForm.typeEN}}
+                        <small class="form-text text-muted">{%trans 'Hold control to choose more than one'%}</small>
+
                         </div>
                          <div class="form-group col-md-6  mb-5">
                             <label>{%trans 'Curriculum type in Arabic'%}</label>
                             {{TeacherMakeMyCourseForm.typeAR}}
+                            <small class="form-text text-muted">{%trans 'Hold control to choose more than one'%}</small>
                         </div>
 
                     </div>
                      <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>{%trans 'Course description'%}</label>
+                            <label>{%trans 'Course description in English'%}</label>
                             {{TeacherMakeMyCourseForm.description}}
                         </div>
                          <div class="form-group col-md-6  mb-5">
@@ -101,25 +134,24 @@
                         </div>
 
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label>{%trans 'is the Course school subject?'%}</label>
-                            {{TeacherMakeMyCourseForm.is_school_subject}}
-                        </div>
 
-
-                    </div>
 
 
                      <div class="form-row text-center ">
 
                            <div class="form-group  ">
 
+
                     <input style="width:200px;" type="submit" value="{%trans 'save'%}" class="btn btn-success">
                            </div>
 
                      </div>
+
+
+
+			         <div style="color: red;">{{TeacherMakeMyCourseForm.non_field_errors}}</div>
                 </form>
+
 				</div>
 
 			</div> <!-- row.// -->
@@ -132,5 +164,41 @@
 
 
 </section>
+<script type='text/javascript'>
+if($('#id_is_school_subject').not(':checked').length > 0){
+
+    document.getElementById('id_typeEN').disabled = true;
+    document.getElementById('id_typeEN').value = '';
+    document.getElementById('id_typeAR').disabled = true;
+    document.getElementById('id_typeAR').value = '';
+
+
+} else {
+
+    document.getElementById('id_typeEN').disabled = false;
+    document.getElementById('id_typeAR').disabled = false;
+
+
+}
+
+const checkbox = document.getElementById('id_is_school_subject');
+
+checkbox.addEventListener('change', (event) => {
+        if (event.target.checked) {
+            document.getElementById('id_typeEN').disabled = false;
+            document.getElementById('id_typeAR').disabled = false;
+
+
+} else {
+            document.getElementById('id_typeEN').disabled = true;
+            document.getElementById('id_typeAR').disabled = true;
+             document.getElementById('id_typeEN').value = '';
+             document.getElementById('id_typeAR').value = '';
+
+    }
+})
+
+
+</script>
 <!-- ========================= SECTION CONTENT END// ========================= -->
 {% endblock %}
