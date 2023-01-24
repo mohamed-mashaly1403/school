@@ -4,6 +4,7 @@
 {% load i18n %}
 {% block title %}Create course{% endblock %}
 <!-- ========================= SECTION CONTENT ========================= -->
+
 <section class="section-conten padding-y bg">
 <!--{% include 'includes/alerts.html' %}-->
     <br>
@@ -20,33 +21,27 @@
     {%endif%}
 	<main class="col-md-9">
 		<article class="card">
-		<header class="card-header">
+		<header class="card-header text-center">
 			<strong class="d-inline-block mr-3"> {%trans 'Create my course'%} </strong>
 
 		</header>
-<!-- 		<div class="card-body"> -->
-<!--             <div class="text-center"> -->
-<!--                 {% if user.user_img %} -->
-<!-- 				  <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{{user.user_img.url}}" alt="{%trans 'user picture'%}"> -->
-<!--                 <div> -->
-<!--                     <a role="button"  class="btn btn-outline-danger"  href="{% url 'deltePhoto' %}">{%trans 'Remove Photo'%}</a> -->
-<!--                     </div> -->
+		{% if '/editCourse/' in request.path %}
+		<div class="card-body">
+            <div class="text-center">
+                {% if course_img.img %}
+				  <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{{course_img.img.url}}" alt="{%trans 'course picture'%}">
+                <div>
+                    <a role="button"  class="btn btn-outline-danger"  href="{% url 'deltePhoto' %}">{%trans 'Remove Photo'%}</a>
+                    </div>
 
 
-<!-- 				  {% else%} -->
-<!-- 				  <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="{%trans 'user picture'%}"> -->
-<!-- 				  {% endif %} -->
+				  {% else%}
+				  <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="{%trans 'course picture'%}">
+				  {% endif %}
 
-<!--             </div> -->
-<!-- {% if TeacherMakeMyCourseForm.errors %} -->
-<!--       {% for field in TeacherMakeMyCourseForm %} -->
-<!--       {% for error in field.errors %} -->
-<!--       <div class="alert alert-danger"> -->
-<!--         <strong>{{ error }}</strong> -->
-<!--     </div> -->
-<!--      {% endfor %} -->
-<!--      {% endfor %} -->
-<!-- {% endif %} -->
+            </div>
+            {% endif %}
+
 
 			<div class="row">
 
@@ -65,7 +60,7 @@
                         <div class="form-group col-md-6">
                             <label>{%trans 'English Course Name'%}<span style="color:red">*</span></label>
                            {{TeacherMakeMyCourseForm.course_name}}
-                            <small class="form-text text-muted">{%trans 'pick a unique course Name'%}</small>
+                            <small id='small' class="form-text text-muted">{%trans 'pick a unique course Name'%}</small>
                        <div style="color: red;"> {{TeacherMakeMyCourseForm.course_name.errors|escape}} </div>
 
                         </div>
@@ -165,6 +160,47 @@
 
 </section>
 <script type='text/javascript'>
+$(function() {
+  $("#id_course_name,#id_description").keypress(function(event) {
+    var ew = event.which;
+    if (ew == 32)
+      return true;
+    if (48 <= ew && ew <= 57)
+      return true;
+    if (65 <= ew && ew <= 90)
+      return true;
+    if (97 <= ew && ew <= 122)
+      return true;
+    return false;
+
+
+
+
+  });
+
+});
+// ===============
+$(function() {
+  $("#id_course_name_ar,#id_description_ar").keypress(function(event) {
+    var ew = event.which;
+    if (ew == 32)
+      return false;
+    if (48 <= ew && ew <= 57)
+      return false;
+    if (65 <= ew && ew <= 90)
+      return false;
+    if (97 <= ew && ew <= 122)
+      return false;
+    return true;
+
+
+
+
+  });
+
+});
+
+
 if($('#id_is_school_subject').not(':checked').length > 0){
 
     document.getElementById('id_typeEN').disabled = true;

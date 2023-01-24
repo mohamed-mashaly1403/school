@@ -561,10 +561,12 @@ def editCourse(request , id):
 
             print(TeacherMakeMyCourseForm.errors)
     else: TeacherMakeMyCourseForm = MakeMyCourseForm(instance=courseProfile)
+    course_img= course.objects.get(id=id)
 
     context = {
         'TeacherMakeMyCourseForm': TeacherMakeMyCourseForm,
         'id':id,
+        'course_img':course_img,
 
             }
     return render(request, 'teachers/makeMyCourse.html', context)

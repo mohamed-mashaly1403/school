@@ -53,6 +53,7 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
             <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
                 <!-- Collapse 1 -->
+
                 <a class="{% if '/editMyCourse/' in request.path %}active {% endif %} list-group-item list-group-item-action py-2 ripple" aria-current="true"
                   data-mdb-toggle="collapse" href="{% url 'editMyCourse' %}" aria-expanded="true"
                   aria-controls="collapseExample1">
@@ -65,6 +66,7 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
                     <a href="{% url 'editCourse' i.id %}" class="text-reset">{{i.course_name}}{{i.id}}</a>
                   </li>
                    {% endfor %}
+
 
                 </ul>
                 <!-- Collapse 1 -->

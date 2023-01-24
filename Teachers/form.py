@@ -45,6 +45,7 @@ class MakeMyCourseForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(MakeMyCourseForm, self).__init__(*args, **kwargs)
 
+        self.fields['course_name'].widget.attrs['pattern'] = "[A-Za-z]"
         for field in self.fields :
             if not self.fields[field] == self.fields['is_school_subject']:
                 self.fields[field].widget.attrs['class'] = 'form-control'
