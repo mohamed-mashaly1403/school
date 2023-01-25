@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-26 02:03+0400\n"
+"POT-Creation-Date: 2023-01-26 02:55+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,7 +74,7 @@ msgstr "حجم الصورة اكبر من 1 ميجا"
 msgid "Your cv file is not pdf"
 msgstr "ملف السيرة الذاتية ليس pdf"
 
-#: .\Teachers\views.py:344 .\orders\views.py:291
+#: .\Teachers\views.py:344 .\orders\views.py:292
 msgid "request has submited and will change soon"
 msgstr "تم تسجيل الطلب وسيتم التغيير قريبا"
 
@@ -140,11 +140,11 @@ msgstr "لقد حصلت على طلب جديد وهناك طالب ينتظر"
 msgid "Kindly go to your dashboard to proceed in the new course"
 msgstr "من فضلك اذهب إلى لوحة التحكم لتبدء الكورس الجديد"
 
-#: .\orders\views.py:255
+#: .\orders\views.py:256
 msgid "review has updated"
 msgstr "تم تسجيل التقييم"
 
-#: .\orders\views.py:272
+#: .\orders\views.py:273
 msgid "review has submited"
 msgstr "تم تسجيل التقييم"
 
@@ -180,7 +180,7 @@ msgstr "تاريخ الطلب"
 
 #: .\templates\accounts\UnPaidOrders.html:33
 #: .\templates\accounts\myOrders.html:34
-#: .\templates\teachers\TeacherCourses.html:33
+#: .\templates\teachers\TeacherCourses.html:37
 #: .\templates\teachers\TeacherOrders.html:35
 msgid "Status"
 msgstr "الحالة"
@@ -1298,7 +1298,7 @@ msgid "Course Description:"
 msgstr "وصف الكورس"
 
 #: .\templates\orders\order_course-details.html:41
-#: .\templates\teachers\TeacherCourses.html:42
+#: .\templates\teachers\TeacherCourses.html:46
 msgid "Processing"
 msgstr "جاري العمل"
 
@@ -1670,23 +1670,23 @@ msgstr "التاريخ الجديد في حال اردت تغيير التاري
 msgid "New url(in case you want to change lesson url):"
 msgstr "الرابط الجديد في حال اردت تغيير الرابط"
 
-#: .\templates\teachers\TeacherCourses.html:20
+#: .\templates\teachers\TeacherCourses.html:24
 msgid "My Courses:"
 msgstr "كورساتي"
 
-#: .\templates\teachers\TeacherCourses.html:30
+#: .\templates\teachers\TeacherCourses.html:34
 msgid "Course id #"
 msgstr "رقم الكورس"
 
-#: .\templates\teachers\TeacherCourses.html:31
+#: .\templates\teachers\TeacherCourses.html:35
 msgid "Course English Name"
 msgstr "اسم الكورس بالانجليزي"
 
-#: .\templates\teachers\TeacherCourses.html:32
+#: .\templates\teachers\TeacherCourses.html:36
 msgid "Course Arabic Name"
 msgstr "اسم الكورس بالعربي"
 
-#: .\templates\teachers\TeacherCourses.html:42
+#: .\templates\teachers\TeacherCourses.html:46
 msgid "Published"
 msgstr "نُشر"
 
@@ -1783,8 +1783,13 @@ msgstr "نوع المنهج بالإنجليزي"
 
 #: .\templates\teachers\makeMyCourse.html:102
 #: .\templates\teachers\makeMyCourse.html:108
-msgid "Hold control to choose more than one"
-msgstr " CTRL لاختيار اكثر من منهج اضغط على"
+msgid "Hold"
+msgstr "اضغط"
+
+#: .\templates\teachers\makeMyCourse.html:102
+#: .\templates\teachers\makeMyCourse.html:108
+msgid "to choose more than one"
+msgstr "لاختيار أكثر من منهج"
 
 #: .\templates\teachers\makeMyCourse.html:106
 msgid "Curriculum type in Arabic"
