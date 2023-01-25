@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-21 00:57+0400\n"
+"POT-Creation-Date: 2023-01-26 02:03+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,78 +28,101 @@ msgstr ""
 msgid "Filetype not supported."
 msgstr "نوع الملف غير مدعوم"
 
-#: .\Teachers\views.py:108
+#: .\Teachers\views.py:111
 msgid "Money will be added to your Bank account soon"
 msgstr "سيتم اضافة المبلغ لحسابك قريبا"
 
-#: .\Teachers\views.py:120
+#: .\Teachers\views.py:123
 msgid "Your bank account details missing!"
 msgstr "بيانات حسابك البنكي غير مكتملة"
 
-#: .\Teachers\views.py:159
+#: .\Teachers\views.py:162
 msgid "Your Account will be reviewed and will back to you soon"
 msgstr "سيتم مراجعة حسابك قريبا"
 
-#: .\Teachers\views.py:170
+#: .\Teachers\views.py:173
 msgid "file bigger than 2 MB"
 msgstr "الملف أكبر من 2 ميجا "
 
-#: .\Teachers\views.py:172
+#: .\Teachers\views.py:175
 msgid "cv can not be empty!"
 msgstr "لا يمكن ترك السيرة الذاتية فارغة"
 
-#: .\Teachers\views.py:174
+#: .\Teachers\views.py:177
 msgid "Your cv file not pdf"
 msgstr "ملف السيرة الذاتية ليس pdf"
 
-#: .\Teachers\views.py:197
+#: .\Teachers\views.py:200
 msgid "Complain has submited and will be intouch with you very soon"
 msgstr "تم تسجيل الشكوى وسنتواصل معك لاحقاً"
 
-#: .\Teachers\views.py:266 .\Teachers\views.py:274 .\Teachers\views.py:286
-#: .\Teachers\views.py:291 .\users\views.py:318 .\users\views.py:324
+#: .\Teachers\views.py:269 .\Teachers\views.py:277 .\Teachers\views.py:289
+#: .\Teachers\views.py:294 .\users\views.py:318 .\users\views.py:324
 msgid "profile updated"
 msgstr "تم تحديث حسابك"
 
-#: .\Teachers\views.py:270 .\Teachers\views.py:282
+#: .\Teachers\views.py:273 .\Teachers\views.py:285
 msgid "Your CV bigger than 2 MB"
 msgstr "حجم الملف اكبر من 2 ميجا"
 
-#: .\Teachers\views.py:278 .\users\views.py:313
+#: .\Teachers\views.py:281 .\Teachers\views.py:484 .\Teachers\views.py:558
+#: .\users\views.py:313
 msgid "Your photo bigger than 1 MB"
 msgstr "حجم الصورة اكبر من 1 ميجا"
 
-#: .\Teachers\views.py:294
+#: .\Teachers\views.py:297
 msgid "Your cv file is not pdf"
 msgstr "ملف السيرة الذاتية ليس pdf"
 
-#: .\Teachers\views.py:341 .\orders\views.py:291
+#: .\Teachers\views.py:344 .\orders\views.py:291
 msgid "request has submited and will change soon"
 msgstr "تم تسجيل الطلب وسيتم التغيير قريبا"
 
-#: .\Teachers\views.py:380 .\Teachers\views.py:420
+#: .\Teachers\views.py:383 .\Teachers\views.py:423
 msgid "url has submited"
 msgstr "تم تسجيل الرابط"
 
-#: .\Teachers\views.py:393
+#: .\Teachers\views.py:396
 msgid "Url has updated"
 msgstr "تم تحديث الرابط"
 
-#: .\Teachers\views.py:401
+#: .\Teachers\views.py:404
 msgid "url2 has submited"
 msgstr "تم تحديث الرابط"
 
-#: .\Teachers\views.py:451
+#: .\Teachers\views.py:454
 msgid "new class url has submitted"
 msgstr "تم تحميل الرابط"
 
-#: .\Teachers\views.py:454
+#: .\Teachers\views.py:457
 msgid "new class timing has submitted"
 msgstr "تم تحديث المواعيد الجديدة"
 
-#: .\Teachers\views.py:458 .\Teachers\views.py:461
+#: .\Teachers\views.py:461 .\Teachers\views.py:464
 msgid "New Date or url can not be empty "
 msgstr "التاريخ او الرابط لا يمكن تركه فارغ"
+
+#: .\Teachers\views.py:474 .\Teachers\views.py:537
+#, fuzzy
+#| msgid "Teacher profile"
+msgid "No teacher profile for the user"
+msgstr "حساب المعلم"
+
+#: .\Teachers\views.py:509
+msgid "course created and will show up in courses after review"
+msgstr ""
+
+#: .\Teachers\views.py:518 .\Teachers\views.py:566
+#, fuzzy
+#| msgid "Course material"
+msgid "course image required"
+msgstr "مذكرات من المعلم"
+
+#: .\Teachers\views.py:562
+#, fuzzy
+#| msgid "password changed successfully"
+msgid "course updated successfully"
+msgstr "تم تغيير كلمة المرور بنجاح"
 
 #: .\live\views.py:80
 msgid "meeting not open "
@@ -157,6 +180,7 @@ msgstr "تاريخ الطلب"
 
 #: .\templates\accounts\UnPaidOrders.html:33
 #: .\templates\accounts\myOrders.html:34
+#: .\templates\teachers\TeacherCourses.html:33
 #: .\templates\teachers\TeacherOrders.html:35
 msgid "Status"
 msgstr "الحالة"
@@ -166,7 +190,7 @@ msgid "Not Orderd"
 msgstr "لم يتم الطلب"
 
 #: .\templates\accounts\change_password.html:62
-#: .\templates\includes\TeacherdashboardSide.html:19
+#: .\templates\includes\TeacherdashboardSide.html:51
 #: .\templates\includes\dashboardSide.html:15
 msgid "Change Password"
 msgstr "تغيير كلمة المرور"
@@ -198,6 +222,7 @@ msgstr "تأكيد كلمة المرور"
 #: .\templates\accounts\change_password.html:99
 #: .\templates\accounts\edit_profile.html:84
 #: .\templates\teachers\Teacheredit_profile.html:164
+#: .\templates\teachers\makeMyCourse.html:131
 msgid "save"
 msgstr "حفظ"
 
@@ -428,7 +453,8 @@ msgid "Don't have account?"
 msgstr "ليس عندي حساب؟"
 
 #: .\templates\accounts\login.html:97
-
+msgid "Sign in with google "
+msgstr ""
 
 #: .\templates\accounts\message_form.html:14
 msgid "New Email"
@@ -1003,41 +1029,50 @@ msgstr "الفنون المرئية"
 msgid "Popular Courses"
 msgstr "الكورسات الرائجة"
 
-#: .\templates\includes\TeacherdashboardSide.html:11
+#: .\templates\includes\TeacherdashboardSide.html:43
 msgid "Teacher Dashboard"
 msgstr "لوحة التحكم"
 
-#: .\templates\includes\TeacherdashboardSide.html:12
+#: .\templates\includes\TeacherdashboardSide.html:44
 msgid "Teacher Courses"
 msgstr "كورسات المعلم"
 
-#: .\templates\includes\TeacherdashboardSide.html:13
+#: .\templates\includes\TeacherdashboardSide.html:45
 msgid "Teacher Active Courses"
 msgstr "كورسات المعلم النشطة"
 
-#: .\templates\includes\TeacherdashboardSide.html:14
+#: .\templates\includes\TeacherdashboardSide.html:46
 msgid "Edit Teacher profile"
 msgstr "تعديل حسابي"
 
-#: .\templates\includes\TeacherdashboardSide.html:15
+#: .\templates\includes\TeacherdashboardSide.html:47
 #: .\templates\includes\dashboardSide.html:17
 msgid "complains"
 msgstr "الشكاوى والبلاغات"
 
-#: .\templates\includes\TeacherdashboardSide.html:16
+#: .\templates\includes\TeacherdashboardSide.html:48
 msgid "Received installments"
 msgstr "الدفعات المستلمة"
 
-#: .\templates\includes\TeacherdashboardSide.html:17
+#: .\templates\includes\TeacherdashboardSide.html:49
 #: .\templates\teachers\teasherDashboard.html:79
 msgid "Ask to withdraw"
 msgstr "طلب دفعة"
 
-#: .\templates\includes\TeacherdashboardSide.html:18
+#: .\templates\includes\TeacherdashboardSide.html:50
 msgid "Edit user profile"
 msgstr "تعديل حسابي"
 
-#: .\templates\includes\TeacherdashboardSide.html:23
+#: .\templates\includes\TeacherdashboardSide.html:52
+msgid "Create new course"
+msgstr "تصميم كورس جديد"
+
+#: .\templates\includes\TeacherdashboardSide.html:53
+#: .\templates\includes\TeacherdashboardSide.html:62
+msgid "Edit my courses"
+msgstr "تعديل كورساتي"
+
+#: .\templates\includes\TeacherdashboardSide.html:90
 #: .\templates\includes\dashboardSide.html:21
 msgid "Log out"
 msgstr "تسجيل خروج"
@@ -1263,6 +1298,7 @@ msgid "Course Description:"
 msgstr "وصف الكورس"
 
 #: .\templates\orders\order_course-details.html:41
+#: .\templates\teachers\TeacherCourses.html:42
 msgid "Processing"
 msgstr "جاري العمل"
 
@@ -1634,6 +1670,26 @@ msgstr "التاريخ الجديد في حال اردت تغيير التاري
 msgid "New url(in case you want to change lesson url):"
 msgstr "الرابط الجديد في حال اردت تغيير الرابط"
 
+#: .\templates\teachers\TeacherCourses.html:20
+msgid "My Courses:"
+msgstr "كورساتي"
+
+#: .\templates\teachers\TeacherCourses.html:30
+msgid "Course id #"
+msgstr "رقم الكورس"
+
+#: .\templates\teachers\TeacherCourses.html:31
+msgid "Course English Name"
+msgstr "اسم الكورس بالانجليزي"
+
+#: .\templates\teachers\TeacherCourses.html:32
+msgid "Course Arabic Name"
+msgstr "اسم الكورس بالعربي"
+
+#: .\templates\teachers\TeacherCourses.html:42
+msgid "Published"
+msgstr "نُشر"
+
 #: .\templates\teachers\TeacherOrders.html:33
 msgid "Total classes"
 msgstr "عدد الحصص"
@@ -1682,6 +1738,65 @@ msgstr "دولة البنك"
 #: .\templates\teachers\Teacheredit_profile.html:143
 msgid "Experience Summery"
 msgstr "ملخص الخبرة"
+
+#: .\templates\teachers\makeMyCourse.html:25
+msgid "Create my course"
+msgstr "تصميم الكورس"
+
+#: .\templates\teachers\makeMyCourse.html:32
+#: .\templates\teachers\makeMyCourse.html:37
+msgid "course picture"
+msgstr "صورة الكورس"
+
+#: .\templates\teachers\makeMyCourse.html:51
+msgid "is the Course school subject?"
+msgstr "هل الكورس مادة مدرسية؟"
+
+#: .\templates\teachers\makeMyCourse.html:59
+msgid "English Course Name"
+msgstr "اسم الكورس بالإنجليزي"
+
+#: .\templates\teachers\makeMyCourse.html:61
+#: .\templates\teachers\makeMyCourse.html:68
+msgid "pick a unique course Name"
+msgstr "!!رجاء إختيار إسم مميز للكورس"
+
+#: .\templates\teachers\makeMyCourse.html:66
+msgid "Arabic Course Name"
+msgstr "  اسم الكورس بالعربي"
+
+#: .\templates\teachers\makeMyCourse.html:80
+msgid "Course first language"
+msgstr "لغة الكورس الأولى"
+
+#: .\templates\teachers\makeMyCourse.html:85
+msgid "Course second language"
+msgstr "  لغة الكورس الثانية"
+
+#: .\templates\teachers\makeMyCourse.html:93
+msgid "Course image"
+msgstr "صورة الكورس"
+
+#: .\templates\teachers\makeMyCourse.html:100
+msgid "Curriculum type in English"
+msgstr "نوع المنهج بالإنجليزي"
+
+#: .\templates\teachers\makeMyCourse.html:102
+#: .\templates\teachers\makeMyCourse.html:108
+msgid "Hold control to choose more than one"
+msgstr " CTRL لاختيار اكثر من منهج اضغط على"
+
+#: .\templates\teachers\makeMyCourse.html:106
+msgid "Curriculum type in Arabic"
+msgstr "نوع المنهج بالعربي"
+
+#: .\templates\teachers\makeMyCourse.html:114
+msgid "Course description in English"
+msgstr "وصف الكورس بالانجليزي"
+
+#: .\templates\teachers\makeMyCourse.html:118
+msgid "Course description in Arabic"
+msgstr "وصف الكورس بالعربي"
 
 #: .\templates\teachers\recivedInstallments.html:20
 msgid "Received Installments:"
@@ -1886,8 +2001,6 @@ msgstr "تم ارسال رسالتك بنجاح"
 #~| msgid "Students"
 #~ msgid "Student "
 #~ msgstr "الطلاب"
-
-
 
 #, fuzzy
 #~| msgid "from 20 USD"

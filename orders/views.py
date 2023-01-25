@@ -162,6 +162,7 @@ def payments(request):
     orderPoductt.order_course = order.order_course
     orderPoductt.quantity = order.quantity
     orderPoductt.product_price = order.gtotal
+    orderPoductt.teacher = order.order_course.teacher
     orderPoductt.ordered = True
     orderPoductt.save()
     Order.objects.filter(user=current_user,is_ordered=False).delete()

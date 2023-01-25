@@ -25,22 +25,20 @@
 			<strong class="d-inline-block mr-3"> {%trans 'Create my course'%} </strong>
 
 		</header>
-		{% if '/editCourse/' in request.path %}
+
 		<div class="card-body">
             <div class="text-center">
                 {% if course_img.img %}
-				  <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{{course_img.img.url}}" alt="{%trans 'course picture'%}">
-                <div>
-                    <a role="button"  class="btn btn-outline-danger"  href="{% url 'deltePhoto' %}">{%trans 'Remove Photo'%}</a>
-                    </div>
+				  <img  height="200" class="rounded-circle mb-0" style="margin:20px"  src="{{course_img.img.url}}" alt="{%trans 'course picture'%}">
+
 
 
 				  {% else%}
-				  <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="{%trans 'course picture'%}">
+				  <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{% static 'img/course.png'%}" alt="{%trans 'course picture'%}">
 				  {% endif %}
 
             </div>
-            {% endif %}
+
 
 
 			<div class="row">
@@ -84,20 +82,13 @@
                         </div>
                         <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>{%trans 'Course first language in Arabic'%}<span style="color:red">*</span></label>
-                            {{TeacherMakeMyCourseForm.language1_tr}}
-                        </div>
-
-                        <div class="form-row">
-                        <div class="form-group col-md-6">
                             <label>{%trans 'Course second language'%}</label>
                             {{TeacherMakeMyCourseForm.language2}}
                         </div>
+
+
                         <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label>{%trans 'Course second language in Arabic'%}</label>
-                            {{TeacherMakeMyCourseForm.language2_tr}}
-                        </div>
+
                          <div class="form-group col-md-12">
                             <label>{%trans 'Course image'%}<span style="color:red">*</span></label>
                            {{TeacherMakeMyCourseForm.img}}
@@ -160,6 +151,8 @@
 
 </section>
 <script type='text/javascript'>
+
+
 $(function() {
   $("#id_course_name,#id_description").keypress(function(event) {
     var ew = event.which;

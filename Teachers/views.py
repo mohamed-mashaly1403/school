@@ -468,14 +468,6 @@ def changeDate(request):
         return redirect(url)
 @user_passes_test(lambda u: u.is_staff)
 def MakeMyCourse(request):
-
-
-    # TeacherMakeMyCourseForm = MakeMyCourseForm(instance=request.user)
-    # context = {
-    #     'TeacherMakeMyCourseForm': TeacherMakeMyCourseForm,
-    #
-    # }
-    # return render(request, 'teachers/makeMyCourse.html', context)
     try:
         teacher = TeacherProfile.objects.get(user=request.user.id)
     except:
@@ -497,8 +489,23 @@ def MakeMyCourse(request):
                     name= course.objects.get(course_name=course_name)
                     name.teacher = teacher
                     name.slug = slugify(TeacherMakeMyCourseForm.cleaned_data['course_name'])
+                    if TeacherMakeMyCourseForm.cleaned_data['language1'] == 'Arabic':
+                        name.language1_tr = 'العربية'
+                    elif TeacherMakeMyCourseForm.cleaned_data['language1'] == 'English':
+                        name.language1_tr = 'الإنجليزية'
+                    elif TeacherMakeMyCourseForm.cleaned_data['language1'] == 'French':
+                        name.language1_tr = 'الفرنسية'
+                    else: name.language1_tr = 'الصينية'
+# /                    =========================================
+                    if TeacherMakeMyCourseForm.cleaned_data['language2'] == 'Arabic':
+                        name.language2_tr = 'العربية'
+                    elif TeacherMakeMyCourseForm.cleaned_data['language2'] == 'English':
+                        name.language2_tr = 'الإنجليزية'
+                    elif TeacherMakeMyCourseForm.cleaned_data['language2'] == 'French':
+                        name.language2_tr = 'الفرنسية'
+                    else: name.language2_tr = 'الصينية'
 
-                    name.save(update_fields=['teacher','slug'])
+                    name.save(update_fields=['teacher','slug','language1_tr','language2_tr'])
                     messages.success(request, _('course created and will show up in courses after review'))
                     mail_subject = 'Teacher create course'
                     mail_body = f"review course {course_name} for teacher {teacher}"
@@ -535,7 +542,8 @@ def editMyCourse(request):
         'TeacherCourses': TeacherCourses,
 
     }
-    return  render(request, 'teachers/teasherDashboard.html', context)
+    return render(request, 'teachers/TeacherCourses.html', context)
+
 
 @user_passes_test(lambda u: u.is_staff)
 def editCourse(request , id):

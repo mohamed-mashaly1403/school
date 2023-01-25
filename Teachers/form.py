@@ -40,12 +40,12 @@ class MakeMyCourseForm(forms.ModelForm):
     img = forms.ImageField(required=True,error_messages = {'invalid':("Image files only")},widget=forms.FileInput)
     class Meta:
         model = course
-        fields = ['is_school_subject','course_name', 'course_name_ar', 'language1', 'language1_tr','language2','language2_tr','typeEN','typeAR','description','description_ar','img','is_active']
+        fields = ['is_school_subject','course_name', 'course_name_ar', 'language1','language2','typeEN','typeAR','description','description_ar','img','is_active']
 
     def __init__(self, *args, **kwargs):
         super(MakeMyCourseForm, self).__init__(*args, **kwargs)
 
-        self.fields['course_name'].widget.attrs['pattern'] = "[A-Za-z]"
+
         for field in self.fields :
             if not self.fields[field] == self.fields['is_school_subject']:
                 self.fields[field].widget.attrs['class'] = 'form-control'
