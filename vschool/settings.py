@@ -173,10 +173,10 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 #SMTP SET UP
-EMAIL_HOST ='mail.privateemail.com'
+EMAIL_HOST =  config('EMAIL_HOST')
 EMAIL_PORT =587
-EMAIL_HOST_USER ='info@myschools.site'
-EMAIL_HOST_PASSWORD ='14031981@Moh'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 # ==============================================================
 
