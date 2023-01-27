@@ -173,7 +173,7 @@ def forgotpassword(request):
                 'token': default_token_generator.make_token(user),
             })
             to_email = email
-            send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
+            send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],from_email='info@myschools.site')
             send_mail.send()
             messages.success(request, _('Click on the link on reset password mail  sent to you'))
             return redirect('forgotpassword')
