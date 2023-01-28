@@ -97,7 +97,7 @@ class orderPoduct(models.Model):
                 mail_subject = _('You got new order and your student is waiting')
                 mail_body = _('Kindly go to your dashboard to proceed in the new course')
                 to_email = orderPoduct.teacher.user.email
-                send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
+                send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],from_email='info@myschools.site')
                 send_mail.send()
                 # ==================== mail to teacher
     def __str__(self):

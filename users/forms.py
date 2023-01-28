@@ -21,6 +21,8 @@ class regForm(forms.ModelForm):
         self.fields['first_name'].widget.attrs['placeholder'] = 'first name'
         self.fields['last_name'].widget.attrs['placeholder'] = 'last name'
         self.fields['email'].widget.attrs['placeholder'] = 'email'
+        self.fields['email'].widget.attrs['oninput'] = 'let p=this.selectionStart;this.value=this.value.toLowerCase();this.setSelectionRange(p, p);'
+
         self.fields['phone'].widget.attrs['placeholder'] = 'phone'
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control'

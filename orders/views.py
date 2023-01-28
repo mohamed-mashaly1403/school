@@ -175,7 +175,7 @@ def payments(request):
 
     })
     to_email = current_user.email
-    send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
+    send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],from_email='info@myschools.site')
     send_mail.send()
     # ========================== email to super admin
     mail_subject = '!!!!!,someone make payment'
@@ -186,7 +186,7 @@ def payments(request):
 
     })
 
-    send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=['Vschool.com@gmail.com'])
+    send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=['Vschool.com@gmail.com'],from_email='info@myschools.site')
     send_mail.send()
     #============================================================
     data = {
@@ -299,7 +299,7 @@ def ChangeTeacherRequest(request,order_id):
 
             })
             to_email = 'first_man@windowslive.com'
-            send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
+            send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],from_email='info@myschools.site')
             send_mail.send()
         else:
             print('not vaild')
@@ -327,7 +327,7 @@ def complains(request):
 
             })
             to_email = 'first_man@windowslive.com'
-            send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
+            send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],from_email='info@myschools.site')
             send_mail.send()
         else:
             print('not vaild')

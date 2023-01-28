@@ -61,7 +61,7 @@
       <form method="POST" action="{% url 'login'%}">
           {%csrf_token%}
           <div class="form-group">
-			 <input type="email" class="form-control" placeholder="{%trans 'Email Address'%}" name="email" >
+			 <input oninput="let p=this.selectionStart;this.value=this.value.toLowerCase();this.setSelectionRange(p, p);" type="email" class="form-control" placeholder="{%trans 'Email Address'%}" name="email" >
           </div> <!-- form-group// -->
           <div class="form-group">
 			<input type="password" class="form-control" placeholder="{%trans 'Password'%}" name="password">

@@ -116,7 +116,7 @@ def AskForWithdraw(request):
 
             })
             to_email = 'Vschool.com@gmail.com'
-            send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
+            send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],from_email='info@myschools.site')
             send_mail.send()
             return redirect('TeacherDashboard')
         else:
@@ -166,7 +166,7 @@ def teacherProfile(request):
 
                             })
                             to_email = 'first_man@windowslive.com'
-                            send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
+                            send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],from_email='info@myschools.site')
                             send_mail.send()
                             return render(request, 'teachers/waitForReview.html')
                         else:
@@ -206,7 +206,7 @@ def Teachercomplains(request):
 
             })
             to_email = 'first_man@windowslive.com'
-            send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
+            send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],from_email='info@myschools.site')
             send_mail.send()
         else:
             print('not vaild')
@@ -351,7 +351,7 @@ def RejectCourse(request,order_id):
 
             })
             to_email = 'first_man@windowslive.com'
-            send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
+            send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],from_email='info@myschools.site')
             send_mail.send()
         else:
             print('not vaild')
@@ -510,7 +510,7 @@ def MakeMyCourse(request):
                     mail_subject = 'Teacher create course'
                     mail_body = f"review course {course_name} for teacher {teacher}"
                     to_email = 'Vschool.com@gmail.com'
-                    send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email])
+                    send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],from_email='info@myschools.site')
                     send_mail.send()
                     return redirect('courses')
             else:
