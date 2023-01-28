@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-26 02:55+0400\n"
+"POT-Creation-Date: 2023-01-28 23:49+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,10 +119,8 @@ msgid "course image required"
 msgstr "مذكرات من المعلم"
 
 #: .\Teachers\views.py:562
-#, fuzzy
-#| msgid "password changed successfully"
 msgid "course updated successfully"
-msgstr "تم تغيير كلمة المرور بنجاح"
+msgstr "تم التعديل بنجاح"
 
 #: .\live\views.py:80
 msgid "meeting not open "
@@ -242,7 +240,6 @@ msgid "Complain:"
 msgstr "الشكوى او البلاغ"
 
 #: .\templates\accounts\complains.html:41
-#: .\templates\accounts\forgotpassword.html:25
 #: .\templates\orders\order_course-details.html:309
 #: .\templates\orders\order_course-details.html:339
 #: .\templates\teachers\TeacherCourseDetails.html:253
@@ -311,8 +308,6 @@ msgid "Remove Photo"
 msgstr "احذف الصورة"
 
 #: .\templates\accounts\edit_profile.html:24
-#, fuzzy
-#| msgid "Edit user profile"
 msgid "User profile"
 msgstr "تعديل حسابي"
 
@@ -373,6 +368,11 @@ msgstr "ادخل إيميلك"
 #: .\templates\accounts\forgotpassword.html:21
 msgid "Got password? login"
 msgstr "تسجيل الدخول"
+
+#: .\templates\accounts\forgotpassword.html:25
+#: .\templates\accounts\message_form.html:55
+msgid "Send"
+msgstr "ارسل"
 
 #: .\templates\accounts\forgotpassword.html:31
 msgid "Don\\"
@@ -484,10 +484,6 @@ msgstr "العنوان"
 #: .\templates\accounts\message_form.html:47
 msgid "Message:"
 msgstr "رسالة"
-
-#: .\templates\accounts\message_form.html:55
-msgid "Send"
-msgstr "ارسل"
 
 #: .\templates\accounts\message_form.html:57
 msgid "Discard"
@@ -668,10 +664,8 @@ msgid "Teacher"
 msgstr "المعلم"
 
 #: .\templates\course-details.html:34
-#, fuzzy
-#| msgid "High qualified teacher"
 msgid "Highly qualified Teacher"
-msgstr "معلمين ذوي خبرة عالية"
+msgstr "معلمين متميزين ذوي خبرة عالية"
 
 #: .\templates\course-details.html:36
 #: .\templates\orders\order_course-details.html:37
@@ -1891,10 +1885,8 @@ msgstr "اسحب الرصيد"
 
 #: .\templates\teachers\teasherDashboard.html:83
 #: .\templates\teachers\withdrawRequest.html:53
-#, fuzzy
-#| msgid "Minimum limit for withdraw 200 AED"
 msgid "Minimum limit for withdraw 50 $"
-msgstr "اقل مبلغ للسحب  اقل مبلغ للسحب $50 "
+msgstr "اقل مبلغ للسحب $50 "
 
 #: .\templates\teachers\waitForReview.html:16
 msgid ""
@@ -1936,10 +1928,8 @@ msgid "successfully login"
 msgstr "تم تسجيل الدخول بنجاح"
 
 #: .\users\views.py:95
-#, fuzzy
-#| msgid "Wrong email or password"
 msgid "Wrong email or password or account not activated "
-msgstr "ايميل او كلمة المرور خطأ"
+msgstr " ايميل او كلمة المرور خطأ او الحساب لم يتم تفعيله"
 
 #: .\users\views.py:136
 msgid "successfully Logout"
