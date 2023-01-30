@@ -548,6 +548,7 @@ def editMyCourse(request):
 @user_passes_test(lambda u: u.is_staff)
 def editCourse(request , id):
     courseProfile = get_object_or_404(course, id=id)
+    course_img = course.objects.get(id=id)
 
     if request.method == 'POST':
         TeacherMakeMyCourseForm = MakeMyCourseForm(request.POST, request.FILES,instance=courseProfile)
@@ -559,6 +560,10 @@ def editCourse(request , id):
                     TeacherMakeMyCourseForm.save(commit=False)
                 else:
                     TeacherMakeMyCourseForm.save(commit=True)
+                    if course_img.is_active:
+                        course_img.is_active= True
+                        course_img.save(update_fields=['is_active'])
+
                     messages.success(request, _('course updated successfully'))
                     return redirect('courses')
             else:
@@ -569,7 +574,7 @@ def editCourse(request , id):
 
             print(TeacherMakeMyCourseForm.errors)
     else: TeacherMakeMyCourseForm = MakeMyCourseForm(instance=courseProfile)
-    course_img= course.objects.get(id=id)
+
 
     context = {
         'TeacherMakeMyCourseForm': TeacherMakeMyCourseForm,
