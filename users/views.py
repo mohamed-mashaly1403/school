@@ -166,7 +166,7 @@ def forgotpassword(request):
         if account.objects.filter(email=email).exists():
             user = account.objects.get(email__iexact=email)
             current_site = get_current_site(request)
-            mail_subject = 'reset your password'
+            mail_subject = 'Reset password'
             mail_body = render_to_string('accounts/reset_password.html', {
                 'user': user,
                 'current_site': current_site,
@@ -175,6 +175,7 @@ def forgotpassword(request):
             })
             to_email = email
             send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],from_email='info@myschools.site')
+            send_mail.content_subtype = 'html'
             send_mail.send()
             messages.success(request, _('Click on the link on reset password mail  sent to you'))
             return redirect('forgotpassword')
