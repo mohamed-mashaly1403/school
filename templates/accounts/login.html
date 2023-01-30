@@ -49,7 +49,7 @@
 
 <!-- ============================ COMPONENT LOGIN   ================================= -->
     {% if request.GET.command == 'verification'%}
-    <div class="container mx-auto alert alert-info text-center" role="alert" style="max-width: 1024px; margin-top:100px;">
+    <div class="container mx-auto alert alert-info text-center"  style= "margin-top:100px;">
         {%trans 'Thank you for Registration. please activate your account by clicking on activation link in your email'%} <a href="mailto:{{mail.gmail.com}}">{{request.GET.email}}</a>
         <br><br>
         {%trans 'Already verified?'%} <a href="{% url 'login'%}">{%trans 'login'%}</a>
