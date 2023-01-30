@@ -27,8 +27,9 @@
 
 .valid:before {
   position: relative;
-  left: -35px;
+
   content: "✔";
+  float:left;
 }
 
 /* Add a red text color and an "x" when the requirements are wrong */
@@ -38,8 +39,8 @@
 
 .invalid:before {
   position: relative;
-  left: -35px;
   content: "✖";
+  float:left;
 
 }
 
@@ -143,9 +144,9 @@
 			{{form.non_field_errors}}
 			</form>
 		</article><!-- card-body.// -->
-		<div id="message">
-                      <h5>Password must contain the following:</h5>
-                      <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+		<div class="text-center" id="message">
+                      <h5>Password must contain the following</h5>
+                      <p id="letter" class="invalid ">A <b>lowercase</b> letter</p>
                       <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
                       <p id="number" class="invalid">A <b>number</b></p>
                       <p id="length" class="invalid">Minimum <b>8 characters</b></p>
@@ -248,7 +249,8 @@ myInput.onkeyup = function() {
     ccon.classList.remove("invalid");
     ccon.classList.add("valid");
 
-    $('#submi').prop('disabled', false)
+    $('#submi').prop('disabled', false);
+     document.getElementById("message").style.display = "none";
 
 
 

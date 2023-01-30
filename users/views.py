@@ -55,6 +55,7 @@ def register(request):
             })
             to_email = email
             send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],from_email='info@myschools.site')
+            send_mail.content_subtype = 'html'
             send_mail.send()
             messages.success(request,_('Thank you for registration with us,YOUR ACCOUNT HAS BEEN CREATED! ,Please, verify it by clicking the activation link that has been sent to your email.If the email doesn\'t appear shortly, please be sure to check your spam'))
 

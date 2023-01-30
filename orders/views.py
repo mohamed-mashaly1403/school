@@ -166,27 +166,35 @@ def payments(request):
     orderPoductt.ordered = True
     orderPoductt.save()
     Order.objects.filter(user=current_user,is_ordered=False).delete()
+    print(order.order_course.course_name)
+    print(order.order_course.teacher)
     # send mail to customer
     mail_subject = 'Congratulation your order has set successfully'
     mail_body = render_to_string('orders/orderset.html', {
         'user': current_user,
         'order_number': order,
-        'tlessons':order.total_classes
+        'tlessons':order.total_classes,
+        'order_course':order.order_course.course_name,
+        'teacher':order.order_course.teacher,
 
     })
     to_email = current_user.email
     send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],from_email='info@myschools.site')
+    send_mail.content_subtype = 'html'
     send_mail.send()
     # ========================== email to super admin
-    mail_subject = '!!!!!,someone make payment'
+    mail_subject = '!!!!!,someone make payment to mesho'
     mail_body = render_to_string('orders/orderset.html', {
         'user': current_user,
         'order_number': order,
-        'tlessons': order.total_classes
+        'tlessons': order.total_classes,
+        'order_course':order.order_course.course_name,
+        'teacher':order.order_course.teacher,
 
     })
 
-    send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=['Vschool.com@gmail.com'],from_email='info@myschools.site')
+    send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=['info@myschools.site'],from_email='info@myschools.site')
+    send_mail.content_subtype = 'html'
     send_mail.send()
     #============================================================
     data = {
@@ -298,7 +306,7 @@ def ChangeTeacherRequest(request,order_id):
 
 
             })
-            to_email = 'first_man@windowslive.com'
+            to_email = 'info@myschools.site'
             send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],from_email='info@myschools.site')
             send_mail.send()
         else:
@@ -326,7 +334,7 @@ def complains(request):
                 'Reason': data.Reason,
 
             })
-            to_email = 'first_man@windowslive.com'
+            to_email = 'info@myschools.site'
             send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],from_email='info@myschools.site')
             send_mail.send()
         else:
