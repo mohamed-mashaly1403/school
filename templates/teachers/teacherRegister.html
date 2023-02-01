@@ -22,11 +22,13 @@
 					<div class="col form-group ">
 <!--						<label>First name</label>-->
 						{{form.country}}
-						<small class="text-muted">{%trans 'Country you teach in.(Required)'%}<span style="color:red">*</span></small>
+						<small class="text-muted">{%trans 'Country you teach in (Required)'%}<span style="color:red">*</span></small>
 					</div> <!-- form-group end.// -->
 					<div class="col form-group ">
 <!--						<label>Last name</label>-->
 					  	{{form.city}}
+				<small class="text-muted">{%trans 'City you teach in (optional)'%}</small>
+
 					</div> <!-- form-group end.// -->
 				</div> <!-- form-row end.// -->
 <!--				<div class="form-group">-->
@@ -34,6 +36,7 @@
 <!--						{{form.email}}-->
 <!--					<small class="form-text text-muted">We'll never share your email with anyone else.</small>-->
 <!--				</div> &lt;!&ndash; form-group end.// &ndash;&gt;-->
+<hr style="height:2px;border-width:0;color:gray;background-color:black;">
 
 				<div class="form-row">
 
@@ -46,18 +49,22 @@
 					<div class="form-group ">
 <!--					  <label>phone No.</label>-->
 							{{form.qualifications2}}
+							<small class="text-muted">{%trans '2nd Academic Degree(optional)'%}</small>
 					</div> <!-- form-group end.// -->
 					<div class="form-group ">
 <!--					  <label>phone No.</label>-->
 							{{form.qualifications3}}
+							<small class="text-muted">{%trans '3rd Academic Degree(optional)'%}</small>
 					</div> <!-- form-group end.// -->
 					<div class="form-group ">
 <!--					  <label>phone No.</label>-->
 							{{form.qualifications4}}
+							<small class="text-muted">{%trans '4th Academic Degree(optional)'%}</small>
 					</div> <!-- form-group end.// -->
 
 
 				</div> <!-- form-row.// -->
+			<hr style="height:2px;border-width:0;color:gray;background-color:black;">
 			<div class="form-row">
 					<div class="form-group ">
 <!--						<label>Email</label>-->
@@ -67,24 +74,26 @@
 					<div class="form-group ">
 <!--					  <label>phone No.</label>-->
 							{{form.specialzed_courses2}}
+					<small class="text-muted">{%trans '2nd subject you teach(optional)'%}</small>
 					</div> <!-- form-group end.// -->
 					<div class="form-group ">
 <!--					  <label>phone No.</label>-->
 							{{form.specialzed_courses3}}
+					<small class="text-muted">{%trans '3rd subject you teach(optional)'%}</small>
 					</div> <!-- form-group end.// -->
+		<hr style="height:2px;border-width:0;color:gray;background-color:black;">
 				<div class="form-group ">
 <!--						<label>Email</label>-->
 						{{form.grades}}
 						<small class="text-muted">{%trans 'grades you teach.'%}(1-12)</small>
 					</div> <!-- form-group end.// -->
-					<div class="form-group ">
+			<hr style="height:2px;border-width:0;color:gray;background-color:black;">
 
-						</div> <!-- form-row.// -->
 				<div class="form-row">
 					<div class="form-group ">
 <!--						<label>Create password</label>-->
 						{{form.IBAN}}
-<small class="text-muted">{%trans 'to transfer your money.(you can fill later)'%}</small>
+                <small class="text-muted">{%trans 'to transfer your money.(you can fill later)'%}</small>
 					</div> <!-- form-group end.// -->
 					<div class="form-group ">
 <!--						<label>Repeat password</label>-->
@@ -96,19 +105,24 @@
 					 {{form.BankCountry}}
 						<small class="text-muted">{%trans 'to transfer your money.(you can fill later)'%}</small>
 					</div> <!-- form-group end.// -->
+
+					<hr style="height:2px;border-width:0;color:gray;background-color:black;">
 					<div class="form-group ">
 <!--						<label>Repeat password</label>-->
 					 {{form.docfile}}
 						<small class="text-muted">{%trans 'upload CV.(Required-pdf only less than 2MB)'%}  <span style="color:red">*</span></small>
 					</div> <!-- form-group end.// -->
+					<hr style="height:2px;border-width:0;color:gray;background-color:black;">
 						<div class="form-group ">
 <!--						<label>Email</label>-->
 						{{form.Experience}}
 							<small class="text-muted">{%trans 'Recap your Experience.'%}</small>
 					</div> <!-- form-group end.// -->
+					<hr style="height:2px;border-width:0;color:gray;background-color:black;">
 					<div class="form-group ">
 <!--					  <label>phone No.</label>-->
 							{{form.Notes}}
+							<small class="text-muted">{%trans 'Any thing you want to say about yourself (optional)'%}</small>
 					</div> <!-- form-group end.// -->
 				</div>
 			    <div class="form-group">

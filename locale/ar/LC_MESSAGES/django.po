@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-28 23:49+0400\n"
+"POT-Creation-Date: 2023-02-01 20:34+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,7 +57,7 @@ msgid "Complain has submited and will be intouch with you very soon"
 msgstr "تم تسجيل الشكوى وسنتواصل معك لاحقاً"
 
 #: .\Teachers\views.py:269 .\Teachers\views.py:277 .\Teachers\views.py:289
-#: .\Teachers\views.py:294 .\users\views.py:318 .\users\views.py:324
+#: .\Teachers\views.py:294 .\users\views.py:320 .\users\views.py:326
 msgid "profile updated"
 msgstr "تم تحديث حسابك"
 
@@ -65,8 +65,8 @@ msgstr "تم تحديث حسابك"
 msgid "Your CV bigger than 2 MB"
 msgstr "حجم الملف اكبر من 2 ميجا"
 
-#: .\Teachers\views.py:281 .\Teachers\views.py:484 .\Teachers\views.py:558
-#: .\users\views.py:313
+#: .\Teachers\views.py:281 .\Teachers\views.py:484 .\Teachers\views.py:559
+#: .\users\views.py:315
 msgid "Your photo bigger than 1 MB"
 msgstr "حجم الصورة اكبر من 1 ميجا"
 
@@ -74,7 +74,7 @@ msgstr "حجم الصورة اكبر من 1 ميجا"
 msgid "Your cv file is not pdf"
 msgstr "ملف السيرة الذاتية ليس pdf"
 
-#: .\Teachers\views.py:344 .\orders\views.py:292
+#: .\Teachers\views.py:344 .\orders\views.py:300
 msgid "request has submited and will change soon"
 msgstr "تم تسجيل الطلب وسيتم التغيير قريبا"
 
@@ -103,22 +103,18 @@ msgid "New Date or url can not be empty "
 msgstr "التاريخ او الرابط لا يمكن تركه فارغ"
 
 #: .\Teachers\views.py:474 .\Teachers\views.py:537
-#, fuzzy
-#| msgid "Teacher profile"
 msgid "No teacher profile for the user"
-msgstr "حساب المعلم"
+msgstr "لا يوجد حساب للمعلم"
 
 #: .\Teachers\views.py:509
 msgid "course created and will show up in courses after review"
-msgstr ""
+msgstr "تم إنشاء الكورس بنجاح وسيظهر في قائمة الكورسات بعد المراجعة"
 
-#: .\Teachers\views.py:518 .\Teachers\views.py:566
-#, fuzzy
-#| msgid "Course material"
+#: .\Teachers\views.py:518 .\Teachers\views.py:571
 msgid "course image required"
-msgstr "مذكرات من المعلم"
+msgstr "يجب وضع صورة للكورس"
 
-#: .\Teachers\views.py:562
+#: .\Teachers\views.py:567
 msgid "course updated successfully"
 msgstr "تم التعديل بنجاح"
 
@@ -138,11 +134,11 @@ msgstr "لقد حصلت على طلب جديد وهناك طالب ينتظر"
 msgid "Kindly go to your dashboard to proceed in the new course"
 msgstr "من فضلك اذهب إلى لوحة التحكم لتبدء الكورس الجديد"
 
-#: .\orders\views.py:256
+#: .\orders\views.py:264
 msgid "review has updated"
 msgstr "تم تسجيل التقييم"
 
-#: .\orders\views.py:273
+#: .\orders\views.py:281
 msgid "review has submited"
 msgstr "تم تسجيل التقييم"
 
@@ -290,7 +286,7 @@ msgstr "اعرض الطلبات"
 #: .\templates\accounts\dashboard.html:86
 #: .\templates\accounts\edit_profile.html:30
 #: .\templates\accounts\edit_profile.html:37
-#: .\templates\course-details.html:198 .\templates\course-details.html:200
+#: .\templates\course-details.html:144 .\templates\course-details.html:146
 #: .\templates\orders\order_course-details.html:228
 #: .\templates\orders\order_course-details.html:230
 #: .\templates\teachers\Teacheredit_profile.html:27
@@ -343,20 +339,6 @@ msgstr "الدولة"
 msgid "City"
 msgstr "المدينة"
 
-#: .\templates\accounts\emailActivation.html:3
-#: .\templates\accounts\reset_password.html:3
-#: .\templates\orders\orderset.html:3
-msgid "Hi"
-msgstr "أهلا"
-
-#: .\templates\accounts\emailActivation.html:4
-msgid "please activate your account by the link below"
-msgstr "من فضلك قم بتنشيط حسابك من الرابط التالي"
-
-#: .\templates\accounts\emailActivation.html:6
-msgid "if you did not registered in school.com ignore this email"
-msgstr "إذا لم تقم بالتسجيل معنا من فضلك تجاهل الإيميل"
-
 #: .\templates\accounts\forgotpassword.html:12
 msgid "Forgot Password"
 msgstr "نسيت كلمة المرور"
@@ -379,7 +361,7 @@ msgid "Don\\"
 msgstr "ليس عندي حساب؟"
 
 #: .\templates\accounts\forgotpassword.html:31
-#: .\templates\accounts\login.html:83 .\templates\accounts\register.html:94
+#: .\templates\accounts\login.html:88 .\templates\accounts\register.html:95
 #: .\templates\accounts\resetPassordPage.html:77
 msgid "Sign up"
 msgstr "تسجيل"
@@ -415,9 +397,13 @@ msgid "sent emails"
 msgstr "الرسائل المرسلة"
 
 #: .\templates\accounts\login.html:53
+#, fuzzy
+#| msgid ""
+#| "Thank you for Registration. please activate your account by clicking on "
+#| "activation url in your email"
 msgid ""
 "Thank you for Registration. please activate your account by clicking on "
-"activation url in your email"
+"activation link in your email"
 msgstr "شكراً لتسجيلك معنا من فضلك قم بتفعيل حسابك من خلال الإيميل المرسل لك"
 
 #: .\templates\accounts\login.html:55
@@ -428,33 +414,29 @@ msgstr "تم التفعيل؟"
 msgid "login"
 msgstr "تسجيل دخول"
 
-#: .\templates\accounts\login.html:60 .\templates\includes\navbar.html:133
+#: .\templates\accounts\login.html:65 .\templates\includes\navbar.html:133
 msgid "Sign in"
 msgstr "تسجيل دخول"
 
-#: .\templates\accounts\login.html:64
+#: .\templates\accounts\login.html:69
 msgid "Email Address"
 msgstr "الإيميل"
 
-#: .\templates\accounts\login.html:67
+#: .\templates\accounts\login.html:72
 msgid "Password"
 msgstr "كلمة المرور"
 
-#: .\templates\accounts\login.html:72
+#: .\templates\accounts\login.html:77
 msgid "Forgot password?"
 msgstr "نسيت كلمة المرور؟"
 
-#: .\templates\accounts\login.html:77
+#: .\templates\accounts\login.html:82
 msgid "Login"
 msgstr "تسجيل دخول"
 
-#: .\templates\accounts\login.html:83
+#: .\templates\accounts\login.html:88
 msgid "Don't have account?"
 msgstr "ليس عندي حساب؟"
-
-#: .\templates\accounts\login.html:97
-msgid "Sign in with google "
-msgstr ""
 
 #: .\templates\accounts\message_form.html:14
 msgid "New Email"
@@ -589,24 +571,24 @@ msgstr "أنا"
 msgid "to"
 msgstr "إلى"
 
-#: .\templates\accounts\register.html:139 .\templates\includes\navbar.html:134
-#: .\templates\teachers\teacherRegister.html:115
+#: .\templates\accounts\register.html:140 .\templates\includes\navbar.html:134
+#: .\templates\teachers\teacherRegister.html:129
 msgid "Register"
 msgstr "تسجيل"
 
-#: .\templates\accounts\register.html:156
+#: .\templates\accounts\register.html:157
 msgid "Have an account?"
 msgstr "أمتلك حساب"
 
-#: .\templates\accounts\register.html:156
+#: .\templates\accounts\register.html:157
 msgid "Log In"
 msgstr "تسجيل دخول"
 
-#: .\templates\accounts\register.html:157
+#: .\templates\accounts\register.html:158
 msgid "Are you Teacher?"
 msgstr "هل انت معلم؟"
 
-#: .\templates\accounts\register.html:157
+#: .\templates\accounts\register.html:158
 msgid "Register as a teacher"
 msgstr "سجل كمعلم"
 
@@ -630,14 +612,6 @@ msgstr "تغيير"
 msgid "Do not have account?"
 msgstr "لا أمتلك حساب؟"
 
-#: .\templates\accounts\reset_password.html:4
-msgid "As requested, follow the link to reset your password"
-msgstr "اتبع الرابط لتغيير كلمة المرور"
-
-#: .\templates\accounts\reset_password.html:6
-msgid "if not you ignore the  message"
-msgstr "إذا لم تطلب تغيير كلمة المرور تجاهل الرسالة"
-
 #: .\templates\course-details.html:14
 msgid "Available in"
 msgstr "متاح بـ"
@@ -657,144 +631,84 @@ msgstr "اختر لغة الكورس والصف ثم ابدء"
 msgid "Course"
 msgstr "الكورس"
 
-#: .\templates\course-details.html:33 .\templates\includes\navbar.html:32
+#: .\templates\course-details.html:41 .\templates\includes\navbar.html:32
 #: .\templates\orders\order_course-details.html:40
 #: .\templates\teachers\teasherDashboard.html:106
 msgid "Teacher"
 msgstr "المعلم"
 
-#: .\templates\course-details.html:34
+#: .\templates\course-details.html:42
 msgid "Highly qualified Teacher"
 msgstr "معلمين متميزين ذوي خبرة عالية"
 
-#: .\templates\course-details.html:36
+#: .\templates\course-details.html:44
 #: .\templates\orders\order_course-details.html:37
 msgid "Teacher C.V."
 msgstr "السيرة الذانية للمعلم"
 
-#: .\templates\course-details.html:42
+#: .\templates\course-details.html:50
 msgid "Course Fees"
 msgstr "رسوم الكورس"
 
-#: .\templates\course-details.html:43 .\templates\courses.html:77
+#: .\templates\course-details.html:51 .\templates\courses.html:77
 #: .\templates\home.html:302
 msgid "from"
 msgstr "من"
 
-#: .\templates\course-details.html:47
+#: .\templates\course-details.html:55
 msgid "Available Seats"
 msgstr "المقاعد المتاحة"
 
-#: .\templates\course-details.html:52
+#: .\templates\course-details.html:60
 msgid "Review"
 msgstr "تقييم الكورس"
 
-#: .\templates\course-details.html:62
+#: .\templates\course-details.html:70
 msgid "stars"
 msgstr "النجوم"
 
-#: .\templates\course-details.html:62
+#: .\templates\course-details.html:70
 msgid "review"
 msgstr "مقيم"
 
-#: .\templates\course-details.html:84 .\templates\course-details.html:162
-#: .\templates\pricing.html:29 .\templates\pricing.html:86
+#: .\templates\course-details.html:93 .\templates\pricing.html:29
+#: .\templates\pricing.html:86
 msgid "Advanced"
 msgstr "متقدم"
 
-#: .\templates\course-details.html:111 .\templates\course-details.html:134
-#: .\templates\course-details.html:154 .\templates\course-details.html:174
-#: .\templates\orders\checkout.html:228 .\templates\pricing.html:56
-#: .\templates\pricing.html:78 .\templates\pricing.html:97
+#: .\templates\course-details.html:120 .\templates\orders\checkout.html:228
+#: .\templates\pricing.html:56 .\templates\pricing.html:78
+#: .\templates\pricing.html:97
 msgid "Buy Now"
 msgstr "اشتري الآن"
 
-#: .\templates\course-details.html:122
-msgid "One class"
-msgstr "حصة واحدة"
-
-#: .\templates\course-details.html:123
-msgid "class"
-msgstr "حصة"
-
-#: .\templates\course-details.html:125
-msgid "More than one hour"
-msgstr "ساعة وأكثر"
-
-#: .\templates\course-details.html:126 .\templates\course-details.html:147
-#: .\templates\course-details.html:167 .\templates\pricing.html:71
-#: .\templates\pricing.html:91
-msgid "Course material"
-msgstr "مذكرات من المعلم"
-
-#: .\templates\course-details.html:129 .\templates\course-details.html:149
-#: .\templates\course-details.html:169 .\templates\pricing.html:73
-#: .\templates\pricing.html:93
-msgid "Special follow up"
-msgstr "متابعة خاصة"
-
-#: .\templates\course-details.html:130 .\templates\course-details.html:150
-#: .\templates\pricing.html:74 .\templates\pricing.html:94
-msgid "Discount on extend"
-msgstr "تخفيض حال زيادة عدد الحصص"
-
-#: .\templates\course-details.html:143 .\templates\pricing.html:67
-msgid "Three Classes"
-msgstr "ثلاث حصص"
-
-#: .\templates\course-details.html:144 .\templates\pricing.html:68
-#: .\templates\teachers\TeacherOrders.html:44
-msgid "classes"
-msgstr "حصص"
-
-#: .\templates\course-details.html:146 .\templates\pricing.html:70
-msgid "More than Three hours"
-msgstr "اكثر من ثلاث ساعات"
-
-#: .\templates\course-details.html:163 .\templates\pricing.html:87
-msgid "Six"
-msgstr "6"
-
-#: .\templates\course-details.html:163 .\templates\course-details.html:164
-#: .\templates\pricing.html:87 .\templates\pricing.html:88
-msgid "Classes"
-msgstr "حصص"
-
-#: .\templates\course-details.html:166 .\templates\pricing.html:90
-msgid "More than six hours"
-msgstr "اكثر من ست ساعات"
-
-#: .\templates\course-details.html:170
-msgid "One class free"
-msgstr "حصة مجاناً"
-
-#: .\templates\course-details.html:187
+#: .\templates\course-details.html:133
 msgid "users review"
 msgstr "مراجعات المستخدمين"
 
-#: .\templates\course-details.html:205
+#: .\templates\course-details.html:151
 #: .\templates\orders\order_course-details.html:236
 msgid "created at:"
 msgstr "إنشيء في"
 
-#: .\templates\course-details.html:206
+#: .\templates\course-details.html:152
 #: .\templates\orders\order_course-details.html:237
 msgid "last update:"
 msgstr "اخر تحديث"
 
-#: .\templates\course-details.html:242 .\templates\orders\checkout.html:138
+#: .\templates\course-details.html:188 .\templates\orders\checkout.html:138
 msgid "first"
 msgstr "الأول"
 
-#: .\templates\course-details.html:244
+#: .\templates\course-details.html:190
 msgid "Previous"
 msgstr "السابق"
 
-#: .\templates\course-details.html:255
+#: .\templates\course-details.html:201
 msgid "Next"
 msgstr "التالي"
 
-#: .\templates\course-details.html:256
+#: .\templates\course-details.html:202
 msgid "last"
 msgstr "الأخير"
 
@@ -1427,28 +1341,6 @@ msgstr "السبب"
 msgid "Course Finished"
 msgstr "الكورس انتهى"
 
-#: .\templates\orders\orderset.html:4
-msgid ""
-"Congratulation your order has been set and your teacher will start with you "
-"soon."
-msgstr "تهانينا تم إتمام الطلب وسيقوم المعلم بالبدء معك قريباً"
-
-#: .\templates\orders\orderset.html:6
-msgid "Order no.:"
-msgstr "رقم الطلب"
-
-#: .\templates\orders\orderset.html:7
-msgid "Total amount:"
-msgstr "القيمة الإجمالية"
-
-#: .\templates\orders\orderset.html:8
-msgid "Created date:"
-msgstr "تاريخ الطلب"
-
-#: .\templates\orders\orderset.html:9
-msgid "Total classes:"
-msgstr "عدد الحصص"
-
 #: .\templates\orders\payments.html:14
 msgid "Review order Details"
 msgstr "قيم الكورس"
@@ -1505,6 +1397,42 @@ msgstr "الإجمالي"
 #: .\templates\pricing.html:13
 msgid "Pick the bundle and start"
 msgstr "اختر الباقة وابدء الآن"
+
+#: .\templates\pricing.html:67
+msgid "Three Classes"
+msgstr "ثلاث حصص"
+
+#: .\templates\pricing.html:68 .\templates\teachers\TeacherOrders.html:44
+msgid "classes"
+msgstr "حصص"
+
+#: .\templates\pricing.html:70
+msgid "More than Three hours"
+msgstr "اكثر من ثلاث ساعات"
+
+#: .\templates\pricing.html:71 .\templates\pricing.html:91
+msgid "Course material"
+msgstr "مذكرات من المعلم"
+
+#: .\templates\pricing.html:73 .\templates\pricing.html:93
+msgid "Special follow up"
+msgstr "متابعة خاصة"
+
+#: .\templates\pricing.html:74 .\templates\pricing.html:94
+msgid "Discount on extend"
+msgstr "تخفيض حال زيادة عدد الحصص"
+
+#: .\templates\pricing.html:87
+msgid "Six"
+msgstr "6"
+
+#: .\templates\pricing.html:87 .\templates\pricing.html:88
+msgid "Classes"
+msgstr "حصص"
+
+#: .\templates\pricing.html:90
+msgid "More than six hours"
+msgstr "اكثر من ست ساعات"
 
 #: .\templates\teachers\TeacherCourseDetails.html:31
 msgid "Trainer/Teacher"
@@ -1828,34 +1756,62 @@ msgid "Teacher Registration Form"
 msgstr "نموذج تسجيل المعلم"
 
 #: .\templates\teachers\teacherRegister.html:25
-msgid "Country you teach in.(Required)"
+msgid "Country you teach in (Required)"
 msgstr "الدولة التى تدرس فيها(مطلوب)"
 
-#: .\templates\teachers\teacherRegister.html:43
+#: .\templates\teachers\teacherRegister.html:30
+msgid "City you teach in (optional)"
+msgstr "المدينة التى تدرس فيها(إختياري)"
+
+#: .\templates\teachers\teacherRegister.html:46
 msgid "eg. BSC in Education Arabic dep.(Required)"
 msgstr "مثال بكالوريس التربية قسم لغة عربية(مطلوب)"
 
-#: .\templates\teachers\teacherRegister.html:65
+#: .\templates\teachers\teacherRegister.html:52
+msgid "2nd Academic Degree(optional)"
+msgstr "درجة علمية إضافية-(إختياري)"
+
+#: .\templates\teachers\teacherRegister.html:57
+msgid "3rd Academic Degree(optional)"
+msgstr "درجة علمية إضافية-(إختياري)"
+
+#: .\templates\teachers\teacherRegister.html:62
+msgid "4th Academic Degree(optional)"
+msgstr "درجة علمية إضافية-(إختياري)"
+
+#: .\templates\teachers\teacherRegister.html:72
 msgid "subject you teach.(Required)"
 msgstr "المادة التي تدرسها(مطلوب)"
 
-#: .\templates\teachers\teacherRegister.html:78
+#: .\templates\teachers\teacherRegister.html:77
+msgid "2nd subject you teach(optional)"
+msgstr "مادة أخرى تدرسها -(إختياري)"
+
+#: .\templates\teachers\teacherRegister.html:82
+msgid "3rd subject you teach(optional)"
+msgstr "مادة أخرى تدرسها -(إختياري)"
+
+#: .\templates\teachers\teacherRegister.html:88
 msgid "grades you teach."
 msgstr "الصفوف التي تدرسها"
 
-#: .\templates\teachers\teacherRegister.html:87
-#: .\templates\teachers\teacherRegister.html:92
-#: .\templates\teachers\teacherRegister.html:97
+#: .\templates\teachers\teacherRegister.html:96
+#: .\templates\teachers\teacherRegister.html:101
+#: .\templates\teachers\teacherRegister.html:106
 msgid "to transfer your money.(you can fill later)"
 msgstr "لتحويل مستحقاتك(يمكن تعبئته لاحقاً)"
 
-#: .\templates\teachers\teacherRegister.html:102
+#: .\templates\teachers\teacherRegister.html:113
 msgid "upload CV.(Required-pdf only less than 2MB)"
-msgstr "تحميل السيرة الذاتية(الحجم لا يزيد عن 2 ميجا)"
+msgstr "تحميل السيرة الذاتية pdf (الحجم لا يزيد عن 2 ميجا)"
 
-#: .\templates\teachers\teacherRegister.html:107
+#: .\templates\teachers\teacherRegister.html:119
 msgid "Recap your Experience."
 msgstr "ملخص السيرة الذاتية"
+
+#: .\templates\teachers\teacherRegister.html:125
+msgid "Any thing you want to say about yourself (optional)"
+msgstr "اي ملاحظات تود أن تخبرنا بها"
 
 #: .\templates\teachers\teasherDashboard.html:21
 msgid "login as Teacher:"
@@ -1914,7 +1870,7 @@ msgstr "المبلغ المطلوب سحبه؟"
 msgid "Your available balance to receive"
 msgstr "المبلغ المتاح للسحب"
 
-#: .\users\views.py:59
+#: .\users\views.py:60
 msgid ""
 "Thank you for registration with us,YOUR ACCOUNT HAS BEEN CREATED! ,Please, "
 "verify it by clicking the activation link that has been sent to your email."
@@ -1923,69 +1879,113 @@ msgstr ""
 "نشكرك لتسجيلك معنا، من فضلك اضغط الرابط المرسل على الايميل لتفعيل حسابك.إذا "
 "لم تجد الرابط لطفاً ابحث في الإيميلات المهملة"
 
-#: .\users\views.py:92
+#: .\users\views.py:93
 msgid "successfully login"
 msgstr "تم تسجيل الدخول بنجاح"
 
-#: .\users\views.py:95
+#: .\users\views.py:96
 msgid "Wrong email or password or account not activated "
 msgstr " ايميل او كلمة المرور خطأ او الحساب لم يتم تفعيله"
 
-#: .\users\views.py:136
+#: .\users\views.py:137
 msgid "successfully Logout"
 msgstr "تم تسجيل الخروج بنجاح"
 
-#: .\users\views.py:155
+#: .\users\views.py:156
 msgid "successfully activated"
 msgstr "تم تفعيل الحساب بنجاح"
 
-#: .\users\views.py:158
+#: .\users\views.py:159
 msgid "invaild link"
 msgstr "رابط غير صالح"
 
-#: .\users\views.py:178
+#: .\users\views.py:180
 msgid "Click on the link on reset password mail  sent to you"
 msgstr "اضغط على الرابط في الايميل المرسل لك"
 
-#: .\users\views.py:181
+#: .\users\views.py:183
 msgid "account does not exist"
 msgstr "لا يوجد حساب"
 
-#: .\users\views.py:195
+#: .\users\views.py:197
 msgid "Reset your Password"
 msgstr "تغيير كلمة المرور"
 
-#: .\users\views.py:198
+#: .\users\views.py:200
 msgid "Reset password link expired"
 msgstr "صلاحية الرابط انتهت"
 
-#: .\users\views.py:211
+#: .\users\views.py:213
 msgid "new password has set"
 msgstr "تم تغيير كلمة المرور"
 
-#: .\users\views.py:215
+#: .\users\views.py:217
 msgid "confirm Password does not match"
 msgstr "كلمة المرور والتأكيد لا يتطابقان"
 
-#: .\users\views.py:234
+#: .\users\views.py:236
 msgid "password changed successfully"
 msgstr "تم تغيير كلمة المرور بنجاح"
 
-#: .\users\views.py:237
+#: .\users\views.py:239
 msgid "invalid current password"
 msgstr "كلمة المرور غير صالحة"
 
-#: .\users\views.py:240
+#: .\users\views.py:242
 msgid "new password and confirmed password do not match"
 msgstr "كلمة المرور والتأكيد لا يتطابقان"
 
-#: .\users\views.py:453
+#: .\users\views.py:455
 msgid "Your can not sent to your self!"
 msgstr "لا يمكن ارسال رسال لنفسك"
 
-#: .\users\views.py:461
+#: .\users\views.py:463
 msgid "Your message was successfully sent!"
 msgstr "تم ارسال رسالتك بنجاح"
+
+#~ msgid "Hi"
+#~ msgstr "أهلا"
+
+#~ msgid "please activate your account by the link below"
+#~ msgstr "من فضلك قم بتنشيط حسابك من الرابط التالي"
+
+#~ msgid "if you did not registered in school.com ignore this email"
+#~ msgstr "إذا لم تقم بالتسجيل معنا من فضلك تجاهل الإيميل"
+
+#~ msgid "As requested, follow the link to reset your password"
+#~ msgstr "اتبع الرابط لتغيير كلمة المرور"
+
+#~ msgid "if not you ignore the  message"
+#~ msgstr "إذا لم تطلب تغيير كلمة المرور تجاهل الرسالة"
+
+#~ msgid "One class"
+#~ msgstr "حصة واحدة"
+
+#~ msgid "class"
+#~ msgstr "حصة"
+
+#~ msgid "More than one hour"
+#~ msgstr "ساعة وأكثر"
+
+#~ msgid "One class free"
+#~ msgstr "حصة مجاناً"
+
+#~ msgid ""
+#~ "Congratulation your order has been set and your teacher will start with "
+#~ "you soon."
+#~ msgstr "تهانينا تم إتمام الطلب وسيقوم المعلم بالبدء معك قريباً"
+
+#~ msgid "Order no.:"
+#~ msgstr "رقم الطلب"
+
+#~ msgid "Total amount:"
+#~ msgstr "القيمة الإجمالية"
+
+#~ msgid "Created date:"
+#~ msgstr "تاريخ الطلب"
+
+#~ msgid "Total classes:"
+#~ msgstr "عدد الحصص"
 
 #, fuzzy
 #~| msgid "Teacher"
