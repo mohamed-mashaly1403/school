@@ -21,7 +21,7 @@
       <div class="container" data-aos="fade-up" >
 
         <div class="row" >
-          <div {%if youtubeUrl%} class="col-lg-4"{%else%} class="col-lg-8"{%endif%} style="margin-bottom: -72px;" >
+          <div {%if youtubeUrl %} class="col-lg-4"{%else%} class="col-lg-8"{%endif%}  >
             <img src="{{courseDets.img.url}}" class="img-fluid  mx-auto" alt="">
             <h3>{% if LANGUAGE_CODE == 'ar'%}{{courseDets.course_name_ar}}{%else%}{{courseDets.course_name}} {%trans 'Course'%}{%endif%}</h3>
                 {% if courseTeacher %}
@@ -32,7 +32,7 @@
                   {% endif %}
           </div>
 <!--           =====================================youtube -->
-            {%if youtubeUrl%}
+           {%if youtubeUrl%}
           <div class="col-lg-4">
           <div class="post-entry">
         <div class="card" style="">
