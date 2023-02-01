@@ -41,8 +41,8 @@ th,td{
   {% for i in TeacherCourses %}
     <tr>
       <th scope="row" ><a href="{% url 'editCourse' i.id %}"> {{i.id}} </a></th>
-      <td>{{i.course_name}} </td>
-      <td>{{i.course_name_ar}}  </td>
+      <td><a href="{% url 'editCourse' i.id %}">{{i.course_name}} </a></td>
+      <td><a href="{% url 'editCourse' i.id %}">{{i.course_name_ar}} </a> </td>
       <td>{% if i.is_active %}{%trans 'Published'%}{%else %} {%trans 'Processing'%} {%endif%}  </td>
 
 

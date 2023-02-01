@@ -23,8 +23,16 @@
           <div class="col-lg-8">
             <img src="{{courseDets.img.url}}" class="img-fluid" alt="">
             <h3>{% if LANGUAGE_CODE == 'ar'%}{{courseDets.course_name_ar}}{%else%}{{courseDets.course_name}} {%trans 'Course'%}{%endif%}</h3>
-            <p>
-               {% if LANGUAGE_CODE == 'ar'%}{{courseDets.description_ar}}{%else%}{{courseDets.description}}{%endif%}
+                {% if courseTeacher %}
+
+                    <img src="{{courseTeacher.user.image_url}}" class="rounded-circle mr-2 ml-2" style=" max-width: 20%;max-height: 20%; " alt="teacher image">
+                   <a href="{{ courseTeacher.docfile.url }}"> <span> {{  courseTeacher  }} </span> </a>
+
+                  {% endif %}
+                  <br>
+                  <br>
+
+            <p> {% if LANGUAGE_CODE == 'ar'%}{{courseDets.description_ar}}{%else%}{{courseDets.description}}{%endif%}</p>
           </div>
           <div class="col-lg-4">
 
@@ -68,6 +76,7 @@
 
       </div>
     </section><!-- End Cource Details Section -->
+
  <!-- ======= Pricing Section ======= -->
     <section id="pricing" class="pricing">
       <div class="container" data-aos="fade-up">
@@ -80,7 +89,7 @@
           {%if forloop.first  %}
             <div class="box featured">
             {%elif  forloop.last %}
-            <div class="box">
+            <div class="box ">
               <span class="advanced">{%trans 'Advanced'%}</span>
             {%else%}
             <div class="box">
@@ -115,69 +124,6 @@
             </div>
           </div>
           {%endfor%}
-   <!-- ======= Pricing Section ======= -->
-<!-- ===============================end pricing -->
-<!--           <div class="col-lg-4 col-md-6 mt-4 mt-md-0"> -->
-<!--             <div class="box featured"> -->
-<!--               <h3>{%trans 'One class'%}</h3> -->
-<!--               <h4><sup>USD</sup>25<span> / {%trans 'class'%}</span></h4> -->
-<!--               <ul> -->
-<!--                  <li>{%trans 'More than one hour'%}</li> -->
-<!--                 <li>{%trans 'Course material'%} </li> -->
-
-
-<!--                    <li class="na">{%trans 'Special follow up'%}</li> -->
-<!--                   <li class="na">{%trans 'Discount on extend'%}</li> -->
-<!--               </ul> -->
-<!--               <div class="btn-wrap"> -->
-
-<!--                 <a href="{% url 'checkout' courseDets.slug 1 25 %}" class="btn-buy">{%trans 'Buy Now'%}</a> -->
-
-
-<!--               </div> -->
-<!--             </div> -->
-<!--           </div> -->
-
-<!--           <div class="col-lg-4 col-md-6 mt-4 mt-lg-0"> -->
-<!--             <div class="box"> -->
-<!--               <h3>{%trans 'Three Classes'%} </h3> -->
-<!--               <h4><sup>USD</sup>70<span> / 3 {%trans 'classes'%}</span></h4> -->
-<!--               <ul> -->
-<!--                 <li>{%trans 'More than Three hours'%}</li> -->
-<!--                 <li>{%trans 'Course material'%}</li> -->
-
-<!--                 <li>{%trans 'Special follow up'%}</li> -->
-<!--                   <li class="na">{%trans 'Discount on extend'%}</li> -->
-<!--               </ul> -->
-<!--               <div class="btn-wrap"> -->
-
-<!--                 <a href="{% url 'checkout' courseDets.slug 3 70 %}" class="btn-buy">{%trans 'Buy Now'%}</a> -->
-
-<!--               </div> -->
-<!--             </div> -->
-<!--           </div> -->
-
-<!--           <div class="col-lg-4 col-md-6 mt-4 mt-lg-0"> -->
-<!--             <div class="box"> -->
-<!--               <span class="advanced">{%trans 'Advanced'%}</span> -->
-<!--               <h3>{%trans 'Six'%} {%trans 'Classes'%}</h3> -->
-<!--               <h4><sup>USD</sup>140<span> / 6 {%trans 'Classes'%}</span></h4> -->
-<!--               <ul> -->
-<!--                 <li>{%trans 'More than six hours'%} </li> -->
-<!--                 <li>{%trans 'Course material'%}</li> -->
-
-<!--                 <li>{%trans 'Special follow up'%}</li> -->
-<!--                 <li>{%trans 'One class free'%}</li> -->
-<!--               </ul> -->
-<!--               <div class="btn-wrap"> -->
-
-<!--                 <a href="{% url 'checkout' courseDets.slug 6 100 %}" class="btn-buy">{%trans 'Buy Now'%}</a> -->
-
-
-<!--               </div> -->
-<!--             </div> -->
-<!--           </div> -->
-
         </div>
 
       </div>

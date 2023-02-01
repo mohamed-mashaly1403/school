@@ -42,7 +42,7 @@ def courses(request):
 
 def courseDetails(request,course_name):
     courseDets = course.objects.get(slug__iexact=course_name)
-    price = Price.objects.all()
+    price = Price.objects.all().order_by('courseClasses')
     price1st = Price.objects.all()[0].coursePrice
     reviews = RatingReview.objects.filter(course__slug=course_name, status=True).order_by('updated_date')
     rates=[]
@@ -114,7 +114,8 @@ def searchHome(request,keyword):
 
     return render(request, 'courses.html', context)
 def pricing (request):
-    price = Price.objects.all()
+    price = Price.objects.all().order_by('courseClasses')
+
     # print(price[0].courseClasses)
     # print(price[0].coursePrice)
     # print(price[0].privEN.all())
