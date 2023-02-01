@@ -3,8 +3,7 @@ from django import forms
 from Teachers.models import TeacherProfile
 from orders.models import orderPoductClasses
 from courses.models import course
-
-
+from django.utils.translation import gettext as _
 class TeacherProfileForm(forms.ModelForm):
     docfile = forms.FileField(required=False,error_messages = {'invalid':("pdf files only")},widget=forms.FileInput)
 
@@ -13,19 +12,28 @@ class TeacherProfileForm(forms.ModelForm):
         fields = '__all__'
         exclude = ['Balance','is_accepted','user','is_Regicted']
 
-    # def clean_file(self):
-    #     file = self.cleaned_data.get("docfile", False)
-    #     filetype = magic.from_buffer(file.read())
-    #     if not "pdf" in filetype:
-    #         raise forms.ValidationError("File is not pdf.")
-    #     return file
-
     def __init__(self, *args, **kwargs):
         super(TeacherProfileForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control'
-        for field in self.fields.values():
-            field.widget.attrs['placeholder'] = field.label
+        self.fields['country'].widget.attrs['placeholder'] = _('Country you live in')
+        self.fields['city'].widget.attrs['placeholder'] = _('City you live in')
+        self.fields['qualifications1'].widget.attrs['placeholder'] = _('1st Academic degree(required)')
+        self.fields['qualifications2'].widget.attrs['placeholder'] = _('2nd Academic degree(optional)')
+        self.fields['qualifications3'].widget.attrs['placeholder'] = _('3rd Academic degree(optional)')
+        self.fields['qualifications4'].widget.attrs['placeholder'] = _('4th Academic degree(optional)')
+        self.fields['specialzed_courses1'].widget.attrs['placeholder'] = _('1st subject you teach(required)')
+        self.fields['specialzed_courses2'].widget.attrs['placeholder'] = _('2nd subject you teach(optional)')
+        self.fields['specialzed_courses3'].widget.attrs['placeholder'] = _('3rd subject you teach(optional)')
+        self.fields['grades'].widget.attrs['placeholder'] = _('Grades you teach.')
+        self.fields['IBAN'].widget.attrs['placeholder'] = _('Bank IBAN')
+        self.fields['BankName'].widget.attrs['placeholder'] = _('Bank Name')
+        self.fields['BankCountry'].widget.attrs['placeholder'] = _('Bank Country')
+        self.fields['Experience'].widget.attrs['placeholder'] = _('Recap your Experience')
+        self.fields['Notes'].widget.attrs['placeholder'] = _('Any thing you want to say about yourself')
+
+        # for field in self.fields.values():
+        #     field.widget.attrs['placeholder'] = _(field.label)
 class orderPoductClassesForm(forms.ModelForm):
     class Meta:
         model = orderPoductClasses

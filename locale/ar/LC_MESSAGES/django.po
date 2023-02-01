@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-01 20:34+0400\n"
+"POT-Creation-Date: 2023-02-01 21:33+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,10 +19,71 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
+#: .\Teachers\form.py:19
+msgid "Country you live in"
+msgstr "الدولة التى تدرس وتعيش فيها(مطلوب)"
+
+#: .\Teachers\form.py:20
+msgid "City you live in"
+msgstr "المدينة التى تدرس وتعيش فيها(إختياري)"
+
+#: .\Teachers\form.py:21
+msgid "1st Academic degree(required)"
+msgstr "الدرجة العلمية -(مطلوب)"
+
+#: .\Teachers\form.py:22
+msgid "2nd Academic degree(optional)"
+msgstr "درجة علمية إضافية-(إختياري)"
+
+#: .\Teachers\form.py:23
+msgid "3rd Academic degree(optional)"
+msgstr "درجة علمية إضافية-(إختياري)"
+
+#: .\Teachers\form.py:24
+msgid "4th Academic degree(optional)"
+msgstr "درجة علمية إضافية-(إختياري)"
+
+#: .\Teachers\form.py:25
+msgid "1st subject you teach(required)"
+msgstr "المادة التي تدرسها(مطلوب)"
+
+#: .\Teachers\form.py:26 .\templates\teachers\teacherRegister.html:77
+msgid "2nd subject you teach(optional)"
+msgstr "مادة أخرى تدرسها -(إختياري)"
+
+#: .\Teachers\form.py:27 .\templates\teachers\teacherRegister.html:82
+msgid "3rd subject you teach(optional)"
+msgstr "مادة أخرى تدرسها -(إختياري)"
+
+#: .\Teachers\form.py:28 .\templates\teachers\teacherRegister.html:88
+msgid "Grades you teach."
+msgstr "الصفوف التي تدرسها"
+
+#: .\Teachers\form.py:29 .\templates\teachers\Teacheredit_profile.html:125
+msgid "Bank IBAN"
+msgstr "رقم الايبان"
+
+#: .\Teachers\form.py:30 .\templates\teachers\Teacheredit_profile.html:132
+msgid "Bank Name"
+msgstr "اسم البنك"
+
+#: .\Teachers\form.py:31 .\templates\teachers\Teacheredit_profile.html:136
+msgid "Bank Country"
+msgstr "دولة البنك"
+
+#: .\Teachers\form.py:32
+msgid "Recap your Experience"
+msgstr "ملخص الخبرات"
+
+#: .\Teachers\form.py:33
+msgid "Any thing you want to say about yourself"
+msgstr "اي ملاحظات تود أن تخبرنا بها"
+
 #: .\Teachers\formatChecker.py:34
-#, python-format
+#, fuzzy, python-format
+#| msgid "Please keep filesize under %s. Current filesize %s"
 msgid "Please keep filesize under %s. Current filesize %s"
-msgstr ""
+msgstr "تحميل السيرة الذاتية pdf (الحجم لا يزيد عن 2 ميجا)"
 
 #: .\Teachers\formatChecker.py:36
 msgid "Filetype not supported."
@@ -1645,18 +1706,6 @@ msgstr "الصفوف التى تدرسها"
 msgid "CV"
 msgstr "السيرة الذاتية"
 
-#: .\templates\teachers\Teacheredit_profile.html:125
-msgid "Bank IBAN"
-msgstr "رقم الايبان"
-
-#: .\templates\teachers\Teacheredit_profile.html:132
-msgid "Bank Name"
-msgstr "اسم البنك"
-
-#: .\templates\teachers\Teacheredit_profile.html:136
-msgid "Bank Country"
-msgstr "دولة البنك"
-
 #: .\templates\teachers\Teacheredit_profile.html:143
 msgid "Experience Summery"
 msgstr "ملخص الخبرة"
@@ -1782,18 +1831,6 @@ msgstr "درجة علمية إضافية-(إختياري)"
 #: .\templates\teachers\teacherRegister.html:72
 msgid "subject you teach.(Required)"
 msgstr "المادة التي تدرسها(مطلوب)"
-
-#: .\templates\teachers\teacherRegister.html:77
-msgid "2nd subject you teach(optional)"
-msgstr "مادة أخرى تدرسها -(إختياري)"
-
-#: .\templates\teachers\teacherRegister.html:82
-msgid "3rd subject you teach(optional)"
-msgstr "مادة أخرى تدرسها -(إختياري)"
-
-#: .\templates\teachers\teacherRegister.html:88
-msgid "grades you teach."
-msgstr "الصفوف التي تدرسها"
 
 #: .\templates\teachers\teacherRegister.html:96
 #: .\templates\teachers\teacherRegister.html:101
