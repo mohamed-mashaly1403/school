@@ -48,10 +48,13 @@ class MakeMyCourseForm(forms.ModelForm):
     img = forms.ImageField(required=True,error_messages = {'invalid':("Image files only")},widget=forms.FileInput)
     class Meta:
         model = course
-        fields = ['is_school_subject','course_name', 'course_name_ar', 'language1','language2','typeEN','typeAR','description','description_ar','img','is_active']
+        fields = ['is_school_subject','course_name', 'course_name_ar', 'language1','language2','typeEN','typeAR','description','description_ar','img','is_active','youtubeUrl']
 
     def __init__(self, *args, **kwargs):
         super(MakeMyCourseForm, self).__init__(*args, **kwargs)
+        self.fields['youtubeUrl'].widget.attrs['placeholder'] = 'youtube url'
+        self.fields['youtubeUrl'].widget.attrs['pattern'] = 'https://www.youtube.com/embed/.*'
+        self.fields['youtubeUrl'].widget.attrs['oninvalid'] = "this.setCustomValidity('requested format: https://www.youtube.com/embed/.*')"
 
 
         for field in self.fields :

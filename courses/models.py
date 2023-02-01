@@ -44,7 +44,7 @@ class course(models.Model):
     img = models.ImageField(upload_to='img/courses',blank=True)
     is_school_subject = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
-
+    youtubeUrl=models.URLField(null=True,blank=True,max_length=200,default='')
 
 
     def get_url(self):

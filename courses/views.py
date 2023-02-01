@@ -47,6 +47,7 @@ def courseDetails(request,course_name):
     reviews = RatingReview.objects.filter(course__slug=course_name, status=True).order_by('updated_date')
     rates=[]
     courseTeacher = courseDets.teacher
+    youtubeUrl=courseDets.youtubeUrl
 
     for i in reviews:
         rates.append(i.rating)
@@ -71,7 +72,8 @@ def courseDetails(request,course_name):
                'count':count,
                'courseTeacher':courseTeacher,
                'price': price,
-               'price1st':price1st
+               'price1st':price1st,
+               'youtubeUrl':youtubeUrl
                }
     return render(request, 'course-details.html',context)
 def search(request):

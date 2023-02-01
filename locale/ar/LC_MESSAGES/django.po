@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-01 21:33+0400\n"
+"POT-Creation-Date: 2023-02-02 01:12+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -126,7 +126,7 @@ msgstr "تم تحديث حسابك"
 msgid "Your CV bigger than 2 MB"
 msgstr "حجم الملف اكبر من 2 ميجا"
 
-#: .\Teachers\views.py:281 .\Teachers\views.py:484 .\Teachers\views.py:559
+#: .\Teachers\views.py:281 .\Teachers\views.py:484 .\Teachers\views.py:596
 #: .\users\views.py:315
 msgid "Your photo bigger than 1 MB"
 msgstr "حجم الصورة اكبر من 1 ميجا"
@@ -163,19 +163,25 @@ msgstr "تم تحديث المواعيد الجديدة"
 msgid "New Date or url can not be empty "
 msgstr "التاريخ او الرابط لا يمكن تركه فارغ"
 
-#: .\Teachers\views.py:474 .\Teachers\views.py:537
+#: .\Teachers\views.py:474 .\Teachers\views.py:574
 msgid "No teacher profile for the user"
 msgstr "لا يوجد حساب للمعلم"
 
-#: .\Teachers\views.py:509
+#: .\Teachers\views.py:488 .\Teachers\views.py:600
+msgid ""
+"youtube url not correct get the url from youtube video> share> Embed> src="
+"\"url\""
+msgstr "<Embed> رابط اليوتيوب غير صحيح رجاء انسخ الرابط الصحيح من"
+
+#: .\Teachers\views.py:515 .\Teachers\views.py:546
 msgid "course created and will show up in courses after review"
 msgstr "تم إنشاء الكورس بنجاح وسيظهر في قائمة الكورسات بعد المراجعة"
 
-#: .\Teachers\views.py:518 .\Teachers\views.py:571
+#: .\Teachers\views.py:555 .\Teachers\views.py:620
 msgid "course image required"
 msgstr "يجب وضع صورة للكورس"
 
-#: .\Teachers\views.py:567
+#: .\Teachers\views.py:608 .\Teachers\views.py:616
 msgid "course updated successfully"
 msgstr "تم التعديل بنجاح"
 
@@ -277,7 +283,7 @@ msgstr "تأكيد كلمة المرور"
 #: .\templates\accounts\change_password.html:99
 #: .\templates\accounts\edit_profile.html:84
 #: .\templates\teachers\Teacheredit_profile.html:164
-#: .\templates\teachers\makeMyCourse.html:131
+#: .\templates\teachers\makeMyCourse.html:138
 msgid "save"
 msgstr "حفظ"
 
@@ -347,7 +353,7 @@ msgstr "اعرض الطلبات"
 #: .\templates\accounts\dashboard.html:86
 #: .\templates\accounts\edit_profile.html:30
 #: .\templates\accounts\edit_profile.html:37
-#: .\templates\course-details.html:144 .\templates\course-details.html:146
+#: .\templates\course-details.html:173 .\templates\course-details.html:175
 #: .\templates\orders\order_course-details.html:228
 #: .\templates\orders\order_course-details.html:230
 #: .\templates\teachers\Teacheredit_profile.html:27
@@ -612,7 +618,7 @@ msgstr "الإيميلات"
 msgid "Sent Mail"
 msgstr "ارسل الإيميل"
 
-#: .\templates\accounts\read_email.html:41 .\templates\course-details.html:13
+#: .\templates\accounts\read_email.html:41 .\templates\course-details.html:14
 msgid "course"
 msgstr "الكورس"
 
@@ -673,103 +679,103 @@ msgstr "تغيير"
 msgid "Do not have account?"
 msgstr "لا أمتلك حساب؟"
 
-#: .\templates\course-details.html:14
+#: .\templates\course-details.html:15
 msgid "Available in"
 msgstr "متاح بـ"
 
-#: .\templates\course-details.html:14 .\templates\courses.html:75
+#: .\templates\course-details.html:15 .\templates\courses.html:75
 #: .\templates\home.html:300
 msgid "and"
 msgstr "و"
 
-#: .\templates\course-details.html:14
+#: .\templates\course-details.html:15
 msgid "Choose course language and grade then go!"
 msgstr "اختر لغة الكورس والصف ثم ابدء"
 
-#: .\templates\course-details.html:25 .\templates\orders\order_complete.html:64
+#: .\templates\course-details.html:26 .\templates\orders\order_complete.html:64
 #: .\templates\orders\payments.html:45 .\templates\orders\payments.html:64
 #: .\templates\teachers\TeacherCourseDetails.html:12
 msgid "Course"
 msgstr "الكورس"
 
-#: .\templates\course-details.html:41 .\templates\includes\navbar.html:32
+#: .\templates\course-details.html:60 .\templates\includes\navbar.html:32
 #: .\templates\orders\order_course-details.html:40
 #: .\templates\teachers\teasherDashboard.html:106
 msgid "Teacher"
 msgstr "المعلم"
 
-#: .\templates\course-details.html:42
+#: .\templates\course-details.html:61
 msgid "Highly qualified Teacher"
 msgstr "معلمين متميزين ذوي خبرة عالية"
 
-#: .\templates\course-details.html:44
+#: .\templates\course-details.html:63
 #: .\templates\orders\order_course-details.html:37
 msgid "Teacher C.V."
 msgstr "السيرة الذانية للمعلم"
 
-#: .\templates\course-details.html:50
+#: .\templates\course-details.html:69
 msgid "Course Fees"
 msgstr "رسوم الكورس"
 
-#: .\templates\course-details.html:51 .\templates\courses.html:77
+#: .\templates\course-details.html:70 .\templates\courses.html:77
 #: .\templates\home.html:302
 msgid "from"
 msgstr "من"
 
-#: .\templates\course-details.html:55
+#: .\templates\course-details.html:74
 msgid "Available Seats"
 msgstr "المقاعد المتاحة"
 
-#: .\templates\course-details.html:60
+#: .\templates\course-details.html:79
 msgid "Review"
 msgstr "تقييم الكورس"
 
-#: .\templates\course-details.html:70
+#: .\templates\course-details.html:89
 msgid "stars"
 msgstr "النجوم"
 
-#: .\templates\course-details.html:70
+#: .\templates\course-details.html:89
 msgid "review"
 msgstr "مقيم"
 
-#: .\templates\course-details.html:93 .\templates\pricing.html:29
+#: .\templates\course-details.html:122 .\templates\pricing.html:29
 #: .\templates\pricing.html:86
 msgid "Advanced"
 msgstr "متقدم"
 
-#: .\templates\course-details.html:120 .\templates\orders\checkout.html:228
+#: .\templates\course-details.html:149 .\templates\orders\checkout.html:228
 #: .\templates\pricing.html:56 .\templates\pricing.html:78
 #: .\templates\pricing.html:97
 msgid "Buy Now"
 msgstr "اشتري الآن"
 
-#: .\templates\course-details.html:133
+#: .\templates\course-details.html:162
 msgid "users review"
 msgstr "مراجعات المستخدمين"
 
-#: .\templates\course-details.html:151
+#: .\templates\course-details.html:180
 #: .\templates\orders\order_course-details.html:236
 msgid "created at:"
 msgstr "إنشيء في"
 
-#: .\templates\course-details.html:152
+#: .\templates\course-details.html:181
 #: .\templates\orders\order_course-details.html:237
 msgid "last update:"
 msgstr "اخر تحديث"
 
-#: .\templates\course-details.html:188 .\templates\orders\checkout.html:138
+#: .\templates\course-details.html:217 .\templates\orders\checkout.html:138
 msgid "first"
 msgstr "الأول"
 
-#: .\templates\course-details.html:190
+#: .\templates\course-details.html:219
 msgid "Previous"
 msgstr "السابق"
 
-#: .\templates\course-details.html:201
+#: .\templates\course-details.html:230
 msgid "Next"
 msgstr "التالي"
 
-#: .\templates\course-details.html:202
+#: .\templates\course-details.html:231
 msgid "last"
 msgstr "الأخير"
 
@@ -1748,29 +1754,41 @@ msgstr "  لغة الكورس الثانية"
 msgid "Course image"
 msgstr "صورة الكورس"
 
+#: .\templates\teachers\makeMyCourse.html:97
+msgid "Youtube link"
+msgstr "رابط اليوتيوب"
+
+#: .\templates\teachers\makeMyCourse.html:99
+msgid "if you have course presentation video on youtube "
+msgstr "رابط تعريفي للكورس او للمعلم على اليوتيوب(إختياري) "
+
 #: .\templates\teachers\makeMyCourse.html:100
+msgid "Get the Url from youtube video> share> Embed> src=\"url\" "
+msgstr "احصل على الرابط الصحيح من اليوتيوب الفيديو share ثم Embed"
+
+#: .\templates\teachers\makeMyCourse.html:107
 msgid "Curriculum type in English"
 msgstr "نوع المنهج بالإنجليزي"
 
-#: .\templates\teachers\makeMyCourse.html:102
-#: .\templates\teachers\makeMyCourse.html:108
+#: .\templates\teachers\makeMyCourse.html:109
+#: .\templates\teachers\makeMyCourse.html:115
 msgid "Hold"
 msgstr "اضغط"
 
-#: .\templates\teachers\makeMyCourse.html:102
-#: .\templates\teachers\makeMyCourse.html:108
+#: .\templates\teachers\makeMyCourse.html:109
+#: .\templates\teachers\makeMyCourse.html:115
 msgid "to choose more than one"
 msgstr "لاختيار أكثر من منهج"
 
-#: .\templates\teachers\makeMyCourse.html:106
+#: .\templates\teachers\makeMyCourse.html:113
 msgid "Curriculum type in Arabic"
 msgstr "نوع المنهج بالعربي"
 
-#: .\templates\teachers\makeMyCourse.html:114
+#: .\templates\teachers\makeMyCourse.html:121
 msgid "Course description in English"
 msgstr "وصف الكورس بالانجليزي"
 
-#: .\templates\teachers\makeMyCourse.html:118
+#: .\templates\teachers\makeMyCourse.html:125
 msgid "Course description in Arabic"
 msgstr "وصف الكورس بالعربي"
 

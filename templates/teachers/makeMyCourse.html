@@ -89,9 +89,16 @@
 
                         <div class="form-row">
 
-                         <div class="form-group col-md-12">
+                         <div class="form-group col-md-6">
                             <label>{%trans 'Course image'%}<span style="color:red">*</span></label>
                            {{TeacherMakeMyCourseForm.img}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>{%trans 'Youtube link'%}</label>
+                           {{TeacherMakeMyCourseForm.youtubeUrl}}
+                            <small class="form-text text-muted">{%trans 'if you have course presentation video on youtube '%}</small>
+                            <small class="form-text text-muted">{%trans 'Get the Url from youtube video> share> Embed> src="url" '%}</small>
+
                         </div>
                     </div>
 

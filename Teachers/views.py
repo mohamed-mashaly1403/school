@@ -483,6 +483,43 @@ def MakeMyCourse(request):
                 if TeacherMakeMyCourseForm.cleaned_data['img'].size > 1048576:
                     messages.error(request, _('Your photo bigger than 1 MB'))
                     TeacherMakeMyCourseForm.save(commit=False)
+                elif TeacherMakeMyCourseForm.cleaned_data['youtubeUrl']!=None:
+                    if '/embed/' not in TeacherMakeMyCourseForm.cleaned_data['youtubeUrl'] or 'https://www.youtube.com'not in TeacherMakeMyCourseForm.cleaned_data['youtubeUrl']:
+                        messages.error(request, _('youtube url not correct get the url from youtube video> share> Embed> src="url"'))
+                        TeacherMakeMyCourseForm.save(commit=False)
+                    else:
+                        TeacherMakeMyCourseForm.save(commit=True)
+                        course_name = TeacherMakeMyCourseForm.cleaned_data['course_name']
+                        name = course.objects.get(course_name=course_name)
+                        name.teacher = teacher
+                        name.slug = slugify(TeacherMakeMyCourseForm.cleaned_data['course_name'])
+                        if TeacherMakeMyCourseForm.cleaned_data['language1'] == 'Arabic':
+                            name.language1_tr = 'العربية'
+                        elif TeacherMakeMyCourseForm.cleaned_data['language1'] == 'English':
+                            name.language1_tr = 'الإنجليزية'
+                        elif TeacherMakeMyCourseForm.cleaned_data['language1'] == 'French':
+                            name.language1_tr = 'الفرنسية'
+                        else:
+                            name.language1_tr = 'الصينية'
+                        # /                    =========================================
+                        if TeacherMakeMyCourseForm.cleaned_data['language2'] == 'Arabic':
+                            name.language2_tr = 'العربية'
+                        elif TeacherMakeMyCourseForm.cleaned_data['language2'] == 'English':
+                            name.language2_tr = 'الإنجليزية'
+                        elif TeacherMakeMyCourseForm.cleaned_data['language2'] == 'French':
+                            name.language2_tr = 'الفرنسية'
+                        else:
+                            name.language2_tr = 'الصينية'
+
+                        name.save(update_fields=['teacher', 'slug', 'language1_tr', 'language2_tr'])
+                        messages.success(request, _('course created and will show up in courses after review'))
+                        mail_subject = 'Teacher create course'
+                        mail_body = f"review course {course_name} for teacher {teacher}"
+                        to_email = 'info@myschools.site'
+                        send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],
+                                                                  from_email='info@myschools.site')
+                        send_mail.send()
+                        return redirect('courses')
                 else:
                     TeacherMakeMyCourseForm.save(commit=True)
                     course_name = TeacherMakeMyCourseForm.cleaned_data['course_name']
@@ -558,6 +595,18 @@ def editCourse(request , id):
                 if TeacherMakeMyCourseForm.cleaned_data['img'].size > 1048576:
                     messages.error(request, _('Your photo bigger than 1 MB'))
                     TeacherMakeMyCourseForm.save(commit=False)
+                elif TeacherMakeMyCourseForm.cleaned_data['youtubeUrl'] != None:
+                    if '/embed/' not in TeacherMakeMyCourseForm.cleaned_data['youtubeUrl'] or 'https://www.youtube.com' not in TeacherMakeMyCourseForm.cleaned_data['youtubeUrl']:
+                        messages.error(request,_('youtube url not correct get the url from youtube video> share> Embed> src="url"'))
+                        TeacherMakeMyCourseForm.save(commit=False)
+                    else:
+                        TeacherMakeMyCourseForm.save(commit=True)
+                        if course_img.is_active:
+                            course_img.is_active = True
+                            course_img.save(update_fields=['is_active'])
+
+                        messages.success(request, _('course updated successfully'))
+                        return redirect('courseDetails', course_name= course_img.course_name)
                 else:
                     TeacherMakeMyCourseForm.save(commit=True)
                     if course_img.is_active:
@@ -565,7 +614,7 @@ def editCourse(request , id):
                         course_img.save(update_fields=['is_active'])
 
                     messages.success(request, _('course updated successfully'))
-                    return redirect('courses')
+                    return redirect('courseDetails', course_name= course_img.course_name)
             else:
                 TeacherMakeMyCourseForm.save(commit=False)
                 messages.error(request, _('course image required'))
