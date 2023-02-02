@@ -606,7 +606,7 @@ def editCourse(request , id):
                             course_img.save(update_fields=['is_active'])
 
                         messages.success(request, _('course updated successfully'))
-                        return redirect('courseDetails', course_name= course_img.course_name)
+                        return redirect('courseDetails', course_name= course_img.slug)
                 else:
                     TeacherMakeMyCourseForm.save(commit=True)
                     if course_img.is_active:
@@ -614,7 +614,7 @@ def editCourse(request , id):
                         course_img.save(update_fields=['is_active'])
 
                     messages.success(request, _('course updated successfully'))
-                    return redirect('courseDetails', course_name= course_img.course_name)
+                    return redirect('courseDetails', course_name= course_img.slug)
             else:
                 TeacherMakeMyCourseForm.save(commit=False)
                 messages.error(request, _('course image required'))

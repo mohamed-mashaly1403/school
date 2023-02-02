@@ -58,7 +58,7 @@
             </div>
               {%if order_detail.teacher%}
                  <a href="{% url 'createMessagefromStudent' order_detail.id %}"> <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>{%trans 'Send mail to your Teacher'%}</h5>
+              <h5>{%trans 'Send message to your Teacher'%}</h5>
                 {{order_detail.teacher}}
             </div></a>
                 {%endif%}

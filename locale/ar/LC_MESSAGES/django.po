@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 01:12+0400\n"
+"POT-Creation-Date: 2023-02-02 17:57+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1297,7 +1297,7 @@ msgid "Purchase Date"
 msgstr "تاريخ الشراء"
 
 #: .\templates\orders\order_course-details.html:61
-msgid "Send mail to your Teacher"
+msgid "Send message to your Teacher"
 msgstr "ارسل رسالة للمعلم"
 
 #: .\templates\orders\order_course-details.html:67
