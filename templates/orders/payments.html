@@ -18,6 +18,8 @@
                 <div class="card">
                     <h5 class="card-header"><strong>{%trans 'Billing Address'%}</strong></h5>
                     <div class="card-body">
+                    <div class="row">
+                    <div class="col-lg-12 ">
                         <p class="card-text mb-0">{{order.first_name}} {{order.last_name}}.</p>
 
                         <p class="card-text mb-0">{{order.country}},{{order.city}}.</p>
@@ -26,7 +28,21 @@
                         {%if order.order_note%}
                         <b>{%trans 'Order Note'%}:</b> {{ order.order_note}}
                         {%endif%}
-
+                        </div>
+                        <!--   =================================================          -->
+                        <div class="col-lg-12 ">
+                        <div class="  text-center" >
+                         <div class=" alert-success" >
+                           <h4 class="alert-heading ">Well done!</h4>
+                        <p>{%trans 'Whenever you need to, you can replace the teacher or refund your money'%} !!</p>
+                        <hr class ="mb-2 mt-0">
+                        <p > {%trans 'Your world is about to look a whole lot better'%}.</p>
+                        <br>
+                         </div>  <!--end green-->
+                         </div>  <!--end green-->
+                    </div>
+                    <!--   =================================================          -->
+                    </div>
                     </div>
                 </div>
                 <div class="card">

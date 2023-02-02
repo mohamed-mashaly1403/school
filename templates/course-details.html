@@ -11,7 +11,8 @@
     <div class="breadcrumbs" data-aos="fade-in">
       <div class="container ">
            <br>
-        <h2>{% if LANGUAGE_CODE == 'ar'%} {{courseDets.course_name_ar}}{%else%}{{courseDets.course_name}} {%trans 'course'%}{%endif%} </h2>
+        <h2>{% if LANGUAGE_CODE == 'ar'%} {{courseDets.course_name_ar}}{%else%}{{courseDets.course_name}} {%trans 'course'%}{%endif%} {%if courseTeacher.user == user %}<a class="btn btn-outline-light btn-sm active" role="button" aria-pressed="true" href="{% url 'editCourse' courseDets.id %}"><i class="bi bi-pencil "></i></a>{%endif%}</h2>
+
         <p>{%trans 'Available in'%} {% if LANGUAGE_CODE == 'ar'%}{%if  courseDets.language1_tr == courseDets.language2_tr%} {{courseDets.language1_tr}}  {%else %} {{courseDets.language1_tr}} {%trans 'and'%} {{courseDets.language2_tr}} {% endif %}{%else%}{%if  courseDets.language1 == courseDets.language2%} {{courseDets.language1}}  {%else %} {{courseDets.language1}} {%trans 'and'%} {{courseDets.language2}} {% endif %}{% endif %}, {%trans 'Choose course language and grade then go!'%} &#128522;  </p>
       </div>
     </div><!-- End Breadcrumbs -->
@@ -71,8 +72,13 @@
             </div>
 
             <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>{%trans 'Available Seats'%}</h5>
+            {%if courseTeacher.user == user %}
+              <a href="{% url 'editCourse' courseDets.id  %}"> <h5>{%trans 'Edit  Course' %} </h5></a>
+              <p><a href="{% url 'editCourse' courseDets.id %}"><i class="bi bi-pencil"></i></a></p>
+              {%else%}
+              <h5>{%trans 'Available Seats'%} </h5>
               <p>3</p>
+              {%endif%}
             </div>
 
             <div class="course-info d-flex justify-content-between align-items-center">

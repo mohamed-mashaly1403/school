@@ -78,7 +78,7 @@
                 </div>
 
 
-                <h3><a href="{% url 'courseDetails' course.slug %}"> {% if LANGUAGE_CODE == 'ar' and course.course_name_ar != None %}{{ course.course_name_ar}}{%else%}{{ course.course_name}}{%endif%}</a></h3>
+                <h3><a href="{% url 'courseDetails' course.slug %}"> {% if LANGUAGE_CODE == 'ar' and course.course_name_ar != None %}{{ course.course_name_ar}}{%else%}{{ course.course_name}}{%endif%}</a> {%if course.teacher.user == user %}<a class="btn btn-outline-light btn-sm active" role="button" aria-pressed="true" href="{% url 'editCourse' course.id %}"><i class="bi bi-pencil "></i></a>{%endif%}</h3>
 
 
 
