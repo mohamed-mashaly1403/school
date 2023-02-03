@@ -1,4 +1,6 @@
 import math
+
+from django.http import JsonResponse
 from django.utils.translation import gettext as _
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.db.models import Sum, Q
@@ -473,6 +475,28 @@ def MakeMyCourse(request):
     except:
         messages.error(request, _('No teacher profile for the user'))
         return redirect('TeacherDashboard')
+    if request.is_ajax():
+
+        course_name = request.GET.get('course_name', None)
+        course_nameAR = request.GET.get('course_name_ar', None)
+
+        if course_name !=None and  course_nameAR == None:
+            response = {
+                'is_taken':
+
+                course.objects.filter(course_name__exact=course_name).exists()
+            }
+
+            return JsonResponse(response)
+        if course_nameAR !=None and course_name == None:
+
+            response = {
+                'is_takenAr':
+
+                course.objects.filter(course_name_ar__exact=course_nameAR).exists()
+            }
+
+            return JsonResponse(response)
 
     TeacherMakeMyCourseForm = MakeMyCourseForm(request.POST, request.FILES)
 
@@ -490,7 +514,7 @@ def MakeMyCourse(request):
                     else:
                         TeacherMakeMyCourseForm.save(commit=True)
                         course_name = TeacherMakeMyCourseForm.cleaned_data['course_name']
-                        name = course.objects.get(course_name=course_name)
+                        name = course.objects.get(course_name__exact=course_name)
                         name.teacher = teacher
                         name.slug = slugify(TeacherMakeMyCourseForm.cleaned_data['course_name'])
                         if TeacherMakeMyCourseForm.cleaned_data['language1'] == 'Arabic':

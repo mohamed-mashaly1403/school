@@ -22,17 +22,10 @@ from django.template.loader import render_to_string
 def place_order(request,needed_course_id,price,lessons):
       if request.method == 'POST':
         current_user = request.user
-
-
-
         form = OrderForm(request.POST)
-
         ncourse = course.objects.get(id=needed_course_id)
-
-
         if form.is_valid():
             print(form.errors)
-
             data = Order()
             data.first_name = request.user.first_name
             data.last_name = request.user.last_name
@@ -49,7 +42,6 @@ def place_order(request,needed_course_id,price,lessons):
                 data.total_classes = data.quantity * lessons
             except(TypeError):
                 data.total_classes=1
-
             data.term = form.cleaned_data['term']
             data.order_course_language = form.cleaned_data['order_course_language']
             data.total = price
@@ -87,6 +79,8 @@ def place_order(request,needed_course_id,price,lessons):
             print('not vaild')
             print(form.errors)
             return redirect('courses')
+      else:
+            return redirect('UnPaidOrders')
 @login_required(login_url='login')
 def Editplaceorder(request,order_number):
     order = Order.objects.get(order_number=order_number)

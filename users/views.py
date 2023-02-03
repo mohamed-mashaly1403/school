@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from django.contrib.sites.shortcuts import get_current_site
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 import django.core.mail
 # Create your views here.
@@ -28,6 +28,18 @@ def register(request):
             return redirect(url)
     except:
         return redirect('home')
+    # ==================================
+
+    if request.is_ajax():
+        print('ajax')
+        email = request.GET.get('email', None)
+        response = {
+            'is_taken':
+                account.objects.filter(email=email).exists()
+        }
+        print(response)
+        return JsonResponse(response)
+    # ==================================
     if request.method == 'POST':
         form = regForm(request.POST)
         print(form.errors)
