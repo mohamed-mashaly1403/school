@@ -1,3 +1,5 @@
+import math
+
 from django.db import models
 from django.db.models.signals import post_save
 import django.core.mail
@@ -75,7 +77,7 @@ class orderPoduct(models.Model):
 
     @property
     def Teacher_cost(self):
-        return self.product_price * 0.7
+        return math.floor(self.product_price * 0.7)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
