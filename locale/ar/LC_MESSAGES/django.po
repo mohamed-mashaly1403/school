@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 04:13+0400\n"
+"POT-Creation-Date: 2023-02-05 01:27+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -192,14 +192,6 @@ msgstr "الحصة ليست مفتوحة"
 #: .\orders\models.py:89
 msgid "New student waiting"
 msgstr "طالب جديد في الانتظار"
-
-#: .\orders\models.py:97
-msgid "You got new order and your student is waiting"
-msgstr "لقد حصلت على طلب جديد وهناك طالب ينتظر"
-
-#: .\orders\models.py:98
-msgid "Kindly go to your dashboard to proceed in the new course"
-msgstr "من فضلك اذهب إلى لوحة التحكم لتبدء الكورس الجديد"
 
 #: .\orders\views.py:260
 msgid "review has updated"
@@ -553,22 +545,22 @@ msgid "Active"
 msgstr "نشط"
 
 #: .\templates\accounts\order_details.html:40
-#: .\templates\orders\order_complete.html:51
+#: .\templates\orders\order_complete.html:48
 msgid "Order"
 msgstr "الطلب"
 
 #: .\templates\accounts\order_details.html:41
-#: .\templates\orders\order_complete.html:52
+#: .\templates\orders\order_complete.html:49
 msgid "Transaction ID"
 msgstr "رقم التحويل"
 
 #: .\templates\accounts\order_details.html:42
-#: .\templates\orders\order_complete.html:53
+#: .\templates\orders\order_complete.html:50
 msgid "Order Date:"
 msgstr "تاريخ الطلب"
 
 #: .\templates\accounts\order_details.html:43
-#: .\templates\orders\order_complete.html:54
+#: .\templates\orders\order_complete.html:51
 #: .\templates\orders\order_course-details.html:17
 msgid "Status:"
 msgstr "الحالة"
@@ -578,7 +570,7 @@ msgid "Description"
 msgstr "الوصف"
 
 #: .\templates\accounts\order_details.html:54
-#: .\templates\orders\order_complete.html:65
+#: .\templates\orders\order_complete.html:62
 msgid "Qty"
 msgstr "العدد"
 
@@ -587,22 +579,22 @@ msgid "Product Price"
 msgstr "السعر"
 
 #: .\templates\accounts\order_details.html:77
-#: .\templates\orders\order_complete.html:82
+#: .\templates\orders\order_complete.html:79
 msgid "Sub Total:"
 msgstr "الإجمالي"
 
 #: .\templates\accounts\order_details.html:81
-#: .\templates\orders\order_complete.html:86
+#: .\templates\orders\order_complete.html:83
 msgid "Tax:"
 msgstr "الضريبة"
 
 #: .\templates\accounts\order_details.html:86
-#: .\templates\orders\order_complete.html:91
+#: .\templates\orders\order_complete.html:88
 msgid "Grand Total:"
 msgstr "الإجمالي النهائي"
 
 #: .\templates\accounts\order_details.html:94
-#: .\templates\orders\order_complete.html:99
+#: .\templates\orders\order_complete.html:96
 msgid "Thank you for shopping with us!"
 msgstr "شكراً لتسوقك معنا"
 
@@ -696,8 +688,8 @@ msgstr "و"
 msgid "Choose course language and grade then go!"
 msgstr "اختر لغة الكورس والصف ثم ابدء"
 
-#: .\templates\course-details.html:27 .\templates\orders\order_complete.html:64
-#: .\templates\orders\payments.html:62 .\templates\orders\payments.html:81
+#: .\templates\course-details.html:27 .\templates\orders\order_complete.html:61
+#: .\templates\orders\payments.html:62
 #: .\templates\teachers\TeacherCourseDetails.html:12
 msgid "Course"
 msgstr "الكورس"
@@ -1136,6 +1128,7 @@ msgid "Student DashBoard"
 msgstr "لوحة التحكم"
 
 #: .\templates\includes\navbar.html:25
+#: .\templates\orders\order_complete.html:97
 msgid "DashBoard"
 msgstr "لوحة التحكم"
 
@@ -1272,17 +1265,13 @@ msgstr "ستنتقل إلى مستوى مثالي من التعليم!!"
 msgid "Payment Successful"
 msgstr "تم الدفع بنجاح"
 
-#: .\templates\orders\order_complete.html:15
-msgid "Go to Courses"
-msgstr "اذهب للكورسات"
-
-#: .\templates\orders\order_complete.html:66
+#: .\templates\orders\order_complete.html:63
 msgid "course Price"
 msgstr "سعر الكورس"
 
-#: .\templates\orders\order_complete.html:100
-msgid "Dash Board"
-msgstr "لوحة التحكم"
+#: .\templates\orders\order_complete.html:101
+msgid "Go to Courses"
+msgstr "اذهب للكورسات"
 
 #: .\templates\orders\order_course-details.html:28
 #: .\templates\teachers\TeacherCourseDetails.html:24
@@ -1451,7 +1440,6 @@ msgid "PayPal"
 msgstr "باي بال"
 
 #: .\templates\orders\payments.html:56
-
 msgid " My Course "
 msgstr "بيانات الكورس"
 
@@ -2034,6 +2022,24 @@ msgstr "لا يمكن ارسال رسال لنفسك"
 #: .\users\views.py:475
 msgid "Your message was successfully sent!"
 msgstr "تم ارسال رسالتك بنجاح"
+
+#~ msgid ""
+#~ "You got new order({orderPoduct.order.order_number})and your student is "
+#~ "waiting"
+#~ msgstr ""
+#~ "لقد حصلت على طلب جديد رقم ({orderPoduct.order.order_number}) وهناك طالب "
+#~ "ينتظر"
+
+#~ msgid ""
+#~ "Dear teacher { orderPoduct.teacher.user.first_name},\n"
+#~ "\n"
+#~ msgstr "  السيدالمعلم { orderPoduct.teacher.user.first_name} "
+
+#~ msgid "Kindly go to your dashboard to proceed in the new course"
+#~ msgstr "من فضلك اذهب إلى لوحة التحكم لتبدء الكورس الجديد"
+
+#~ msgid "Dash Board"
+#~ msgstr "لوحة التحكم"
 
 #~ msgid "Review Course"
 #~ msgstr "قيم الكورس"

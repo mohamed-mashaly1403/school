@@ -10,10 +10,7 @@
     <br>
     <center><i class="fas fa-check-circle" style="font-size: 72px;margin-bottom: 20px;color: #28A745;"></i></center>
     <h2 class="text-center">{%trans 'Payment Successful'%}</h2>
-	<br>
-	<div class="text-center">
-		<a href="{% url 'courses' %}" class="btn btn-success">{%trans 'Go to Courses'%}</a>
-	</div>
+
 </div>
 
 <div class="container" >
@@ -97,7 +94,11 @@
                             </div>
                             <div class="invoice-footer mt25">
                                 <p class="text-center">{%trans 'Thank you for shopping with us!'%}</p>
-                                <div class="text-center"> <a  href="{% url 'dashboard'%}">{%trans 'Dash Board'%}</a></div>
+                                <div class="text-center"> <a  href="{% url 'dashboard'%}">{%trans 'DashBoard'%}</a></div>
+                            </div>
+                            <br>
+                            <div class="text-center">
+                                <a href="{% url 'courses' %}" class="btn btn-success">{%trans 'Go to Courses'%}</a>
                             </div>
                         </div>
                         <!-- col-lg-12 end here -->

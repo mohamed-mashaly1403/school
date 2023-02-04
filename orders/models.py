@@ -94,8 +94,12 @@ class orderPoduct(models.Model):
                 notifss.save()
                 # ==================== mail to teacher
                 # send mail to customer
-                mail_subject = _('You got new order and your student is waiting')
-                mail_body = _('Kindly go to your dashboard to proceed in the new course')
+                mail_subject = (f'You got new order({orderPoduct.order.order_number})and your student is waiting')
+                mail_body = (f'Dear teacher { orderPoduct.teacher.user.first_name},\n\n'
+                              f'Kindly go to your dashboard-as soon as possible-to start the new order no({orderPoduct.order.order_number}) since your student is waiting.\n'
+                              f'course link:  https://www.myschools.site/Teachers/TeacherCourseDetails/{orderPoduct.order.order_number}\n\n'
+                              f'Mohamed Mashaly\n\n'
+                              f'Myschools admin')
                 to_email = orderPoduct.teacher.user.email
                 send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],from_email='info@myschools.site')
                 send_mail.send()

@@ -103,13 +103,13 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-4 col-sm-12">
-                            <label>{%trans 'Curriculum type in English'%}</label>
+                            <label>{%trans 'Curriculum type in English'%}<span style="color:red">*</span></label>
                             {{TeacherMakeMyCourseForm.typeEN}}
                         <small class="form-text text-muted">{%trans 'Hold'%} Ctrl {%trans 'to choose more than one'%}</small>
 
                         </div>
                          <div class="form-group col-md-4   col-sm-12">
-                            <label>{%trans 'Curriculum type in Arabic'%}</label>
+                            <label>{%trans 'Curriculum type in Arabic'%}<span style="color:red">*</span></label>
                             {{TeacherMakeMyCourseForm.typeAR}}
                             <small class="form-text text-muted">{%trans 'Hold'%} Ctrl {%trans 'to choose more than one'%}</small>
                         </div>
@@ -301,6 +301,8 @@ checkbox.addEventListener('change', (event) => {
             document.getElementById('id_typeAR').disabled = false;
             document.getElementById('id_courseGrades').disabled = false;
             document.getElementById('id_courseGrades').required = true;
+            document.getElementById('id_typeAR').required = true;
+            document.getElementById('id_courseGrades').required = true;
 
 
 } else {
@@ -311,6 +313,8 @@ checkbox.addEventListener('change', (event) => {
              document.getElementById('id_typeAR').value = '';
              document.getElementById('id_courseGrades').value = '';
              document.getElementById('id_courseGrades').required = false;
+             document.getElementById('id_typeAR').required = false;
+             document.getElementById('id_typeEN').required = false;
 
     }
 })

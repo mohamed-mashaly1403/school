@@ -56,6 +56,8 @@ class MakeMyCourseForm(forms.ModelForm):
         self.fields['youtubeUrl'].widget.attrs['pattern'] = 'https://www.youtube.com/embed/.*'
         self.fields['youtubeUrl'].widget.attrs['oninvalid'] = "this.setCustomValidity('requested format: https://www.youtube.com/embed/.*')"
         self.fields['courseGrades'].widget.attrs['required'] = "required"
+        self.fields['typeEN'].widget.attrs['required'] = "required"
+        self.fields['typeAR'].widget.attrs['required'] = "required"
 
 
         for field in self.fields :
