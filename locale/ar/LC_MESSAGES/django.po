@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 01:32+0400\n"
+"POT-Creation-Date: 2023-02-04 04:13+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -135,7 +135,7 @@ msgstr "حجم الصورة اكبر من 1 ميجا"
 msgid "Your cv file is not pdf"
 msgstr "ملف السيرة الذاتية ليس pdf"
 
-#: .\Teachers\views.py:346 .\orders\views.py:300
+#: .\Teachers\views.py:346 .\orders\views.py:296
 msgid "request has submited and will change soon"
 msgstr "تم تسجيل الطلب وسيتم التغيير قريبا"
 
@@ -201,11 +201,11 @@ msgstr "لقد حصلت على طلب جديد وهناك طالب ينتظر"
 msgid "Kindly go to your dashboard to proceed in the new course"
 msgstr "من فضلك اذهب إلى لوحة التحكم لتبدء الكورس الجديد"
 
-#: .\orders\views.py:264
+#: .\orders\views.py:260
 msgid "review has updated"
 msgstr "تم تسجيل التقييم"
 
-#: .\orders\views.py:281
+#: .\orders\views.py:277
 msgid "review has submited"
 msgstr "تم تسجيل التقييم"
 
@@ -283,7 +283,7 @@ msgstr "تأكيد كلمة المرور"
 #: .\templates\accounts\change_password.html:99
 #: .\templates\accounts\edit_profile.html:84
 #: .\templates\teachers\Teacheredit_profile.html:164
-#: .\templates\teachers\makeMyCourse.html:140
+#: .\templates\teachers\makeMyCourse.html:142
 msgid "save"
 msgstr "حفظ"
 
@@ -697,7 +697,7 @@ msgid "Choose course language and grade then go!"
 msgstr "اختر لغة الكورس والصف ثم ابدء"
 
 #: .\templates\course-details.html:27 .\templates\orders\order_complete.html:64
-#: .\templates\orders\payments.html:61 .\templates\orders\payments.html:80
+#: .\templates\orders\payments.html:62 .\templates\orders\payments.html:81
 #: .\templates\teachers\TeacherCourseDetails.html:12
 msgid "Course"
 msgstr "الكورس"
@@ -753,7 +753,7 @@ msgstr "مقيم"
 msgid "Advanced"
 msgstr "متقدم"
 
-#: .\templates\course-details.html:155 .\templates\orders\checkout.html:228
+#: .\templates\course-details.html:155 .\templates\orders\checkout.html:215
 #: .\templates\pricing.html:56 .\templates\pricing.html:78
 #: .\templates\pricing.html:97
 msgid "Buy Now"
@@ -773,7 +773,7 @@ msgstr "إنشيء في"
 msgid "last update:"
 msgstr "اخر تحديث"
 
-#: .\templates\course-details.html:223 .\templates\orders\checkout.html:138
+#: .\templates\course-details.html:223 .\templates\orders\checkout.html:125
 msgid "first"
 msgstr "الأول"
 
@@ -950,7 +950,7 @@ msgstr "الكويت"
 msgid "Qatar"
 msgstr "قطر"
 
-#: .\templates\home.html:182 .\templates\orders\checkout.html:154
+#: .\templates\home.html:182 .\templates\orders\checkout.html:141
 msgid "Arabic"
 msgstr "عربي"
 
@@ -974,7 +974,7 @@ msgstr "الكيمياء"
 msgid "Quran"
 msgstr "قراءن"
 
-#: .\templates\home.html:225 .\templates\orders\checkout.html:155
+#: .\templates\home.html:225 .\templates\orders\checkout.html:142
 msgid "English"
 msgstr "الإنجليزي"
 
@@ -986,7 +986,7 @@ msgstr "الأحياء"
 msgid "Business Administration"
 msgstr "إدارة الأعمال"
 
-#: .\templates\home.html:243 .\templates\orders\checkout.html:156
+#: .\templates\home.html:243 .\templates\orders\checkout.html:143
 msgid "French"
 msgstr "اللغة الفرنسية"
 
@@ -1191,80 +1191,80 @@ msgstr "اختر الدولة"
 msgid "Grade"
 msgstr "الصف"
 
-#: .\templates\orders\checkout.html:102
+#: .\templates\orders\checkout.html:89
 msgid "Choose Your Grade"
 msgstr "اختر الصف"
 
-#: .\templates\orders\checkout.html:112 .\templates\orders\checkout.html:130
+#: .\templates\orders\checkout.html:99 .\templates\orders\checkout.html:117
 msgid "Curriculum Type"
 msgstr "المنهج"
 
-#: .\templates\orders\checkout.html:127
+#: .\templates\orders\checkout.html:114
 msgid "Enter Curriculum Type"
 msgstr " نوع المنهج"
 
-#: .\templates\orders\checkout.html:133 .\templates\orders\checkout.html:142
+#: .\templates\orders\checkout.html:120 .\templates\orders\checkout.html:129
 msgid "Semester"
 msgstr "الفصل الدراسي"
 
-#: .\templates\orders\checkout.html:139
+#: .\templates\orders\checkout.html:126
 msgid "second"
 msgstr "الثاني"
 
-#: .\templates\orders\checkout.html:140
+#: .\templates\orders\checkout.html:127
 msgid "Third"
 msgstr "الثالث"
 
-#: .\templates\orders\checkout.html:152
+#: .\templates\orders\checkout.html:139
 msgid "Course Language"
 msgstr "لغة الكورس"
 
-#: .\templates\orders\checkout.html:157
+#: .\templates\orders\checkout.html:144
 msgid "Chinese"
 msgstr "الصينية"
 
-#: .\templates\orders\checkout.html:159
+#: .\templates\orders\checkout.html:146
 msgid "Choose Course Language"
 msgstr "اختر لغة الكورس"
 
-#: .\templates\orders\checkout.html:170
+#: .\templates\orders\checkout.html:157
 #: .\templates\teachers\Teacheredit_profile.html:151
 msgid "Notes"
 msgstr "ملاحظات"
 
-#: .\templates\orders\checkout.html:197
+#: .\templates\orders\checkout.html:184
 msgid "Total price with tax"
 msgstr "السعر الإجمالي شامل الضريبة"
 
-#: .\templates\orders\checkout.html:198
+#: .\templates\orders\checkout.html:185
 msgid "Total lessons:"
 msgstr "عدد الحصص"
 
-#: .\templates\orders\checkout.html:205
+#: .\templates\orders\checkout.html:192
 msgid "Quantity"
 msgstr "العدد"
 
-#: .\templates\orders\checkout.html:217
+#: .\templates\orders\checkout.html:204
 msgid "quantity"
 msgstr "العدد"
 
-#: .\templates\orders\checkout.html:228
+#: .\templates\orders\checkout.html:215
 msgid "Try Now"
 msgstr "ابدء"
 
-#: .\templates\orders\checkout.html:229
+#: .\templates\orders\checkout.html:216
 msgid "Go To Courses"
 msgstr "اذهب للكورسات"
 
-#: .\templates\orders\checkout.html:248 .\templates\orders\payments.html:36
+#: .\templates\orders\checkout.html:235 .\templates\orders\payments.html:37
 msgid "Well done"
 msgstr "أحسنت"
 
-#: .\templates\orders\checkout.html:249 .\templates\orders\payments.html:37
+#: .\templates\orders\checkout.html:236 .\templates\orders\payments.html:38
 msgid "Whenever you need to, you can replace the teacher or refund your money"
 msgstr "بإمكانك بكل بساطة إستبدال المعلم او إسترجاع أموالك!!"
 
-#: .\templates\orders\checkout.html:251 .\templates\orders\payments.html:39
+#: .\templates\orders\checkout.html:238 .\templates\orders\payments.html:40
 msgid "Your world is about to look a whole lot better"
 msgstr "ستنتقل إلى مستوى مثالي من التعليم!!"
 
@@ -1442,43 +1442,44 @@ msgstr "عنوان الفوترة"
 msgid "Order Note"
 msgstr "ملاحظات"
 
-#: .\templates\orders\payments.html:49
+#: .\templates\orders\payments.html:50
 msgid "Payment method"
 msgstr "طريقة الدفع"
 
-#: .\templates\orders\payments.html:51
+#: .\templates\orders\payments.html:52
 msgid "PayPal"
 msgstr "باي بال"
 
-#: .\templates\orders\payments.html:55
-msgid "Review Course"
-msgstr "قيم الكورس"
+#: .\templates\orders\payments.html:56
 
-#: .\templates\orders\payments.html:62
+msgid " My Course "
+msgstr "بيانات الكورس"
+
+#: .\templates\orders\payments.html:63
 msgid "lessons"
 msgstr "الحصص"
 
-#: .\templates\orders\payments.html:64
+#: .\templates\orders\payments.html:65
 msgid "Price"
 msgstr "الثمن"
 
-#: .\templates\orders\payments.html:112
+#: .\templates\orders\payments.html:113
 msgid "Back to Courses"
 msgstr "الرجوع للكورسات"
 
-#: .\templates\orders\payments.html:120
+#: .\templates\orders\payments.html:121
 msgid "Course price:"
 msgstr "ثمن الكورس"
 
-#: .\templates\orders\payments.html:124
+#: .\templates\orders\payments.html:125
 msgid "Quantity:"
 msgstr "العدد"
 
-#: .\templates\orders\payments.html:128
+#: .\templates\orders\payments.html:129
 msgid "Tax"
 msgstr "الضريبة"
 
-#: .\templates\orders\payments.html:132
+#: .\templates\orders\payments.html:133
 #: .\templates\teachers\recivedInstallments.html:32
 msgid "Total"
 msgstr "الإجمالي"
@@ -1769,53 +1770,62 @@ msgstr "اسم الكورس مستخدم سابقا!!"
 msgid "Arabic Course Name"
 msgstr "  اسم الكورس بالعربي"
 
-#: .\templates\teachers\makeMyCourse.html:82
+#: .\templates\teachers\makeMyCourse.html:79
 msgid "Course first language"
 msgstr "لغة الكورس الأولى"
 
-#: .\templates\teachers\makeMyCourse.html:87
+#: .\templates\teachers\makeMyCourse.html:84
 msgid "Course second language"
 msgstr "  لغة الكورس الثانية"
 
-#: .\templates\teachers\makeMyCourse.html:95
+#: .\templates\teachers\makeMyCourse.html:92
 msgid "Course image"
 msgstr "صورة الكورس"
 
-#: .\templates\teachers\makeMyCourse.html:99
+#: .\templates\teachers\makeMyCourse.html:96
 msgid "Youtube link"
 msgstr "رابط اليوتيوب"
 
-#: .\templates\teachers\makeMyCourse.html:101
+#: .\templates\teachers\makeMyCourse.html:98
 msgid "if you have course presentation video on youtube "
 msgstr "رابط تعريفي للكورس او للمعلم على اليوتيوب(إختياري) "
 
-#: .\templates\teachers\makeMyCourse.html:102
+#: .\templates\teachers\makeMyCourse.html:99
 msgid "Get the Url from youtube video> share> Embed> src=\"url\" "
 msgstr "احصل على الرابط الصحيح من اليوتيوب الفيديو share ثم Embed"
 
-#: .\templates\teachers\makeMyCourse.html:109
+#: .\templates\teachers\makeMyCourse.html:106
 msgid "Curriculum type in English"
 msgstr "نوع المنهج بالإنجليزي"
 
-#: .\templates\teachers\makeMyCourse.html:111
-#: .\templates\teachers\makeMyCourse.html:117
+#: .\templates\teachers\makeMyCourse.html:108
+#: .\templates\teachers\makeMyCourse.html:114
+#: .\templates\teachers\makeMyCourse.html:119
 msgid "Hold"
 msgstr "اضغط"
 
-#: .\templates\teachers\makeMyCourse.html:111
-#: .\templates\teachers\makeMyCourse.html:117
+#: .\templates\teachers\makeMyCourse.html:108
+#: .\templates\teachers\makeMyCourse.html:114
 msgid "to choose more than one"
 msgstr "لاختيار أكثر من منهج"
 
-#: .\templates\teachers\makeMyCourse.html:115
+#: .\templates\teachers\makeMyCourse.html:112
 msgid "Curriculum type in Arabic"
 msgstr "نوع المنهج بالعربي"
 
-#: .\templates\teachers\makeMyCourse.html:123
+#: .\templates\teachers\makeMyCourse.html:117
+msgid "Course grades"
+msgstr "الصفوف المعنية بالكورس"
+
+#: .\templates\teachers\makeMyCourse.html:119
+msgid "to choose more than grade"
+msgstr "لاختيار أكثر من صف"
+
+#: .\templates\teachers\makeMyCourse.html:125
 msgid "Course description in English"
 msgstr "وصف الكورس بالانجليزي"
 
-#: .\templates\teachers\makeMyCourse.html:127
+#: .\templates\teachers\makeMyCourse.html:129
 msgid "Course description in Arabic"
 msgstr "وصف الكورس بالعربي"
 
@@ -2024,6 +2034,9 @@ msgstr "لا يمكن ارسال رسال لنفسك"
 #: .\users\views.py:475
 msgid "Your message was successfully sent!"
 msgstr "تم ارسال رسالتك بنجاح"
+
+#~ msgid "Review Course"
+#~ msgstr "قيم الكورس"
 
 #~ msgid "Hi"
 #~ msgstr "أهلا"

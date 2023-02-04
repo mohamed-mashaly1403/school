@@ -108,6 +108,7 @@ def checkout (request,slug='',lessons=0, price=0):
 
     needed_course_type_all_en=needed_course_type.typeEN.all()
     needed_course_type_all_ar=needed_course_type.typeAR.all()
+    needed_course_Gr=needed_course_type.courseGrades.all()
 
 
 
@@ -125,7 +126,8 @@ def checkout (request,slug='',lessons=0, price=0):
         'needed_course_type_all_En':needed_course_type_all_en,
         'needed_course_type_all_ar':needed_course_type_all_ar,
         'lessons': lessons,
-        'lang':lang
+        'lang':lang,
+        'needed_course_Gr':needed_course_Gr
 
     }
     return render(request, 'orders/checkout.html', context)

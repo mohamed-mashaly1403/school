@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import course, RatingReview,TypeAR,TypeEN,Price,CoursePrevEN,CoursePrevAR,CoursePrevENNa,CoursePrevARNaa
+from .models import course, RatingReview,TypeAR,TypeEN,Price,CoursePrevEN,CoursePrevAR,CoursePrevENNa,CoursePrevARNaa,Grades
 
 
 # Register your models here.
@@ -15,4 +15,5 @@ admin.site.register(CoursePrevEN)
 admin.site.register(CoursePrevAR)
 admin.site.register(CoursePrevENNa)
 admin.site.register(CoursePrevARNaa)
+admin.site.register(Grades)
 

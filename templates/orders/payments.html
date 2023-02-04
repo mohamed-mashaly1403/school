@@ -3,7 +3,7 @@
 {% load static%}
 {% load i18n %}
 {% block title %}Payment{% endblock %}
-
+{% get_current_language as LANGUAGE_CODE %}
 <section class="section-content padding-y bg">
     <br>
     <br>
@@ -52,17 +52,17 @@
                         <p class="card-text">{%trans 'PayPal'%}</p>
                     </div>
                 </div>
-                <div class="card">
-                    <h5 class="card-header"><strong>{%trans 'Review Course'%}</strong></h5>
+                <div class="card ">
+                    <h5 class="card-header"><strong>{%trans ' My Course '%}</strong></h5>
                     <div class="card-body">
 
                         <table class="table table-borderless table-shopping-cart">
-                            <thead class="text-muted">
-                            <tr class="small text-uppercase">
-                                <th scope="col" width="120">{%trans 'Course'%}</th>
-                                <th scope="col" width="120">{%trans 'lessons'%}</th>
+                            <thead class="text-muted ">
+                            <tr class="small text-uppercase ">
+                                <th class="text-center" scope="col" width="120">{%trans 'Course'%}</th>
+                                <th  class="text-center" scope="col" width="120">{%trans 'lessons'%}</th>
 
-                                <th scope="col" width="120">{%trans 'Price'%}</th>
+                                <th   class="text-center" scope="col" width="120">{%trans 'Price'%}</th>
 
 
 
@@ -74,11 +74,11 @@
 
 
                             <tr>
-                                <td>
+                                <td class="text-center">
                                     <figure class="itemside align-items-center">
-                                        <div class="aside">
+                                        <div class="aside"  >
                                             <figcaption class="info">
-                                                <a class="title" href="{{ needed_course.get_url }}"><strong>{{needed_course.course_name}} {%trans 'Course'%}</strong></a>
+                                                <a class="title" href="{{ needed_course.get_url }}"><strong>{% if LANGUAGE_CODE == 'ar' %} {{needed_course.course_name_ar}}{%else%} {{needed_course.course_name}} {% endif %}</strong></a>
 
                                         </figcaption>
                                             <br>
@@ -90,11 +90,11 @@
 
                                     </figure>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <h5 >{{order.total_classes}} </h5>
 
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <div class="price-wrap">
                                         <var class="price">USD{{order.gtotal}}</var>
 

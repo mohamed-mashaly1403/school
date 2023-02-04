@@ -76,27 +76,14 @@
 
 </div>
         <div class="form-row">
-            {%if needed_course.is_school_subject %}
+  {%if needed_course.is_school_subject %}
 <div class="col form-group">
      <label>{%trans 'Grade'%} <span style="color:red">*</span></label>
     <select name="grade" required class="form-select form-select-lg mb-3">
 
-
-
-    <option   value="1" class="form-control"  >1</option>
-    <option   value="2" class="form-control"  >2</option>
-    <option   value="3" class="form-control"  >3</option>
-    <option   value="4" class="form-control"  >4</option>
-    <option   value="5" class="form-control"  >5</option>
-    <option   value="6" class="form-control"  >6</option>
-    <option   value="7" class="form-control"  >7</option>
-    <option   value="8" class="form-control"  >8</option>
-    <option   value="9" class="form-control"  >9</option>
-    <option  value="10" class="form-control"  >10</option>
-    <option  value="11" class="form-control"  >11</option>
-    <option  value="12" class="form-control"  >12</option>
-
-
+{% for i in  needed_course_Gr   %}
+    <option   value={{i}} class="form-control">{{i}}</option>
+{% endfor %}
 
         </select>
     <small>{%trans 'Choose Your Grade'%}</small>

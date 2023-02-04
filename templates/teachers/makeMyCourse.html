@@ -55,7 +55,7 @@
 
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 col-sm-12">
                             <label>{%trans 'English Course Name'%}<span style="color:red">*</span></label>
                            {{TeacherMakeMyCourseForm.course_name}}
                             <small id='small' class="form-text text-muted">{%trans 'pick a unique course Name'%}</small>
@@ -63,7 +63,7 @@
                        <div style="color: red; display:none;" id="stud_email_err"> {%trans 'Course Name already exists! Use another one!!'%} </div>
 
                         </div>
-                         <div class="form-group col-md-6">
+                         <div class="form-group col-md-6 col-sm-12">
                             <label>{%trans 'Arabic Course Name'%}<span style="color:red">*</span></label>
                             {{TeacherMakeMyCourseForm.course_name_ar}}
                             <small class="form-text text-muted">{%trans 'pick a unique course Name'%}</small>
@@ -72,18 +72,15 @@
                         </div>
 
                     </div>
-                            <div class="form-row">
-                         <div class="form-group col-md-12">
-                          </div>
-                         </div>
+
 
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 col-sm-12">
                             <label>{%trans 'Course first language'%}<span style="color:red">*</span></label>
                             {{TeacherMakeMyCourseForm.language1}}
                         </div>
                         <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 col-sm-12">
                             <label>{%trans 'Course second language'%}</label>
                             {{TeacherMakeMyCourseForm.language2}}
                         </div>
@@ -91,11 +88,11 @@
 
                         <div class="form-row">
 
-                         <div class="form-group col-md-6">
+                         <div class="form-group col-md-6 col-sm-12">
                             <label>{%trans 'Course image'%}<span style="color:red">*</span></label>
                            {{TeacherMakeMyCourseForm.img}}
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 col-sm-12">
                             <label>{%trans 'Youtube link'%}</label>
                            {{TeacherMakeMyCourseForm.youtubeUrl}}
                             <small class="form-text text-muted">{%trans 'if you have course presentation video on youtube '%}</small>
@@ -105,25 +102,30 @@
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4 col-sm-12">
                             <label>{%trans 'Curriculum type in English'%}</label>
                             {{TeacherMakeMyCourseForm.typeEN}}
                         <small class="form-text text-muted">{%trans 'Hold'%} Ctrl {%trans 'to choose more than one'%}</small>
 
                         </div>
-                         <div class="form-group col-md-6  mb-5">
+                         <div class="form-group col-md-4   col-sm-12">
                             <label>{%trans 'Curriculum type in Arabic'%}</label>
                             {{TeacherMakeMyCourseForm.typeAR}}
                             <small class="form-text text-muted">{%trans 'Hold'%} Ctrl {%trans 'to choose more than one'%}</small>
                         </div>
+                        <div class="form-group col-md-4 col-sm-12 ">
+                            <label>{%trans 'Course grades'%}<span style="color:red">*</span></label>
+                            {{TeacherMakeMyCourseForm.courseGrades}}
+                            <small class="form-text text-muted">{%trans 'Hold'%} Ctrl {%trans 'to choose more than grade'%}</small>
+                        </div>
 
                     </div>
                      <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 col-sm-12">
                             <label>{%trans 'Course description in English'%}</label>
                             {{TeacherMakeMyCourseForm.description}}
                         </div>
-                         <div class="form-group col-md-6  mb-5">
+                         <div class="form-group col-md-6  col-sm-12">
                             <label>{%trans 'Course description in Arabic'%}</label>
                             {{TeacherMakeMyCourseForm.description_ar}}
                         </div>
@@ -277,13 +279,16 @@ if($('#id_is_school_subject').not(':checked').length > 0){
     document.getElementById('id_typeEN').disabled = true;
     document.getElementById('id_typeEN').value = '';
     document.getElementById('id_typeAR').disabled = true;
+    document.getElementById('id_courseGrades').disabled = true;
     document.getElementById('id_typeAR').value = '';
+    document.getElementById('id_courseGrades').value = '';
 
 
 } else {
 
     document.getElementById('id_typeEN').disabled = false;
     document.getElementById('id_typeAR').disabled = false;
+    document.getElementById('id_courseGrades').disabled = false;
 
 
 }
@@ -294,13 +299,18 @@ checkbox.addEventListener('change', (event) => {
         if (event.target.checked) {
             document.getElementById('id_typeEN').disabled = false;
             document.getElementById('id_typeAR').disabled = false;
+            document.getElementById('id_courseGrades').disabled = false;
+            document.getElementById('id_courseGrades').required = true;
 
 
 } else {
             document.getElementById('id_typeEN').disabled = true;
+            document.getElementById('id_courseGrades').disabled = true;
             document.getElementById('id_typeAR').disabled = true;
              document.getElementById('id_typeEN').value = '';
              document.getElementById('id_typeAR').value = '';
+             document.getElementById('id_courseGrades').value = '';
+             document.getElementById('id_courseGrades').required = false;
 
     }
 })

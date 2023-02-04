@@ -18,6 +18,26 @@ lang_tr =  [
     ('الفرنسية', 'الفرنسية'),
     ('الصينية', 'الصينية'),
 ]
+gradess =[
+    ('1', '1'),
+    ('2', '2'),
+    ('3', '3'),
+    ('4', '4'),
+    ('5', '5'),
+    ('6', '6'),
+    ('7', '7'),
+    ('8', '8'),
+    ('9', '9'),
+    ('10', '10'),
+    ('11', '11'),
+    ('12', '12'),
+
+]
+class Grades (models.Model):
+    grade = models.CharField(max_length=3,choices=gradess, blank=True,default='')
+    def __str__(self):
+        return self.grade
+
 class TypeEN(models.Model):
     tybe_Type_en = models.CharField(max_length=30)
 
@@ -37,6 +57,7 @@ class course(models.Model):
     language1_tr = models.CharField(max_length=15,choices=lang_tr,blank=False,default='')
     language2 = models.CharField(max_length=15, choices=lang, blank=False,default='')
     language2_tr = models.CharField(max_length=15, choices=lang_tr, blank=False,default='')
+    courseGrades = models.ManyToManyField(Grades, blank=True)
     typeEN = models.ManyToManyField(TypeEN, blank=True)
     typeAR= models.ManyToManyField(TypeAR, blank=True)
     description = models.TextField(max_length=500,blank=True)
