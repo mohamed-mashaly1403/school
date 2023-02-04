@@ -1350,7 +1350,7 @@ msgstr "سيقوم المعلم بإضافة الرابط قريبا"
 #: .\templates\teachers\TeacherCourseDetails.html:147
 #: .\templates\teachers\TeacherCourseDetails.html:152
 msgid "Course Material URl"
-msgstr "رابط المواد العلمبة للكورس "
+msgstr "رابط المواد العلمية للكورس "
 
 #: .\templates\orders\order_course-details.html:166
 #: .\templates\orders\order_course-details.html:168
