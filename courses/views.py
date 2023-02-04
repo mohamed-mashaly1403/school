@@ -43,7 +43,7 @@ def courses(request):
 def courseDetails(request,course_name):
     courseDets = course.objects.get(slug__iexact=course_name)
     price = Price.objects.all().order_by('courseClasses')
-    price1st = Price.objects.all()[0].coursePrice
+    price1st = Price.objects.all()[0].minn
     reviews = RatingReview.objects.filter(course__slug=course_name, status=True).order_by('updated_date')
     rates=[]
     courseTeacher = courseDets.teacher

@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from django.db.models import Count, Avg
+from django.db.models import Count, Avg,Min
 
 # Create your models here.
 from Teachers.models import TeacherProfile
@@ -150,6 +150,14 @@ class Price (models.Model):
     CprivENNa = models.ManyToManyField(CoursePrevENNa, blank=True)
     CprivAR = models.ManyToManyField(CoursePrevAR, blank=True)
     CprivARNa = models.ManyToManyField(CoursePrevARNaa, blank=True)
+
+    @property
+    def minn(self):
+        minimum = Price.objects.aggregate(Min('coursePrice'))["coursePrice__min"]
+
+
+        return minimum
+
 
     def __int__(self):
         return self.coursePrice
