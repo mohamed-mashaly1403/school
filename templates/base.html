@@ -100,10 +100,15 @@
   {%endif%}
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+  	{% if debug %}
+  	        <script src="https://www.paypal.com/sdk/js?client-id=Af5MlogypUf7ENCARTq3_rr1sl4Wx6xRCWP_mA9Wp5BnCg86zZtyICZv7Tkw5Yb0yIfGkFofKQmS8x2t&currency=USD"></script>
+  	{%else%}
+            <script src="https://www.paypal.com/sdk/js?client-id=AaaN7NFP0GjcsLMkjUBzfv6hGYf9OWbVP8knCAcRnuK0HJ1dPnNzz8DbwJaFUzir6iNL_3P1IzeKInWt&currency=USD"></script>
+  	{%endif%}
 
-  <script src="https://www.paypal.com/sdk/js?client-id=AaaN7NFP0GjcsLMkjUBzfv6hGYf9OWbVP8knCAcRnuK0HJ1dPnNzz8DbwJaFUzir6iNL_3P1IzeKInWt&currency=USD"></script>
 
-<!--   <script src="https://www.paypal.com/sdk/js?client-id=Af5MlogypUf7ENCARTq3_rr1sl4Wx6xRCWP_mA9Wp5BnCg86zZtyICZv7Tkw5Yb0yIfGkFofKQmS8x2t&currency=USD"></script> -->
+
+
 
 
 

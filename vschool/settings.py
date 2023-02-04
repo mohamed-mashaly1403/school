@@ -38,7 +38,10 @@ if DEBUG is True:
 if DEBUG is False:
     ALLOWED_HOSTS = ['159.65.229.213','myschools.site','www.myschools.site']
 
-
+INTERNAL_IPS = (
+    '127.0.0.1',
+    '159.65.229.213',
+)
 # Application definition
 
 INSTALLED_APPS = [
