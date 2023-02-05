@@ -1153,7 +1153,7 @@ msgstr "أهلا"
 
 #: .\templates\includes\navbar.html:131
 msgid "Logout"
-msgstr "تسجيل خروج"
+msgstr "خروج"
 
 #: .\templates\includes\navbar.html:166
 msgid "Are you sure you want to logout?"
