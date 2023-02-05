@@ -1051,7 +1051,7 @@ msgstr "تعديل كورساتي"
 #: .\templates\includes\TeacherdashboardSide.html:98
 #: .\templates\includes\dashboardSide.html:33
 msgid "Log out"
-msgstr "تسجيل خروج"
+msgstr "خروج"
 
 #: .\templates\includes\dashboardSide.html:23
 msgid "Dashboard"
