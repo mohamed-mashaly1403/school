@@ -3,7 +3,7 @@
 {% load i18n %}
 {% block title %}Complains{% endblock %}
 <!-- ========================= SECTION CONTENT ========================= -->
-<section class="section-conten padding-y bg  ">
+<section class="section-content padding-y bg  ">
 <!--{% include 'includes/alerts.html' %}-->
     <br>
     <br>
@@ -11,10 +11,11 @@
     <br>
 
 <div class="container">
-    {% include 'includes/dashboardSide.html'%}
 	<div class="row d-flex justify-content-center ">
 
-	<main class="col-md-8">
+    {% include 'includes/dashboardSide.html'%}
+
+	<main class="col-7">
 		<article class="card">
 		<header class="card-header">
 			<strong class="d-inline-block mr-3"> {%trans 'Complains'%} </strong>
