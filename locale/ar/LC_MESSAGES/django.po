@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 01:27+0400\n"
+"POT-Creation-Date: 2023-02-05 23:05+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -189,7 +189,7 @@ msgstr "تم التعديل بنجاح"
 msgid "meeting not open "
 msgstr "الحصة ليست مفتوحة"
 
-#: .\orders\models.py:89
+#: .\orders\models.py:91
 msgid "New student waiting"
 msgstr "طالب جديد في الانتظار"
 
@@ -242,59 +242,59 @@ msgstr "الحالة"
 msgid "Not Orderd"
 msgstr "لم يتم الطلب"
 
-#: .\templates\accounts\change_password.html:62
-#: .\templates\includes\TeacherdashboardSide.html:51
-#: .\templates\includes\dashboardSide.html:15
+#: .\templates\accounts\change_password.html:63
+#: .\templates\includes\TeacherdashboardSide.html:59
+#: .\templates\includes\dashboardSide.html:27
 msgid "Change Password"
 msgstr "تغيير كلمة المرور"
 
-#: .\templates\accounts\change_password.html:75
+#: .\templates\accounts\change_password.html:76
 msgid "Current Password"
 msgstr "كلمة المرور الحالية"
 
-#: .\templates\accounts\change_password.html:76
+#: .\templates\accounts\change_password.html:77
 msgid "Enter your current Password"
 msgstr "ادخل كلمة المرور الحالية"
 
-#: .\templates\accounts\change_password.html:82
+#: .\templates\accounts\change_password.html:83
 msgid "New password"
 msgstr "كلمة المرور الجديدة"
 
-#: .\templates\accounts\change_password.html:83
+#: .\templates\accounts\change_password.html:84
 msgid "Enter your new Password"
 msgstr "ادخل كلمة المرور الجديدة"
 
-#: .\templates\accounts\change_password.html:90
+#: .\templates\accounts\change_password.html:91
 msgid "Confirm New password"
 msgstr "تأكيد كلمة المرور"
 
-#: .\templates\accounts\change_password.html:91
+#: .\templates\accounts\change_password.html:92
 msgid "Confirm your new Password"
 msgstr "تأكيد كلمة المرور"
 
-#: .\templates\accounts\change_password.html:99
+#: .\templates\accounts\change_password.html:100
 #: .\templates\accounts\edit_profile.html:84
 #: .\templates\teachers\Teacheredit_profile.html:164
 #: .\templates\teachers\makeMyCourse.html:142
 msgid "save"
 msgstr "حفظ"
 
-#: .\templates\accounts\complains.html:20 .\templates\includes\footer.html:27
+#: .\templates\accounts\complains.html:21 .\templates\includes\footer.html:27
 #: .\templates\includes\footer.html:29 .\templates\includes\navbar.html:45
 msgid "Complains"
 msgstr "الشكاوي"
 
-#: .\templates\accounts\complains.html:35
-#: .\templates\teachers\Teachercomplains.html:36
+#: .\templates\accounts\complains.html:36
+#: .\templates\teachers\Teachercomplains.html:37
 msgid "Complain Title(Regards):"
 msgstr "عنوان الشكوى او البلاغ"
 
-#: .\templates\accounts\complains.html:38
-#: .\templates\teachers\Teachercomplains.html:39
+#: .\templates\accounts\complains.html:39
+#: .\templates\teachers\Teachercomplains.html:40
 msgid "Complain:"
 msgstr "الشكوى او البلاغ"
 
-#: .\templates\accounts\complains.html:41
+#: .\templates\accounts\complains.html:42
 #: .\templates\orders\order_course-details.html:309
 #: .\templates\orders\order_course-details.html:339
 #: .\templates\teachers\TeacherCourseDetails.html:253
@@ -302,7 +302,7 @@ msgstr "الشكوى او البلاغ"
 #: .\templates\teachers\TeacherCourseDetails.html:343
 #: .\templates\teachers\TeacherCourseDetails.html:374
 #: .\templates\teachers\TeacherCourseDetails.html:431
-#: .\templates\teachers\withdrawRequest.html:45
+#: .\templates\teachers\withdrawRequest.html:46
 msgid "submit"
 msgstr "ارسل"
 
@@ -690,7 +690,6 @@ msgstr "اختر لغة الكورس والصف ثم ابدء"
 
 #: .\templates\course-details.html:27 .\templates\orders\order_complete.html:61
 #: .\templates\orders\payments.html:62
-#: .\templates\teachers\TeacherCourseDetails.html:12
 msgid "Course"
 msgstr "الكورس"
 
@@ -1006,72 +1005,72 @@ msgstr "الفنون المرئية"
 msgid "Popular Courses"
 msgstr "الكورسات الرائجة"
 
-#: .\templates\includes\TeacherdashboardSide.html:43
+#: .\templates\includes\TeacherdashboardSide.html:51
 msgid "Teacher Dashboard"
 msgstr "لوحة التحكم"
 
-#: .\templates\includes\TeacherdashboardSide.html:44
+#: .\templates\includes\TeacherdashboardSide.html:52
 msgid "Teacher Courses"
 msgstr "كورسات المعلم"
 
-#: .\templates\includes\TeacherdashboardSide.html:45
+#: .\templates\includes\TeacherdashboardSide.html:53
 msgid "Teacher Active Courses"
 msgstr "كورسات المعلم النشطة"
 
-#: .\templates\includes\TeacherdashboardSide.html:46
+#: .\templates\includes\TeacherdashboardSide.html:54
 msgid "Edit Teacher profile"
 msgstr "تعديل حسابي"
 
-#: .\templates\includes\TeacherdashboardSide.html:47
-#: .\templates\includes\dashboardSide.html:17
+#: .\templates\includes\TeacherdashboardSide.html:55
+#: .\templates\includes\dashboardSide.html:29
 msgid "complains"
 msgstr "الشكاوى والبلاغات"
 
-#: .\templates\includes\TeacherdashboardSide.html:48
-msgid "Received installments"
+#: .\templates\includes\TeacherdashboardSide.html:56
+msgid "Received money"
 msgstr "الدفعات المستلمة"
 
-#: .\templates\includes\TeacherdashboardSide.html:49
+#: .\templates\includes\TeacherdashboardSide.html:57
 #: .\templates\teachers\teasherDashboard.html:79
 msgid "Ask to withdraw"
 msgstr "طلب دفعة"
 
-#: .\templates\includes\TeacherdashboardSide.html:50
+#: .\templates\includes\TeacherdashboardSide.html:58
 msgid "Edit user profile"
 msgstr "تعديل حسابي"
 
-#: .\templates\includes\TeacherdashboardSide.html:52
+#: .\templates\includes\TeacherdashboardSide.html:60
 msgid "Create new course"
 msgstr "تصميم كورس جديد"
 
-#: .\templates\includes\TeacherdashboardSide.html:53
-#: .\templates\includes\TeacherdashboardSide.html:62
+#: .\templates\includes\TeacherdashboardSide.html:61
+#: .\templates\includes\TeacherdashboardSide.html:70
 msgid "Edit my courses"
 msgstr "تعديل كورساتي"
 
-#: .\templates\includes\TeacherdashboardSide.html:90
-#: .\templates\includes\dashboardSide.html:21
+#: .\templates\includes\TeacherdashboardSide.html:98
+#: .\templates\includes\dashboardSide.html:33
 msgid "Log out"
 msgstr "تسجيل خروج"
 
-#: .\templates\includes\dashboardSide.html:11
+#: .\templates\includes\dashboardSide.html:23
 msgid "Dashboard"
 msgstr "لوحة التحكم"
 
-#: .\templates\includes\dashboardSide.html:12
+#: .\templates\includes\dashboardSide.html:24
 msgid "My Courses"
 msgstr "كورساتي"
 
-#: .\templates\includes\dashboardSide.html:13
+#: .\templates\includes\dashboardSide.html:25
 msgid "My Active Courses"
 msgstr "كورساتي النشطة"
 
-#: .\templates\includes\dashboardSide.html:14
+#: .\templates\includes\dashboardSide.html:26
 msgid "Edit profile"
 msgstr "تعديل حسابي"
 
-#: .\templates\includes\dashboardSide.html:16
-msgid "Uncompleted Orders"
+#: .\templates\includes\dashboardSide.html:28
+msgid "Unfinished Orders"
 msgstr "الطلبات غير المكتملة"
 
 #: .\templates\includes\footer.html:13
@@ -1694,7 +1693,7 @@ msgstr "نُشر"
 msgid "Total classes"
 msgstr "عدد الحصص"
 
-#: .\templates\teachers\Teachercomplains.html:21
+#: .\templates\teachers\Teachercomplains.html:22
 msgid "Teacher Complains"
 msgstr "شكاوي المعلمين"
 
@@ -1920,7 +1919,7 @@ msgid "Withdrawable balance"
 msgstr "اسحب الرصيد"
 
 #: .\templates\teachers\teasherDashboard.html:83
-#: .\templates\teachers\withdrawRequest.html:53
+#: .\templates\teachers\withdrawRequest.html:54
 msgid "Minimum limit for withdraw 50 $"
 msgstr "اقل مبلغ للسحب $50 "
 
@@ -1934,19 +1933,19 @@ msgstr "شكراً لتسجيلك معنا رجاء الإنتظار حتى يت
 msgid "Go to Home?"
 msgstr "الذهاب للصفحة الرئيسية"
 
-#: .\templates\teachers\withdrawRequest.html:21
+#: .\templates\teachers\withdrawRequest.html:22
 msgid "Money Withdrawn Request"
 msgstr "طلب سحب الرصيد"
 
-#: .\templates\teachers\withdrawRequest.html:37
+#: .\templates\teachers\withdrawRequest.html:38
 msgid "Withdraw Request"
 msgstr "طلب سحب الرصيد"
 
-#: .\templates\teachers\withdrawRequest.html:41
+#: .\templates\teachers\withdrawRequest.html:42
 msgid "how much money to withdraw?"
 msgstr "المبلغ المطلوب سحبه؟"
 
-#: .\templates\teachers\withdrawRequest.html:52
+#: .\templates\teachers\withdrawRequest.html:53
 msgid "Your available balance to receive"
 msgstr "المبلغ المتاح للسحب"
 
