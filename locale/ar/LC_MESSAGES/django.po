@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 23:05+0400\n"
+"POT-Creation-Date: 2023-02-05 23:26+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -243,8 +243,8 @@ msgid "Not Orderd"
 msgstr "لم يتم الطلب"
 
 #: .\templates\accounts\change_password.html:63
-#: .\templates\includes\TeacherdashboardSide.html:59
-#: .\templates\includes\dashboardSide.html:27
+#: .\templates\includes\TeacherdashboardSide.html:65
+#: .\templates\includes\dashboardSide.html:31
 msgid "Change Password"
 msgstr "تغيير كلمة المرور"
 
@@ -1005,71 +1005,71 @@ msgstr "الفنون المرئية"
 msgid "Popular Courses"
 msgstr "الكورسات الرائجة"
 
-#: .\templates\includes\TeacherdashboardSide.html:51
+#: .\templates\includes\TeacherdashboardSide.html:57
 msgid "Teacher Dashboard"
 msgstr "لوحة التحكم"
 
-#: .\templates\includes\TeacherdashboardSide.html:52
+#: .\templates\includes\TeacherdashboardSide.html:58
 msgid "Teacher Courses"
 msgstr "كورسات المعلم"
 
-#: .\templates\includes\TeacherdashboardSide.html:53
+#: .\templates\includes\TeacherdashboardSide.html:59
 msgid "Teacher Active Courses"
 msgstr "كورسات المعلم النشطة"
 
-#: .\templates\includes\TeacherdashboardSide.html:54
+#: .\templates\includes\TeacherdashboardSide.html:60
 msgid "Edit Teacher profile"
 msgstr "تعديل حسابي"
 
-#: .\templates\includes\TeacherdashboardSide.html:55
-#: .\templates\includes\dashboardSide.html:29
+#: .\templates\includes\TeacherdashboardSide.html:61
+#: .\templates\includes\dashboardSide.html:33
 msgid "complains"
 msgstr "الشكاوى والبلاغات"
 
-#: .\templates\includes\TeacherdashboardSide.html:56
+#: .\templates\includes\TeacherdashboardSide.html:62
 msgid "Received money"
 msgstr "الدفعات المستلمة"
 
-#: .\templates\includes\TeacherdashboardSide.html:57
+#: .\templates\includes\TeacherdashboardSide.html:63
 #: .\templates\teachers\teasherDashboard.html:79
 msgid "Ask to withdraw"
 msgstr "طلب دفعة"
 
-#: .\templates\includes\TeacherdashboardSide.html:58
+#: .\templates\includes\TeacherdashboardSide.html:64
 msgid "Edit user profile"
 msgstr "تعديل حسابي"
 
-#: .\templates\includes\TeacherdashboardSide.html:60
+#: .\templates\includes\TeacherdashboardSide.html:66
 msgid "Create new course"
 msgstr "تصميم كورس جديد"
 
-#: .\templates\includes\TeacherdashboardSide.html:61
-#: .\templates\includes\TeacherdashboardSide.html:70
+#: .\templates\includes\TeacherdashboardSide.html:67
+#: .\templates\includes\TeacherdashboardSide.html:76
 msgid "Edit my courses"
 msgstr "تعديل كورساتي"
 
-#: .\templates\includes\TeacherdashboardSide.html:98
-#: .\templates\includes\dashboardSide.html:33
+#: .\templates\includes\TeacherdashboardSide.html:104
+#: .\templates\includes\dashboardSide.html:37
 msgid "Log out"
 msgstr "خروج"
 
-#: .\templates\includes\dashboardSide.html:23
+#: .\templates\includes\dashboardSide.html:27
 msgid "Dashboard"
 msgstr "لوحة التحكم"
 
-#: .\templates\includes\dashboardSide.html:24
+#: .\templates\includes\dashboardSide.html:28
 msgid "My Courses"
 msgstr "كورساتي"
 
-#: .\templates\includes\dashboardSide.html:25
+#: .\templates\includes\dashboardSide.html:29
 msgid "My Active Courses"
 msgstr "كورساتي النشطة"
 
-#: .\templates\includes\dashboardSide.html:26
+#: .\templates\includes\dashboardSide.html:30
 msgid "Edit profile"
 msgstr "تعديل حسابي"
 
-#: .\templates\includes\dashboardSide.html:28
+#: .\templates\includes\dashboardSide.html:32
 msgid "Unfinished Orders"
 msgstr "الطلبات غير المكتملة"
 
