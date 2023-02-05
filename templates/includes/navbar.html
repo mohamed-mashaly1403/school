@@ -81,11 +81,11 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="notifications-dropdown"
                         data-popper-placement="bottom-end"
-                        style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(-70px, 42px, 0px);overflow: auto ;">
+                        style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(-70px, 42px, 0px);overflow: auto ; ">
 
                         {% for i in notifications %}
                         {% if user.is_authenticated %}
-                        <li class="dropdown-item d-flex flex-row justify-content-between">
+                        <li  class="dropdown-item d-flex flex-row justify-content-md-between justify-content-sm-around justify-content-xs-around">
                           {% if i.sender.user_img %}
 
                         <img  height="30" class="rounded-circle mb-2" style="margin-left:5px"  src="{{i.sender.user_img.url}}" alt="user picture">
