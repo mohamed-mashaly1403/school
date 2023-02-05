@@ -234,10 +234,6 @@ def order_details(request,order_id):
         is_exist = CloseLive.objects.get(order=order)
     except:
         is_exist = False
-
-
-
-
     context={
         'order_detail':order_detail,
         'order': order,
