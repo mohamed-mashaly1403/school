@@ -13,7 +13,7 @@ def handler404(request, exception):
 def home(request):
     courses = orderPoduct.objects.values_list('order_course__course_name').annotate(course_count=Count('order_course')).order_by('-course_count')[:3]
     orderrr=[a_tuple[0] for a_tuple in courses]
-    price = Price.objects.all()[0].coursePrice
+    price = Price.objects.all()[0].minn
 
     cour = []
     for i in orderrr:
