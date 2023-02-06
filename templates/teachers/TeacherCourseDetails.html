@@ -462,6 +462,10 @@
  $(".uno1" ).click(function() {
 	$('.due1')[0].click();
 });
+var today = new Date().toISOString().slice(0, 16);
+
+document.getElementsByName("classTime")[0].min = today;
+
 </script>
 {% endblock %}
 
