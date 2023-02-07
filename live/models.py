@@ -8,10 +8,11 @@ from orders.models import Order, orderPoduct
 
 
 class CloseLive(models.Model):
-    order = models.CharField(max_length=1000)
+    order = models.IntegerField(unique=True)
+    classno = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
+    def __int__(self):
         return self.order
 
     def notify(sender, instance, *args, **kwargs):

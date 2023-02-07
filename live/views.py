@@ -14,7 +14,8 @@ from orders.models import Order
 import random
 
 @user_passes_test(lambda u: u.is_staff)
-def startLive(request,course,order):
+def startLive(request,course,order,classno):
+    roomid = order + str(classno)
     appID ='4bce2e802a5646a89835b1532ce8af71'
     appCertificate ='8dd20bc3d33c4c7d9646522038cb661f'
     user = str(request.user.id)
@@ -31,15 +32,20 @@ def startLive(request,course,order):
     if order =="serviceWorker.js":
         pass
     else:
-        live = CloseLive( order=order )
+        live = CloseLive( order=order,classno=classno)
         # CloseLive.objects.get_or_create(order=order)
-        live.save()
+        try:
+            live.save()
+        except:
+            pass
+
     context = {
         "token": json.dumps(token),
         "user":json.dumps(str(user)),
         "user_name":json.dumps(str(user_name)),
         "course":json.dumps(str(course)),
         "order":json.dumps(str(order)),
+        "roomid":json.dumps(str(roomid)),
         'appID': appID,
         'appCertificate': appCertificate,
     }
@@ -50,7 +56,8 @@ def startLive(request,course,order):
 
 
 @login_required(login_url='login')
-def joinLive(request,course,order):
+def joinLive(request,course,order,classno):
+    roomid = order + str(classno)
     url = request.META.get('HTTP_REFERER')
     try:
         CloseLive.objects.filter(order=order).exists()
@@ -60,7 +67,7 @@ def joinLive(request,course,order):
         user_name = str(request.user.first_name)
 
         from live.RtmTokenBuilder import RtmTokenBuilder, Role_Rtm_User
-        expirationTimeInSeconds = 3600
+        expirationTimeInSeconds = 36000
         currentTimestamp = int(time.time())
         privilegeExpiredTs = currentTimestamp + expirationTimeInSeconds
         token = RtmTokenBuilder.buildToken(appID, appCertificate, user, Role_Rtm_User, privilegeExpiredTs)
@@ -71,6 +78,7 @@ def joinLive(request,course,order):
             'user_name':user_name,
             'course':course,
             'order':order,
+            'roomid':roomid,
             'appID':appID,
             'appCertificate':appCertificate,
 

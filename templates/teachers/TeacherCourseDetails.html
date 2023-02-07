@@ -51,12 +51,15 @@
               <p> <a href="{% url 'createMessage' order.id %}"> {{order.first_name}}  </p>
 
               </div>
+              {% for i in  "x"|rjust:order.total_classes %}
               {% if order_detail.is_deliverd %}
               {%else%}
-               <a  target="_blank" href="{% url 'startLive'  order.order_course order %}"><div class="course-info text-center">
-             <h5>{%trans 'Start live class'%}</h5>
+
+               <a  target="_blank" href="{% url 'startLive'  order.order_course order forloop.counter %}"><div class="course-info text-center">
+             <h5>{%trans 'Start live class'%}  {{forloop.counter}} </h5>
               </div></a>
               {%endif%}
+              {%endfor%}
 
 
           </div>

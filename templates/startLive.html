@@ -19,6 +19,7 @@
    let user ={{user| safe}};
    let user_name ={{user_name| safe}};
    let course ={{course| safe}};
+   let roomid = {{roomid|safe}};
    var order ={{order| safe}};
    var redirect_url ="{% url 'closeLive'%}";
    var redirect_urll ="{% url 'closepage'%}";
@@ -45,14 +46,14 @@
         // The user ID must be the same as the one you used for generating the RTM token
         userUuid: user,
         userName: user_name,
-        roomUuid: order,
+        roomUuid: roomid,
         roomName: course,
         roleType: 1,
         roomType: 0,
         pretest: false,
         language: "en",
         startTime: new Date().getTime(),
-        duration: 60 * 30,
+        duration: 60 * 60,
         courseWareList: [],
         listener: (evt) => {
         if (evt === 1){

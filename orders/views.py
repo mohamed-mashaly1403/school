@@ -226,21 +226,27 @@ def order_details(request,order_id):
     Inboxnotif.objects.filter(recipient=request.user, notif_type=4).delete()
     order_detail = orderPoduct.objects.get(order__order_number=order_id)
     order = Order.objects.get(order_number=order_id)
+    print(order)
     urls = orderPoductClasses.objects.filter(order__order_number=order_id).order_by('updated_at')
     reviews = RatingReview.objects.all().filter(order__order_number=order_id,status=True)
     urls_Deliverd = orderPoductClasses.objects.filter(order__order_number=order_id,class_url_is_deliverd=True)
     left = order.total_classes - urls_Deliverd.count()
     try:
-        is_exist = CloseLive.objects.get(order=order)
+        is_exist = CloseLive.objects.get(order=order.order_number)
+        print(is_exist)
+
+
     except:
-        is_exist = False
+        is_exist=False
+
     context={
         'order_detail':order_detail,
         'order': order,
         'urls':urls,
         'reviews':reviews,
         'left':left,
-        'is_exist':is_exist
+        'is_exist':is_exist,
+
     }
     return render(request,'orders/order_course-details.html',context)
 @login_required(login_url='login')
