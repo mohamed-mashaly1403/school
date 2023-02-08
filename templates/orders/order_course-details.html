@@ -66,6 +66,12 @@
                 <a target="_blank" href="{% url 'joinLive'  order.order_course order is_exist.classno %}"><div class="course-info text-center">
              <h5>{%trans 'join live class'%}</h5>
               </div></a>
+              {%else%}
+               <div class="course-info d-flex justify-content-between align-items-center">
+
+              <h5 class="text-danger">{%trans 'Class not open'%}</h5>
+              <a href ="javascript:window.location.href=window.location.href"><p class="text-warning">{%trans 'Refresh the page'%} </p></a>
+              </div>
               {%endif%}
 
           </div>

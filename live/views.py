@@ -27,6 +27,10 @@ def startLive(request,course,order,classno):
     token = RtmTokenBuilder.buildToken(appID, appCertificate, user, Role_Rtm_User, privilegeExpiredTs)
     try:
         CloseLive.objects.filter(order="serviceWorker.js").delete()
+        if CloseLive.objects.filter( order=order,classno=classno).exist():
+            CloseLive.objects.filter(order=order, classno=classno).delete()
+        else:
+            print('nnnnnop')
     except:
         pass
     if order =="serviceWorker.js":
