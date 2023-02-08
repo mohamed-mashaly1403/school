@@ -162,9 +162,7 @@ def payments(request):
     orderPoductt.ordered = True
     orderPoductt.save()
     Order.objects.filter(user=current_user,is_ordered=False).delete()
-    print(order.order_course.course_name)
-    print(order.order_course.teacher)
-    # send mail to customer
+       # send mail to customer
     mail_subject = 'Congratulation your order has set successfully'
     mail_body = render_to_string('orders/orderset.html', {
         'user': current_user,
