@@ -55,6 +55,7 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     order_note = models.CharField(max_length=100, blank=True)
+    is_trial = models.BooleanField(default=False)
 
 
 
@@ -78,7 +79,10 @@ class orderPoduct(models.Model):
 
     @property
     def Teacher_cost(self):
-        return math.floor(self.product_price * 0.7)
+        if self.order.is_trial:
+            return 0
+        else:
+            return math.floor(self.product_price * 0.7)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

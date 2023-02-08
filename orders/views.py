@@ -1,3 +1,5 @@
+import math
+
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import gettext as _
 import json
@@ -19,7 +21,7 @@ from django.template.loader import render_to_string
 
 # Create your views here.
 @login_required(login_url='login')
-def place_order(request,needed_course_id,price,lessons):
+def place_order(request,needed_course_id,price,lessons,is_trial="is_trial"):
       if request.method == 'POST':
         current_user = request.user
         form = OrderForm(request.POST)
@@ -27,6 +29,8 @@ def place_order(request,needed_course_id,price,lessons):
         if form.is_valid():
             print(form.errors)
             data = Order()
+            if is_trial == "is_trial":
+                data.is_trial=True
             data.first_name = request.user.first_name
             data.last_name = request.user.last_name
             data.phone = request.user.phone
@@ -49,7 +53,7 @@ def place_order(request,needed_course_id,price,lessons):
                 data.tax = 0
                 data.gtotal = 0
             else:
-                data.tax = (data.total * data.quantity) * 0.05
+                data.tax = math.floor((data.total * data.quantity) * 0.05)
                 data.gtotal = (data.total * data.quantity) + data.tax
             data.save()
             yr = int(datetime.date.today().strftime('%Y'))
@@ -100,7 +104,7 @@ def Editplaceorder(request,order_number):
 
 
 @login_required(login_url='login')
-def checkout (request,slug='',lessons=0, price=0):
+def checkout (request,slug='',lessons=0, price=0,is_trial="is_trial"):
     needed_course = course.objects.filter(slug=slug).first()
 
 
@@ -109,15 +113,8 @@ def checkout (request,slug='',lessons=0, price=0):
     needed_course_type_all_en=needed_course_type.typeEN.all()
     needed_course_type_all_ar=needed_course_type.typeAR.all()
     needed_course_Gr=needed_course_type.courseGrades.all()
-
-
-
-
-
-
-
     lang = ['Arabic','English','Quran','French','Chinese']
-
+    print(is_trial)
     context = {
         'price': price,
         'needed_course': needed_course,
@@ -127,7 +124,8 @@ def checkout (request,slug='',lessons=0, price=0):
         'needed_course_type_all_ar':needed_course_type_all_ar,
         'lessons': lessons,
         'lang':lang,
-        'needed_course_Gr':needed_course_Gr
+        'needed_course_Gr':needed_course_Gr,
+        'is_trial':is_trial,
 
     }
     return render(request, 'orders/checkout.html', context)

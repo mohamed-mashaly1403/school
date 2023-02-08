@@ -34,6 +34,7 @@
 
             <div class="course-info d-flex justify-content-between align-items-center">
               <h5>{%trans 'Course Fee(for teacher)'%}</h5>
+              <p class="text-warning"> {%if order_detail.Teacher_cost == 0%}{%trans 'Trial Class'%}{%endif%}</p>
               <p>$ {{order_detail.Teacher_cost}}</p>
             </div>
 

@@ -44,7 +44,7 @@
 <div class="row">
 	<aside class="col-lg-6">
 <div class="card">
-    <form method="POST" action="{% url 'place_order' needed_course_id price lessons   %}"  >
+    <form method="POST" action="{% url 'place_order' needed_course_id price lessons is_trial   %}"  >
 <div class="card-body">
     <h4 class="card-title mb-4">{%trans 'Course Details'%}</h4>
 
@@ -185,34 +185,35 @@
                     <li> <strong style="color:red">{%trans 'Total lessons:'%}<output name="total_classes" for="quantity">{{lessons}}</output> class{{ lessons|pluralize:"es" }}</strong></li>
 
                 </ul>
-                {%if price != 0 %}
-                  <div class="form-row ">
+
+                  <div class="form-row {% if is_trial == 'is_trial' %} hidden {%endif%}">
                 <div class="col form-group ">
 
-<label for="quantity"> {%trans 'Quantity'%}  <span style="color:red">*</span></label>
+            <label for="quantity"> {%trans 'Quantity'%}  <span style="color:red">*</span></label>
                     <div class="number">
                         <span class="minus"><strong>-</strong></span>
-                <input type="number"  name="quantity"  min="1" step="1" value="1" required pattern="[1-9]" id="quantity"  >
+                <input  type="number"  name="quantity"  min="1" step="1" value="1" required pattern="[1-9]" id="quantity"  >
                         <span class="plus"><strong>+</strong></span>
                         </div>
 
                 </div>
                   </div>
-                {%else%}
-                <div class="form-row  " hidden>
-                <div class="col form-group ">
-                    <label> {%trans 'quantity'%}  </label>
 
-                <input type="number"  name="quantity" class="form-control" min="1" step="1" value="1" required pattern="[1-9]"   >
+<!--                 <div class="form-row  " hidden> -->
+<!--                 <div class="col form-group "> -->
+<!--                     <label> {%trans 'quantity'%}  </label> -->
 
-                </div>
-                  </div>
+<!--                 <input  type="number"  name="quantity"  class="form-control" min="1" step="1" value="1" required pattern="[1-9]"   > -->
 
 
-                {%endif%}
+<!--                 </div> -->
+<!--                   </div> -->
+
+
+
                 <br>
 
-<button class="btn btn-danger btn-block" type="submit" name="submit">{%if price != 0 %} {%trans 'Buy Now'%} {%else%} {%trans 'Try Now'%} {%endif%}</button>
+<button class="btn btn-primary btn-block" type="submit" name="submit">{%if is_trial != "is_trial" %} {%trans 'Buy Now'%} {%else%} {%trans 'Try Now'%} {%endif%}</button>
 			<a href="{%url 'courses'%}" class="btn btn-outline-primary btn-block">{%trans 'Go To Courses'%}</a>
             </div>
              </div>
@@ -233,9 +234,13 @@
  <div class=" alert-success " >
     <br class="mb-0 pb-0" >
  <h4 class="alert-heading ">{%trans 'Well done'%}!</h4>
+ {%if is_trial != "is_trial" %}
 <p>{%trans 'Whenever you need to, you can replace the teacher or refund your money'%}</p>
+{%endif%}
 <hr class ="mb-2 mt-0">
+
 <p > {%trans 'Your world is about to look a whole lot better'%}</p>
+
 <br class="mb-0 pb-0">
  </div>  <!--end green-->
  </div>  <!--end green-->

@@ -151,8 +151,13 @@
                  {%endif%}
 
               <div class="btn-wrap">
+                {%if forloop.first  %}
+                <a href="{% url 'checkout' courseDets.slug i.courseClasses i.coursePrice 'is_trial' %}" class="btn-buy">{%trans 'Buy Now'%}</a>
+                {%else%}
+               <a href="{% url 'checkout' courseDets.slug i.courseClasses i.coursePrice 'real' %}" class="btn-buy">{%trans 'Buy Now'%}</a>
+               {%endif%}
 
-                <a href="{% url 'checkout' courseDets.slug i.courseClasses i.coursePrice %}" class="btn-buy">{%trans 'Buy Now'%}</a>
+
 
 
               </div>
