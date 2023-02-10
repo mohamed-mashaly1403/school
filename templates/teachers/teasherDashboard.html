@@ -95,7 +95,7 @@
 
 					</div>
 					<hr>
-                    <div class="col-md-12 ">
+                    <div class="col-md-12 text-left "  dir="ltr">
 
 					<h3 class="card-title text-primary"> Your rank last 3 months!! </h3>
 					<div class="course-info ">
@@ -109,7 +109,7 @@
 						<i class="fa fa-star{% if avg < 80%}-o{% elif avg >= 80 and avg < 90 %}-half-o{%endif%}" aria-hidden="true"></i>
 
 					</span><br>
-	<span class="text-success">{{star}} star{{star|pluralize:'s'}} / {{avg}}class {{avg|pluralize:'es'}} delivered last 3 months.</span>
+	<span class="text-success">{{star}} star {{star|pluralize:'s'}} / {{avg}} class{{avg|pluralize:'es'}} delivered last 3 months.</span>
 	<h4 class="text-danger"> your course rate is {{rate}} </h4>
 	<small class="text-muted">{%trans 'Ranking system in 3 months period'%}. </small><br>
 	<small class="text-muted">10 classes => 1 star =>  'course rate' 72% </small><br>
