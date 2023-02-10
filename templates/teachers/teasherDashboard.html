@@ -97,7 +97,7 @@
 					<hr>
                     <div class="col-md-12 ">
 
-					<h3 class="card-title text-primary"> {%trans 'Your rank last 3 months!!'%} </h3>
+					<h3 class="card-title text-primary"> Your rank last 3 months!! </h3>
 					<div class="course-info ">
 
               <div class="rating-star">
@@ -109,14 +109,14 @@
 						<i class="fa fa-star{% if avg < 80%}-o{% elif avg >= 80 and avg < 90 %}-half-o{%endif%}" aria-hidden="true"></i>
 
 					</span><br>
-	<span class="text-success">{{star}} {%trans 'star'%}{% if LANGUAGE_CODE == 'en'%}{{star|pluralize:'s'}}{%else%} {%endif%} / {{avg}} {%trans 'class'%}{% if LANGUAGE_CODE == 'en'%}{{avg|pluralize:'es'}} {%trans 'delivered last 3 months.'%} {%else%} {%endif%}</span>
-	<h4 class="text-danger">{%trans 'your course rate is'%} {{rate}} </h4>
+	<span class="text-success">{{star}} star{{star|pluralize:'s'}} / {{avg}}class {{avg|pluralize:'es'}} delivered last 3 months.</span>
+	<h4 class="text-danger"> your course rate is {{rate}} </h4>
 	<small class="text-muted">{%trans 'Ranking system in 3 months period'%}. </small><br>
-	<small class="text-muted">10 classes => 1 {%trans 'star'%} => {%trans 'course rate'%} 72% </small><br>
-	<small class="text-muted">30 classes => 2 {%trans 'stars'%} => {%trans 'course rate'%} 75% </small><br>
-	<small class="text-muted">50 classes => 3 {%trans 'stars'%} => {%trans 'course rate'%} 80% </small><br>
-	<small class="text-muted">70 classes => 4 {%trans 'stars'%} => {%trans 'course rate'%} 85% </small><br>
-	<small class="text-muted">90 classes => 5 {%trans 'stars'%} => {%trans 'course rate'%} 90% </small>
+	<small class="text-muted">10 classes => 1 star =>  'course rate' 72% </small><br>
+	<small class="text-muted">30 classes => 2 stars => course rate 75% </small><br>
+	<small class="text-muted">50 classes => 3 stars => course rate 80% </small><br>
+	<small class="text-muted">70 classes => 4 stars => course rate 85% </small><br>
+	<small class="text-muted">90 classes => 5 stars => course rate 90% </small>
 				</div>
             </div>
 
