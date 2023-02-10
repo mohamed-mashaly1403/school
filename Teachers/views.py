@@ -40,7 +40,7 @@ def TeacherDashboard(request):
         # teacher ranking in last 3 monthes start
         totalClasses =orderPoductClasses.objects.filter(orders__user=request.user.id,class_url_is_deliverd=True,order__is_trial=False,created_at__gte=now()-relativedelta(months=3)).count()
         print(totalClasses)
-        if totalClasses > 5:
+        if totalClasses < 5:
             star =0
             rate = 0.7
             rated='70%'
