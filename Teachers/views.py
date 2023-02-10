@@ -1,5 +1,6 @@
 import math
-
+from dateutil.relativedelta import relativedelta
+from django.utils.timezone import now
 from django.http import JsonResponse
 from django.utils.translation import gettext as _
 from django.contrib.auth.decorators import login_required,user_passes_test
@@ -22,7 +23,7 @@ from users.forms import UserForm
 from .form import MakeMyCourseForm
 from django.utils.text import slugify
 
-
+@user_passes_test(lambda u: u.is_staff)
 def TeacherDashboard(request):
     accepted = TeacherProfile.objects.filter(is_accepted=True, user=request.user).exists()
     if accepted:
@@ -36,11 +37,63 @@ def TeacherDashboard(request):
         orders_count = orders.count()
         active_orders_count = active_orders.count()
         total =orderPoduct.objects.filter(teacher__user=request.user.id).aggregate(total_price=Sum('product_price'))
-        print(total)
+        # teacher ranking in last 3 monthes start
+        totalClasses =orderPoductClasses.objects.filter(orders__user=request.user.id,class_url_is_deliverd=True,order__is_trial=False,created_at__gte=now()-relativedelta(months=3)).count()
+        print(totalClasses)
+        if totalClasses > 5:
+            star =0
+            rate = 0.7
+            rated='70%'
+        elif totalClasses == 5:
+            star = 0.5
+            rate = 0.7
+            rated = '70%'
+        elif totalClasses == 10:
+            star = 1
+            rate = 0.72
+            rated = '72%'
+        elif totalClasses == 20:
+            star = 1.5
+            rate = 0.72
+            rated = '72%'
+        elif totalClasses == 30:
+            star = 2
+            rate = 0.75
+            rated = '75%'
+        elif totalClasses == 40:
+            star = 2.5
+            rate = 0.75
+            rated = '75%'
+        elif totalClasses == 50:
+            star = 3
+            rate = 0.8
+            rated = '80%'
+        elif totalClasses == 60:
+            star = 3.5
+            rate = 0.8
+            rated = '80%'
+        elif totalClasses == 70:
+            star = 4
+            rate = 0.85
+            rated = '85%'
+        elif totalClasses == 80:
+            star = 4.5
+            rate = 0.85
+            rated = '85%'
+        elif totalClasses == 90:
+            star = 5
+            rate = 0.9
+            rated = '90%'
+        else:
+            star = 5
+            rate = 0.9
+            rated = '90%'
+
+        # teacher ranking in last 3 monthes end
+
         total_to_recieve =orderPoduct.objects.filter(teacher__user=request.user.id,is_deliverd=True).aggregate(total_price=Sum('product_price'))
-        print(total_to_recieve)
+
         recivedd = paid.objects.filter(Teacher__user=request.user.id).aggregate(total_Recived=Sum('recived'))
-        print(recivedd)
         if recivedd['total_Recived'] == None:
             recived_total = 0
             print(recived_total)
@@ -48,10 +101,10 @@ def TeacherDashboard(request):
             recived_total = recivedd['total_Recived']
 
         try:
-            Balance = float(total['total_price'])* 0.7
-            print(Balance)
-            total_to_recieve = float(total_to_recieve['total_price']* 0.7)
-            print(f'total_to_recieve{total_to_recieve}')
+            Balance = float(total['total_price'])* rate
+
+            total_to_recieve = float(total_to_recieve['total_price']* rate)
+
 
 
         except:
@@ -70,7 +123,11 @@ def TeacherDashboard(request):
             'active_orders_count': active_orders_count,
             ' active_orders': active_orders,
             'Balance':math.floor(Balance),
-            'Balance_to_recieve':math.floor(Balance_to_recieve)
+            'Balance_to_recieve':math.floor(Balance_to_recieve),
+            'avg':totalClasses,
+            'star':star,
+            'rate':rated
+
         }
         return render(request, 'teachers/teasherDashboard.html', context)
     else:
@@ -381,6 +438,7 @@ def submit_courseUrl(request,order_id):
 
             data.classTime = form.cleaned_data['classTime']
             data.order_id = order_id
+            data.orders = TeacherProfile.objects.get(user=request.user)
             data.save()
             messages.success(request, _('url has submited'))
         else:

@@ -80,7 +80,7 @@
 							{%else%}
 
 						{%endif%}
-						<small class="text-muted" >{%trans 'Minimum limit for withdraw 50 $'%} </small>
+						<small class="text-muted" >{%trans 'Min. limit to withdraw 50 $'%} </small>
 
 
 						{%else%}
@@ -92,8 +92,38 @@
 
 
 						</div>
+
+					</div>
+					<hr>
+                    <div class="col-md-12 ">
+
+					<h3 class="card-title text-primary"> {%trans 'Your rank last 3 months!!'%} </h3>
+					<div class="course-info ">
+
+              <div class="rating-star">
+<!-- system70% 10 1s 72%  30 2s75% 50 3s80%  704s85% 90 5s90% -->
+					<span><i class="fa fa-star{% if avg < 5%}-o{% elif avg >= 5 and avg < 10 %}-half-o{%endif%}" aria-hidden="true"></i>
+						<i class="fa fa-star{% if avg < 20%}-o{% elif avg >= 20 and avg < 30 %}-half-o{%endif%}" aria-hidden="true"></i>
+						<i class="fa fa-star{% if avg < 40%}-o{% elif avg >= 40 and avg < 50 %}-half-o{%endif%}" aria-hidden="true"></i>
+						<i class="fa fa-star{% if avg < 60%}-o{% elif avg >= 60 and avg < 70 %}-half-o{%endif%}" aria-hidden="true"></i>
+						<i class="fa fa-star{% if avg < 80%}-o{% elif avg >= 80 and avg < 90 %}-half-o{%endif%}" aria-hidden="true"></i>
+
+					</span><br>
+	<span class="text-success">{{star}} {%trans 'star'%}{% if LANGUAGE_CODE == 'en'%}{{star|pluralize:'s'}}{%else%} {%endif%} / {{avg}} {%trans 'class'%}{% if LANGUAGE_CODE == 'en'%}{{avg|pluralize:'es'}} {%trans 'delivered last 3 months.'%} {%else%} {%endif%}</span>
+	<h4 class="text-danger">{%trans 'your course rate is'%} {{rate}} </h4>
+	<small class="text-muted">{%trans 'Ranking system in 3 months period'%}. </small><br>
+	<small class="text-muted">10 classes => 1 {%trans 'star'%} => {%trans 'course rate'%} 72% </small><br>
+	<small class="text-muted">30 classes => 2 {%trans 'stars'%} => {%trans 'course rate'%} 75% </small><br>
+	<small class="text-muted">50 classes => 3 {%trans 'stars'%} => {%trans 'course rate'%} 80% </small><br>
+	<small class="text-muted">70 classes => 4 {%trans 'stars'%} => {%trans 'course rate'%} 85% </small><br>
+	<small class="text-muted">90 classes => 5 {%trans 'stars'%} => {%trans 'course rate'%} 90% </small>
+				</div>
+            </div>
+
+
 					</div>
 					</div>
+
 				</div>
 				<div class="col-md-6">
 				<div class="card text-center">
@@ -103,7 +133,7 @@
 				  <a href="{%url 'edit_profile'%}"><img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{{user.user_img.url}}" alt="{%trans 'user picture'%}"></a>
 
 						<div>
-							<p><strong>{%trans 'Teacher'%}</strong></p>
+							<p><strong>{{user.first_name}} {{user.last_name}}</strong></p>
 						<a role="button"  class="btn btn-outline-danger"  href="{% url 'deltePhoto' %}">{%trans 'Remove Photo'%}</a>
 							</div>
 				  {% else%}

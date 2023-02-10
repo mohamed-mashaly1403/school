@@ -54,7 +54,7 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 <aside  class="col-3">
 		<!--   SIDEBAR   -->
 		<ul class="list-group ">
-			<a class="list-group-item {% if '/Teachers/' == request.path %}active {% endif %}" href="{% url 'TeacherDashboard'%}"> {%trans 'Teacher Dashboard'%}  </a>
+			<a class="list-group-item {% if '/en/Teachers/' == request.path  or '/ar/Teachers/' == request.path %}active {% endif %}" href="{% url 'TeacherDashboard'%}"> {%trans 'Teacher Dashboard'%}  </a>
 			<a class="list-group-item {% if '/TeacherOrders/' in request.path %}active {% endif %} "  href="{% url 'TeacherOrders'%}"> {%trans 'Teacher Courses'%} </a>
 			<a class="list-group-item {% if '/TeacherActiveOrders/' in request.path %}active {% endif %} "  href="{% url 'TeacherActiveOrders'%}"> {%trans 'Teacher Active Courses'%} </a>
 			<a class="list-group-item {% if '/Teacheredit_profile/' in request.path %}active {% endif %}"  href="{% url 'Teacheredit_profile'%}"> {%trans 'Edit Teacher profile'%} </a>

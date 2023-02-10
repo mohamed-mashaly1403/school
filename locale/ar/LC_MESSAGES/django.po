@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 23:26+0400\n"
+"POT-Creation-Date: 2023-02-10 23:59+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,115 +89,115 @@ msgstr "تحميل السيرة الذاتية pdf (الحجم لا يزيد ع�
 msgid "Filetype not supported."
 msgstr "نوع الملف غير مدعوم"
 
-#: .\Teachers\views.py:113
+#: .\Teachers\views.py:170
 msgid "Money will be added to your Bank account soon"
 msgstr "سيتم اضافة المبلغ لحسابك قريبا"
 
-#: .\Teachers\views.py:125
+#: .\Teachers\views.py:182
 msgid "Your bank account details missing!"
 msgstr "بيانات حسابك البنكي غير مكتملة"
 
-#: .\Teachers\views.py:164
+#: .\Teachers\views.py:221
 msgid "Your Account will be reviewed and will back to you soon"
 msgstr "سيتم مراجعة حسابك قريبا"
 
-#: .\Teachers\views.py:175
+#: .\Teachers\views.py:232
 msgid "file bigger than 2 MB"
 msgstr "الملف أكبر من 2 ميجا "
 
-#: .\Teachers\views.py:177
+#: .\Teachers\views.py:234
 msgid "cv can not be empty!"
 msgstr "لا يمكن ترك السيرة الذاتية فارغة"
 
-#: .\Teachers\views.py:179
+#: .\Teachers\views.py:236
 msgid "Your cv file not pdf"
 msgstr "ملف السيرة الذاتية ليس pdf"
 
-#: .\Teachers\views.py:202
+#: .\Teachers\views.py:259
 msgid "Complain has submited and will be intouch with you very soon"
 msgstr "تم تسجيل الشكوى وسنتواصل معك لاحقاً"
 
-#: .\Teachers\views.py:271 .\Teachers\views.py:279 .\Teachers\views.py:291
-#: .\Teachers\views.py:296 .\users\views.py:332 .\users\views.py:338
+#: .\Teachers\views.py:328 .\Teachers\views.py:336 .\Teachers\views.py:348
+#: .\Teachers\views.py:353 .\users\views.py:332 .\users\views.py:338
 msgid "profile updated"
 msgstr "تم تحديث حسابك"
 
-#: .\Teachers\views.py:275 .\Teachers\views.py:287
+#: .\Teachers\views.py:332 .\Teachers\views.py:344
 msgid "Your CV bigger than 2 MB"
 msgstr "حجم الملف اكبر من 2 ميجا"
 
-#: .\Teachers\views.py:283 .\Teachers\views.py:508 .\Teachers\views.py:620
+#: .\Teachers\views.py:340 .\Teachers\views.py:566 .\Teachers\views.py:678
 #: .\users\views.py:327
 msgid "Your photo bigger than 1 MB"
 msgstr "حجم الصورة اكبر من 1 ميجا"
 
-#: .\Teachers\views.py:299
+#: .\Teachers\views.py:356
 msgid "Your cv file is not pdf"
 msgstr "ملف السيرة الذاتية ليس pdf"
 
-#: .\Teachers\views.py:346 .\orders\views.py:296
+#: .\Teachers\views.py:403 .\orders\views.py:294
 msgid "request has submited and will change soon"
 msgstr "تم تسجيل الطلب وسيتم التغيير قريبا"
 
-#: .\Teachers\views.py:385 .\Teachers\views.py:425
+#: .\Teachers\views.py:443 .\Teachers\views.py:483
 msgid "url has submited"
 msgstr "تم تسجيل الرابط"
 
-#: .\Teachers\views.py:398
+#: .\Teachers\views.py:456
 msgid "Url has updated"
 msgstr "تم تحديث الرابط"
 
-#: .\Teachers\views.py:406
+#: .\Teachers\views.py:464
 msgid "url2 has submited"
 msgstr "تم تحديث الرابط"
 
-#: .\Teachers\views.py:456
+#: .\Teachers\views.py:514
 msgid "new class url has submitted"
 msgstr "تم تحميل الرابط"
 
-#: .\Teachers\views.py:459
+#: .\Teachers\views.py:517
 msgid "new class timing has submitted"
 msgstr "تم تحديث المواعيد الجديدة"
 
-#: .\Teachers\views.py:463 .\Teachers\views.py:466
+#: .\Teachers\views.py:521 .\Teachers\views.py:524
 msgid "New Date or url can not be empty "
 msgstr "التاريخ او الرابط لا يمكن تركه فارغ"
 
-#: .\Teachers\views.py:476 .\Teachers\views.py:598
+#: .\Teachers\views.py:534 .\Teachers\views.py:656
 msgid "No teacher profile for the user"
 msgstr "لا يوجد حساب للمعلم"
 
-#: .\Teachers\views.py:512 .\Teachers\views.py:624
+#: .\Teachers\views.py:570 .\Teachers\views.py:682
 msgid ""
 "youtube url not correct get the url from youtube video> share> Embed> src="
 "\"url\""
 msgstr "<Embed> رابط اليوتيوب غير صحيح رجاء انسخ الرابط الصحيح من"
 
-#: .\Teachers\views.py:539 .\Teachers\views.py:570
+#: .\Teachers\views.py:597 .\Teachers\views.py:628
 msgid "course created and will show up in courses after review"
 msgstr "تم إنشاء الكورس بنجاح وسيظهر في قائمة الكورسات بعد المراجعة"
 
-#: .\Teachers\views.py:579 .\Teachers\views.py:644
+#: .\Teachers\views.py:637 .\Teachers\views.py:702
 msgid "course image required"
 msgstr "يجب وضع صورة للكورس"
 
-#: .\Teachers\views.py:632 .\Teachers\views.py:640
+#: .\Teachers\views.py:690 .\Teachers\views.py:698
 msgid "course updated successfully"
 msgstr "تم التعديل بنجاح"
 
-#: .\live\views.py:80
+#: .\live\views.py:92
 msgid "meeting not open "
 msgstr "الحصة ليست مفتوحة"
 
-#: .\orders\models.py:91
+#: .\orders\models.py:96
 msgid "New student waiting"
 msgstr "طالب جديد في الانتظار"
 
-#: .\orders\views.py:260
+#: .\orders\views.py:258
 msgid "review has updated"
 msgstr "تم تسجيل التقييم"
 
-#: .\orders\views.py:277
+#: .\orders\views.py:275
 msgid "review has submited"
 msgstr "تم تسجيل التقييم"
 
@@ -295,13 +295,13 @@ msgid "Complain:"
 msgstr "الشكوى او البلاغ"
 
 #: .\templates\accounts\complains.html:42
-#: .\templates\orders\order_course-details.html:309
-#: .\templates\orders\order_course-details.html:339
-#: .\templates\teachers\TeacherCourseDetails.html:253
-#: .\templates\teachers\TeacherCourseDetails.html:297
-#: .\templates\teachers\TeacherCourseDetails.html:343
-#: .\templates\teachers\TeacherCourseDetails.html:374
-#: .\templates\teachers\TeacherCourseDetails.html:431
+#: .\templates\orders\order_course-details.html:315
+#: .\templates\orders\order_course-details.html:345
+#: .\templates\teachers\TeacherCourseDetails.html:257
+#: .\templates\teachers\TeacherCourseDetails.html:301
+#: .\templates\teachers\TeacherCourseDetails.html:347
+#: .\templates\teachers\TeacherCourseDetails.html:378
+#: .\templates\teachers\TeacherCourseDetails.html:435
 #: .\templates\teachers\withdrawRequest.html:46
 msgid "submit"
 msgstr "ارسل"
@@ -345,20 +345,20 @@ msgstr "اعرض الطلبات"
 #: .\templates\accounts\dashboard.html:86
 #: .\templates\accounts\edit_profile.html:30
 #: .\templates\accounts\edit_profile.html:37
-#: .\templates\course-details.html:179 .\templates\course-details.html:181
-#: .\templates\orders\order_course-details.html:228
-#: .\templates\orders\order_course-details.html:230
+#: .\templates\course-details.html:184 .\templates\course-details.html:186
+#: .\templates\orders\order_course-details.html:234
+#: .\templates\orders\order_course-details.html:236
 #: .\templates\teachers\Teacheredit_profile.html:27
 #: .\templates\teachers\Teacheredit_profile.html:34
-#: .\templates\teachers\teasherDashboard.html:103
-#: .\templates\teachers\teasherDashboard.html:110
+#: .\templates\teachers\teasherDashboard.html:133
+#: .\templates\teachers\teasherDashboard.html:140
 msgid "user picture"
 msgstr "صورة المستخدم"
 
 #: .\templates\accounts\dashboard.html:83
 #: .\templates\accounts\edit_profile.html:32
 #: .\templates\teachers\Teacheredit_profile.html:29
-#: .\templates\teachers\teasherDashboard.html:107
+#: .\templates\teachers\teasherDashboard.html:137
 msgid "Remove Photo"
 msgstr "احذف الصورة"
 
@@ -695,7 +695,6 @@ msgstr "الكورس"
 
 #: .\templates\course-details.html:61 .\templates\includes\navbar.html:32
 #: .\templates\orders\order_course-details.html:40
-#: .\templates\teachers\teasherDashboard.html:106
 msgid "Teacher"
 msgstr "المعلم"
 
@@ -732,6 +731,10 @@ msgid "Review"
 msgstr "تقييم الكورس"
 
 #: .\templates\course-details.html:95
+#: .\templates\teachers\teasherDashboard.html:116
+#: .\templates\teachers\teasherDashboard.html:117
+#: .\templates\teachers\teasherDashboard.html:118
+#: .\templates\teachers\teasherDashboard.html:119
 msgid "stars"
 msgstr "النجوم"
 
@@ -744,39 +747,39 @@ msgstr "مقيم"
 msgid "Advanced"
 msgstr "متقدم"
 
-#: .\templates\course-details.html:155 .\templates\orders\checkout.html:215
-#: .\templates\pricing.html:56 .\templates\pricing.html:78
-#: .\templates\pricing.html:97
+#: .\templates\course-details.html:155 .\templates\course-details.html:157
+#: .\templates\orders\checkout.html:216 .\templates\pricing.html:56
+#: .\templates\pricing.html:78 .\templates\pricing.html:97
 msgid "Buy Now"
 msgstr "اشتري الآن"
 
-#: .\templates\course-details.html:168
+#: .\templates\course-details.html:173
 msgid "users review"
 msgstr "مراجعات المستخدمين"
 
-#: .\templates\course-details.html:186
-#: .\templates\orders\order_course-details.html:236
+#: .\templates\course-details.html:191
+#: .\templates\orders\order_course-details.html:242
 msgid "created at:"
 msgstr "إنشيء في"
 
-#: .\templates\course-details.html:187
-#: .\templates\orders\order_course-details.html:237
+#: .\templates\course-details.html:192
+#: .\templates\orders\order_course-details.html:243
 msgid "last update:"
 msgstr "اخر تحديث"
 
-#: .\templates\course-details.html:223 .\templates\orders\checkout.html:125
+#: .\templates\course-details.html:228 .\templates\orders\checkout.html:125
 msgid "first"
 msgstr "الأول"
 
-#: .\templates\course-details.html:225
+#: .\templates\course-details.html:230
 msgid "Previous"
 msgstr "السابق"
 
-#: .\templates\course-details.html:236
+#: .\templates\course-details.html:241
 msgid "Next"
 msgstr "التالي"
 
-#: .\templates\course-details.html:237
+#: .\templates\course-details.html:242
 msgid "last"
 msgstr "الأخير"
 
@@ -1160,10 +1163,10 @@ msgid "Are you sure you want to logout?"
 msgstr "هل انت متأكد من تسجيل الخروج؟"
 
 #: .\templates\orders\checkout.html:49
-#: .\templates\orders\order_course-details.html:91
-#: .\templates\orders\order_course-details.html:162
-#: .\templates\teachers\TeacherCourseDetails.html:82
-#: .\templates\teachers\TeacherCourseDetails.html:168
+#: .\templates\orders\order_course-details.html:97
+#: .\templates\orders\order_course-details.html:168
+#: .\templates\teachers\TeacherCourseDetails.html:86
+#: .\templates\teachers\TeacherCourseDetails.html:172
 msgid "Course Details"
 msgstr "بيانات الكورس"
 
@@ -1240,23 +1243,23 @@ msgstr "العدد"
 msgid "quantity"
 msgstr "العدد"
 
-#: .\templates\orders\checkout.html:215
+#: .\templates\orders\checkout.html:216
 msgid "Try Now"
 msgstr "ابدء"
 
-#: .\templates\orders\checkout.html:216
+#: .\templates\orders\checkout.html:217
 msgid "Go To Courses"
 msgstr "اذهب للكورسات"
 
-#: .\templates\orders\checkout.html:235 .\templates\orders\payments.html:37
+#: .\templates\orders\checkout.html:236 .\templates\orders\payments.html:37
 msgid "Well done"
 msgstr "أحسنت"
 
-#: .\templates\orders\checkout.html:236 .\templates\orders\payments.html:38
+#: .\templates\orders\checkout.html:238 .\templates\orders\payments.html:38
 msgid "Whenever you need to, you can replace the teacher or refund your money"
 msgstr "بإمكانك بكل بساطة إستبدال المعلم او إسترجاع أموالك!!"
 
-#: .\templates\orders\checkout.html:238 .\templates\orders\payments.html:40
+#: .\templates\orders\checkout.html:242 .\templates\orders\payments.html:40
 msgid "Your world is about to look a whole lot better"
 msgstr "ستنتقل إلى مستوى مثالي من التعليم!!"
 
@@ -1292,17 +1295,17 @@ msgid "Course Fee"
 msgstr "رسوم الكورس"
 
 #: .\templates\orders\order_course-details.html:51
-#: .\templates\teachers\TeacherCourseDetails.html:41
+#: .\templates\teachers\TeacherCourseDetails.html:42
 msgid "Number of Lessons"
 msgstr "عدد الحصص"
 
 #: .\templates\orders\order_course-details.html:52
-#: .\templates\teachers\TeacherCourseDetails.html:42
+#: .\templates\teachers\TeacherCourseDetails.html:43
 msgid "left"
 msgstr "متبقي"
 
 #: .\templates\orders\order_course-details.html:56
-#: .\templates\teachers\TeacherCourseDetails.html:46
+#: .\templates\teachers\TeacherCourseDetails.html:47
 msgid "Purchase Date"
 msgstr "تاريخ الشراء"
 
@@ -1314,107 +1317,115 @@ msgstr "ارسل رسالة للمعلم"
 msgid "join live class"
 msgstr "ادخل الحصة"
 
-#: .\templates\orders\order_course-details.html:85
-#: .\templates\teachers\TeacherCourseDetails.html:76
+#: .\templates\orders\order_course-details.html:72
+msgid "Class not open"
+msgstr "الحصة ليست مفتوحة"
+
+#: .\templates\orders\order_course-details.html:73
+msgid "Refresh the page"
+msgstr "رجاء إعادة تحميل الصفحة"
+
+#: .\templates\orders\order_course-details.html:91
+#: .\templates\teachers\TeacherCourseDetails.html:80
 msgid "Meetings url and Timing"
 msgstr "وقت الحصة ورابط الحصة على التيمز او الزوم"
 
-#: .\templates\orders\order_course-details.html:88
-#: .\templates\teachers\TeacherCourseDetails.html:79
+#: .\templates\orders\order_course-details.html:94
+#: .\templates\teachers\TeacherCourseDetails.html:83
 msgid "Course Material url"
 msgstr "رابط مذكرات الكورس على الدرايف الخاص بالمعلم"
 
-#: .\templates\orders\order_course-details.html:94
-#: .\templates\orders\order_course-details.html:218
+#: .\templates\orders\order_course-details.html:100
+#: .\templates\orders\order_course-details.html:224
 msgid "Rate the Course"
 msgstr "قيم الكورس"
 
-#: .\templates\orders\order_course-details.html:98
-#: .\templates\orders\order_course-details.html:328
+#: .\templates\orders\order_course-details.html:104
+#: .\templates\orders\order_course-details.html:334
 msgid "Ask to change the teacher"
 msgstr "اطلب تغيير المعلم"
 
-#: .\templates\orders\order_course-details.html:109
+#: .\templates\orders\order_course-details.html:115
 msgid "Teacher will add the Urls for you to Join soon"
 msgstr "سيقوم المعلم بإضافة رابط الحصة قريباً"
 
-#: .\templates\orders\order_course-details.html:123
-#: .\templates\orders\order_course-details.html:148
+#: .\templates\orders\order_course-details.html:129
+#: .\templates\orders\order_course-details.html:154
 msgid "Teacher will add url soon!"
 msgstr "سيقوم المعلم بإضافة الرابط قريبا"
 
-#: .\templates\orders\order_course-details.html:141
-#: .\templates\orders\order_course-details.html:146
-#: .\templates\orders\order_course-details.html:148
-#: .\templates\teachers\TeacherCourseDetails.html:147
-#: .\templates\teachers\TeacherCourseDetails.html:152
+#: .\templates\orders\order_course-details.html:147
+#: .\templates\orders\order_course-details.html:152
+#: .\templates\orders\order_course-details.html:154
+#: .\templates\teachers\TeacherCourseDetails.html:151
+#: .\templates\teachers\TeacherCourseDetails.html:156
 msgid "Course Material URl"
 msgstr "رابط المواد العلمية للكورس "
 
-#: .\templates\orders\order_course-details.html:166
-#: .\templates\orders\order_course-details.html:168
+#: .\templates\orders\order_course-details.html:172
+#: .\templates\orders\order_course-details.html:174
 msgid "Course :"
 msgstr "الكورس"
 
-#: .\templates\orders\order_course-details.html:176
-#: .\templates\teachers\TeacherCourseDetails.html:177
+#: .\templates\orders\order_course-details.html:182
+#: .\templates\teachers\TeacherCourseDetails.html:181
 msgid "Curriculum type:"
 msgstr "نوع المنهج"
 
-#: .\templates\orders\order_course-details.html:181
-#: .\templates\teachers\TeacherCourseDetails.html:182
+#: .\templates\orders\order_course-details.html:187
+#: .\templates\teachers\TeacherCourseDetails.html:186
 msgid "Grade:"
 msgstr "الصف"
 
-#: .\templates\orders\order_course-details.html:186
-#: .\templates\teachers\TeacherCourseDetails.html:187
+#: .\templates\orders\order_course-details.html:192
+#: .\templates\teachers\TeacherCourseDetails.html:191
 msgid "Term:"
 msgstr "الفصل الدراسي"
 
-#: .\templates\orders\order_course-details.html:193
-#: .\templates\teachers\TeacherCourseDetails.html:194
+#: .\templates\orders\order_course-details.html:199
+#: .\templates\teachers\TeacherCourseDetails.html:198
 msgid "Language:"
 msgstr "اللغة"
 
-#: .\templates\orders\order_course-details.html:198
+#: .\templates\orders\order_course-details.html:204
 msgid "Country: "
 msgstr "الدولة"
 
-#: .\templates\orders\order_course-details.html:204
-#: .\templates\teachers\TeacherCourseDetails.html:205
+#: .\templates\orders\order_course-details.html:210
+#: .\templates\teachers\TeacherCourseDetails.html:209
 msgid "Notes:"
 msgstr "ملاحظات"
 
-#: .\templates\orders\order_course-details.html:272
+#: .\templates\orders\order_course-details.html:278
 msgid "Update your review "
 msgstr "تحديث التقييم"
 
-#: .\templates\orders\order_course-details.html:276
+#: .\templates\orders\order_course-details.html:282
 msgid "Write your review"
 msgstr "اكتب تقييمك"
 
-#: .\templates\orders\order_course-details.html:280
+#: .\templates\orders\order_course-details.html:286
 msgid "Rating"
 msgstr "التقييم"
 
-#: .\templates\orders\order_course-details.html:298
+#: .\templates\orders\order_course-details.html:304
 msgid "hover on the stars(Required)"
 msgstr "اشر بالماوس على النجوم"
 
-#: .\templates\orders\order_course-details.html:303
+#: .\templates\orders\order_course-details.html:309
 msgid "Review Title:"
 msgstr "عنوان المراجعة"
 
-#: .\templates\orders\order_course-details.html:306
+#: .\templates\orders\order_course-details.html:312
 msgid "Review:"
-msgstr "المراجعة"
+msgstr "التقييم"
 
-#: .\templates\orders\order_course-details.html:334
+#: .\templates\orders\order_course-details.html:340
 msgid "Reason:"
 msgstr "السبب"
 
-#: .\templates\orders\order_course-details.html:344
-#: .\templates\teachers\TeacherCourseDetails.html:379
+#: .\templates\orders\order_course-details.html:350
+#: .\templates\teachers\TeacherCourseDetails.html:383
 msgid "Course Finished"
 msgstr "الكورس انتهى"
 
@@ -1436,7 +1447,7 @@ msgstr "طريقة الدفع"
 
 #: .\templates\orders\payments.html:52
 msgid "PayPal"
-msgstr "باي بال"
+msgstr "PayPal"
 
 #: .\templates\orders\payments.html:56
 msgid " My Course "
@@ -1523,149 +1534,155 @@ msgstr "سيتم تعيين المدرس قريباً"
 msgid "Course Fee(for teacher)"
 msgstr "مستحقات الكورس للمعلم"
 
-#: .\templates\teachers\TeacherCourseDetails.html:50
+#: .\templates\teachers\TeacherCourseDetails.html:37
+#, fuzzy
+#| msgid "Three Classes"
+msgid "Trial Class"
+msgstr "ثلاث حصص"
+
+#: .\templates\teachers\TeacherCourseDetails.html:51
 msgid "Send mail to your student"
 msgstr "ارسل رسالة لطلابك"
 
-#: .\templates\teachers\TeacherCourseDetails.html:57
+#: .\templates\teachers\TeacherCourseDetails.html:60
 msgid "Start live class"
 msgstr "ابدء الحصة"
 
-#: .\templates\teachers\TeacherCourseDetails.html:85
+#: .\templates\teachers\TeacherCourseDetails.html:89
 msgid "Enter Lessons urls or change course state to done"
 msgstr "ادخل رابط الحصة او غير حالة الحصة لتم"
 
-#: .\templates\teachers\TeacherCourseDetails.html:88
+#: .\templates\teachers\TeacherCourseDetails.html:92
 msgid "Change class Time or url"
 msgstr "تغيير توقيت الحصة او الرابط"
 
-#: .\templates\teachers\TeacherCourseDetails.html:91
+#: .\templates\teachers\TeacherCourseDetails.html:95
 msgid "Enter Material url"
 msgstr "ادخل رابط الكورس على التيمز او الزوم"
 
-#: .\templates\teachers\TeacherCourseDetails.html:95
+#: .\templates\teachers\TeacherCourseDetails.html:99
 msgid "Reject the course"
 msgstr "ارفض الكورس"
 
-#: .\templates\teachers\TeacherCourseDetails.html:99
+#: .\templates\teachers\TeacherCourseDetails.html:103
 msgid "Go to Dashboard"
 msgstr "الذهاب للوحة التحكم"
 
-#: .\templates\teachers\TeacherCourseDetails.html:109
+#: .\templates\teachers\TeacherCourseDetails.html:113
 msgid "Lessons Urls From Teacher"
 msgstr "رابط الحصة من المعلم"
 
-#: .\templates\teachers\TeacherCourseDetails.html:117
+#: .\templates\teachers\TeacherCourseDetails.html:121
 msgid "lesson url (lesson done)"
 msgstr "رابط الحصة"
 
-#: .\templates\teachers\TeacherCourseDetails.html:118
 #: .\templates\teachers\TeacherCourseDetails.html:122
+#: .\templates\teachers\TeacherCourseDetails.html:126
 msgid "Class Time:"
 msgstr "وقت الحصة"
 
-#: .\templates\teachers\TeacherCourseDetails.html:121
 #: .\templates\teachers\TeacherCourseDetails.html:125
+#: .\templates\teachers\TeacherCourseDetails.html:129
 msgid "lesson url"
 msgstr "رابط الحصة"
 
-#: .\templates\teachers\TeacherCourseDetails.html:125
+#: .\templates\teachers\TeacherCourseDetails.html:129
 msgid "please add lesson url on zoom!"
 msgstr "من فضلك ضع رابط الحصة على الزوم او التيمز"
 
-#: .\templates\teachers\TeacherCourseDetails.html:134
+#: .\templates\teachers\TeacherCourseDetails.html:138
 msgid "Enter Course URls"
 msgstr "ادخل رابط الحصة على الزوم او التيمز"
 
-#: .\templates\teachers\TeacherCourseDetails.html:135
+#: .\templates\teachers\TeacherCourseDetails.html:139
 msgid "Please add course urls on zoom or teams!"
 msgstr "ادخل رابط الحصة على الزوم او التيمز"
 
-#: .\templates\teachers\TeacherCourseDetails.html:154
+#: .\templates\teachers\TeacherCourseDetails.html:158
 msgid "Enter Course Material URl"
 msgstr "ادخل رابط المذكرات على الدرايف الخاص بالمعلم"
 
-#: .\templates\teachers\TeacherCourseDetails.html:154
+#: .\templates\teachers\TeacherCourseDetails.html:158
 msgid "please add course material url on drive!"
 msgstr "ادخل رابط المذكرات على الدرايف الخاص بالمعلم"
 
-#: .\templates\teachers\TeacherCourseDetails.html:199
+#: .\templates\teachers\TeacherCourseDetails.html:203
 msgid "Country "
 msgstr "الدولة"
 
-#: .\templates\teachers\TeacherCourseDetails.html:220
-#: .\templates\teachers\TeacherCourseDetails.html:238
+#: .\templates\teachers\TeacherCourseDetails.html:224
+#: .\templates\teachers\TeacherCourseDetails.html:242
 msgid "Enter Lessons urls"
 msgstr "ادخل رابط الحصة على الزوم او التيمز"
 
-#: .\templates\teachers\TeacherCourseDetails.html:222
+#: .\templates\teachers\TeacherCourseDetails.html:226
 msgid "Update Lessons state(finish or not)"
 msgstr "تحديث حالة الحصة"
 
-#: .\templates\teachers\TeacherCourseDetails.html:244
+#: .\templates\teachers\TeacherCourseDetails.html:248
 msgid "course url:"
 msgstr "رابط الحصة على الزوم او التيمز"
 
-#: .\templates\teachers\TeacherCourseDetails.html:247
+#: .\templates\teachers\TeacherCourseDetails.html:251
 msgid "class time:"
 msgstr "وقت الحصة"
 
-#: .\templates\teachers\TeacherCourseDetails.html:273
+#: .\templates\teachers\TeacherCourseDetails.html:277
 msgid "is lesson done?"
 msgstr "هل الحصة انتهت؟"
 
-#: .\templates\teachers\TeacherCourseDetails.html:279
+#: .\templates\teachers\TeacherCourseDetails.html:283
 msgid "course Date:"
 msgstr "تاريخ الكورس"
 
-#: .\templates\teachers\TeacherCourseDetails.html:282
-#: .\templates\teachers\TeacherCourseDetails.html:417
+#: .\templates\teachers\TeacherCourseDetails.html:286
+#: .\templates\teachers\TeacherCourseDetails.html:421
 msgid "lesson of"
 msgstr "الحصة"
 
-#: .\templates\teachers\TeacherCourseDetails.html:292
+#: .\templates\teachers\TeacherCourseDetails.html:296
 msgid "lesson Done? "
 msgstr "هل الحصة انتهت؟"
 
-#: .\templates\teachers\TeacherCourseDetails.html:306
-#: .\templates\teachers\TeacherCourseDetails.html:440
+#: .\templates\teachers\TeacherCourseDetails.html:310
+#: .\templates\teachers\TeacherCourseDetails.html:444
 msgid "All lessons delivered"
 msgstr "كل الحصص انتهت"
 
-#: .\templates\teachers\TeacherCourseDetails.html:317
-#: .\templates\teachers\TeacherCourseDetails.html:330
+#: .\templates\teachers\TeacherCourseDetails.html:321
+#: .\templates\teachers\TeacherCourseDetails.html:334
 msgid "Enter Course Material url"
 msgstr "ادخل رابط المذكرات على الدرايف الخاص بالمعلم"
 
-#: .\templates\teachers\TeacherCourseDetails.html:336
+#: .\templates\teachers\TeacherCourseDetails.html:340
 msgid "Course Material url:"
 msgstr " رابط المذكرات على الدرايف الخاص بالمعلم"
 
-#: .\templates\teachers\TeacherCourseDetails.html:363
+#: .\templates\teachers\TeacherCourseDetails.html:367
 msgid "Reject the Course"
 msgstr "ارفض الكورس"
 
-#: .\templates\teachers\TeacherCourseDetails.html:369
+#: .\templates\teachers\TeacherCourseDetails.html:373
 msgid "Reason"
 msgstr "السبب"
 
-#: .\templates\teachers\TeacherCourseDetails.html:393
+#: .\templates\teachers\TeacherCourseDetails.html:397
 msgid "Change date and time"
 msgstr "تغيير تاريخ الحصة أو ميعادها"
 
-#: .\templates\teachers\TeacherCourseDetails.html:408
+#: .\templates\teachers\TeacherCourseDetails.html:412
 msgid "Change class time or url"
 msgstr "تغيير وقت الحصة او الرابط"
 
-#: .\templates\teachers\TeacherCourseDetails.html:414
+#: .\templates\teachers\TeacherCourseDetails.html:418
 msgid "Course:"
 msgstr "الكورس"
 
-#: .\templates\teachers\TeacherCourseDetails.html:422
+#: .\templates\teachers\TeacherCourseDetails.html:426
 msgid "New date(in case you want to change lesson Timing):"
 msgstr "التاريخ الجديد في حال اردت تغيير التاريخ والموعد"
 
-#: .\templates\teachers\TeacherCourseDetails.html:426
+#: .\templates\teachers\TeacherCourseDetails.html:430
 msgid "New url(in case you want to change lesson url):"
 msgstr "الرابط الجديد في حال اردت تغيير الرابط"
 
@@ -1763,7 +1780,7 @@ msgstr "لغة الكورس الأولى"
 
 #: .\templates\teachers\makeMyCourse.html:84
 msgid "Course second language"
-msgstr "  لغة الكورس الثانية"
+msgstr "لغة الكورس الثانية"
 
 #: .\templates\teachers\makeMyCourse.html:92
 msgid "Course image"
@@ -1919,9 +1936,44 @@ msgid "Withdrawable balance"
 msgstr "اسحب الرصيد"
 
 #: .\templates\teachers\teasherDashboard.html:83
-#: .\templates\teachers\withdrawRequest.html:54
-msgid "Minimum limit for withdraw 50 $"
+#, fuzzy
+#| msgid "Minimum limit for withdraw 50 $"
+msgid "Min. limit to withdraw 50 $"
 msgstr "اقل مبلغ للسحب $50 "
+
+#: .\templates\teachers\teasherDashboard.html:100
+msgid "Your rank last 3 months!!"
+msgstr ""
+
+#: .\templates\teachers\teasherDashboard.html:112
+#: .\templates\teachers\teasherDashboard.html:115
+msgid "star"
+msgstr "نجمة"
+
+#: .\templates\teachers\teasherDashboard.html:112
+msgid "class"
+msgstr "حصة"
+
+#: .\templates\teachers\teasherDashboard.html:112
+msgid "delivered last 3 months."
+msgstr "بآخر ثلاثة أشهر"
+
+#: .\templates\teachers\teasherDashboard.html:113
+msgid "your course rate is"
+msgstr " نسبتك من الكورس"
+
+#: .\templates\teachers\teasherDashboard.html:114
+msgid "Ranking system in 3 months period"
+msgstr "نظام التقييم في اخر ثلاثة أشهر"
+
+#: .\templates\teachers\teasherDashboard.html:115
+#: .\templates\teachers\teasherDashboard.html:116
+#: .\templates\teachers\teasherDashboard.html:117
+#: .\templates\teachers\teasherDashboard.html:118
+#: .\templates\teachers\teasherDashboard.html:119
+
+msgid "course rate"
+msgstr "نسبتك من الكورس"
 
 #: .\templates\teachers\waitForReview.html:16
 msgid ""
@@ -1948,6 +2000,10 @@ msgstr "المبلغ المطلوب سحبه؟"
 #: .\templates\teachers\withdrawRequest.html:53
 msgid "Your available balance to receive"
 msgstr "المبلغ المتاح للسحب"
+
+#: .\templates\teachers\withdrawRequest.html:54
+msgid "Minimum limit for withdraw 50 $"
+msgstr "اقل مبلغ للسحب $50 "
 
 #: .\users\views.py:72
 msgid ""
@@ -2060,9 +2116,6 @@ msgstr "تم ارسال رسالتك بنجاح"
 
 #~ msgid "One class"
 #~ msgstr "حصة واحدة"
-
-#~ msgid "class"
-#~ msgstr "حصة"
 
 #~ msgid "More than one hour"
 #~ msgstr "ساعة وأكثر"
