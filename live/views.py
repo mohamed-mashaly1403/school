@@ -64,7 +64,7 @@ def joinLive(request,course,order,classno):
     roomid = order + str(classno)
     url = request.META.get('HTTP_REFERER')
     try:
-        CloseLive.objects.filter(order=order).exists()
+        CloseLive.objects.filter(order=order,classno=classno).exists()
         appID ='4bce2e802a5646a89835b1532ce8af71'
         appCertificate ='8dd20bc3d33c4c7d9646522038cb661f'
         user = str(request.user.id)
