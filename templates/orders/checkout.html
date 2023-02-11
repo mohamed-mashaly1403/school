@@ -50,9 +50,16 @@
 
          {%csrf_token%}
 <div class="form-row">
+
 <div class="col form-group">
      <label>{%trans 'Country'%}<span style="color:red">  *</span></label>
+{%if needed_course.is_school_subject %}
+<select name="country"  class="form-select form-select-lg mb-3"  required >
+     <option   value="{{ needed_course.country}}" class="form-control"  >{{ needed_course.country}}</option>
 
+    </select>
+
+{%else%}
     <select name="country"  class="form-select form-select-lg mb-3"  required  id="cou" onchange="yesnoCheckk(this);">
      <option   value="UAE" class="form-control"  >{%trans 'UAE'%}</option>
     <option   value="KSA" class="form-control"  >{%trans 'KSA'%}</option>
@@ -67,6 +74,7 @@
 
 </div>
     <small>{%trans 'Choose Your country'%}</small>
+    {%endif%}
 </div>
     <div class="col form-group">
      <label>{%trans 'City'%} </label>

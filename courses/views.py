@@ -17,7 +17,7 @@ from courses.models import RatingReview, course,Price
 
 def courses(request):
     courses = course.objects.filter( is_active=True).order_by('id')
-    price = Price.objects.all()[0].coursePrice
+    price = Price.objects.all()[0].minn
 
 
     Paginatorr = Paginator(courses, 3)
@@ -102,7 +102,7 @@ def search(request):
 def searchHome(request,keyword):
     if keyword != '':
         courses = course.objects.order_by('-slug').filter(Q(is_active=True) ,
-            Q(description__icontains=keyword) | Q(description_ar__icontains=keyword) | Q(course_name__icontains=keyword) | Q(course_name_ar__icontains=keyword))
+            Q(description__icontains=keyword) | Q(description_ar__icontains=keyword) | Q(course_name__icontains=keyword) | Q(course_name_ar__icontains=keyword) | Q(country__icontains=keyword) )
         courses_count = courses.count()
     else:
         courses = ''

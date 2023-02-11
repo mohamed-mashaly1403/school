@@ -75,14 +75,21 @@
 
 
                     <div class="form-row">
-                        <div class="form-group col-md-6 col-sm-12">
+                        <div class="form-group col-md-4 col-sm-12">
                             <label>{%trans 'Course first language'%}<span style="color:red">*</span></label>
                             {{TeacherMakeMyCourseForm.language1}}
                         </div>
                         <div class="form-row">
-                        <div class="form-group col-md-6 col-sm-12">
+                        <div class="form-group col-md-4 col-sm-12">
                             <label>{%trans 'Course second language'%}</label>
                             {{TeacherMakeMyCourseForm.language2}}
+                        </div>
+                         <div class="form-row">
+                        <div class="form-group col-md-4 col-sm-12">
+
+                            <label>{%trans 'Course country'%}<span style="color:red">*</span></label>
+                            {{TeacherMakeMyCourseForm.country}}
+
                         </div>
 
 
@@ -118,6 +125,7 @@
                             {{TeacherMakeMyCourseForm.courseGrades}}
                             <small class="form-text text-muted">{%trans 'Hold'%} Ctrl {%trans 'to choose more than grade'%}</small>
                         </div>
+
 
                     </div>
                      <div class="form-row">
@@ -235,22 +243,10 @@ $("#id_course_name_ar").blur(function() {
 
 $(function() {
   $("#id_course_name,#id_description").keypress(function(event) {
-    var ew = event.which;
-    if (ew == 32)
-      return true;
-    if (48 <= ew && ew <= 57)
-      return true;
-    if (65 <= ew && ew <= 90)
-      return true;
-    if (97 <= ew && ew <= 122)
-      return true;
-    return false;
-
-
-
-
+    var ew = event.key;
+    if (ew == "ب" || ew == "خ" || ew == "أ" || ew == "ت" ||ew == "ث" || ew == "ج" ||ew == "ح" || ew == "د" ||ew == "ذ" || ew == "ر" || ew == "ز" || ew == "س" ||ew == "ش" || ew == "ص" ||ew == "ض" || ew == "ط" ||ew == "ظ" || ew == "ع" || ew == "غ" || ew == "ف" ||ew == "ق" || ew == "ك" ||ew == "ل" || ew == "م" ||ew == "ن" || ew == "ه" || ew == "و" || ew == "ي" ||ew == "ا" || ew == "آ" ||ew == "ى" || ew == "ئ" ||ew == "ة" || ew == "ؤ" || ew == "ء" || ew == "َ " ||ew == "ّ " )
+      return false;
   });
-
 });
 // ===============
 $(function() {
@@ -259,7 +255,7 @@ $(function() {
     if (ew == 32)
       return true;
     if (48 <= ew && ew <= 57)
-      return false;
+      return true;
     if (65 <= ew && ew <= 90)
       return false;
     if (97 <= ew && ew <= 122)
@@ -280,8 +276,10 @@ if($('#id_is_school_subject').not(':checked').length > 0){
     document.getElementById('id_typeEN').value = '';
     document.getElementById('id_typeAR').disabled = true;
     document.getElementById('id_courseGrades').disabled = true;
+    document.getElementById('id_country').disabled = true;
     document.getElementById('id_typeAR').value = '';
     document.getElementById('id_courseGrades').value = '';
+    document.getElementById('id_country').value = '';
 
 
 } else {
@@ -289,6 +287,7 @@ if($('#id_is_school_subject').not(':checked').length > 0){
     document.getElementById('id_typeEN').disabled = false;
     document.getElementById('id_typeAR').disabled = false;
     document.getElementById('id_courseGrades').disabled = false;
+    document.getElementById('id_country').disabled = false;
 
 
 }
@@ -299,22 +298,27 @@ checkbox.addEventListener('change', (event) => {
         if (event.target.checked) {
             document.getElementById('id_typeEN').disabled = false;
             document.getElementById('id_typeAR').disabled = false;
+            document.getElementById('id_country').disabled = false;
             document.getElementById('id_courseGrades').disabled = false;
             document.getElementById('id_courseGrades').required = true;
             document.getElementById('id_typeAR').required = true;
             document.getElementById('id_courseGrades').required = true;
+            document.getElementById('id_country').required = true;
 
 
 } else {
             document.getElementById('id_typeEN').disabled = true;
             document.getElementById('id_courseGrades').disabled = true;
             document.getElementById('id_typeAR').disabled = true;
+            document.getElementById('id_country').disabled = true;
              document.getElementById('id_typeEN').value = '';
+             document.getElementById('id_country').value = '';
              document.getElementById('id_typeAR').value = '';
              document.getElementById('id_courseGrades').value = '';
              document.getElementById('id_courseGrades').required = false;
              document.getElementById('id_typeAR').required = false;
              document.getElementById('id_typeEN').required = false;
+             document.getElementById('id_country').required = false;
 
     }
 })

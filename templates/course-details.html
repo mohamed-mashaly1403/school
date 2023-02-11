@@ -8,7 +8,7 @@
 {% block content %}
 
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs" data-aos="fade-in">
+    <div class="breadcrumbs " data-aos="fade-in">
       <div class="container ">
            <br>
         <h2>{% if LANGUAGE_CODE == 'ar'%} {{courseDets.course_name_ar}}{%else%}{{courseDets.course_name}} {%trans 'course'%}{%endif%} {%if courseTeacher.user == user %}<a class="btn btn-outline-light btn-sm active" role="button" aria-pressed="true" href="{% url 'editCourse' courseDets.id %}"><i class="bi bi-pencil "></i></a>{%endif%}</h2>
@@ -18,10 +18,10 @@
     </div><!-- End Breadcrumbs -->
 
     <!-- ======= Cource Details Section ======= -->
-    <section id="course-details" class="course-details">
-      <div class="container" data-aos="fade-up" >
+    <section id="course-details" class="course-details  ">
+      <div class="container  " data-aos="fade-up" >
 
-        <div class="row" >
+        <div class="row  " >
           <div {%if youtubeUrl %} class="col-lg-4"{%else%} class="col-lg-8"{%endif%}  >
             <img src="{{courseDets.img.url}}" class="img-fluid  mx-auto" alt="">
             <h3>{% if LANGUAGE_CODE == 'ar'%}{{courseDets.course_name_ar}}{%else%}{{courseDets.course_name}} {%trans 'Course'%}{%endif%}</h3>
@@ -70,6 +70,24 @@
               <h5>{%trans 'Course Fees'%}</h5>
               <p>{%trans 'from' %} {{ price1st }} USD </p>
             </div>
+            {% if courseDets.country == '' %}
+            {%else%}
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>{%trans 'Course country'%}</h5>
+              {% if courseDets.country == 'UAE' %}
+              <img src="{% static 'img/uae.jpg'%}" style= "width:40px;">
+              {% elif courseDets.country == 'KSA' %}
+              <img src="{% static 'img/ksa.jpg'%}" style= "width:40px;">
+              {% elif courseDets.country == 'Qatar' %}
+              <img src="{% static 'img/qatar.jpg'%}" style= "width:40px;">
+              {% elif courseDets.country == 'Kuwait' %}
+              <img src="{% static 'img/kuwait.jpg'%}" style= "width:40px;">
+              {% elif courseDets.country == 'Egypt' %}
+              <img src="{% static 'img/Egypt.jpg'%}" style= "width:40px;">
+              {% endif %}
+              <p> {{ courseDets.country }}  </p>
+            </div>
+            {% endif %}
 
             <div class="course-info d-flex justify-content-between align-items-center">
             {%if courseTeacher.user == user %}
@@ -113,7 +131,7 @@
     </section><!-- End Cource Details Section -->
 
  <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
+    <section id="pricing" class="pricing pt-0">
       <div class="container" data-aos="fade-up">
 
         <div class="row">

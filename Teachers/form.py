@@ -48,7 +48,7 @@ class MakeMyCourseForm(forms.ModelForm):
     img = forms.ImageField(required=True,error_messages = {'invalid':("Image files only")},widget=forms.FileInput)
     class Meta:
         model = course
-        fields = ['is_school_subject','course_name', 'course_name_ar', 'language1','language2','typeEN','typeAR','description','description_ar','img','is_active','youtubeUrl','courseGrades']
+        fields = ['is_school_subject','course_name', 'course_name_ar', 'language1','language2','typeEN','typeAR','description','description_ar','img','is_active','youtubeUrl','courseGrades','country']
 
     def __init__(self, *args, **kwargs):
         super(MakeMyCourseForm, self).__init__(*args, **kwargs)
@@ -58,6 +58,7 @@ class MakeMyCourseForm(forms.ModelForm):
         self.fields['courseGrades'].widget.attrs['required'] = "required"
         self.fields['typeEN'].widget.attrs['required'] = "required"
         self.fields['typeAR'].widget.attrs['required'] = "required"
+        self.fields['country'].widget.attrs['required'] = "required"
 
 
         for field in self.fields :

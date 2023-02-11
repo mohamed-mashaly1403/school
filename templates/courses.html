@@ -33,9 +33,56 @@
     </div><!-- End Breadcrumbs -->
 
     <!-- ======= Courses Section ======= -->
-    <section id="courses" class="courses">
+    <section id="courses" class="courses pt-0 mt-0">
 
       <div class="container" data-aos="fade-up">
+<!--       ================================================  flag-->
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+        <div class="d-flex justify-content-center">
+
+            <div class="icon-box">
+
+
+          <a href="{% url 'searchHome' 'UAE' %}">    <img src="{% static 'img/uae.jpg'%}" style=" margin: 15px;" width="60px"></a>
+
+
+          </div>
+
+            <div class="icon-box">
+
+
+<a href="{% url 'searchHome' 'KSA' %}"><img src="{% static 'img/ksa.jpg'%}"style=" margin: 15px;" width="60px"></a>
+
+            </div>
+
+
+            <div class="icon-box">
+
+
+<a href="{% url 'searchHome' 'Kuwait' %}"><img src="{% static 'img/kuwait.png'%}"style=" margin: 15px;" width="60px"></a>
+
+
+
+          </div>
+
+            <div class="icon-box">
+
+
+<a href="{% url 'searchHome' 'Qatar' %}"><img src="{% static 'img/qatar.png'%}"style=" margin: 15px;" width="60px"></a>
+
+
+          </div>
+
+            <div class="icon-box">
+
+
+<a href="{% url 'searchHome' 'Egypt' %}"><img src="{% static 'img/Egypt.jpg'%}"style=" margin: 15px;" width="60px"></a>
+
+
+          </div>
+          </div>
+<!--       ================================================  flag-->
            <div class="row justify-content-md-center">
                <div class="col col-lg-6 col-md-9">
 
@@ -74,6 +121,23 @@
                     {%else %}
                     <a href="{% url 'courseDetails' course.slug %}"><h4> {% if LANGUAGE_CODE == 'ar'%}{{course.language1_tr }}  {% trans 'and'%} {{course.language2_tr}} {% else %} {{course.language1}} {% trans 'and'%} {{course.language2}}{% endif %}</h4></a>
                     {% endif %}
+<!--                     =============================== flag -->
+            {% if course.country == '' %}
+            {%else%}
+              {% if course.country == 'UAE' %}
+              <img src="{% static 'img/uae.jpg'%}" style= "width:40px;">
+              {% elif course.country == 'KSA' %}
+              <img src="{% static 'img/ksa.jpg'%}" style= "width:40px;">
+              {% elif course.country == 'Qatar' %}
+              <img src="{% static 'img/qatar.jpg'%}" style= "width:40px;">
+              {% elif course.country == 'Kuwait' %}
+              <img src="{% static 'img/kuwait.jpg'%}" style= "width:40px;">
+              {% elif course.country == 'Egypt' %}
+              <img src="{% static 'img/Egypt.jpg'%}" style= "width:40px;">
+              {% endif %}
+
+              {% endif %}
+<!--                     =============================== end flag -->
                   <p class="price"> {% trans 'from'%} {{price}} USD</p>
                 </div>
 

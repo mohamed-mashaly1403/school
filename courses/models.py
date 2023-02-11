@@ -18,6 +18,13 @@ lang_tr =  [
     ('الفرنسية', 'الفرنسية'),
     ('الصينية', 'الصينية'),
 ]
+country =  [
+    ('UAE', 'UAE-الإمارات'),
+    ('KSA', 'السعودية-KSA'),
+    ('Qatar', 'قطر-Qatar'),
+    ('Kuwait', 'الكويت-Kuwait'),
+    ('Egypt', 'مصر-Egypt'),
+]
 gradess =[
     ('1', '1'),
     ('2', '2'),
@@ -55,6 +62,7 @@ class course(models.Model):
     slug = models.CharField(max_length=100,unique=True)
     language1 = models.CharField(max_length=15,choices=lang,blank=False,default='')
     language1_tr = models.CharField(max_length=15,choices=lang_tr,blank=False,default='')
+    country = models.CharField(max_length=30,choices=country,blank=True)
     language2 = models.CharField(max_length=15, choices=lang, blank=False,default='')
     language2_tr = models.CharField(max_length=15, choices=lang_tr, blank=False,default='')
     courseGrades = models.ManyToManyField(Grades, blank=True)
