@@ -284,21 +284,23 @@ def ChangeTeacherRequest(request,order_id):
 
     if request.method == 'POST':
         current_user = request.user
+        print(form.errors)
         if form.is_valid():
             data = ChangeTeacherRequestt()
             data.Reason = form.cleaned_data['Reason']
+            data.type = form.cleaned_data['type']
             data.ip = request.META.get('REMOTE_ADDR')
             data.user_id = request.user.id
             data.order_id = order_id
             data.save()
+            orderNO=Order.objects.get(id=order_id).order_number
             messages.success(request, _('request has submited and will change soon'))
-            mail_subject = 'Request to change teacher'
+            mail_subject = 'Request to change teacher or refund'
             mail_body = render_to_string('orders/emailToChangeTeacher.html', {
                 'user': current_user.email,
-                'order_number': data.order_id,
+                'order_number': orderNO,
+                'type':data.type,
                 'Reason': data.Reason,
-
-
             })
             to_email = 'info@myschools.site'
             send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],from_email='info@myschools.site')

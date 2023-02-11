@@ -68,9 +68,13 @@
               </div></a>
               {%else%}
                <div class="course-info d-flex justify-content-between align-items-center">
-
+                {% if order_detail.is_deliverd %}
+                <h5 class="text-danger">{%trans 'Course has delivered successfully'%}</h5>
+                <a href ="{% url 'complains'%}"><p class="text-warning">{%trans 'some thing wrong?'%} </p></a>
+                {%else%}
               <h5 class="text-danger">{%trans 'Class not open'%}</h5>
               <a href ="javascript:window.location.href=window.location.href"><p class="text-warning">{%trans 'Refresh the page'%} </p></a>
+              {%endif%}
               </div>
               {%endif%}
 
@@ -101,7 +105,7 @@
               </li>
                 {% if order_detail.is_deliverd == False  %}
               <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#tab-5">{%trans 'Ask to change the teacher'%}</a>
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-5">{%trans 'Ask to change the teacher or refund'%}</a>
               </li>
                 {%endif%}
 
@@ -331,14 +335,21 @@
                       {%if user.is_authenticated  %}
 				{% if order.is_ordered  %}
 				{% if order_detail.is_deliverd == False  %}
-                      <h3>{%trans 'Ask to change the teacher'%}</h3>
+                      <h3>{%trans 'Ask to change the teacher or refund'%}</h3>
 
 
 				<form  action="{% url 'ChangeTeacherRequest'  order.id %}" method="POST">
 					{% csrf_token %}
-
+					<label>{%trans 'Request:'%}<span style="color:red">*</span> </label>
+					 <label class="text-muted ">(Required)</label>
+                        <select name="type"  class="form-select form-select-lg mb-3">
+                        <option   value="other" class="form-control"  >{%trans 'Other'%}</option>
+                        <option   value="changeTeacher" class="form-control"  >{%trans 'Change teacher'%}</option>
+                        <option   value="Refund" class="form-control"  >{%trans 'Refund'%}</option>
+                        </select>
 						<label>{%trans 'Reason:'%}<span style="color:red">*</span> </label>
                     <label class="text-muted ">(Required)</label>
+
 
 						<textarea required name="Reason" rows="4" class="form-control"></textarea>
 							<br>

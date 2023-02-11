@@ -15,7 +15,7 @@ class RatingReviewForm(forms.ModelForm):
 class ChangeTeacherRequestForm(forms.ModelForm):
     class Meta:
         model = ChangeTeacherRequestt
-        fields =['Reason']
+        fields =['Reason','type']
 class complainsForm(forms.ModelForm):
     class Meta:
         model = Complains

@@ -96,7 +96,7 @@ class orderPoduct(models.Model):
                 Message = _('New student waiting')
                 notifs = Inboxnotif(sender=orderPoduct.user, recipient=orderPoduct.teacher.user, Message=Message,message_id=orderPoduct.order.order_number,notif_type=3)
                 notifs.save()
-                stu_message =f'Teacher ready for{orderPoduct.order_course} course'
+                stu_message =f'Congrats,check{orderPoduct.order_course} course'
                 notifss = Inboxnotif(sender=orderPoduct.teacher.user, recipient=orderPoduct.user, Message=stu_message,message_id=orderPoduct.order.order_number,notif_type=4)
                 notifss.save()
                 # ==================== mail to teacher
@@ -128,8 +128,9 @@ class ChangeTeacherRequestt(models.Model):
     user = models.ForeignKey(account, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     # teacher
+    type = models.CharField(max_length=100,blank=True)
     Reason = models.TextField(max_length=500,blank=True)
-    ip = models.CharField(max_length=20, blank=True)
+    ip = models.CharField(max_length=30, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
     def __str__(self):
