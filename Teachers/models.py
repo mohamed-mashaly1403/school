@@ -13,7 +13,7 @@ class TeacherProfile(models.Model):
     city = models.CharField(max_length=100, blank=True)
     country = models.CharField(max_length=100)
     Balance = models.FloatField(default=0.00,blank=True)
-    docfile = ContentTypeRestrictedFileField(upload_to="cvs",content_types=['application/pdf' ],max_upload_size=2621440,blank=False, null=False)
+    docfile = ContentTypeRestrictedFileField(upload_to="cvs",content_types=['application/pdf' ],max_upload_size=5242880,blank=False, null=False)
     Experience = models.TextField(max_length=5000, blank=True)
     qualifications1 = models.CharField(max_length=2000)
     qualifications2 = models.CharField(max_length=2000, blank=True)
