@@ -245,21 +245,28 @@ $(function() {
   $("#id_course_name,#id_description").keypress(function(event) {
     var ew = event.key;
     if (ew == "ب" || ew == "خ" || ew == "أ" || ew == "ت" ||ew == "ث" || ew == "ج" ||ew == "ح" || ew == "د" ||ew == "ذ" || ew == "ر" || ew == "ز" || ew == "س" ||ew == "ش" || ew == "ص" ||ew == "ض" || ew == "ط" ||ew == "ظ" || ew == "ع" || ew == "غ" || ew == "ف" ||ew == "ق" || ew == "ك" ||ew == "ل" || ew == "م" ||ew == "ن" || ew == "ه" || ew == "و" || ew == "ي" ||ew == "ا" || ew == "آ" ||ew == "ى" || ew == "ئ" ||ew == "ة" || ew == "ؤ" || ew == "ء" || ew == "َ " ||ew == "ّ " )
+      {$(this).css("border", "2px solid #F90A0A")
       return false;
+     }else { $(this).css("border", "2px solid #34F458")
+      return true;
+      }
   });
 });
 // ===============
 $(function() {
   $("#id_course_name_ar,#id_description_ar").keypress(function(event) {
     var ew = event.which;
-    if (ew == 32)
-      return true;
-    if (48 <= ew && ew <= 57)
-      return true;
-    if (65 <= ew && ew <= 90)
-      return false;
+    if (65 <= ew && ew <= 90){
+     $(this).css("border", "2px solid #F90A0A")
+     return false;
+    }
+
     if (97 <= ew && ew <= 122)
-      return false;
+     {
+     $(this).css("border", "2px solid #F90A0A")
+     return false;
+    }
+    $(this).css("border", "2px solid #34F458")
     return true;
 
 
