@@ -100,13 +100,20 @@ def search(request):
     }
     return render(request,'courses.html',context)
 def searchHome(request,keyword):
-    if keyword != '':
+
+    if keyword != '' and  keyword != 'general':
+
         courses = course.objects.order_by('-slug').filter(Q(is_active=True) ,
             Q(description__icontains=keyword) | Q(description_ar__icontains=keyword) | Q(course_name__icontains=keyword) | Q(course_name_ar__icontains=keyword) | Q(country__icontains=keyword) )
         courses_count = courses.count()
+    elif keyword == 'general':
+        courses = course.objects.order_by('-slug').filter(Q(is_active=True),Q(is_school_subject=False)|Q(country="International"))
+        courses_count = courses.count()
+
     else:
         courses = ''
         courses_count = 0
+
     context = {
         'courses': courses,
         'courses_count': courses_count,
