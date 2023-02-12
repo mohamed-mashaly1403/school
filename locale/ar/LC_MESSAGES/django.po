@@ -719,7 +719,7 @@ msgstr "دولة المنهج"
 
 #: .\templates\course-details.html:94
 msgid "Edit  Course"
-msgstr "تعديل كورساتي"
+msgstr "تعديل الكورس"
 
 #: .\templates\course-details.html:97
 msgid "Available Seats"
