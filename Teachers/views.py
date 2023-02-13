@@ -538,6 +538,7 @@ def MakeMyCourse(request):
         course_name = request.GET.get('course_name', None)
         course_nameAR = request.GET.get('course_name_ar', None)
 
+
         if course_name !=None and  course_nameAR == None:
             response = {
                 'is_taken':

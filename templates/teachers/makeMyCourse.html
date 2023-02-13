@@ -44,7 +44,7 @@
 			<div class="row">
 
 				<div class="col-md-12">
-				<form action="{%if '/MakeMyCourse/' in request.path %}{% url 'MakeMyCourse'%}{%endif%} {%if '/edit_profile/' in request.path %}{% url 'editCourse' id %}{%endif%}" method="POST" data-url="{% url 'MakeMyCourse'%}" enctype="multipart/form-data" id="stud_registration_form">
+				<form action="{%if '/MakeMyCourse/' in request.path %}{% url 'MakeMyCourse'%}{%endif%} {%if '/editCourse/' in request.path %}{% url 'editCourse' id %}{%endif%}" method="POST"  data-url="{% url 'MakeMyCourse'%}" enctype="multipart/form-data" id="stud_registration_form">
                     {% csrf_token%}
                      <div class="form-row text-center">
                         <div class="form-group col-md-12 alert-success">
@@ -62,6 +62,8 @@
                        <div style="color: red;" > {{TeacherMakeMyCourseForm.course_name.errors|escape}} </div>
                        <div style="color: red; display:none;" id="stud_email_err"> {%trans 'Course Name already exists! Use another one!!'%} </div>
 
+
+                        </div>
                         </div>
                          <div class="form-group col-md-6 col-sm-12">
                             <label>{%trans 'Arabic Course Name'%}<span style="color:red">*</span></label>
@@ -148,6 +150,7 @@
 
 
                     <input style="width:200px;" type="submit" value="{%trans 'save'%}" class="btn btn-success">
+                    <a style="width:200px;" id="discard" href="{%if '/MakeMyCourse/' in request.path %}{% url 'TeacherDashboard'%}{%endif%} {%if '/editCourse/' in request.path %}{% url 'editMyCourse'  %}{%endif%}" class="btn btn-danger ">{%trans 'Discard'%}</a>
                            </div>
 
                      </div>
@@ -170,22 +173,46 @@
 
 </section>
 <script type='text/javascript'>
+// ========================================= start discard
+let discardButton = document.getElementById('discard');
+$("#stud_registration_form :input").change(function() {
+   $("#stud_registration_form").data("changed",true);
+});
+discardButton.onclick = function() {
+    if ($("#stud_registration_form").data("changed")) {
+
+     let accepted = confirm("{% trans 'Are you sure you want to cancel changes?' %}");
+    if (accepted) {
+        document.getElementById('discard').submit();
+    }else{
+        event.preventDefault();
+    }
+
+}
+
+}
+// ========================================= end discard
 // =======================================ajax
 
 function emailError(error) {
   if (!error) {
     $("#stud_email_err").hide();
     $("#id_course_name").css("border-bottom", "2px solid #34F458");
+    $('input[type="submit"]').prop('disabled', false);
   } else {
 
     $("#stud_email_err").show();
     $("#id_course_name").css("border-bottom", "2px solid #F90A0A");
+    $('input[type="submit"]').prop('disabled', true);
   }
 }
 
+$("#id_course_name").change(function() {
+   $("#id_course_name").data("changed",true);
+});
 $("#id_course_name").blur(function() {
-
-  const email = $(this).val();
+   if ($(this).data("changed")) {
+    const email = $(this).val();
   $.ajax({
     data: $(this).serialize(),
     url: $(this).closest('form').data("url"),
@@ -194,7 +221,7 @@ $("#id_course_name").blur(function() {
       if (response.is_taken) {
 
 
-        emailError("name course already exists! Use another one or log in");
+        emailError("error");
       } else {
 
         emailError(null);
@@ -204,22 +231,29 @@ $("#id_course_name").blur(function() {
     error: function(response) {
       console.log(response.errors);
     },
-  });
+  });}
 });
 // =======================================ajax arabic
 function emailErrorAR(error) {
   if (!error) {
     $("#stud_email_errAR").hide();
     $("#id_course_name_ar").css("border-bottom", "2px solid #34F458");
+    $('input[type="submit"]').prop('disabled', false);
   } else {
     $("#stud_email_errAR").show();
     $("#id_course_name_ar").css("border-bottom", "2px solid #F90A0A");
+    $('input[type="submit"]').prop('disabled', true);
   }
 }
+$("#id_course_name_ar").change(function() {
+   $("#id_course_name_ar").data("changed",true);
+});
 
 $("#id_course_name_ar").blur(function() {
 
-  const email = $(this).val();
+
+   if ($(this).data("changed")) {
+   const email = $(this).val();
   $.ajax({
     data: $(this).serialize(),
     url: $(this).closest('form').data("url"),
@@ -227,7 +261,7 @@ $("#id_course_name_ar").blur(function() {
 
       if (response.is_takenAr) {
 
-        emailErrorAR("name address already exists! Use another one or log in");
+        emailErrorAR("error");
       } else {
 
         emailErrorAR(null);
@@ -237,7 +271,7 @@ $("#id_course_name_ar").blur(function() {
     error: function(response) {
       console.log(response.errors);
     },
-  });
+  });}
 });
 // =======================================ajax
 
