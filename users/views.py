@@ -20,6 +20,11 @@ from orders.models import Order, orderPoduct
 from .forms import regForm, UserForm, UserProfileForm, MessageForm
 from .models import account, UserProfile, Inbox
 
+# def save_profile(backend, user, response, *args, **kwargs):
+#     if backend.name == 'GoogleOAuth2':
+#         url= response.get('picture')
+#         account.objects.filter(owner=user).update(user_img=response['picture'])
+
 
 def register(request):
     url = request.META.get('HTTP_REFERER')
@@ -129,6 +134,7 @@ def login(request):
             else:
                 auth.login(request, user, backend='social_core.backends.google.GoogleOAuth2')
                 user.is_active = True
+
                 user.save()
 
                 return redirect('home')

@@ -151,6 +151,11 @@
 
                 <h3><a href="{% url 'courseDetails' course.slug %}"> {% if LANGUAGE_CODE == 'ar' and course.course_name_ar != None %}{{ course.course_name_ar}}{%else%}{{ course.course_name}}{%endif%}</a> {%if course.teacher.user == user %}<a class="btn btn-outline-light btn-sm active" role="button" aria-pressed="true" href="{% url 'editCourse' course.id %}"><i class="bi bi-pencil "></i></a>{%endif%}</h3>
 
+                 {%if  course.is_school_subject%}
+                  <span class="bg-primary">{% trans 'Grade'%}: {%for ga in course.courseGrades.all %} {{ga}}. {%endfor%}</span> <span>-</span><span class="bg-warning">{% if LANGUAGE_CODE == 'en'%} {%for cu in course.typeEN.all %} {{cu}}. {%endfor%} {%else%}  {%for cu in course.typeAR.all%} {{cu}}. {%endfor%}</span> {%endif%}
+
+
+                    {% endif %}
 
 
                 <p>{% if LANGUAGE_CODE == 'ar' and course.course_name_ar != None %}{{ course.description_ar |readmore:30 }}{%else%}{{ course.description |readmore:30 }}{%endif%}</p>
