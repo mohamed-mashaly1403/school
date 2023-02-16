@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-15 22:01+0400\n"
+"POT-Creation-Date: 2023-02-16 22:59+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,15 +47,15 @@ msgstr "درجة علمية إضافية-(إختياري)"
 msgid "1st subject you teach(required)"
 msgstr "المادة التي تدرسها(مطلوب)"
 
-#: .\Teachers\form.py:26 .\templates\teachers\teacherRegister.html:77
+#: .\Teachers\form.py:26 .\templates\teachers\teacherRegister.html:119
 msgid "2nd subject you teach(optional)"
 msgstr "مادة أخرى تدرسها -(إختياري)"
 
-#: .\Teachers\form.py:27 .\templates\teachers\teacherRegister.html:82
+#: .\Teachers\form.py:27 .\templates\teachers\teacherRegister.html:124
 msgid "3rd subject you teach(optional)"
 msgstr "مادة أخرى تدرسها -(إختياري)"
 
-#: .\Teachers\form.py:28 .\templates\teachers\teacherRegister.html:88
+#: .\Teachers\form.py:28 .\templates\teachers\teacherRegister.html:130
 msgid "Grades you teach."
 msgstr "الصفوف التي تدرسها"
 
@@ -350,15 +350,15 @@ msgstr "اعرض الطلبات"
 #: .\templates\orders\order_course-details.html:240
 #: .\templates\teachers\Teacheredit_profile.html:27
 #: .\templates\teachers\Teacheredit_profile.html:34
-#: .\templates\teachers\teasherDashboard.html:133
-#: .\templates\teachers\teasherDashboard.html:140
+#: .\templates\teachers\teasherDashboard.html:134
+#: .\templates\teachers\teasherDashboard.html:141
 msgid "user picture"
 msgstr "صورة المستخدم"
 
 #: .\templates\accounts\dashboard.html:83
 #: .\templates\accounts\edit_profile.html:32
 #: .\templates\teachers\Teacheredit_profile.html:29
-#: .\templates\teachers\teasherDashboard.html:137
+#: .\templates\teachers\teasherDashboard.html:138
 msgid "Remove Photo"
 msgstr "احذف الصورة"
 
@@ -632,7 +632,7 @@ msgid "Email address already exists! Use another one or log in"
 msgstr "الإيميل المدخل موجود مسبقاً!!"
 
 #: .\templates\accounts\register.html:140 .\templates\includes\navbar.html:134
-#: .\templates\teachers\teacherRegister.html:129
+#: .\templates\teachers\teacherRegister.html:171
 msgid "Register"
 msgstr "تسجيل"
 
@@ -1896,53 +1896,80 @@ msgstr "شكرا لتسجيلك معنا لكن للأسف لم يجتز ملف�
 msgid "Want to complain?"
 msgstr "ارغب بالشكوى؟"
 
-#: .\templates\teachers\teacherRegister.html:17
+#: .\templates\teachers\teacherRegister.html:20
+msgid "Tell me more"
+msgstr "أخبرني المزيد"
+
+#: .\templates\teachers\teacherRegister.html:30
+msgid "Be one of our family"
+msgstr "كن جزء من عائلتنا"
+
+#: .\templates\teachers\teacherRegister.html:33
+msgid ""
+"When your profile get accepted, now you are one of our partners,create your "
+"own course and  get paid as shown below"
+msgstr "بعد ان يتم قبول حسابك كمعلم ستصبح شريك لنا ومؤهل ان تنشأ الكورس الخاص بك وسيتم الدفع لك كالتالي"
+
+#: .\templates\teachers\teacherRegister.html:35
+#: .\templates\teachers\teasherDashboard.html:114
+msgid "Ranking system in 3 months period"
+msgstr "نظام التقييم في اخر ثلاثة أشهر"
+
+#: .\templates\teachers\teacherRegister.html:46
+msgid "Close"
+msgstr "إغلاق"
+
+#: .\templates\teachers\teacherRegister.html:47
+msgid "Join now"
+msgstr "سجل كمعلم"
+
+#: .\templates\teachers\teacherRegister.html:59
 msgid "Teacher Registration Form"
 msgstr "نموذج تسجيل المعلم"
 
-#: .\templates\teachers\teacherRegister.html:25
+#: .\templates\teachers\teacherRegister.html:67
 msgid "Country you teach in (Required)"
 msgstr "الدولة التى تدرس فيها(مطلوب)"
 
-#: .\templates\teachers\teacherRegister.html:30
+#: .\templates\teachers\teacherRegister.html:72
 msgid "City you teach in (optional)"
 msgstr "المدينة التى تدرس فيها(إختياري)"
 
-#: .\templates\teachers\teacherRegister.html:46
+#: .\templates\teachers\teacherRegister.html:88
 msgid "eg. BSC in Education Arabic dep.(Required)"
 msgstr "مثال بكالوريس التربية قسم لغة عربية(مطلوب)"
 
-#: .\templates\teachers\teacherRegister.html:52
+#: .\templates\teachers\teacherRegister.html:94
 msgid "2nd Academic Degree(optional)"
 msgstr "درجة علمية إضافية-(إختياري)"
 
-#: .\templates\teachers\teacherRegister.html:57
+#: .\templates\teachers\teacherRegister.html:99
 msgid "3rd Academic Degree(optional)"
 msgstr "درجة علمية إضافية-(إختياري)"
 
-#: .\templates\teachers\teacherRegister.html:62
+#: .\templates\teachers\teacherRegister.html:104
 msgid "4th Academic Degree(optional)"
 msgstr "درجة علمية إضافية-(إختياري)"
 
-#: .\templates\teachers\teacherRegister.html:72
+#: .\templates\teachers\teacherRegister.html:114
 msgid "subject you teach.(Required)"
 msgstr "المادة التي تدرسها(مطلوب)"
 
-#: .\templates\teachers\teacherRegister.html:96
-#: .\templates\teachers\teacherRegister.html:101
-#: .\templates\teachers\teacherRegister.html:106
+#: .\templates\teachers\teacherRegister.html:138
+#: .\templates\teachers\teacherRegister.html:143
+#: .\templates\teachers\teacherRegister.html:148
 msgid "to transfer your money.(you can fill later)"
 msgstr "لتحويل مستحقاتك(يمكن تعبئته لاحقاً)"
 
-#: .\templates\teachers\teacherRegister.html:113
+#: .\templates\teachers\teacherRegister.html:155
 msgid "upload CV.(Required-pdf only less than 2MB)"
 msgstr "تحميل السيرة الذاتية pdf (الحجم لا يزيد عن 2 ميجا)"
 
-#: .\templates\teachers\teacherRegister.html:119
+#: .\templates\teachers\teacherRegister.html:161
 msgid "Recap your Experience."
 msgstr "ملخص السيرة الذاتية"
 
-#: .\templates\teachers\teacherRegister.html:125
+#: .\templates\teachers\teacherRegister.html:167
 msgid "Any thing you want to say about yourself (optional)"
 msgstr "اي ملاحظات تود أن تخبرنا بها"
 
@@ -1975,10 +2002,6 @@ msgstr "اسحب الرصيد"
 #: .\templates\teachers\teasherDashboard.html:83
 msgid "Min. limit to withdraw 50 $"
 msgstr "اقل مبلغ للسحب $50 "
-
-#: .\templates\teachers\teasherDashboard.html:114
-msgid "Ranking system in 3 months period"
-msgstr "نظام التقييم في اخر ثلاثة أشهر"
 
 #: .\templates\teachers\waitForReview.html:16
 msgid ""

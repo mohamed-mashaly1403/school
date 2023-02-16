@@ -1,18 +1,60 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 {% block title %}Teacher Registration{% endblock %}
 
 <!-- ========================= SECTION CONTENT ========================= -->
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <section class="section-content padding-y">
 
 <!-- ============================ COMPONENT REGISTER   ================================= -->
 	<br>
 	<br>
 	<br>
+<!-- 	========================================modal -->
+<div class="container text-center">
+
+  <!-- Trigger the modal with a button -->
+  <button {% if LANGUAGE_CODE == 'en'%} style="direction: ltr;" {%else%} style="direction: rtl;" {% endif %} type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">{% trans 'Tell me more'%} !!</button>
+
+  <!-- Modal -->
+  <div  class="modal  fade" id="myModal" role="dialog">
+    <div class="modal-dialog ">
+
+      <!-- Modal content-->
+      <div {% if LANGUAGE_CODE == 'en'%} style="direction: ltr;" {%else%} style="direction: rtl;" {% endif %} class="modal-content">
+        <div class="modal-header alert-primary">
+
+          <h4 style="color:black;" class="modal-title ">{% trans 'Be one of our family'%}!! &#128522;</h4>
+        </div>
+        <div style="color:black;" class="modal-body alert-success">
+          <h4>{% trans 'When your profile get accepted, now you are one of our partners,create your own course and  get paid as shown below'%}..</h4>
+          <div style="direction: ltr;">
+          <h5 {% if LANGUAGE_CODE == 'en'%} style="direction: ltr;" {%else%} style="direction: rtl;" {% endif %}> {%trans 'Ranking system in 3 months period'%}..</h5>
+	<p>0 to10 classes => 0&#x2B50;=>your course share 70% </p>
+	<p>10 classes =>&#x2B50;=>  your course share 72% </p>
+	<p>30 classes =>&#x2B50;&#x2B50;=> your course share 75% </p>
+	<p>50 classes =>&#x2B50;&#x2B50;&#x2B50;=> your course share 80% </p>
+	<p>70 classes =>&#x2B50;&#x2B50;&#x2B50;&#x2B50;=> your course share 85% </p>
+	<p>90 classes =>&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;=> your course share 90% </p>
+	</div>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close'%}</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal">{% trans 'Join now'%}</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<!-- 	========================================modal -->
 	<br>
-	<div class="card mx-auto" style="max-width:800px; margin-top:40px;">
+	<div class="card mx-auto" style="max-width:800px;">
       <article class="card-body">
 		<header class="mb-4"><h4 class="card-title text-center">{%trans 'Teacher Registration Form'%}</h4></header>
 		<form action="{%url 'teacherProfile'%}" method="POST" enctype= multipart/form-data>
