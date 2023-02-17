@@ -16,7 +16,7 @@ from django.template.loader import render_to_string
 from Notifs.models import Inboxnotif
 from Teachers.form import TeacherProfileForm, orderPoductClassesForm
 from Teachers.models import TeacherProfile, paid
-from courses.models import course
+from courses.models import course, Price
 from orders.form import complainsForm, ChangeTeacherRequestForm, orderPoductForm
 from orders.models import orderPoduct, Complains, Order, orderPoductClasses, ChangeTeacherRequestt
 from users.forms import UserForm
@@ -39,7 +39,7 @@ def TeacherDashboard(request):
         total =orderPoduct.objects.filter(teacher__user=request.user.id).aggregate(total_price=Sum('product_price'))
         # teacher ranking in last 3 monthes start
         totalClasses =orderPoductClasses.objects.filter(orders__user=request.user.id,class_url_is_deliverd=True,order__is_trial=False,created_at__gte=now()-relativedelta(months=3)).count()
-        print(totalClasses)
+
         if totalClasses < 5:
             star =0
             rate = 0.7
@@ -144,9 +144,50 @@ def AskForWithdraw(request):
     total = orderPoduct.objects.filter(teacher__user=request.user.id).aggregate(total_price=Sum('product_price'))
     total_to_recieve = orderPoduct.objects.filter(teacher__user=request.user.id, is_deliverd=True).aggregate(total_price=Sum('product_price'))
     recivedd = paid.objects.filter(Teacher__user=request.user.id).aggregate(total_Recived=Sum('recived'))
+    price = Price.objects.all().order_by('coursePrice')[1].coursePrice
+    totalClasses = orderPoductClasses.objects.filter(orders__user=request.user.id, class_url_is_deliverd=True,order__is_trial=False,created_at__gte=now() - relativedelta(months=3)).count()
+
+    if totalClasses < 5:
+
+        rate = 0.7
+
+    elif totalClasses == 5:
+        rate = 0.7
+
+    elif totalClasses == 1:
+        rate = 0.72
+
+    elif totalClasses == 20:
+        rate = 0.72
+
+    elif totalClasses == 30:
+        rate = 0.75
+
+    elif totalClasses == 40:
+        rate = 0.75
+
+    elif totalClasses == 50:
+        rate = 0.8
+
+    elif totalClasses == 60:
+        rate = 0.8
+
+    elif totalClasses == 70:
+        rate = 0.85
+
+    elif totalClasses == 80:
+        rate = 0.85
+
+    elif totalClasses == 90:
+        rate = 0.9
+
+    else:
+        rate = 0.9
+
+
     try:
-        Balance = float(total['total_price']) * 0.7
-        total_to_recieve = float(total_to_recieve['total_price'] * 0.7)
+        Balance = float(total['total_price']) * rate
+        total_to_recieve = float(total_to_recieve['total_price'] * rate)
 
     except:
         Balance = 0
@@ -184,7 +225,8 @@ def AskForWithdraw(request):
     context = {
 
         'Balance': Balance,
-        'Balance_to_recieve': math.floor(Balance_to_recieve)
+        'Balance_to_recieve': math.floor(Balance_to_recieve),
+        'price':price,
     }
 
     return render(request, 'teachers/withdrawRequest.html',context)

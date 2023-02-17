@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-16 22:59+0400\n"
+"POT-Creation-Date: 2023-02-17 23:02+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1905,10 +1905,16 @@ msgid "Be one of our family"
 msgstr "كن جزء من عائلتنا"
 
 #: .\templates\teachers\teacherRegister.html:33
+#, fuzzy
+#| msgid ""
+#| "When your profile get accepted, now you are one of our partners,create "
+#| "your own course and  get paid as shown below"
 msgid ""
 "When your profile get accepted, now you are one of our partners,create your "
-"own course and  get paid as shown below"
-msgstr "بعد ان يتم قبول حسابك كمعلم ستصبح شريك لنا ومؤهل ان تنشأ الكورس الخاص بك وسيتم الدفع لك كالتالي"
+"own course and  get paid for real classes not Trial as shown below"
+msgstr ""
+"بعد ان يتم قبول حسابك كمعلم ستصبح شريك لنا ومؤهل ان تنشأ الكورس الخاص بك "
+"وسيتم الدفع لك للحصص الفعلية ليس التجريبية كالتالي"
 
 #: .\templates\teachers\teacherRegister.html:35
 #: .\templates\teachers\teasherDashboard.html:114
