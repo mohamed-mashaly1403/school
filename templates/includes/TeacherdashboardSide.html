@@ -101,6 +101,18 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 
 		</ul>
 
-		<a class="btn btn-light btn-block" href="{% url 'logout'%}"> <i class="fa fa-power-off"></i> <span class="text">{%trans 'Log out'%}</span> </a>
+		<a id="myModelSavee" class="btn btn-light btn-block" href="{% url 'logout'%}"> <i class="fa fa-power-off"></i> <span class="text">{%trans 'Log out'%}</span> </a>
 		<!--   SIDEBAR .//END   -->
 	</aside>
+<script>
+    let llogout = document.getElementById('myModelSavee');
+    llogout.onclick = function() {
+        let accepted = confirm("{% trans 'Are you sure you want to logout?' %}");
+        if (accepted) {
+            document.getElementById('myModelForm').submit();
+        }else{
+            event.preventDefault();
+        }
+
+    }
+</script>
