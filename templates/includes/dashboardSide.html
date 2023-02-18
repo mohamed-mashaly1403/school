@@ -27,7 +27,7 @@ overflow-x: hidden;
 			<a class="list-group-item {% if '/en/users/dashboard/' == request.path or '/ar/users/dashboard/' == request.path %}active {% endif %}" href="{% url 'dashboard'%}"> {%trans 'Dashboard'%}  </a>
 			<a class="list-group-item {% if '/myOrders/' in request.path %}active {% endif %} "  href="{% url 'myOrders'%}"> {%trans 'My Courses'%} </a>
 			<a class="list-group-item {% if '/myActiveOrders/' in request.path %}active {% endif %} "  href="{% url 'myActiveOrders'%}"> {%trans 'My Active Courses'%} </a>
-			<a class="list-group-item {% if '/edit_profile/' in request.path %}active {% endif %}"  href="{% url 'edit_profile'%}"> {%trans 'Edit profile'%} </a>
+			<a class="list-group-item {% if '/editProfile/' in request.path %}active {% endif %}"  href="{% url 'editProfile'%}"> {%trans 'Edit profile'%} </a>
 			<a class="list-group-item {% if '/change_password/' in request.path %}active {% endif %}" href="{% url 'change_password'%}">{%trans 'Change Password'%} </a>
 			<a class="list-group-item {% if '/UnPaidOrders/' in request.path %}active {% endif %}" href="{% url 'UnPaidOrders'%}">{%trans 'Unfinished Orders'%} </a>
 			<a class="list-group-item {% if '/complains/' in request.path %}active {% endif %}" href="{% url 'complains'%}">{%trans 'complains'%} </a>

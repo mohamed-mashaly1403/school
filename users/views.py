@@ -312,18 +312,8 @@ def UnPaidOrders(request):
 
 
 @login_required(login_url='login')
-def edit_profile(request):
-    try:
-        userProfile = get_object_or_404(UserProfile, user=request.user)
-    except:
-        user_form = UserForm(instance=request.user)
-        Profile_form = UserProfileForm()
-        context = {
-            'user_form': user_form,
-            'Profile_form': Profile_form
-        }
-        return render(request, 'accounts/edit_profile.html', context)
-
+def editProfile(request):
+    userProfile, created = UserProfile.objects.get_or_create(user=request.user)
     if request.method == 'POST':
         user_form = UserForm(request.POST, request.FILES, instance=request.user)
         Profile_form = UserProfileForm(request.POST, instance=userProfile)
@@ -336,7 +326,7 @@ def edit_profile(request):
                     user_form.save()
                     Profile_form.save()
                     messages.success(request, _('profile updated'))
-                    return redirect('edit_profile')
+                    return redirect('editProfile')
 
             else:
                 user_form.save()
@@ -344,8 +334,9 @@ def edit_profile(request):
                 messages.success(request, _('profile updated'))
                 return redirect('edit_profile')
     else:
+
         user_form = UserForm(instance=request.user)
-        Profile_form = UserProfileForm(instance=userProfile)
+        Profile_form = UserProfileForm(instance= userProfile)
 
     context = {
         'user_form': user_form,

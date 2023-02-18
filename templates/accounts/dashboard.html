@@ -78,12 +78,12 @@
 					<div class="card-body">
 
 				  {% if user.user_img %}
-				  <a href="{%url 'edit_profile'%}"><img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{{user.user_img.url}}" alt=" {%trans 'user picture'%}"></a>
+				  <a href="{%url 'editProfile'%}"><img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{{user.user_img.url}}" alt=" {%trans 'user picture'%}"></a>
 						<div>
 						<a role="button"  class="btn btn-outline-danger"  href="{% url 'deltePhoto' %}"> {%trans 'Remove Photo'%}</a>
 							</div>
 				  {% else%}
-				 <a href="{%url 'edit_profile'%}"> <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt=" {%trans 'user picture'%}"></a>
+				 <a href="{%url 'editProfile'%}"> <img  height="100" class="rounded-circle mb-0" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt=" {%trans 'user picture'%}"></a>
 				  {% endif %}
 
 						<p class="mb-0">{{user.email}}</p>

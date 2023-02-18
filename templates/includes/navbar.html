@@ -120,9 +120,9 @@
 <!--        =========================================== end notif-->
       {% if user.is_authenticated %}
       {% if user.user_img %}
-     <a href="{%url 'edit_profile'%}"><img  height="50" class="rounded-circle mb-2" style="margin:20px"  src="{{user.user_img.url}}" alt="user picture"></a>
+     <a href="{%url 'editProfile'%}"><img  height="50" class="rounded-circle mb-2" style="margin:20px"  src="{{user.user_img.url}}" alt="user picture"></a>
       {% else%}
-      <a href="{%url 'edit_profile'%}"><img  height="50" class="rounded-circle mb-2" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="user picture"></a>
+      <a href="{%url 'editProfile'%}"><img  height="50" class="rounded-circle mb-2" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="user picture"></a>
       {% endif %}
       <div class="text-center">
       <small style="width:100%;" class="title text-muted">{%trans 'Welcome'%} </small>

@@ -27,6 +27,8 @@ class account_manger(BaseUserManager):
         )
         user.set_password(password)
         user.save(using=self._db)
+
+
         return user
 
     def create_superuser(self, first_name, last_name, email, username, password):
@@ -78,6 +80,13 @@ class account(AbstractBaseUser):
             self.user_img = DEFAULT
             return self.user_img
 
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            UserProfile.objects.create(user=instance)
+
+
+
+
 
     def delete(self, *args, **kwargs):
         DEFAULT = 'default_avatar.png'
@@ -125,3 +134,4 @@ class Inbox(models.Model):
     class Meta:
         ordering = ['is_read', '-created']
 post_save.connect(Inbox.notify,sender=Inbox)
+post_save.connect(account.create_user_profile,sender=account)

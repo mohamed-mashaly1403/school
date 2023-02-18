@@ -213,9 +213,9 @@
         <div class="container" data-aos="fade-up">
 		<div class="icontext w-100">
 			{% if review.user.user_img %}
-     <a href="{%url 'edit_profile'%}"><img  height="50" class="rounded-circle mb-2" style="margin:20px"  src="{{review.user.user_img.url}}" alt="{%trans 'user picture'%}"></a>
+     <a href="{%url 'editProfile'%}"><img  height="50" class="rounded-circle mb-2" style="margin:20px"  src="{{review.user.user_img.url}}" alt="{%trans 'user picture'%}"></a>
       {% else%}
-      <a href="{%url 'edit_profile'%}"><img  height="50" class="rounded-circle mb-2" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="{%trans 'user picture'%}"></a>
+      <a href="{%url 'editProfile'%}"><img  height="50" class="rounded-circle mb-2" style="margin:20px"  src="{% static 'img/default_avatar.png'%}" alt="{%trans 'user picture'%}"></a>
       {% endif %}
 
 			<div class="text">

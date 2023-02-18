@@ -61,7 +61,7 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 			<a class="list-group-item {% if '/Teachercomplains/' in request.path %}active {% endif %}" href="{% url 'Teachercomplains'%}">{%trans 'complains'%} </a>
 			<a class="list-group-item {% if '/ReceivedInstallments/' in request.path %}active {% endif %}" href="{% url 'ReceivedInstallments'%}">{%trans 'Received money'%} </a>
 			<a class="list-group-item {% if '/AskForWithdraw/' in request.path %}active {% endif %}" href="{% url 'AskForWithdraw'%}">{%trans 'Ask to withdraw'%} </a>
-             <a class="list-group-item {% if '/edit_profile/' in request.path %}active {% endif %}"  href="{% url 'edit_profile'%}"> {%trans 'Edit user profile'%} </a>
+             <a class="list-group-item {% if '/editProfile/' in request.path %}active {% endif %}"  href="{% url 'editProfile'%}"> {%trans 'Edit user profile'%} </a>
 			<a class="list-group-item {% if '/change_password/' in request.path %}active {% endif %}" href="{% url 'change_password'%}">{%trans 'Change Password'%} </a>
 			<a class="list-group-item {% if '/MakeMyCourse/' in request.path %}active {% endif %}" href="{% url 'MakeMyCourse'%}">{%trans 'Create new course'%} </a>
 			<a class="list-group-item {% if '/editMyCourse/' in request.path %}active {% endif %}" href="{% url 'editMyCourse'%}">{%trans 'Edit my courses'%} </a>
