@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 23:02+0400\n"
+"POT-Creation-Date: 2023-02-19 02:51+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,99 +89,99 @@ msgstr "تحميل السيرة الذاتية pdf (الحجم لا يزيد ع�
 msgid "Filetype not supported."
 msgstr "نوع الملف غير مدعوم"
 
-#: .\Teachers\views.py:170
+#: .\Teachers\views.py:211
 msgid "Money will be added to your Bank account soon"
 msgstr "سيتم اضافة المبلغ لحسابك قريبا"
 
-#: .\Teachers\views.py:182
+#: .\Teachers\views.py:223
 msgid "Your bank account details missing!"
 msgstr "بيانات حسابك البنكي غير مكتملة"
 
-#: .\Teachers\views.py:221
+#: .\Teachers\views.py:263
 msgid "Your Account will be reviewed and will back to you soon"
 msgstr "سيتم مراجعة حسابك قريبا"
 
-#: .\Teachers\views.py:232
+#: .\Teachers\views.py:274
 msgid "file bigger than 2 MB"
 msgstr "الملف أكبر من 2 ميجا "
 
-#: .\Teachers\views.py:234
+#: .\Teachers\views.py:276
 msgid "cv can not be empty!"
 msgstr "لا يمكن ترك السيرة الذاتية فارغة"
 
-#: .\Teachers\views.py:236
+#: .\Teachers\views.py:278
 msgid "Your cv file not pdf"
 msgstr "ملف السيرة الذاتية ليس pdf"
 
-#: .\Teachers\views.py:259
+#: .\Teachers\views.py:301
 msgid "Complain has submited and will be intouch with you very soon"
 msgstr "تم تسجيل الشكوى وسنتواصل معك لاحقاً"
 
-#: .\Teachers\views.py:328 .\Teachers\views.py:336 .\Teachers\views.py:348
-#: .\Teachers\views.py:353 .\users\views.py:338 .\users\views.py:344
+#: .\Teachers\views.py:370 .\Teachers\views.py:378 .\Teachers\views.py:390
+#: .\Teachers\views.py:395 .\users\views.py:328 .\users\views.py:334
 msgid "profile updated"
 msgstr "تم تحديث حسابك"
 
-#: .\Teachers\views.py:332 .\Teachers\views.py:344
+#: .\Teachers\views.py:374 .\Teachers\views.py:386
 msgid "Your CV bigger than 2 MB"
 msgstr "حجم الملف اكبر من 2 ميجا"
 
-#: .\Teachers\views.py:340 .\Teachers\views.py:567 .\Teachers\views.py:679
-#: .\users\views.py:333
+#: .\Teachers\views.py:382 .\Teachers\views.py:609 .\Teachers\views.py:721
+#: .\users\views.py:323
 msgid "Your photo bigger than 1 MB"
 msgstr "حجم الصورة اكبر من 1 ميجا"
 
-#: .\Teachers\views.py:356
+#: .\Teachers\views.py:398
 msgid "Your cv file is not pdf"
 msgstr "ملف السيرة الذاتية ليس pdf"
 
-#: .\Teachers\views.py:403 .\orders\views.py:297
+#: .\Teachers\views.py:445 .\orders\views.py:297
 msgid "request has submited and will change soon"
 msgstr "تم تسجيل الطلب وسيتم التغيير قريبا"
 
-#: .\Teachers\views.py:443 .\Teachers\views.py:483
+#: .\Teachers\views.py:485 .\Teachers\views.py:525
 msgid "url has submited"
 msgstr "تم تسجيل الرابط"
 
-#: .\Teachers\views.py:456
+#: .\Teachers\views.py:498
 msgid "Url has updated"
 msgstr "تم تحديث الرابط"
 
-#: .\Teachers\views.py:464
+#: .\Teachers\views.py:506
 msgid "url2 has submited"
 msgstr "تم تحديث الرابط"
 
-#: .\Teachers\views.py:514
+#: .\Teachers\views.py:556
 msgid "new class url has submitted"
 msgstr "تم تحميل الرابط"
 
-#: .\Teachers\views.py:517
+#: .\Teachers\views.py:559
 msgid "new class timing has submitted"
 msgstr "تم تحديث المواعيد الجديدة"
 
-#: .\Teachers\views.py:521 .\Teachers\views.py:524
+#: .\Teachers\views.py:563 .\Teachers\views.py:566
 msgid "New Date or url can not be empty "
 msgstr "التاريخ او الرابط لا يمكن تركه فارغ"
 
-#: .\Teachers\views.py:534 .\Teachers\views.py:657
+#: .\Teachers\views.py:576 .\Teachers\views.py:699
 msgid "No teacher profile for the user"
 msgstr "لا يوجد حساب للمعلم"
 
-#: .\Teachers\views.py:571 .\Teachers\views.py:683
+#: .\Teachers\views.py:613 .\Teachers\views.py:725
 msgid ""
 "youtube url not correct get the url from youtube video> share> Embed> src="
 "\"url\""
 msgstr "<Embed> رابط اليوتيوب غير صحيح رجاء انسخ الرابط الصحيح من"
 
-#: .\Teachers\views.py:598 .\Teachers\views.py:629
+#: .\Teachers\views.py:640 .\Teachers\views.py:671
 msgid "course created and will show up in courses after review"
 msgstr "تم إنشاء الكورس بنجاح وسيظهر في قائمة الكورسات بعد المراجعة"
 
-#: .\Teachers\views.py:638 .\Teachers\views.py:703
+#: .\Teachers\views.py:680 .\Teachers\views.py:745
 msgid "course image required"
 msgstr "يجب وضع صورة للكورس"
 
-#: .\Teachers\views.py:691 .\Teachers\views.py:699
+#: .\Teachers\views.py:733 .\Teachers\views.py:741
 msgid "course updated successfully"
 msgstr "تم التعديل بنجاح"
 
@@ -676,7 +676,7 @@ msgstr "لا أمتلك حساب؟"
 msgid "Available in"
 msgstr "متاح بـ"
 
-#: .\templates\course-details.html:16 .\templates\courses.html:129
+#: .\templates\course-details.html:16 .\templates\courses.html:130
 #: .\templates\home.html:317
 msgid "and"
 msgstr "و"
@@ -708,7 +708,7 @@ msgstr "السيرة الذانية للمعلم"
 msgid "Course Fees"
 msgstr "رسوم الكورس"
 
-#: .\templates\course-details.html:71 .\templates\courses.html:148
+#: .\templates\course-details.html:71 .\templates\courses.html:149
 #: .\templates\home.html:336
 msgid "from"
 msgstr "من"
@@ -804,24 +804,24 @@ msgstr "وجد"
 msgid "Courses"
 msgstr "كورسات"
 
-#: .\templates\courses.html:26
+#: .\templates\courses.html:27
 msgid "All courses prepared by Highly qualified and experienced teachers,"
 msgstr "تم إعداد الكورسات من اعلى المعلمين خبرة ومهارة.  "
 
-#: .\templates\courses.html:26
+#: .\templates\courses.html:27
 msgid "simply pick your course and excel"
 msgstr " كل ما عليك اختيار الكورس وانطلق"
 
-#: .\templates\courses.html:98
+#: .\templates\courses.html:99
 msgid "Search"
 msgstr "ابحث"
 
-#: .\templates\courses.html:122 .\templates\home.html:311
+#: .\templates\courses.html:123 .\templates\home.html:311
 #: .\templates\orders\order_course-details.html:27
 msgid "Course Image"
 msgstr "صورة الكورس"
 
-#: .\templates\courses.html:155 .\templates\orders\checkout.html:89
+#: .\templates\courses.html:156 .\templates\orders\checkout.html:89
 msgid "Grade"
 msgstr "الصف"
 
@@ -1968,8 +1968,8 @@ msgid "to transfer your money.(you can fill later)"
 msgstr "لتحويل مستحقاتك(يمكن تعبئته لاحقاً)"
 
 #: .\templates\teachers\teacherRegister.html:155
-msgid "upload CV.(Required-pdf only less than 2MB)"
-msgstr "تحميل السيرة الذاتية pdf (الحجم لا يزيد عن 2 ميجا)"
+msgid "upload CV. without contact numbers(Required-pdf only less than 2MB)"
+msgstr "تحميل السيرة الذاتية pdf (الحجم لا يزيد عن 2 ميجا) يفضل بلا ارقام تواصل"
 
 #: .\templates\teachers\teacherRegister.html:161
 msgid "Recap your Experience."
@@ -2036,7 +2036,9 @@ msgid "Your available balance to receive"
 msgstr "المبلغ المتاح للسحب"
 
 #: .\templates\teachers\withdrawRequest.html:54
-msgid "Minimum limit for withdraw 50 $"
+#, fuzzy
+#| msgid "Minimum limit for withdraw 50 $"
+msgid "Minimum limit for withdraw"
 msgstr "اقل مبلغ للسحب $50 "
 
 #: .\users\views.py:77
@@ -2104,11 +2106,11 @@ msgstr "كلمة المرور غير صالحة"
 msgid "new password and confirmed password do not match"
 msgstr "كلمة المرور والتأكيد لا يتطابقان"
 
-#: .\users\views.py:473
+#: .\users\views.py:464
 msgid "Your can not sent to your self!"
 msgstr "لا يمكن ارسال رسال لنفسك"
 
-#: .\users\views.py:481
+#: .\users\views.py:472
 msgid "Your message was successfully sent!"
 msgstr "تم ارسال رسالتك بنجاح"
 
