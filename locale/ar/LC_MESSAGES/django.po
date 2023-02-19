@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-19 02:51+0400\n"
+"POT-Creation-Date: 2023-02-19 16:07+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -676,7 +676,7 @@ msgstr "لا أمتلك حساب؟"
 msgid "Available in"
 msgstr "متاح بـ"
 
-#: .\templates\course-details.html:16 .\templates\courses.html:130
+#: .\templates\course-details.html:16 .\templates\courses.html:170
 #: .\templates\home.html:317
 msgid "and"
 msgstr "و"
@@ -708,7 +708,7 @@ msgstr "السيرة الذانية للمعلم"
 msgid "Course Fees"
 msgstr "رسوم الكورس"
 
-#: .\templates\course-details.html:71 .\templates\courses.html:149
+#: .\templates\course-details.html:71 .\templates\courses.html:189
 #: .\templates\home.html:336
 msgid "from"
 msgstr "من"
@@ -786,42 +786,42 @@ msgstr "التالي"
 msgid "last"
 msgstr "الأخير"
 
-#: .\templates\courses.html:19
+#: .\templates\courses.html:59
 msgid "Courses Search Results"
 msgstr "نتائج البحث"
 
-#: .\templates\courses.html:21
+#: .\templates\courses.html:61
 msgid "Item"
 msgstr "كورس"
 
-#: .\templates\courses.html:21
+#: .\templates\courses.html:61
 msgid "found"
 msgstr "وجد"
 
-#: .\templates\courses.html:25 .\templates\home.html:62
+#: .\templates\courses.html:65 .\templates\home.html:62
 #: .\templates\home.html:135 .\templates\home.html:303
 #: .\templates\includes\footer.html:22 .\templates\includes\navbar.html:27
 msgid "Courses"
 msgstr "كورسات"
 
-#: .\templates\courses.html:27
+#: .\templates\courses.html:67
 msgid "All courses prepared by Highly qualified and experienced teachers,"
 msgstr "تم إعداد الكورسات من اعلى المعلمين خبرة ومهارة.  "
 
-#: .\templates\courses.html:27
+#: .\templates\courses.html:67
 msgid "simply pick your course and excel"
 msgstr " كل ما عليك اختيار الكورس وانطلق"
 
-#: .\templates\courses.html:99
+#: .\templates\courses.html:139
 msgid "Search"
 msgstr "ابحث"
 
-#: .\templates\courses.html:123 .\templates\home.html:311
+#: .\templates\courses.html:163 .\templates\home.html:311
 #: .\templates\orders\order_course-details.html:27
 msgid "Course Image"
 msgstr "صورة الكورس"
 
-#: .\templates\courses.html:156 .\templates\orders\checkout.html:89
+#: .\templates\courses.html:196 .\templates\orders\checkout.html:89
 msgid "Grade"
 msgstr "الصف"
 
@@ -1071,6 +1071,12 @@ msgstr "تعديل كورساتي"
 msgid "Log out"
 msgstr "خروج"
 
+#: .\templates\includes\TeacherdashboardSide.html:110
+#: .\templates\includes\dashboardSide.html:43
+#: .\templates\includes\navbar.html:166
+msgid "Are you sure you want to logout?"
+msgstr "هل انت متأكد من تسجيل الخروج؟"
+
 #: .\templates\includes\dashboardSide.html:27
 msgid "Dashboard"
 msgstr "لوحة التحكم"
@@ -1172,10 +1178,6 @@ msgstr "أهلا"
 #: .\templates\includes\navbar.html:131
 msgid "Logout"
 msgstr "خروج"
-
-#: .\templates\includes\navbar.html:166
-msgid "Are you sure you want to logout?"
-msgstr "هل انت متأكد من تسجيل الخروج؟"
 
 #: .\templates\orders\checkout.html:49
 #: .\templates\orders\order_course-details.html:101
@@ -1859,12 +1861,16 @@ msgid "to choose more than grade"
 msgstr "لاختيار أكثر من صف"
 
 #: .\templates\teachers\makeMyCourse.html:135
-msgid "Course description in English"
-msgstr "وصف الكورس بالانجليزي"
+#, fuzzy
+#| msgid "Course description in English"
+msgid "Course description in English(what will you give in the course?)"
+msgstr "وصف الكورس بالانجليزي(محتويات الكورس ومميزاته)"
 
 #: .\templates\teachers\makeMyCourse.html:139
-msgid "Course description in Arabic"
-msgstr "وصف الكورس بالعربي"
+#, fuzzy
+#| msgid "Course description in Arabic"
+msgid "Course description in Arabic(what will you give in the course?)"
+msgstr "(محتويات الكورس ومميزاته)وصف الكورس بالعربي"
 
 #: .\templates\teachers\makeMyCourse.html:184
 msgid "Are you sure you want to cancel changes?"
@@ -1969,7 +1975,8 @@ msgstr "لتحويل مستحقاتك(يمكن تعبئته لاحقاً)"
 
 #: .\templates\teachers\teacherRegister.html:155
 msgid "upload CV. without contact numbers(Required-pdf only less than 2MB)"
-msgstr "تحميل السيرة الذاتية pdf (الحجم لا يزيد عن 2 ميجا) يفضل بلا ارقام تواصل"
+msgstr ""
+"تحميل السيرة الذاتية pdf (الحجم لا يزيد عن 2 ميجا) يفضل بلا ارقام تواصل"
 
 #: .\templates\teachers\teacherRegister.html:161
 msgid "Recap your Experience."
