@@ -267,7 +267,9 @@
 document.onscroll = function() {
         if (window.innerHeight + window.scrollY > document.body.clientHeight) {
             document.getElementById('nav').style.display='none';
-        }
+        }else{
+        document.getElementById('nav').style.display='block';
+    }
     }
 var infinite = new Waypoint.Infinite({
   element: $('.infinite-container')[0]
