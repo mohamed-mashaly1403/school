@@ -1868,7 +1868,7 @@ msgstr "وصف الكورس بالانجليزي(محتويات الكورس و�
 #: .\templates\teachers\makeMyCourse.html:139
 
 msgid "Course description in Arabic(what will you give in the course?)"
-msgstr "(محتويات الكورس ومميزاته)وصف الكورس بالعربي"
+msgstr "وصف الكورس بالعربي(محتويات الكورس ومميزاته)"
 
 #: .\templates\teachers\makeMyCourse.html:184
 msgid "Are you sure you want to cancel changes?"
