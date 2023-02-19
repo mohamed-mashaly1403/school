@@ -7,7 +7,47 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% block title %}Courses{% endblock %}
 {% block content %}
+<style>
+.scroll-down {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  display: block;
+  text-align: center;
+  font-size: 10px;
+  z-index: 100;
+  text-decoration: none;
+  text-shadow: 0;
 
+
+
+  z-index: 9;
+
+
+
+  -webkit-animation: fade_move_down 4s ease-in-out infinite;
+  -moz-animation:    fade_move_down 4s ease-in-out infinite;
+  animation:         fade_move_down 4s ease-in-out infinite;
+}
+
+
+/*animated scroll arrow animation*/
+@-webkit-keyframes fade_move_down {
+  0%   { -webkit-transform:translate(0,-10px) rotate(0deg); opacity: 0;  }
+  50%  { opacity: 1;  }
+  100% { -webkit-transform:translate(0,10px) rotate(0deg); opacity: 0; }
+}
+@-moz-keyframes fade_move_down {
+  0%   { -moz-transform:translate(0,-10px) rotate(0deg); opacity: 0;  }
+  50%  { opacity: 1;  }
+  100% { -moz-transform:translate(0,10px) rotate(0deg); opacity: 0; }
+}
+@keyframes fade_move_down {
+  0%   { transform:translate(0,-10px) rotate(0deg); opacity: 0;  }
+  50%  { opacity: 1;  }
+  100% { transform:translate(0,10px) rotate(0deg); opacity: 0; }
+}
+</style>
   <main id="main" data-aos="flip-left" >
 
     <!-- ======= Breadcrumbs ======= -->
@@ -180,12 +220,20 @@
 
 {% if courses.has_next %}
 <a class="infinite-more-link" href="?page={{courses.next_page_number}}"></a>
+
 {% endif %}
 
 
 
 
         </div>
+
+        <div id="nav" class="scroll-down">
+        <h4>scroll down</h4>
+        <i class="fa fa-chevron-down" style="font-size:36px;color:green;"></i>
+
+        </div>
+
 <!--            <div class="row " > -->
 <!--                <div class="d-flex justify-content-center"> -->
 
@@ -216,6 +264,11 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/shortcuts/infinite.min.js"></script>
 <script>
+document.onscroll = function() {
+        if (window.innerHeight + window.scrollY > document.body.clientHeight) {
+            document.getElementById('nav').style.display='none';
+        }
+    }
 var infinite = new Waypoint.Infinite({
   element: $('.infinite-container')[0]
 })

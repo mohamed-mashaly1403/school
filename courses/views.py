@@ -23,12 +23,15 @@ def courses(request):
     Paginatorr = Paginator(courses, 3)
     page = request.GET.get('page')
     paged_courses = Paginatorr.get_page(page)
+
     # # x = range(1, Paginatorr.num_pages)
     # # courses_count = courses.count()
+
 
     context = {
                'courses': paged_courses,
                 'price': price,
+
                # 'courses_count':  courses_count,
                # 'x': x
 
