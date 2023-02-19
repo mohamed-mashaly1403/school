@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-19 16:07+0400\n"
+"POT-Creation-Date: 2023-02-19 16:20+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1861,13 +1861,11 @@ msgid "to choose more than grade"
 msgstr "لاختيار أكثر من صف"
 
 #: .\templates\teachers\makeMyCourse.html:135
-
-msgid "Course description in English(what will you give in the course?)"
+msgid "Course description in English(course content and advantages)"
 msgstr "وصف الكورس بالانجليزي(محتويات الكورس ومميزاته)"
 
 #: .\templates\teachers\makeMyCourse.html:139
-
-msgid "Course description in Arabic(what will you give in the course?)"
+msgid "Course description in Arabic(course content and advantages)"
 msgstr "وصف الكورس بالعربي(محتويات الكورس ومميزاته)"
 
 #: .\templates\teachers\makeMyCourse.html:184
