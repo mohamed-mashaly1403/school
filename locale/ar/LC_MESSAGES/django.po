@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-19 16:22+0400\n"
+"POT-Creation-Date: 2023-02-20 00:29+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -834,7 +834,7 @@ msgid "BOOK YOUR CLASSES NOW"
 msgstr "احجز الآن"
 
 #: .\templates\home.html:14
-msgid "Study online with private highly qualified teacher"
+msgid "Study online with highly qualified private teacher"
 msgstr "ادرس اونلاين مع معلم خبير مخصص لك"
 
 #: .\templates\home.html:15
