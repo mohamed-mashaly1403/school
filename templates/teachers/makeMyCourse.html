@@ -56,9 +56,12 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6 col-sm-12">
+
                             <label>{%trans 'English Course Name'%}<span style="color:red">*</span></label>
+                            <small style="display:none; color: red;" id='English' class="form-text">English only</small>
                            {{TeacherMakeMyCourseForm.course_name}}
                             <small id='small' class="form-text text-muted">{%trans 'pick a unique course Name'%}</small>
+
                        <div style="color: red;" > {{TeacherMakeMyCourseForm.course_name.errors|escape}} </div>
                        <div style="color: red; display:none;" id="stud_email_err"> {%trans 'Course Name already exists! Use another one!!'%} </div>
 
@@ -67,6 +70,7 @@
                         </div>
                          <div class="form-group col-md-6 col-sm-12">
                             <label>{%trans 'Arabic Course Name'%}<span style="color:red">*</span></label>
+                            <small style="display:none; color: red;" id='Arabic' class="form-text">Arabic only</small>
                             {{TeacherMakeMyCourseForm.course_name_ar}}
                             <small class="form-text text-muted">{%trans 'pick a unique course Name'%}</small>
                            <div style="color: red;"> {{TeacherMakeMyCourseForm.course_name_ar.errors|escape}} </div>
@@ -133,10 +137,12 @@
                      <div class="form-row">
                         <div class="form-group col-md-6 col-sm-12">
                             <label>{%trans 'Course description in English(course content and advantages)'%}</label>
+                            <small style="display:none; color: red;" id='Englishd' class="form-text">English only</small>
                             {{TeacherMakeMyCourseForm.description}}
                         </div>
                          <div class="form-group col-md-6  col-sm-12">
                             <label>{%trans 'Course description in Arabic(course content and advantages)'%}</label>
+                            <small style="display:none; color: red;" id='Arabicd' class="form-text">Arabic only</small>
                             {{TeacherMakeMyCourseForm.description_ar}}
                         </div>
 
@@ -211,7 +217,7 @@ function emailError(error) {
 $("#id_course_name").change(function() {
    $("#id_course_name").data("changed",true);
 });
-$("#id_course_name").blur(function() {
+$("#id_course_name").keyup(function() {
    if ($(this).data("changed")) {
     const email = $(this).val();
   $.ajax({
@@ -244,13 +250,14 @@ function emailErrorAR(error) {
     $("#stud_email_errAR").show();
     $("#id_course_name_ar").css("border-bottom", "2px solid #F90A0A");
     $('input[type="submit"]').prop('disabled', true);
+
   }
 }
 $("#id_course_name_ar").change(function() {
    $("#id_course_name_ar").data("changed",true);
 });
 
-$("#id_course_name_ar").blur(function() {
+$("#id_course_name_ar").keyup(function() {
 
 
    if ($(this).data("changed")) {
@@ -280,9 +287,15 @@ $(function() {
   $("#id_course_name,#id_description").keypress(function(event) {
     var ew = event.key;
     if (ew == "ب" || ew == "خ" || ew == "أ" || ew == "ت" ||ew == "ث" || ew == "ج" ||ew == "ح" || ew == "د" ||ew == "ذ" || ew == "ر" || ew == "ز" || ew == "س" ||ew == "ش" || ew == "ص" ||ew == "ض" || ew == "ط" ||ew == "ظ" || ew == "ع" || ew == "غ" || ew == "ف" ||ew == "ق" || ew == "ك" ||ew == "ل" || ew == "م" ||ew == "ن" || ew == "ه" || ew == "و" || ew == "ي" ||ew == "ا" || ew == "آ" ||ew == "ى" || ew == "ئ" ||ew == "ة" || ew == "ؤ" || ew == "ء" || ew == "َ " ||ew == "ّ " )
-      {$(this).css("border", "2px solid #F90A0A")
+      {$(this).css("border", "2px solid #F90A0A");
+      $('#English').show();
+      $('#Englishd').show();
+
       return false;
      }else { $(this).css("border", "2px solid #34F458")
+     $('#English').hide();
+     $('#Englishd').hide();
+
       return true;
       }
   });
@@ -293,15 +306,22 @@ $(function() {
     var ew = event.which;
     if (65 <= ew && ew <= 90){
      $(this).css("border", "2px solid #F90A0A")
+     $('#Arabic').show();
+     $('#Arabicd').show();
+
      return false;
     }
 
     if (97 <= ew && ew <= 122)
      {
      $(this).css("border", "2px solid #F90A0A")
+     $('#Arabic').show();
+     $('#Arabicd').show();
      return false;
     }
     $(this).css("border", "2px solid #34F458")
+    $('#Arabic').hide();
+    $('#Arabicd').hide();
     return true;
 
 

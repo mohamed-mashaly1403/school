@@ -643,7 +643,10 @@ def MakeMyCourse(request):
                         to_email = 'info@myschools.site'
                         send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],
                                                                   from_email='info@myschools.site')
-                        send_mail.send()
+                        try:
+                            send_mail.send()
+                        except:
+                            pass
                         return redirect('courses')
                 else:
                     TeacherMakeMyCourseForm.save(commit=True)
@@ -673,7 +676,10 @@ def MakeMyCourse(request):
                     mail_body = f"review course {course_name} for teacher {teacher}"
                     to_email = 'info@myschools.site'
                     send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],from_email='info@myschools.site')
-                    send_mail.send()
+                    try:
+                        send_mail.send()
+                    except:
+                        pass
                     return redirect('courses')
             else:
                 TeacherMakeMyCourseForm.save(commit=False)
