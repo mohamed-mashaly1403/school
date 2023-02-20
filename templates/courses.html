@@ -93,7 +93,7 @@
             <div class="icon-box">
 
 
-<a href="{% url 'searchHome' 'KSA' %}"><img src="{% static 'img/ksa.jpg'%}"style=" margin: 15px;" width="60px"></a>
+<a  href="{% url 'searchHome' 'KSA' %}"><img src="{% static 'img/ksa.jpg'%}"style=" margin: 15px;" width="60px"></a>
 
             </div>
 
@@ -227,12 +227,13 @@
 
 
         </div>
-
+        {% if courses %}
         <div id="nav" class="scroll-down">
         <h4>scroll down</h4>
         <i class="fa fa-chevron-down" style="font-size:36px;color:green;"></i>
 
         </div>
+        {% endif %}
 
 <!--            <div class="row " > -->
 <!--                <div class="d-flex justify-content-center"> -->
@@ -264,13 +265,14 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/shortcuts/infinite.min.js"></script>
 <script>
-document.onscroll = function() {
-        if (window.innerHeight + window.scrollY > document.body.clientHeight) {
-            document.getElementById('nav').style.display='none';
-        }else{
-        document.getElementById('nav').style.display='block';
-    }
-    }
+
+window.onscroll = function(ev) {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        document.getElementById('nav').style.display='none';
+    }else{
+         document.getElementById('nav').style.display='block';
+   }
+};
 var infinite = new Waypoint.Infinite({
   element: $('.infinite-container')[0]
 })
