@@ -1,5 +1,8 @@
 from django import forms
+from django.http import HttpRequest
+
 from .models import account, UserProfile, Inbox
+
 
 
 class regForm(forms.ModelForm):
@@ -51,6 +54,7 @@ class MessageForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(MessageForm, self).__init__(*args, **kwargs)
+
 
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = 'form-control'
