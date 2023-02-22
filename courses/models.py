@@ -1,8 +1,10 @@
 from django.db import models
+from django.db.models.signals import post_save
 from django.urls import reverse
 from django.db.models import Count, Avg,Min
 
 # Create your models here.
+from Notifs.models import Inboxnotif
 from Teachers.models import TeacherProfile
 from users.models import account
 
@@ -57,8 +59,8 @@ class TypeAR(models.Model):
     def __str__(self):
         return self.tybe_Type_ar
 class course(models.Model):
-    course_name = models.CharField(max_length=50,unique=True)
-    course_name_ar = models.CharField(max_length=50,unique=True,null=True,blank=True)
+    course_name = models.CharField(max_length=150,unique=True)
+    course_name_ar = models.CharField(max_length=150,unique=True,null=True,blank=True)
     teacher = models.ForeignKey(TeacherProfile, on_delete=models.SET_NULL, null=True,blank=True)
     slug = models.CharField(max_length=100,unique=True)
     language1 = models.CharField(max_length=15,choices=lang,blank=False,default='')
@@ -75,6 +77,7 @@ class course(models.Model):
     is_school_subject = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
     youtubeUrl=models.URLField(null=True,blank=True,max_length=200,default='')
+    __original_is_active = None
 
 
     def get_url(self):
@@ -106,15 +109,24 @@ class course(models.Model):
             return count
         else:
             return 0
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.__original_is_active = self.is_active
 
-
-
-
+    def notify(sender, instance, *args, **kwargs):
+        course = instance
+        print(course.is_active)
+        print(course.__original_is_active)
+        if course.is_active != course.__original_is_active:
+            if course.is_active:
+                Message = f'{course.course_name} Course  has activated.'
+                notifs = Inboxnotif(sender=course.teacher.user, recipient=course.teacher.user, Message=Message, message_id=course.slug,notif_type=5)
+                notifs.save()
     def __str__(self):
         return self.course_name
+post_save.connect(course.notify,sender=course)
+
 from orders.models import Order, orderPoduct
-
-
 class RatingReview(models.Model):
     course = models.ForeignKey(course, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)

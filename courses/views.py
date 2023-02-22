@@ -5,6 +5,7 @@ from django.shortcuts import render
 
 
 # Create your views here.
+from Notifs.models import Inboxnotif
 from courses.models import RatingReview, course,Price
 
 
@@ -45,6 +46,15 @@ def courses(request):
 
 def courseDetails(request,course_name):
     courseDets = course.objects.get(slug__iexact=course_name)
+    try:
+        tt= Inboxnotif.objects.filter(recipient=request.user, message_id=course_name)
+        for i in tt:
+            i.is_read=True
+            i.save()
+    except:
+        pass
+
+
     price = Price.objects.all().order_by('coursePrice')
     price1st = Price.objects.all()[0].minn
     reviews = RatingReview.objects.filter(course__slug=course_name, status=True).order_by('updated_date')

@@ -8,8 +8,7 @@ from django.db.models import Sum, Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 import django.core.mail
-
-
+import urllib.parse
 # Create your views here.
 from django.template.loader import render_to_string
 
@@ -577,15 +576,20 @@ def MakeMyCourse(request):
         return redirect('TeacherDashboard')
     if request.is_ajax():
 
+
         course_name = request.GET.get('course_name', None)
         course_nameAR = request.GET.get('course_name_ar', None)
+
+
 
 
         if course_name !=None and  course_nameAR == None:
             response = {
                 'is_taken':
+                course.objects.filter(course_name=urllib.parse.unquote(course_name)).exists(),
+                'is_taken1':
+                course.objects.filter(slug=slugify(urllib.parse.unquote(course_name))).exists()
 
-                course.objects.filter(course_name__exact=course_name).exists()
             }
 
             return JsonResponse(response)
@@ -594,7 +598,7 @@ def MakeMyCourse(request):
             response = {
                 'is_takenAr':
 
-                course.objects.filter(course_name_ar__exact=course_nameAR).exists()
+                course.objects.filter(course_name_ar=urllib.parse.unquote(course_nameAR)).exists()
             }
 
             return JsonResponse(response)

@@ -225,7 +225,7 @@ $("#id_course_name").keyup(function() {
     url: $(this).closest('form').data("url"),
     success: function(response) {
 
-      if (response.is_taken) {
+      if (response.is_taken || response.is_taken1) {
 
 
         emailError("error");

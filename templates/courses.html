@@ -7,7 +7,13 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% block title %}Courses{% endblock %}
 {% block content %}
+<br>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"
+/>
 <style>
+
 .scroll-down {
   position: absolute;
   left: 50%;
@@ -53,7 +59,7 @@
     <!-- ======= Breadcrumbs ======= -->
 
     <div class="breadcrumbs " >
-      <div class="container  ">
+      <div class="container   ">
           {% if 'search' in request.path%}
 
 		<h2 class="title-page">{%trans 'Courses Search Results'%} </h2>
@@ -62,7 +68,7 @@
 
 		</div>
           {% else%}
-          <h2>{%trans 'Courses'%}</h2>
+          <h2 >{%trans 'Courses'%}</h2>
 
         <p>{%trans 'All courses prepared by Highly qualified and experienced teachers,'%} {%trans 'simply pick your course and excel'%}!!</p>
           {% endif %}
@@ -79,13 +85,13 @@
       <div class="container" data-aos="flip-right">
 <!--       ================================================  flag-->
 
-        <div class="row" data-aos="flip-left" data-aos-delay="30">
+        <div class="row my-3" data-aos="flip-left" data-aos-delay="30">
         <div class="d-flex justify-content-center">
 
             <div class="icon-box">
 
 
-          <a href="{% url 'searchHome' 'UAE' %}">    <img src="{% static 'img/uae.jpg'%}" style=" margin: 15px;" width="60px"></a>
+          <a class="btn btn-light mx-1 btn-sm" type="button" href="{% url 'searchHome' 'UAE' %}">UAE  <span class="fi fi-ae "></span> </a>
 
 
           </div>
@@ -93,7 +99,7 @@
             <div class="icon-box">
 
 
-<a  href="{% url 'searchHome' 'KSA' %}"><img src="{% static 'img/ksa.jpg'%}"style=" margin: 15px;" width="60px"></a>
+<a class="btn btn-success mx-1 btn-sm" type="button"  href="{% url 'searchHome' 'KSA' %}">KSA <span class="fi fi-sa"></span> </a>
 
             </div>
 
@@ -101,7 +107,7 @@
             <div class="icon-box">
 
 
-<a href="{% url 'searchHome' 'Kuwait' %}"><img src="{% static 'img/kuwait.png'%}"style=" margin: 15px;" width="60px"></a>
+<a class="btn btn-danger mx-1 btn-sm" type="button" href="{% url 'searchHome' 'Kuwait' %}">Kuwait <span class="fi fi-kw"></span></a>
 
 
 
@@ -110,7 +116,7 @@
             <div class="icon-box">
 
 
-<a href="{% url 'searchHome' 'Qatar' %}"><img src="{% static 'img/qatar.png'%}"style=" margin: 15px;" width="60px"></a>
+<a class="btn btn-info mx-1 btn-sm" type="button" href="{% url 'searchHome' 'Qatar' %}">Qatar <span class="fi fi-qa"></span></a>
 
 
           </div>
@@ -118,20 +124,21 @@
             <div class="icon-box">
 
 
-<a href="{% url 'searchHome' 'Egypt' %}"><img src="{% static 'img/Egypt.jpg'%}"style=" margin: 15px;" width="60px"></a>
+<a class="btn btn-warning mx-1 btn-sm" type="button" href="{% url 'searchHome' 'Egypt' %}">Egypt <span class="fi fi-eg"></span></a>
 
 
           </div>
           <div class="icon-box">
 
 
-<a href="{% url 'searchHome' 'general' %}"><img src="{% static 'img/gc.jpg'%}"style=" margin: 15px;" width="60px"></a>
+<a class="btn btn-secondary mx-2 btn-sm" type="button" href="{% url 'searchHome' 'general' %}">General <span class="fi fi-un"></span></a>
 
 
           </div>
           </div>
+
 <!--       ================================================  flag-->
-           <div class="row justify-content-md-center">
+           <div class="row justify-content-md-center mt-3">
                <div class="col col-lg-6 col-md-9">
 
 		<form action="{% url 'search' %}"   method="get" >
