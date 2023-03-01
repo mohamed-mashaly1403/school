@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-24 00:09+0400\n"
+"POT-Creation-Date: 2023-03-01 20:01+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,99 +89,99 @@ msgstr "تحميل السيرة الذاتية pdf (الحجم لا يزيد ع�
 msgid "Filetype not supported."
 msgstr "نوع الملف غير مدعوم"
 
-#: .\Teachers\views.py:210
+#: .\Teachers\views.py:222
 msgid "Money will be added to your Bank account soon"
 msgstr "سيتم اضافة المبلغ لحسابك قريبا"
 
-#: .\Teachers\views.py:222
+#: .\Teachers\views.py:234
 msgid "Your bank account details missing!"
 msgstr "بيانات حسابك البنكي غير مكتملة"
 
-#: .\Teachers\views.py:262
+#: .\Teachers\views.py:274
 msgid "Your Account will be reviewed and will back to you soon"
 msgstr "سيتم مراجعة حسابك قريبا"
 
-#: .\Teachers\views.py:273
+#: .\Teachers\views.py:285
 msgid "file bigger than 2 MB"
 msgstr "الملف أكبر من 2 ميجا "
 
-#: .\Teachers\views.py:275
+#: .\Teachers\views.py:287
 msgid "cv can not be empty!"
 msgstr "لا يمكن ترك السيرة الذاتية فارغة"
 
-#: .\Teachers\views.py:277
+#: .\Teachers\views.py:289
 msgid "Your cv file not pdf"
 msgstr "ملف السيرة الذاتية ليس pdf"
 
-#: .\Teachers\views.py:300
+#: .\Teachers\views.py:312
 msgid "Complain has submited and will be intouch with you very soon"
 msgstr "تم تسجيل الشكوى وسنتواصل معك لاحقاً"
 
-#: .\Teachers\views.py:369 .\Teachers\views.py:377 .\Teachers\views.py:389
-#: .\Teachers\views.py:394 .\users\views.py:328 .\users\views.py:334
+#: .\Teachers\views.py:381 .\Teachers\views.py:389 .\Teachers\views.py:401
+#: .\Teachers\views.py:406 .\users\views.py:357 .\users\views.py:363
 msgid "profile updated"
 msgstr "تم تحديث حسابك"
 
-#: .\Teachers\views.py:373 .\Teachers\views.py:385
+#: .\Teachers\views.py:385 .\Teachers\views.py:397
 msgid "Your CV bigger than 2 MB"
 msgstr "حجم الملف اكبر من 2 ميجا"
 
-#: .\Teachers\views.py:381 .\Teachers\views.py:613 .\Teachers\views.py:731
-#: .\users\views.py:323
+#: .\Teachers\views.py:393 .\Teachers\views.py:625 .\Teachers\views.py:743
+#: .\users\views.py:352
 msgid "Your photo bigger than 1 MB"
 msgstr "حجم الصورة اكبر من 1 ميجا"
 
-#: .\Teachers\views.py:397
+#: .\Teachers\views.py:409
 msgid "Your cv file is not pdf"
 msgstr "ملف السيرة الذاتية ليس pdf"
 
-#: .\Teachers\views.py:444 .\orders\views.py:297
+#: .\Teachers\views.py:456 .\orders\views.py:297
 msgid "request has submited and will change soon"
 msgstr "تم تسجيل الطلب وسيتم التغيير قريبا"
 
-#: .\Teachers\views.py:484 .\Teachers\views.py:524
+#: .\Teachers\views.py:496 .\Teachers\views.py:536
 msgid "url has submited"
 msgstr "تم تسجيل الرابط"
 
-#: .\Teachers\views.py:497
+#: .\Teachers\views.py:509
 msgid "Url has updated"
 msgstr "تم تحديث الرابط"
 
-#: .\Teachers\views.py:505
+#: .\Teachers\views.py:517
 msgid "url2 has submited"
 msgstr "تم تحديث الرابط"
 
-#: .\Teachers\views.py:555
+#: .\Teachers\views.py:567
 msgid "new class url has submitted"
 msgstr "تم تحميل الرابط"
 
-#: .\Teachers\views.py:558
+#: .\Teachers\views.py:570
 msgid "new class timing has submitted"
 msgstr "تم تحديث المواعيد الجديدة"
 
-#: .\Teachers\views.py:562 .\Teachers\views.py:565
+#: .\Teachers\views.py:574 .\Teachers\views.py:577
 msgid "New Date or url can not be empty "
 msgstr "التاريخ او الرابط لا يمكن تركه فارغ"
 
-#: .\Teachers\views.py:575 .\Teachers\views.py:709
+#: .\Teachers\views.py:587 .\Teachers\views.py:721
 msgid "No teacher profile for the user"
 msgstr "لا يوجد حساب للمعلم"
 
-#: .\Teachers\views.py:617 .\Teachers\views.py:735
+#: .\Teachers\views.py:629 .\Teachers\views.py:747
 msgid ""
 "youtube url not correct get the url from youtube video> share> Embed> src="
 "\"url\""
 msgstr "<Embed> رابط اليوتيوب غير صحيح رجاء انسخ الرابط الصحيح من"
 
-#: .\Teachers\views.py:644 .\Teachers\views.py:678
+#: .\Teachers\views.py:656 .\Teachers\views.py:690
 msgid "course created and will show up in courses after review"
 msgstr "تم إنشاء الكورس بنجاح وسيظهر في قائمة الكورسات بعد المراجعة"
 
-#: .\Teachers\views.py:690 .\Teachers\views.py:755
+#: .\Teachers\views.py:702 .\Teachers\views.py:767
 msgid "course image required"
 msgstr "يجب وضع صورة للكورس"
 
-#: .\Teachers\views.py:743 .\Teachers\views.py:751
+#: .\Teachers\views.py:755 .\Teachers\views.py:763
 msgid "course updated successfully"
 msgstr "تم التعديل بنجاح"
 
@@ -875,8 +875,8 @@ msgid "Students"
 msgstr "الطلاب"
 
 #: .\templates\home.html:67
-msgid "Events"
-msgstr "الفعاليات"
+msgid "Visits"
+msgstr "زيارة للموقع"
 
 #: .\templates\home.html:72
 msgid "Trainers"
@@ -2050,7 +2050,7 @@ msgstr "المبلغ المتاح للسحب"
 msgid "Minimum limit for withdraw"
 msgstr "اقل مبلغ للسحب "
 
-#: .\users\views.py:77
+#: .\users\views.py:88
 msgid ""
 "Thank you for registration with us,YOUR ACCOUNT HAS BEEN CREATED! ,Please, "
 "verify it by clicking the activation link that has been sent to your email."
@@ -2059,69 +2059,72 @@ msgstr ""
 "نشكرك لتسجيلك معنا، من فضلك اضغط الرابط المرسل على الايميل لتفعيل حسابك.إذا "
 "لم تجد الرابط لطفاً ابحث في الإيميلات المهملة"
 
-#: .\users\views.py:110
+#: .\users\views.py:130
 msgid "successfully login"
 msgstr "تم تسجيل الدخول بنجاح"
 
-#: .\users\views.py:113
+#: .\users\views.py:133
 msgid "Wrong email or password or account not activated "
 msgstr " ايميل او كلمة المرور خطأ او الحساب لم يتم تفعيله"
 
-#: .\users\views.py:155
+#: .\users\views.py:175
 msgid "successfully Logout"
 msgstr "تم تسجيل الخروج بنجاح"
 
-#: .\users\views.py:174
+#: .\users\views.py:194
 msgid "successfully activated"
 msgstr "تم تفعيل الحساب بنجاح"
 
-#: .\users\views.py:177
+#: .\users\views.py:197
 msgid "invaild link"
 msgstr "رابط غير صالح"
 
-#: .\users\views.py:198
+#: .\users\views.py:218
 msgid "Click on the link on reset password mail  sent to you"
 msgstr "اضغط على الرابط في الايميل المرسل لك"
 
-#: .\users\views.py:201
+#: .\users\views.py:221
 msgid "account does not exist"
 msgstr "لا يوجد حساب"
 
-#: .\users\views.py:215
+#: .\users\views.py:235
 msgid "Reset your Password"
 msgstr "تغيير كلمة المرور"
 
-#: .\users\views.py:218
+#: .\users\views.py:238
 msgid "Reset password link expired"
 msgstr "صلاحية الرابط انتهت"
 
-#: .\users\views.py:231
+#: .\users\views.py:251
 msgid "new password has set"
 msgstr "تم تغيير كلمة المرور"
 
-#: .\users\views.py:235
+#: .\users\views.py:255
 msgid "confirm Password does not match"
 msgstr "كلمة المرور والتأكيد لا يتطابقان"
 
-#: .\users\views.py:254
+#: .\users\views.py:274
 msgid "password changed successfully"
 msgstr "تم تغيير كلمة المرور بنجاح"
 
-#: .\users\views.py:257
+#: .\users\views.py:277
 msgid "invalid current password"
 msgstr "كلمة المرور غير صالحة"
 
-#: .\users\views.py:260
+#: .\users\views.py:280
 msgid "new password and confirmed password do not match"
 msgstr "كلمة المرور والتأكيد لا يتطابقان"
 
-#: .\users\views.py:464
+#: .\users\views.py:493
 msgid "Your can not sent to your self!"
 msgstr "لا يمكن ارسال رسال لنفسك"
 
-#: .\users\views.py:472
+#: .\users\views.py:501
 msgid "Your message was successfully sent!"
 msgstr "تم ارسال رسالتك بنجاح"
+
+#~ msgid "Events"
+#~ msgstr "الفعاليات"
 
 #~ msgid "حصة تجريبية"
 #~ msgstr "ثلاث حصص"
