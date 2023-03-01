@@ -25,10 +25,14 @@ def home(request):
         ip = x_forwarded_for.split(',')[0]
     else:
         ip = request.META.get('REMOTE_ADDR')
-    if Vists.objects.filter(ip=ip,created__gt=datetime.date.today()).exists():
-        pass
-    else:
+    try:
+        if Vists.objects.filter(ip=ip,created__gt=datetime.date.today()).exists():
+            pass
+        else:
+            Vists(ip=ip).save()
+    except:
         Vists(ip=ip).save()
+
     visits_count = Vists.objects.all().count()
 
 
