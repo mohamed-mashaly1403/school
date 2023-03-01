@@ -8,6 +8,8 @@ from django.db import models
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser ,BaseUserManager
 from django.db.models.signals import post_save
+from django.template.loader import render_to_string
+import django.core.mail
 
 from Notifs.models import Inboxnotif
 from vschool import settings
@@ -83,6 +85,11 @@ class account(AbstractBaseUser):
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
             UserProfile.objects.create(user=instance)
+            mail_subject = 'user(not teacher) registration'
+            mail_body = render_to_string('teachers/teacherRegistrationMail.html', { 'user':instance  })
+            to_email = 'info@myschools.site'
+            send_mail = django.core.mail.EmailMessage(mail_subject, mail_body, to=[to_email],from_email='info@myschools.site')
+            send_mail.send()
 
 
 
