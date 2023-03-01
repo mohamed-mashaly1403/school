@@ -7,7 +7,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
 
-from .models import account,UserProfile
+from .models import account,UserProfile,Vists
 class account_admin(UserAdmin):
     def thumbnail(self,object):
         return format_html('<img width="50" height = "40"  style="border-radius:50%;"  src="{}" alt="user picture">'.format(object.image_url))
@@ -24,7 +24,11 @@ class userProfileAdmin(admin.ModelAdmin):
 class InboxAdmin(admin.ModelAdmin):
 
     list_display = ['sender', 'subject',  'created']
+class VistsAdmin(admin.ModelAdmin):
+
+    list_display = ['ip', 'created']
 
 admin.site.register(account,account_admin)
 admin.site.register(UserProfile,userProfileAdmin)
 admin.site.register(Inbox,InboxAdmin)
+admin.site.register(Vists,VistsAdmin)

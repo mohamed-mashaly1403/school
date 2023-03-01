@@ -14,11 +14,13 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 import requests
+import datetime
 
 from Notifs.models import Inboxnotif
 from orders.models import Order, orderPoduct
 from .forms import regForm, UserForm, UserProfileForm, MessageForm
-from .models import account, UserProfile, Inbox
+from .models import account, UserProfile, Inbox, Vists
+
 
 # def save_profile(backend, user, response, *args, **kwargs):
 #     if backend.name == 'GoogleOAuth2':
@@ -28,6 +30,15 @@ from .models import account, UserProfile, Inbox
 
 def register(request):
     url = request.META.get('HTTP_REFERER')
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    if Vists.objects.filter(ip=ip, created__gt=datetime.date.today()).exists():
+        pass
+    else:
+        Vists(ip=ip).save()
     try:
         if request.user.is_authenticated:
             return redirect(url)
@@ -96,6 +107,15 @@ def register(request):
 #     return redirect('login')
 def login(request):
     url = request.META.get('HTTP_REFERER')
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    if Vists.objects.filter(ip=ip, created__gt=datetime.date.today()).exists():
+        pass
+    else:
+        Vists(ip=ip).save()
     try:
         if request.user.is_authenticated:
             return redirect(url)
@@ -265,6 +285,15 @@ def change_password(request):
 
 @login_required(login_url='login')
 def dashboard(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    if Vists.objects.filter(ip=ip, created__gt=datetime.date.today()).exists():
+        pass
+    else:
+        Vists(ip=ip).save()
     orders = Order.objects.order_by('-created_at').filter(user_id=request.user.id, is_ordered=True)
     active_orders = orderPoduct.objects.filter(user_id=request.user.id, is_deliverd=False)
     orders_count = orders.count()

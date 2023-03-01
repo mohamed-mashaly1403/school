@@ -4,7 +4,8 @@ from django.db.models import Count
 from Teachers.models import TeacherProfile
 from courses.models import course, Price
 from orders.models import orderPoduct
-from users.models import account
+from users.models import account, Vists
+import datetime
 
 
 def handler404(request, exception):
@@ -19,6 +20,17 @@ def home(request):
     trainers = TeacherProfile.objects.filter(is_accepted=True).count()
     course_count = course.objects.filter(is_active=True).count()
     students_count = account.objects.filter(is_active=True,is_staff=False).count()
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    if Vists.objects.filter(ip=ip,created__gt=datetime.date.today()).exists():
+        pass
+    else:
+        Vists(ip=ip).save()
+    visits_count = Vists.objects.all().count()
+
 
 
 
@@ -36,6 +48,7 @@ def home(request):
         'trainers':trainers,
         'course_count':course_count,
         'students_count':students_count,
+        'visits_count':visits_count
 
 
     }

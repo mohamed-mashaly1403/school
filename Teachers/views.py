@@ -19,11 +19,23 @@ from courses.models import course, Price
 from orders.form import complainsForm, ChangeTeacherRequestForm, orderPoductForm
 from orders.models import orderPoduct, Complains, Order, orderPoductClasses, ChangeTeacherRequestt
 from users.forms import UserForm
+from users.models import Vists
 from .form import MakeMyCourseForm
 from django.utils.text import slugify
+import datetime
+
 
 @user_passes_test(lambda u: u.is_staff)
 def TeacherDashboard(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    if Vists.objects.filter(ip=ip, created__gt=datetime.date.today()).exists():
+        pass
+    else:
+        Vists(ip=ip).save()
     accepted = TeacherProfile.objects.filter(is_accepted=True, user=request.user).exists()
     if accepted:
         if request.user.is_staff:

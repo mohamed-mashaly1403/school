@@ -135,3 +135,10 @@ class Inbox(models.Model):
         ordering = ['is_read', '-created']
 post_save.connect(Inbox.notify,sender=Inbox)
 post_save.connect(account.create_user_profile,sender=account)
+class Vists(models.Model):
+    ip = models.GenericIPAddressField()
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.ip
+
