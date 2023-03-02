@@ -22,7 +22,7 @@ def home(request):
     courses = orderPoduct.objects.values_list('order_course__course_name').annotate(course_count=Count('order_course')).order_by('-course_count')[:3]
     orderrr=[a_tuple[0] for a_tuple in courses]
     price = Price.objects.all()[0].minn
-    trainers = TeacherProfile.objects.filter(is_accepted=True).count()
+    trainers = TeacherProfilee.objects.filter(is_accepted=True).count()
     course_count = course.objects.filter(is_active=True).count()
     students_count = account.objects.filter(is_active=True,is_staff=False).count()
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
