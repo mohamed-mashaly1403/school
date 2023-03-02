@@ -28,3 +28,4 @@ urlpatterns += i18n_patterns(
 
 
 handler404 = 'vschool.views.handler404'
+handler500 = 'vschool.views.handler500'

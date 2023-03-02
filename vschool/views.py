@@ -13,6 +13,11 @@ def handler404(request, exception):
     response = render(request, "errors/404.html", context=context)
     response.status_code = 404
     return response
+def handler500(request, *args, **argv):
+    context = {}
+    response = render(request,'errors/500.html',  context=context)
+    response.status_code = 500
+    return response
 def home(request):
     courses = orderPoduct.objects.values_list('order_course__course_name').annotate(course_count=Count('order_course')).order_by('-course_count')[:3]
     orderrr=[a_tuple[0] for a_tuple in courses]
