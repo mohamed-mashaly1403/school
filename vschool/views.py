@@ -14,7 +14,7 @@ def handler404(request, exception):
     response.status_code = 404
     return response
 def handler500(request, *args, **argv):
-    context = {}
+    context = {"test":"test"}
     response = render(request,'errors/500.html',  context=context)
     response.status_code = 500
     return response
