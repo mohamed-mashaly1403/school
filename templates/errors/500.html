@@ -1,6 +1,45 @@
-{{test}}
+{% block content %}
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+.box__button {
+  display: block;
+  position: relative;
+  background: #FF5E65;
+  border: 1px solid transparent;
+  border-radius: 50px;
+  height: 50px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  line-height: 50px;
+  font-size: 18px;
+  padding: 0 70px;
+  white-space: nowrap;
+  margin-top: 25px;
+  width:fill;
+  transition: background 0.5s ease;
+  overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+.box__button:before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 100px;
+  background: #fff;
+  bottom: -25px;
+  left: 0;
+  border: 2px solid #fff;
+  transform: translateX(-50px) rotate(45deg);
+  transition: transform 0.5s ease;
+}
+.box__button:hover {
+  background: blue;
+  border-color: #fff;
+}
+.box__button:hover:before {
+  transform: translateX(250px) rotate(45deg);
+}
 .main-error-page {
   min-height: 600px;
   margin: 0px auto;
@@ -542,5 +581,9 @@ svg {
   <h2 class="error-subtitle">
     Have you tried turning it off and on again?
   </h2>
+<a href="{%url 'home'%}" target="_blank" class="box__button">Go Home</a>
 
 </div>
+
+
+{% endblock %}
