@@ -26,7 +26,7 @@ class InboxAdmin(admin.ModelAdmin):
     list_display = ['sender', 'subject',  'created']
 class VistsAdmin(admin.ModelAdmin):
 
-    list_display = ['ip', 'created']
+    list_display = ['ip', 'created','country','city']
 
 admin.site.register(account,account_admin)
 admin.site.register(UserProfile,userProfileAdmin)

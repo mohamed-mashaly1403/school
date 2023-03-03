@@ -193,3 +193,5 @@ LOGOUT_URL = '/users/logout'
 LOGOUT_REDIRECT_URL = '/users/login'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
+# ====================================location
+GEOIP_PATH = os.path.join(BASE_DIR, 'geoip')

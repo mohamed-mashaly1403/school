@@ -145,6 +145,8 @@ post_save.connect(account.create_user_profile,sender=account)
 class Vists(models.Model):
     ip = models.GenericIPAddressField()
     created = models.DateTimeField(auto_now_add=True)
+    country=models.CharField(max_length=150,null=True,default="NA")
+    city=models.CharField(max_length=150,null=True,default="NA")
 
     def __str__(self):
         return self.ip

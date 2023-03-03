@@ -6,7 +6,7 @@ from courses.models import course, Price
 from orders.models import orderPoduct
 from users.models import account, Vists
 import datetime
-
+from django.contrib.gis.geoip2 import GeoIP2
 
 def handler404(request, exception):
     context = {}
@@ -31,10 +31,23 @@ def home(request):
     else:
         ip = request.META.get('REMOTE_ADDR')
 
+    # =================================location
+    from django.contrib.gis.geoip2 import GeoIP2
+    try:
+        g = GeoIP2()
+        country = g.country(ip)
+        city = g.city(ip)
+        country1=country['country_name']
+        city1=city['city']
+    except:
+        country1 ="NA"
+        city1  ="NA"
+    # =================================location
+
     if Vists.objects.filter(ip=ip,created__gt=datetime.date.today()).exists():
         pass
     else:
-        Vists(ip=ip).save()
+        Vists(ip=ip,country=country1,city=city1).save()
     visits_count = Vists.objects.all().count()
 
 
@@ -45,7 +58,7 @@ def home(request):
 
         orderr = course.objects.get(course_name=i)
         cour.append(orderr)
-    print(cour)
+
 
     context = {
         'cour': cour,
