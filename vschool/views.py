@@ -6,7 +6,6 @@ from courses.models import course, Price
 from orders.models import orderPoduct
 from users.models import account, Vists
 import datetime
-from django.contrib.gis.geoip2 import GeoIP2
 
 def handler404(request, exception):
     context = {}

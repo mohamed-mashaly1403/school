@@ -35,10 +35,25 @@ def register(request):
         ip = x_forwarded_for.split(',')[0]
     else:
         ip = request.META.get('REMOTE_ADDR')
+    # =================================location
+    from django.contrib.gis.geoip2 import GeoIP2
+    try:
+        g = GeoIP2()
+        country = g.country(ip)
+        city = g.city(ip)
+        country1 = country['country_name']
+        city1 = city['city']
+    except:
+        country1 = "NA"
+        city1 = "NA"
+    # =================================location
+
     if Vists.objects.filter(ip=ip, created__gt=datetime.date.today()).exists():
         pass
     else:
-        Vists(ip=ip).save()
+        Vists(ip=ip, country=country1, city=city1).save()
+
+
     try:
         if request.user.is_authenticated:
             return redirect(url)
@@ -112,10 +127,23 @@ def login(request):
         ip = x_forwarded_for.split(',')[0]
     else:
         ip = request.META.get('REMOTE_ADDR')
+    # =================================location
+    from django.contrib.gis.geoip2 import GeoIP2
+    try:
+        g = GeoIP2()
+        country = g.country(ip)
+        city = g.city(ip)
+        country1 = country['country_name']
+        city1 = city['city']
+    except:
+        country1 = "NA"
+        city1 = "NA"
+    # =================================location
+
     if Vists.objects.filter(ip=ip, created__gt=datetime.date.today()).exists():
         pass
     else:
-        Vists(ip=ip).save()
+        Vists(ip=ip, country=country1, city=city1).save()
     try:
         if request.user.is_authenticated:
             return redirect(url)
