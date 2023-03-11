@@ -1,3 +1,4 @@
+import math
 
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -7,13 +8,7 @@ from django.shortcuts import render
 # Create your views here.
 from Notifs.models import Inboxnotif
 from courses.models import RatingReview, course,Price
-
-
-
-
-
-
-
+from users.models import Vists
 
 
 def courses(request):
@@ -137,12 +132,30 @@ def searchHome(request,keyword):
     return render(request, 'courses.html', context)
 def pricing (request):
     price = Price.objects.all().order_by('coursePrice')
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+        print(ip)
+
+    country = Vists.objects.filter(ip=ip)[0].country
+    print(country)
+
+    if country == 'United Arab Emirates':
+        uae='UAE'
+    else:
+        uae = "NA"
+
+
+
 
     # print(price[0].courseClasses)
     # print(price[0].coursePrice)
     # print(price[0].privEN.all())
     context = {
         'price': price,
+        'uae':uae
 
 
     }

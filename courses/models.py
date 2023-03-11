@@ -163,6 +163,7 @@ class CoursePrevARNaa(models.Model):
         return self.privArNa
 
 class Price (models.Model):
+
     coursePrice = models.IntegerField(default=1)
     courseClasses = models.IntegerField(default=1)
     courseClasses_En = models.CharField(max_length=30,default='one')

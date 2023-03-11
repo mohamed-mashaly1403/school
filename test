@@ -176,3 +176,4 @@ class Curriculum(models.Model):
     def __str__(self):
         return self.Tybe
             # type1 = models.ManyToManyField(Curriculum)
+1 AED = 0.2613767 USD
