@@ -71,6 +71,18 @@ def courseDetails(request,course_name):
     paged_review = Paginatorr.get_page(page)
     x = range(1, Paginatorr.num_pages)
     reviews_count = reviews.count()
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+
+    country = Vists.objects.filter(ip=ip)[0].country
+
+    if country == 'United Arab Emirates':
+        uae = 'UAE'
+    else:
+        uae = "NA"
     context = {'courseDets': courseDets,
                'reviews':reviews,
                'reviews_count': reviews_count,
@@ -81,7 +93,8 @@ def courseDetails(request,course_name):
                'courseTeacher':courseTeacher,
                'price': price,
                'price1st':price1st,
-               'youtubeUrl':youtubeUrl
+               'youtubeUrl':youtubeUrl,
+               'uae':uae
                }
     return render(request, 'course-details.html',context)
 def search(request):

@@ -162,7 +162,11 @@
             <div class="box">
             {%endif%}
               <h3>{%if LANGUAGE_CODE == 'en' %}{{i.courseClasses_En}}{%else%}{{i.courseClasses_Ar}}{%endif%} </h3>
+              {%if uae == 'UAE' %}
+              <h4><sup>AED</sup>{% widthratio i.coursePrice 0.2613767 1 %}<span> ({{i.coursePrice}}$) {{i.courseClasses}} / {{i.courseClasses|pluralize:" Class,Classes"}}</span></h4>
+              {%else%}
               <h4><sup>USD</sup>{{i.coursePrice}}<span> {{i.courseClasses}} / {{i.courseClasses|pluralize:" Class,Classes"}}</span></h4>
+              {%endif%}
               <ul>
              {%if LANGUAGE_CODE == 'en' %}
               {%for l in i.CprivEN.all %}
