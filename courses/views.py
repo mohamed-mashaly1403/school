@@ -137,10 +137,10 @@ def pricing (request):
         ip = x_forwarded_for.split(',')[0]
     else:
         ip = request.META.get('REMOTE_ADDR')
-        print(ip)
+
 
     country = Vists.objects.filter(ip=ip)[0].country
-    print(country)
+
 
     if country == 'United Arab Emirates':
         uae='UAE'
