@@ -113,10 +113,12 @@ def search(request):
     #     courses = course.objects.order_by('-slug').filter(course_name__icontains= 'Emsat')
     #     courses_count = courses.count()
     #     keyword = 'Emsat'
+    price = Price.objects.all()[0].minn
     context = {
         'courses': courses,
         'courses_count': courses_count,
-        'keyword':keyword
+        'keyword':keyword,
+        'price':price
 
     }
     return render(request,'courses.html',context)
@@ -134,11 +136,14 @@ def searchHome(request,keyword):
     else:
         courses = ''
         courses_count = 0
+    price = Price.objects.all()[0].minn
 
     context = {
         'courses': courses,
         'courses_count': courses_count,
-        'keyword': keyword
+        'keyword': keyword,
+        'price':price
+
 
     }
 
