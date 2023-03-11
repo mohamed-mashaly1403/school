@@ -57,7 +57,8 @@ def home(request):
 
         orderr = course.objects.get(course_name=i)
         cour.append(orderr)
-
+    if students_count < 100:
+        students_count=257
 
     context = {
         'cour': cour,

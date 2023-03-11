@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-01 20:01+0400\n"
+"POT-Creation-Date: 2023-03-12 01:19+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,7 +118,7 @@ msgid "Complain has submited and will be intouch with you very soon"
 msgstr "تم تسجيل الشكوى وسنتواصل معك لاحقاً"
 
 #: .\Teachers\views.py:381 .\Teachers\views.py:389 .\Teachers\views.py:401
-#: .\Teachers\views.py:406 .\users\views.py:357 .\users\views.py:363
+#: .\Teachers\views.py:406 .\users\views.py:385 .\users\views.py:391
 msgid "profile updated"
 msgstr "تم تحديث حسابك"
 
@@ -127,7 +127,7 @@ msgid "Your CV bigger than 2 MB"
 msgstr "حجم الملف اكبر من 2 ميجا"
 
 #: .\Teachers\views.py:393 .\Teachers\views.py:625 .\Teachers\views.py:743
-#: .\users\views.py:352
+#: .\users\views.py:380
 msgid "Your photo bigger than 1 MB"
 msgstr "حجم الصورة اكبر من 1 ميجا"
 
@@ -345,7 +345,7 @@ msgstr "اعرض الطلبات"
 #: .\templates\accounts\dashboard.html:86
 #: .\templates\accounts\edit_profile.html:30
 #: .\templates\accounts\edit_profile.html:37
-#: .\templates\course-details.html:216 .\templates\course-details.html:218
+#: .\templates\course-details.html:220 .\templates\course-details.html:222
 #: .\templates\orders\order_course-details.html:238
 #: .\templates\orders\order_course-details.html:240
 #: .\templates\teachers\Teacheredit_profile.html:27
@@ -746,43 +746,43 @@ msgid "review"
 msgstr "مقيم"
 
 #: .\templates\course-details.html:160 .\templates\pricing.html:29
-#: .\templates\pricing.html:86
+#: .\templates\pricing.html:91
 msgid "Advanced"
 msgstr "متقدم"
 
-#: .\templates\course-details.html:187 .\templates\course-details.html:189
-#: .\templates\orders\checkout.html:224 .\templates\pricing.html:56
-#: .\templates\pricing.html:78 .\templates\pricing.html:97
+#: .\templates\course-details.html:191 .\templates\course-details.html:193
+#: .\templates\orders\checkout.html:224 .\templates\pricing.html:61
+#: .\templates\pricing.html:83 .\templates\pricing.html:102
 msgid "Buy Now"
 msgstr "اشتري الآن"
 
-#: .\templates\course-details.html:205
+#: .\templates\course-details.html:209
 msgid "users review"
 msgstr "مراجعات المستخدمين"
 
-#: .\templates\course-details.html:223
+#: .\templates\course-details.html:227
 #: .\templates\orders\order_course-details.html:246
 msgid "created at:"
 msgstr "إنشيء في"
 
-#: .\templates\course-details.html:224
+#: .\templates\course-details.html:228
 #: .\templates\orders\order_course-details.html:247
 msgid "last update:"
 msgstr "اخر تحديث"
 
-#: .\templates\course-details.html:260 .\templates\orders\checkout.html:133
+#: .\templates\course-details.html:264 .\templates\orders\checkout.html:133
 msgid "first"
 msgstr "الأول"
 
-#: .\templates\course-details.html:262
+#: .\templates\course-details.html:266
 msgid "Previous"
 msgstr "السابق"
 
-#: .\templates\course-details.html:273
+#: .\templates\course-details.html:277
 msgid "Next"
 msgstr "التالي"
 
-#: .\templates\course-details.html:274
+#: .\templates\course-details.html:278
 msgid "last"
 msgstr "الأخير"
 
@@ -920,7 +920,7 @@ msgid "Easy to Refund and extend"
 msgstr "يمكنك استعادة اموالك بكل سهولة اذا قررت التوقف"
 
 #: .\templates\home.html:112
-msgid "Refund your money easily if you don\\"
+msgid "Refund your money easily if you don't like it"
 msgstr "يمكنك استعادة اموالك بكل سهولة اذا قررت التوقف"
 
 #: .\templates\home.html:118
@@ -1531,39 +1531,39 @@ msgstr "الإجمالي"
 msgid "Pick the bundle and start"
 msgstr "اختر الباقة وابدء الآن"
 
-#: .\templates\pricing.html:67
+#: .\templates\pricing.html:72
 msgid "Three Classes"
 msgstr "ثلاث حصص"
 
-#: .\templates\pricing.html:68 .\templates\teachers\TeacherOrders.html:44
+#: .\templates\pricing.html:73 .\templates\teachers\TeacherOrders.html:44
 msgid "classes"
 msgstr "حصص"
 
-#: .\templates\pricing.html:70
+#: .\templates\pricing.html:75
 msgid "More than Three hours"
 msgstr "اكثر من ثلاث ساعات"
 
-#: .\templates\pricing.html:71 .\templates\pricing.html:91
+#: .\templates\pricing.html:76 .\templates\pricing.html:96
 msgid "Course material"
 msgstr "مذكرات من المعلم"
 
-#: .\templates\pricing.html:73 .\templates\pricing.html:93
+#: .\templates\pricing.html:78 .\templates\pricing.html:98
 msgid "Special follow up"
 msgstr "متابعة خاصة"
 
-#: .\templates\pricing.html:74 .\templates\pricing.html:94
+#: .\templates\pricing.html:79 .\templates\pricing.html:99
 msgid "Discount on extend"
 msgstr "تخفيض حال زيادة عدد الحصص"
 
-#: .\templates\pricing.html:87
+#: .\templates\pricing.html:92
 msgid "Six"
 msgstr "6"
 
-#: .\templates\pricing.html:87 .\templates\pricing.html:88
+#: .\templates\pricing.html:92 .\templates\pricing.html:93
 msgid "Classes"
 msgstr "حصص"
 
-#: .\templates\pricing.html:90
+#: .\templates\pricing.html:95
 msgid "More than six hours"
 msgstr "اكثر من ست ساعات"
 
@@ -2050,7 +2050,7 @@ msgstr "المبلغ المتاح للسحب"
 msgid "Minimum limit for withdraw"
 msgstr "اقل مبلغ للسحب "
 
-#: .\users\views.py:88
+#: .\users\views.py:103
 msgid ""
 "Thank you for registration with us,YOUR ACCOUNT HAS BEEN CREATED! ,Please, "
 "verify it by clicking the activation link that has been sent to your email."
@@ -2059,67 +2059,67 @@ msgstr ""
 "نشكرك لتسجيلك معنا، من فضلك اضغط الرابط المرسل على الايميل لتفعيل حسابك.إذا "
 "لم تجد الرابط لطفاً ابحث في الإيميلات المهملة"
 
-#: .\users\views.py:130
+#: .\users\views.py:158
 msgid "successfully login"
 msgstr "تم تسجيل الدخول بنجاح"
 
-#: .\users\views.py:133
+#: .\users\views.py:161
 msgid "Wrong email or password or account not activated "
 msgstr " ايميل او كلمة المرور خطأ او الحساب لم يتم تفعيله"
 
-#: .\users\views.py:175
+#: .\users\views.py:203
 msgid "successfully Logout"
 msgstr "تم تسجيل الخروج بنجاح"
 
-#: .\users\views.py:194
+#: .\users\views.py:222
 msgid "successfully activated"
 msgstr "تم تفعيل الحساب بنجاح"
 
-#: .\users\views.py:197
+#: .\users\views.py:225
 msgid "invaild link"
 msgstr "رابط غير صالح"
 
-#: .\users\views.py:218
+#: .\users\views.py:246
 msgid "Click on the link on reset password mail  sent to you"
 msgstr "اضغط على الرابط في الايميل المرسل لك"
 
-#: .\users\views.py:221
+#: .\users\views.py:249
 msgid "account does not exist"
 msgstr "لا يوجد حساب"
 
-#: .\users\views.py:235
+#: .\users\views.py:263
 msgid "Reset your Password"
 msgstr "تغيير كلمة المرور"
 
-#: .\users\views.py:238
+#: .\users\views.py:266
 msgid "Reset password link expired"
 msgstr "صلاحية الرابط انتهت"
 
-#: .\users\views.py:251
+#: .\users\views.py:279
 msgid "new password has set"
 msgstr "تم تغيير كلمة المرور"
 
-#: .\users\views.py:255
+#: .\users\views.py:283
 msgid "confirm Password does not match"
 msgstr "كلمة المرور والتأكيد لا يتطابقان"
 
-#: .\users\views.py:274
+#: .\users\views.py:302
 msgid "password changed successfully"
 msgstr "تم تغيير كلمة المرور بنجاح"
 
-#: .\users\views.py:277
+#: .\users\views.py:305
 msgid "invalid current password"
 msgstr "كلمة المرور غير صالحة"
 
-#: .\users\views.py:280
+#: .\users\views.py:308
 msgid "new password and confirmed password do not match"
 msgstr "كلمة المرور والتأكيد لا يتطابقان"
 
-#: .\users\views.py:493
+#: .\users\views.py:521
 msgid "Your can not sent to your self!"
 msgstr "لا يمكن ارسال رسال لنفسك"
 
-#: .\users\views.py:501
+#: .\users\views.py:529
 msgid "Your message was successfully sent!"
 msgstr "تم ارسال رسالتك بنجاح"
 
